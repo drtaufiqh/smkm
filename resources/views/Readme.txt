@@ -1,4 +1,5 @@
 Thanks for downloading this template!
+smgt
 
 Template Name: NiceAdmin
 Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
