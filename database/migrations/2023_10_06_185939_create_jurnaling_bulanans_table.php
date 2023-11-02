@@ -1,0 +1,46 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('jurnaling_bulanans', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('id_mhs');
+            $table->foreign('id_mhs')->references('id')->on('mahasiswas');
+            $table->foreignId('id_penilai');
+            $table->foreign('id_penilai')->references('id')->on('pembimbing_lapangans');
+            $table->integer('periode');
+            $table->text('uraian_kegiatan');
+            $table->string('satuan',50);
+            $table->integer('kuantitas_target');
+            $table->integer('kuantitas_realisasi');
+            $table->double('tingkat_kuantitas', 5, 2);
+            $table->double('tingkat_kualitas', 5, 2);
+            $table->text('keterangan');
+            $table->boolean('status_final_mhs');
+            $table->boolean('status_final_penilai');
+            
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('jurnaling_bulanans');
+    }
+};
