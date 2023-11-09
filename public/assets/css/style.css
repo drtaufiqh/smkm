@@ -828,9 +828,14 @@ h6 {
   background: #e0f8e9;
 }
 
-.dashboard .customers-card .card-icon {
+.dashboard .customers-card .card-icon.profile {
   color: #ff771d;
   background: #ffecdf;
+}
+
+.dashboard .customers-card .card-icon.office {
+  color: #2eca6a;
+  background: #e0f8e9;
 }
 
 /* Activity */
@@ -839,11 +844,12 @@ h6 {
 }
 
 .dashboard .activity .activity-item .activite-label {
-  color: #888;
+  /* color: #888; */
+  font-weight: bold;
   position: relative;
   flex-shrink: 0;
   flex-grow: 0;
-  min-width: 64px;
+  width: 170px;
 }
 
 .dashboard .activity .activity-item .activite-label::before {
@@ -870,6 +876,8 @@ h6 {
 .dashboard .activity .activity-item .activity-content {
   padding-left: 10px;
   padding-bottom: 20px;
+  width: 100%;
+  justify-content: center;
 }
 
 .dashboard .activity .activity-item:first-child .activite-label::before {
