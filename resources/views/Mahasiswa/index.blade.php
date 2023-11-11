@@ -229,8 +229,8 @@
                               <div
                                 class="progress-bar"
                                 role="progressbar"
-                                style="width: 90%"
-                                aria-valuenow="90"
+                                style="width: {{ $jurnaling_harian->status_penyelesaian }}%"
+                                aria-valuenow="{{ $jurnaling_harian->status_penyelesaian }}"
                                 aria-valuemin="0"
                                 aria-valuemax="100"
                               >

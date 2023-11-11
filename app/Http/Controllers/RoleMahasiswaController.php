@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Instansi;
 use App\Models\KabKota;
 use App\Models\Provinsi;
 use App\Models\LaporanAkhir;
@@ -86,7 +87,8 @@ class RoleMahasiswaController extends Controller
             'sidebar' => 'lokasi',
             'circle_sidebar' => '',
             'provinsis' => Provinsi::all(),
-            'kab_kotas' => KabKota::all()
+            'kab_kotas' => KabKota::all(),
+            'instansis' => Instansi::all()
         ]);
     }
 }

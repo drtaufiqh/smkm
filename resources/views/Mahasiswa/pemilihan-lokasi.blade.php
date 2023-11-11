@@ -115,8 +115,8 @@
                     id="floatingSelect"
                     aria-label="Eselon 1"
                   >
-                  @foreach($kab_kotas as $kab_kota)
-                    <option value="{{ $kab_kota->nama }}">{{ $kab_kota->nama }}</option>
+                  @foreach($instansis as $instansi)
+                    <option value="{{ $instansi->nama }}">{{ $instansi->nama }}</option>
                   @endforeach
                   </select>
                   <label for="floatingSelect">Eselon 2</label>
@@ -157,8 +157,8 @@
                     id="floatingSelect"
                     aria-label="Eselon 1"
                   >
-                  @foreach($kab_kotas as $kab_kota)
-                    <option value="{{ $kab_kota->nama }}">{{ $kab_kota->nama }}</option>
+                  @foreach($instansis as $instansi)
+                    <option value="{{ $instansi->nama }}">{{ $instansi->nama }}</option>
                   @endforeach
                   </select>
                   <label for="floatingSelect">Eselon 2</label>
