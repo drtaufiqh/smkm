@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use App\Models\PemilihanLokasi;
 
 class RoleAdminController extends Controller
 {
@@ -11,7 +13,8 @@ class RoleAdminController extends Controller
         return view('admin.bandinglokasi', [
             'title'=> 'Banding Lokasi Magang | Admin',
             'sidebar'=> 'lokasi',
-            'circle_sidebar'=> 'banding'
+            'circle_sidebar'=> 'banding',
+            'pemilihan_lokasis' => PemilihanLokasi::all()
         ]);
     }
 
@@ -29,7 +32,8 @@ class RoleAdminController extends Controller
         return view('admin.database', [
             'title'=> 'database | Admin',
             'sidebar'=> 'database',
-            'circle_sidebar'=> ''
+            'circle_sidebar'=> '',
+            'mahasiswas' => Mahasiswa::all()
         ]);
     }
 
@@ -38,8 +42,10 @@ class RoleAdminController extends Controller
         return view('admin.penentuanlokasi', [
             'title'=> 'Banding Lokasi Magang | Admin',
             'sidebar'=> 'dashboard',
-            'circle_sidebar'=> ''
+            'circle_sidebar'=> '',
+            'pemilihan_lokasis' => PemilihanLokasi::all()
         ]);
     }
+
 }
 
