@@ -39,7 +39,23 @@
                       </tr>
                   </thead>
                   <tbody>
-                      <tr>
+                    {{ $i = 0 }}
+                      @foreach ($mahasiswas as $mahasiswa)
+                        {{ $i = $i + 1 }}
+                          <tr>
+                            <th scope="row">{{ $i }}</th>
+                            <td>{{ $mahasiswa->nama }}</td>
+                            <td>{{ $mahasiswa->nim }}</td>
+                            <td>{{ $mahasiswa->jenis_kelamin }}</td>
+                            <td class="highlighted-text">Belum disetujui</td>
+                            <td class="edit-button">
+                            <a href="pemlap-laporan-akhir-lookup">
+                                <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                            </a>
+                            </td> 
+                          </tr>
+                          @endforeach
+                      <!-- <tr>
                           <th scope="row">1</th>
                           <td>Khesya Belinda</td>
                           <td>222112135</td>
@@ -74,7 +90,7 @@
                               <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                           </a>
                         </td> 
-                      </tr>
+                      </tr> -->
                   </tbody>
               </table>
             </div>

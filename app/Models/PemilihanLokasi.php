@@ -10,7 +10,7 @@ class PemilihanLokasi extends Model
     use HasFactory;
 
     public function mahasiswa(){
-        return $this->belongsTo(Mahasiswa::class);
+        return $this->belongsTo(Mahasiswa::class, 'id_mhs');
     }
 
     public function pilihan1(){

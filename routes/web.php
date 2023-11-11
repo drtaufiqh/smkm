@@ -101,3 +101,7 @@ Route::get('/pemlap-penilaian-laporan1', [RolePemlapController::class, 'penilaia
 Route::get('/pemlap-penilaian-laporan2', [RolePemlapController::class, 'penilaianLaporan2']);
 Route::get('/pemlap-profil', [RolePemlapController::class, 'profil']);
 
+#kirim pendaftaran magang
+#Route::post('/PemilihanLokasi/create');
+#Route::post('/PemilihanLokasi/{PemilihanLokasi:id}/edit, [PemilihanLokasiController::class, "update"]);
+#Route::post('/PemilihanLokasi/{PemilihanLokasi:id}/delete');
