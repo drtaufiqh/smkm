@@ -38,7 +38,23 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                              @php $i = 0 @endphp
+                                @foreach ($mahasiswas as $mahasiswa)
+                                @php $i = $i + 1 @endphp
+                                  <tr>
+                                    <th scope="row">{{ $i }}</th>
+                                    <td>{{ $mahasiswa->nama }}</td>
+                                    <td>{{ $mahasiswa->jenis_kelamin }}</td>
+                                    <td>{{ $mahasiswa->instansi->nama }}</td>
+                                    <td>{{ $mahasiswa->pembimbingLapangan->nama }}</td>
+                                    <td>{{ $mahasiswa->dosenPembimbing->nama }}</td>
+                                    <td><a href="#"><button type="button" class="btn btn-success my-4" style="color: white;" data-bs-toggle="modal">Lihat</button></a></td>
+                                    <td><a href="#"><button type="button" class="btn btn-success w-100 my-2" style="color: white;" data-bs-toggle="modal">Harian</button></a>
+                                        <a href="#"><button type="button" class="btn btn-success w-100" style="color: white;" data-bs-toggle="modal">Bulanan</button></a></td>
+                                    <td>Belum Dikumpulkan</td>
+                                  </tr>
+                                  @endforeach
+                                <!-- <tr>
                                     <th scope="row">1</th>
                                     <td><a href="admin-dashboard" class="text-dark">Andi</a></td>
                                     <td>3SD2</td>
@@ -106,7 +122,7 @@
                                     <td><a href="#"><button type="button" class="btn btn-success w-100 my-2" style="color: white;" data-bs-toggle="modal">Harian</button></a>
                                         <a href="#"><button type="button" class="btn btn-success w-100" style="color: white;" data-bs-toggle="modal">Bulanan</button></a></td>
                                     <td>Sudah Dikumpulkan</td>
-                                    </tr>
+                                    </tr> -->
                             </tbody>
                         </table>
                       </div>

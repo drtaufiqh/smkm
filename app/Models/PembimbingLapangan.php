@@ -10,10 +10,10 @@ class PembimbingLapangan extends Model
     use HasFactory;
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     public function instansi(){
-        return $this->belongsTo(Instansi::class);
+        return $this->belongsTo(Instansi::class, 'id_instansi');
     }
 }

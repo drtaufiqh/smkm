@@ -36,9 +36,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              {{ $i = 0 }}
+                              @php $i = 0 @endphp
                                 @foreach ($pemilihan_lokasis as $pemilihan_lokasi)
-                                {{ $i = $i + 1 }}
+                                @php $i = $i + 1 @endphp
                                   <tr>
                                     <th scope="row">{{ $i }}</th>
                                     <td>{{ $pemilihan_lokasi->mahasiswa->nama }}</td>

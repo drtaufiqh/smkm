@@ -75,7 +75,8 @@ class RoleDospemController extends Controller
         return view('dospem.laporan-akhir-lookup', [
             'title' => 'Laporan Akhir | Dosen Pembimbing',
             'sidebar' => 'laporan akhir',
-            'circle_sidebar' => ''
+            'circle_sidebar' => '',
+            'mahasiswas' => Mahasiswa::all(),
         ]);
     }
 

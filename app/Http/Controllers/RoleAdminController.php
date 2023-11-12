@@ -41,8 +41,8 @@ class RoleAdminController extends Controller
     {
         return view('admin.penentuanlokasi', [
             'title'=> 'Banding Lokasi Magang | Admin',
-            'sidebar'=> 'dashboard',
-            'circle_sidebar'=> '',
+            'sidebar'=> 'lokasi',
+            'circle_sidebar'=> 'penentuan',
             'pemilihan_lokasis' => PemilihanLokasi::all()
         ]);
     }

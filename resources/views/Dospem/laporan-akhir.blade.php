@@ -3,141 +3,98 @@
 @section('container')
     @include('partials.sidebar-dospem')
 
-    <main id="main" class="main">
-      <div class="pagetitle">
-        <h1>Log Book Bulanan</h1>
-        <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index">Home</a></li>
-            <li class="breadcrumb-item active">Log Book Bulanan</li>
-          </ol>
-        </nav>
-      </div>
-      <!-- End Page Title -->
+  <main id="main" class="main">
 
-      <section class="section">
-        <div class="row">
-            <div class="card">
-              <div class="card-body">
-                <!-- Table with stripped rows -->
-                <div class="table-responsive">
-                  <table class="table datatable table-hover">
-                    <h5 class="card-title">Log Book Bulanan</h5>
-                    <thead>
-                      <tr>
-                        <th scope="col" rowspan="2" class="align-middle">No</th>
-                        <th scope="col" rowspan="2" class="align-middle">
-                          Kegiatan
-                        </th>
-                        <th scope="col" rowspan="2" class="align-middle">
-                          Satuan
-                        </th>
-                        <th scope="col" colspan="3" class="text-center">
-                          Kuantitas
-                        </th>
-                        <th scope="col" rowspan="2" class="align-middle">
-                          Kualitas
-                        </th>
-                        <th scope="col" rowspan="2" class="align-middle">
-                          Keterangan
-                        </th>
-                        <th scope="col" rowspan="2" class="align-middle">
-                          Nilai
-                        </th>
-                      </tr>
-                      <tr>
-                        <th scope="col">Target</th>
-                        <th scope="col">Realisasi</th>
-                        <th scope="col">%</th>
-                      </tr>
-                    </thead>
+    <div class="pagetitle">
+      <h1>Rekapitulasi Laporan Akhir Mahasiswa</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="pemlap-dashboard">Home</a></li>
+          <li class="breadcrumb-item">Pages</li>
+          <li class="breadcrumb-item active">Blank</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-                    <tbody>
-                      @php $i = 0 @endphp
-                      @foreach ($jurnaling_bulanans as $jurnaling_bulanan)
-                      @php $i = $i + 1 @endphp
+    <section class="section">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Status Persetujuan</h5>
+
+              <div class="row mb-3">
+                <div class="col">
+                  <input type="text" class="form-control" id="searchInput" placeholder="Cari...">
+                </div>
+              </div>
+
+              <table class="table table-hover body-penilaian" id="penilaianTable">
+                <thead>
                       <tr>
-                        <th scope="row">{{ $i }}</th>
-                        <td>{{ $jurnaling_bulanan->uraian_kegiatan }}</td>
-                        <td>{{ $jurnaling_bulanan->satuan }}</td>
-                        <td>{{ $jurnaling_bulanan->kuantitas_target }}</td>
-                        <td>{{ $jurnaling_bulanan->kuantitas_realisasi }}</td>
-                        <td>{{ $jurnaling_bulanan->kuantitas_realisasi }}%</td>
-                        <td>
-                          <div class="progress">
-                            <div
-                              class="progress-bar"
-                              role="progressbar"
-                              style="width: 90%"
-                              aria-valuenow="90"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            >
-                            {{ $jurnaling_bulanan->tingkat_kualitas }}%
-                            </div>
-                          </div>
-                        </td>
-                        <td class="text-center">-</td>
-                        <td>90</td>
+                          <th scope="col">No</th>
+                          <th scope="col">Nama Mahasiswa</th>
+                          <th scope="col">NIM</th>
+                          <th scope="col">Kelas</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Action</th>
                       </tr>
-                      @endforeach
-                      {{-- <tr>
-                        <th scope="row">1</th>
-                        <td>Membaca buku Soekarno</td>
-                        <td>Halaman</td>
-                        <td>100</td>
-                        <td>90</td>
-                        <td>90%</td>
-                        <td>
-                          <div class="progress">
-                            <div
-                              class="progress-bar"
-                              role="progressbar"
-                              style="width: 90%"
-                              aria-valuenow="90"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            >
-                              90%
-                            </div>
-                          </div>
-                        </td>
-                        <td class="text-center">-</td>
-                        <td>90</td>
-                      </tr>
+                  </thead>
+                  <tbody>
+                    @php $i = 0 @endphp
+                      @foreach ($mahasiswas as $mahasiswa)
+                        @php $i = $i + 1 @endphp
+                          <tr>
+                            <th scope="row">{{ $i }}</th>
+                            <td>{{ $mahasiswa->nama }}</td>
+                            <td>{{ $mahasiswa->nim }}</td>
+                            <td>{{ $mahasiswa->jenis_kelamin }}</td>
+                            <td class="highlighted-text">Belum disetujui</td>
+                            <td class="edit-button">
+                            <a href="pemlap-laporan-akhir-lookup">
+                                <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                            </a>
+                            </td> 
+                          </tr>
+                          @endforeach
+                      <!-- <tr>
+                          <th scope="row">1</th>
+                          <td>Khesya Belinda</td>
+                          <td>222112135</td>
+                          <td>3SD2</td>
+                          <td class="highlighted-text">Belum disetujui</td>
+                          <td class="edit-button">
+                            <a href="pemlap-laporan-akhir-lookup">
+                                <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                            </a>
+                          </td>                      
+                        </tr>
                       <tr>
                         <th scope="row">2</th>
-                        <td>Menulis buku Soekarno</td>
-                        <td>Halaman</td>
-                        <td>100</td>
-                        <td>80</td>
-                        <td>80%</td>
-                        <td>
-                          <div class="progress">
-                            <div
-                              class="progress-bar"
-                              role="progressbar"
-                              style="width: 90%"
-                              aria-valuenow="90"
-                              aria-valuemin="0"
-                              aria-valuemax="100"
-                            >
-                              90%
-                            </div>
-                          </div>
-                        </td>
-                        <td class="text-center">-</td>
-                        <td>90</td>
-                      </tr> --}}
-                    </tbody>
-                  </table>
-                </div>
-                <!-- End Table with stripped rows -->
-              </div>
+                        <td>Sabilla</td>
+                        <td>222112123</td>
+                        <td>3SD2</td>
+                        <td class="highlighted-text">Belum disetujui</td>
+                        <td class="edit-button">
+                          <a href="pemlap-laporan-akhir-lookup">
+                              <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                          </a>
+                        </td> 
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Fauzan</td>
+                        <td>222112138</td>
+                        <td>3SD2</td>
+                        <td class="highlighted-text">Belum disetujui</td>
+                        <td class="edit-button">
+                          <a href="pemlap-laporan-akhir-lookup">
+                              <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                          </a>
+                        </td> 
+                      </tr> -->
+                  </tbody>
+              </table>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
-    <!-- End #main -->
+    </section>
+  </main><!-- End #main -->
 @endsection
