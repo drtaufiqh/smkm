@@ -53,7 +53,35 @@
                     </thead>
 
                     <tbody>
+                      @php $i = 0 @endphp
+                      @foreach ($jurnaling_bulanans as $jurnaling_bulanan)
+                      @php $i = $i + 1 @endphp
                       <tr>
+                        <th scope="row">{{ $i }}</th>
+                        <td>{{ $jurnaling_bulanan->uraian_kegiatan }}</td>
+                        <td>{{ $jurnaling_bulanan->satuan }}</td>
+                        <td>{{ $jurnaling_bulanan->kuantitas_target }}</td>
+                        <td>{{ $jurnaling_bulanan->kuantitas_realisasi }}</td>
+                        <td>{{ $jurnaling_bulanan->kuantitas_realisasi }}%</td>
+                        <td>
+                          <div class="progress">
+                            <div
+                              class="progress-bar"
+                              role="progressbar"
+                              style="width: 90%"
+                              aria-valuenow="90"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                            >
+                            {{ $jurnaling_bulanan->tingkat_kualitas }}%
+                            </div>
+                          </div>
+                        </td>
+                        <td class="text-center">-</td>
+                        <td>90</td>
+                      </tr>
+                      @endforeach
+                      {{-- <tr>
                         <th scope="row">1</th>
                         <td>Membaca buku Soekarno</td>
                         <td>Halaman</td>
@@ -100,7 +128,7 @@
                         </td>
                         <td class="text-center">-</td>
                         <td>90</td>
-                      </tr>
+                      </tr> --}}
                     </tbody>
                   </table>
                 </div>
