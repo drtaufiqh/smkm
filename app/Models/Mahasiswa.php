@@ -10,7 +10,7 @@ class Mahasiswa extends Model
     use HasFactory;
 
     public function user(){
-        return $this->belongsTo(User::class); //untuk mendefinisikan hubungan antara tabel mahasiswas dan users,
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     public function kecamatanAlamat1(){

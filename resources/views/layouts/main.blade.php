@@ -82,11 +82,11 @@
 </head>
 
 <body>
-    @include('partials.header')
-    
-    <div class="container mt-4">
+  
+    {{-- <div class="container mt-4"> --}}
+        @include('partials.header')
         @yield('container')
-    </div>
+    {{-- </div> --}}
     
 
   <!-- ======= Footer ======= -->
