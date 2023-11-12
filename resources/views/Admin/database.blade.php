@@ -9,7 +9,7 @@
       <h1>Database Admin</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="admin-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
           <li class="breadcrumb-item active">Database</li>
         </ol>
       </nav>
@@ -56,7 +56,7 @@
                                   @endforeach
                                 <!-- <tr>
                                     <th scope="row">1</th>
-                                    <td><a href="admin-dashboard" class="text-dark">Andi</a></td>
+                                    <td><a href="/admin/dashboard" class="text-dark">Andi</a></td>
                                     <td>3SD2</td>
                                     <td>BPS Jakarta Utara</td>
                                     <td>Amin</td>
@@ -67,7 +67,7 @@
                                     <td>Belum Dikumpulkan</td>
                                 </tr>
                                 <th scope="row">2</th>
-                                    <td><a href="admin-dashboard" class="text-dark">Budi</a></td>
+                                    <td><a href="/admin/dashboard" class="text-dark">Budi</a></td>
                                     <td>3SD2</td>
                                     <td>BPS Jakarta Barat</td>
                                     <td>Amin</td>
@@ -78,7 +78,7 @@
                                     <td>Belum Dikumpulkan</td>
                                     </tr>
                                 <th scope="row">3</th>
-                                    <td><a href="admin-dashboard" class="text-dark">Caca</a></td>
+                                    <td><a href="/admin/dashboard" class="text-dark">Caca</a></td>
                                     <td>3SD2</td>
                                     <td>BPS Jakarta Pusat</td>
                                     <td>Amin</td>
@@ -89,7 +89,7 @@
                                     <td>Sudah Dikumpulkan</td>
                                     </tr>
                                 <th scope="row">4</th>
-                                    <td><a href="admin-dashboard" class="text-dark">Dono</a></td>
+                                    <td><a href="/admin/dashboard" class="text-dark">Dono</a></td>
                                     <td>3SD2</td>
                                     <td>BPS Jakarta Utara</td>
                                     <td>Amin</td>
@@ -101,7 +101,7 @@
                                     </tr>
                                 <tr>
                                 <th scope="row">5</th>
-                                    <td><a href="admin-dashboard" class="text-dark">Ela</a></td>
+                                    <td><a href="/admin/dashboard" class="text-dark">Ela</a></td>
                                     <td>3SD2</td>
                                     <td>BPS Jakarta Barat</td>
                                     <td>Amin</td>
@@ -113,7 +113,7 @@
                                     </tr>
                                 <tr>
                                     <th scope="row">6</th>
-                                    <td><a href="admin-dashboard" class="text-dark">Feny</a></td>
+                                    <td><a href="/admin/dashboard" class="text-dark">Feny</a></td>
                                     <td>3SD2</td>
                                     <td>BPS Jakarta Selatan</td>
                                     <td>Amin</td>

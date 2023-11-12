@@ -9,7 +9,7 @@
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="mahasiswa-index">Home</a>
+              <a href="/mahasiswa/index">Home</a>
             </li>
             <li class="breadcrumb-item active">Jadwal Bimbingan</li>
           </ol>
@@ -23,7 +23,7 @@
             <!-- Card with an i5mage on top -->
             <div class="card h-75">
               <img
-                src="assets/img/card.jpg"
+                src="/assets/img/card.jpg"
                 alt="..."
                 style="height: 30%; object-fit: cover"
               />
@@ -41,10 +41,10 @@
               <div
                 class="card-footer d-flex justify-content-between bg-dark-light"
               >
-                <a href="mahasiswa-bimbingan">Selengkapnya</a>
+                <a href="/mahasiswa/bimbingan">Selengkapnya</a>
                 <a
                   class="bi bi-arrow-right"
-                  href="mahasiswa-bimbingan"
+                  href="/mahasiswa/bimbingan"
                 ></a>
               </div>
             </div>
@@ -54,7 +54,7 @@
             <!-- Card with an i5mage on top -->
             <div class="card h-75">
               <img
-                src="assets/img/card.jpg"
+                src="/assets/img/card.jpg"
                 alt="..."
                 style="height: 30%; object-fit: cover"
               />
@@ -72,10 +72,10 @@
               <div
                 class="card-footer d-flex justify-content-between bg-dark-light"
               >
-                <a href="mahasiswa-bimbingan">Selengkapnya</a>
+                <a href="/mahasiswa/bimbingan">Selengkapnya</a>
                 <a
                   class="bi bi-arrow-right"
-                  href="mahasiswa-bimbingan"
+                  href="/mahasiswa/bimbingan"
                 ></a>
               </div>
             </div>

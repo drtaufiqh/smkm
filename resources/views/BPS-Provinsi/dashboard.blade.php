@@ -9,7 +9,7 @@
       <h1>Dashboard BPS Provinsi</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="bps-provinsi-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/bps-provinsi/dashboard">Home</a></li>
           <li class="breadcrumb-item active">Ringkasan Informasi</li>
         </ol>
       </nav>
@@ -30,8 +30,8 @@
                     </div>
                   </div>
             
-                  <a href="bps-provinsi-approvalmahasiswa" class="btn btn-primary btn-lg my-1">Approval Mahasiswa</a>
-                  <a href="bps-provinsi-bandingmahasiswa" class="btn btn-primary btn-lg my-1">Banding Mahasiswa</a>
+                  <a href="/bps-provinsi/approvalmahasiswa" class="btn btn-primary btn-lg my-1">Approval Mahasiswa</a>
+                  <a href="/bps-provinsi/bandingmahasiswa" class="btn btn-primary btn-lg my-1">Banding Mahasiswa</a>
                 </div>
               </div>
             </div>

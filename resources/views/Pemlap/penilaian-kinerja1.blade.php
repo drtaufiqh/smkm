@@ -9,7 +9,7 @@
       <h1>Penilaian Kinerja Mahasiswa</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="pemlap-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/pemlap/dashboard">Home</a></li>
           <li class="breadcrumb-item">Pages</li>
           <li class="breadcrumb-item active">Blank</li>
         </ol>
@@ -49,8 +49,8 @@
                           <td>{{ $mahasiswa->jenis_kelamin }}</td>
                           <td class="highlighted-text">Belum dinilai</td>
                           <td class="edit-button">
-                            <a href="pemlap-penilaian-kinerja2">
-                                <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                            <a href="/pemlap/penilaian-kinerja2">
+                                <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                           </td>  
                         </tr>
@@ -62,8 +62,8 @@
                           <td>3SD2</td>
                           <td class="highlighted-text">Belum dinilai</td>
                           <td class="edit-button">
-                            <a href="pemlap-penilaian-kinerja2">
-                                <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                            <a href="/pemlap/penilaian-kinerja2">
+                                <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                           </td>                      
                         </tr>
@@ -74,8 +74,8 @@
                         <td>3SD2</td>
                         <td class="highlighted-text">Belum dinilai</td>
                         <td class="edit-button">
-                          <a href="pemlap-penilaian-kinerja2">
-                              <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                          <a href="/pemlap/penilaian-kinerja2">
+                              <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                           </a>
                         </td> 
                       </tr>
@@ -86,8 +86,8 @@
                         <td>3SD2</td>
                         <td class="highlighted-text">Belum dinilai</td>
                         <td class="edit-button">
-                          <a href="pemlap-penilaian-kinerja2">
-                              <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                          <a href="/pemlap/penilaian-kinerja2">
+                              <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                           </a>
                         </td> 
                       </tr> -->

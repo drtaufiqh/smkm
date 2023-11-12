@@ -9,7 +9,7 @@
       <h1>Dashboard Dosen Pembimbing</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dospem-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/dospem/dashboard">Home</a></li>
           <li class="breadcrumb-item active">Dashboard</li>
         </ol>
       </nav>

@@ -9,7 +9,7 @@
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="mahasiswa-index">Home</a>
+              <a href="/mahasiswa/index">Home</a>
             </li>
             <li class="breadcrumb-item active">Laporan Akhir</li>
           </ol>
@@ -118,7 +118,7 @@
               <div class="card-body m-0 p-0">
                 <div class="d-flex border border-dark" style="height: 600px">
                   <iframe
-                    src="./assets/doc/Persetujuan Orang Tua.pdf"
+                    src="/assets/doc/Persetujuan Orang Tua.pdf"
                     style="
                       width: 100%;
                       height: 100%;

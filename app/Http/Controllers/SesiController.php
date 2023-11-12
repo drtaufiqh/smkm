@@ -29,17 +29,17 @@ class SesiController extends Controller
         if(Auth::attempt($infoLogin)){
             // $role = Auth::user()->role;
             // if($role === 'admin'){
-            //     return redirect('/admin-dashboard');
+            //     return redirect('/admin/dashboard');
             // } elseif ($role === 'dospem') {
-            //     return redirect('/dospem-dashboard');
+            //     return redirect('/dospem/dashboard');
             // } elseif ($role === 'instansi') {
             //     return redirect('/instansi-dashboard');
             // } elseif ($role === 'mhs') {
-            //     return redirect('/mahasiswa-index');
+            //     return redirect('/mahasiswa/index');
             // } elseif ($role === 'prov') {
             //     return redirect('/prov-dashboard');
             // } elseif ($role === 'pemlap') {
-            //     return redirect('/pemlap-dashboard');
+            //     return redirect('/pemlap/dashboard');
             // }
             return $this->home();
         }else{
@@ -55,17 +55,17 @@ class SesiController extends Controller
     function home(){
         $role = Auth::user()->role;
         if($role === 'admin'){
-            return redirect('/admin-dashboard');
+            return redirect('/admin/dashboard');
         } elseif ($role === 'dospem') {
-            return redirect('/dospem-dashboard');
+            return redirect('/dospem/dashboard');
         } elseif ($role === 'instansi') {
-            return redirect('/bps-instansi-dashboard');
+            return redirect('/bps-instansi/dashboard');
         } elseif ($role === 'mhs') {
-            return redirect('/mahasiswa-index');
+            return redirect('/mahasiswa/index');
         } elseif ($role === 'prov') {
-            return redirect('/bps-provinsi-dashboard');
+            return redirect('/bps-provinsi/dashboard');
         } elseif ($role === 'pemlap') {
-            return redirect('/pemlap-dashboard');
+            return redirect('/pemlap/dashboard');
         }
     }
 }

@@ -9,7 +9,7 @@
       <h1>Dashboard BPS Kabupaten/Kota</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="bps-instansi-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/bps-instansi/dashboard">Home</a></li>
           <li class="breadcrumb-item active">Ringkasan Informasi</li>
         </ol>
       </nav>

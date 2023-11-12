@@ -9,8 +9,8 @@
       <h1>Buat Akun Pembimbing Lapangan</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="bps-instansi-dashboard">Home</a></li>
-          <li class="breadcrumb-item"><a href="bps-instansi-pembimbinglap">Pembimbing Lapangan</a></li>
+          <li class="breadcrumb-item"><a href="/bps-instansi/dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/bps-instansi/pembimbinglap">Pembimbing Lapangan</a></li>
           <li class="breadcrumb-item active">Buat Akun</li>
         </ol>
       </nav>

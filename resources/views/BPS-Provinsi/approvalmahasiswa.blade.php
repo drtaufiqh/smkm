@@ -9,7 +9,7 @@
       <h1>Approval Lokasi Mahasiswa</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="bps-provinsi-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/bps-provinsi/dashboard">Home</a></li>
           <li class="breadcrumb-item active">Lokasi Mahasiswa-Approval</li>
         </ol>
       </nav>

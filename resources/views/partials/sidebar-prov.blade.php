@@ -5,7 +5,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link {{ ($sidebar === 'dashboard') ? '' : 'collapsed'}}" href="bps-provinsi-dashboard">
+        <a class="nav-link {{ ($sidebar === 'dashboard') ? '' : 'collapsed'}}" href="/bps-provinsi/dashboard">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -18,12 +18,12 @@
         </a>
         <ul id="tables-nav" class="nav-content  {{ ($sidebar === 'lokasi') ? '' : 'collapse'}}" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="bps-provinsi-approvalmahasiswa" class="{{ $circle_sidebar === 'approval' ? 'active' : '' }}" >
+            <a href="/bps-provinsi/approvalmahasiswa" class="{{ $circle_sidebar === 'approval' ? 'active' : '' }}" >
               <i class="bi bi-circle"></i><span>Approval Lokasi Mahasiswa</span>
             </a>
           </li>
           <li>
-            <a href="bps-provinsi-bandingmahasiswa" class="{{ $circle_sidebar === 'banding' ? 'active' : '' }}" >
+            <a href="/bps-provinsi/bandingmahasiswa" class="{{ $circle_sidebar === 'banding' ? 'active' : '' }}" >
               <i class="bi bi-circle"></i><span>Banding Lokasi Mahasiswa</span>
             </a>
           </li>

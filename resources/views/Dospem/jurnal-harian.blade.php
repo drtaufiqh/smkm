@@ -9,7 +9,7 @@
       <h1>Penilaian Kegiatan Harian</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dospem-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/dospem/dashboard">Home</a></li>
           <li class="breadcrumb-item">Pages</li>
           <li class="breadcrumb-item active">Blank</li>
         </ol>
@@ -46,7 +46,7 @@
                         <td>{{ $mahasiswa->nim }}</td>
                         <td>{{ $mahasiswa->jenis_kelamin }}</td>
                         <td class="edit-button">
-                          <a href="dospem-detail-biodata">
+                          <a href="/dospem/detail-biodata">
                               <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                           </a>
                         </td>                      
@@ -58,7 +58,7 @@
                           <td>222112135</td>
                           <td>3SD2</td>
                           <td class="edit-button">
-                            <a href="dospem-log-book-harian">
+                            <a href="/dospem/log-book-harian">
                                 <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                             </a>
                           </td>                                          
@@ -69,7 +69,7 @@
                         <td>222112123</td>
                         <td>3SD2</td>
                         <td class="edit-button">
-                          <a href="dospem-log-book-harian">
+                          <a href="/dospem/log-book-harian">
                               <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                           </a>
                         </td>
@@ -80,7 +80,7 @@
                         <td>222112138</td>
                         <td>3SD2</td>
                         <td class="edit-button">
-                          <a href="dospem-log-book-harian">
+                          <a href="/dospem/log-book-harian">
                               <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                           </a>
                         </td>
