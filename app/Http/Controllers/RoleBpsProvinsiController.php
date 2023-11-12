@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\PemilihanLokasi;
 
 class RoleBpsProvinsiController extends Controller
 {
@@ -11,7 +12,8 @@ class RoleBpsProvinsiController extends Controller
         return view('bps-provinsi.approvalmahasiswa', [
             'title'=> 'Approval Lokasi | BPS Provinsi',
             'sidebar' => 'lokasi',
-            'circle_sidebar' => 'approval'
+            'circle_sidebar' => 'approval',
+            'pemilihan_lokasis' => PemilihanLokasi::all()
         ]);
     }
 
@@ -20,7 +22,8 @@ class RoleBpsProvinsiController extends Controller
         return view('bps-provinsi.bandingmahasiswa', [
             'title'=> 'Banding Lokasi | BPS Provinsi',
             'sidebar' => 'lokasi',
-            'circle_sidebar' => 'banding'
+            'circle_sidebar' => 'banding',
+            'pemilihan_lokasis' => PemilihanLokasi::all()
         ]);
     }
 
