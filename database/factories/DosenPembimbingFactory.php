@@ -24,11 +24,12 @@ class DosenPembimbingFactory extends Factory
         return [
             'id_user' => $user->id,
             'nama' => fake()->name,
-            'nip' => fake()->unique()->numerify('######'), // Contoh: 123456
+            'nip_lama' => fake()->unique()->numerify('#########'), // Contoh: 123456
+            'nip_baru' => fake()->unique()->numerify('##################'), // Contoh: 123456
             'email' => fake()->unique()->safeEmail,
             'no_hp' => fake()->phoneNumber,
             'jenis_kelamin' => fake()->randomElement(['laki-laki', 'perempuan']),
-            'foto' => fake()->imageUrl(640, 480, 'people', true), // URL gambar acak
+            'foto' => fake()->imageUrl(640, 640, 'gambar orang', true), // URL gambar acak
         ];
 
     }

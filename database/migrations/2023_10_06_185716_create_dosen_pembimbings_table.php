@@ -18,7 +18,8 @@ return new class extends Migration
             $table->foreignId('id_user');
             $table->foreign('id_user')->references('id')->on('users');
             $table->string('nama',50);
-            $table->string('nip',50);
+            $table->string('nip_lama',50);
+            $table->string('nip_baru',50);
             $table->string('email',100);
             $table->string('no_hp',20);
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);

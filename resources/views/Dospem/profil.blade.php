@@ -23,8 +23,8 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <h2>Kevin Anderson</h2>
+              <img src="{{ Auth::user()->info()->foto }}" alt="Profile" class="rounded-circle">
+              <h2>{{ Auth::user()->info()->nama }}</h2>
             </div>
           </div>
 
@@ -58,27 +58,27 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Nama</div>
-                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->nama }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">NIP Lama</div>
-                    <div class="col-lg-9 col-md-8">01234567</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->nip_lama }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">NIP Baru</div>
-                    <div class="col-lg-9 col-md-8">222333444</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->nip_baru }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Phone</div>
-                    <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->no_hp }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->email }}</div>
                   </div>
 
                 </div>
@@ -90,7 +90,7 @@
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="assets/img/profile-img.jpg" alt="Profile">
+                        <img src="/assets/img/profile-img.jpg" alt="Profile">
                         <div class="pt-2">
                           <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                           <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
