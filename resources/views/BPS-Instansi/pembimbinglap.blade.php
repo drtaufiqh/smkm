@@ -33,14 +33,30 @@
                                   <tr>
                                       <th scope="col">Nomor</th>
                                       <th scope="col">Nama Pembimbing</th>
-                                      <th scope="col">NIP</th>
+                                      <th scope="col">NIP Lama</th>
+                                      <th scope="col">NIP Baru</th>
                                       <th scope="col">Akun SMKM</th>
                                       <th scope="col">Email</th>
                                       <th scope="col">Aksi</th>
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr>
+                                @php $i = 0 @endphp
+                                @foreach ($pembimbing_lapangans as $pembimbing_lapangan)
+                                <tr>
+                                  <th scope="row">{{ $i += 1 }}</th>
+                                    <td>{{ $pembimbing_lapangan->nama }}</td>
+                                    <td>{{ $pembimbing_lapangan->nip_lama }}</td>
+                                    <td>{{ $pembimbing_lapangan->nip_baru }}</td>
+                                    <td>{{ $pembimbing_lapangan->user->username }}</td>
+                                    <td>{{ $pembimbing_lapangan->email }}</td>
+                                    <td>
+                                      <button type="button" class="btn btn-primary" style="color: white;">Kirim Akun</button>
+                                      <button type="button" class="btn btn-danger" style="color: white;">Hapus Akun</button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                                  {{-- <tr>
                                       <th scope="row">1</th>
                                       <td>Andi</td>
                                       <td>123456789</td>
@@ -107,7 +123,7 @@
                                         <button type="button" class="btn btn-danger" style="color: white;">Hapus Akun</button>
                                       </td>
                                       
-                                  </tr>
+                                  </tr> --}}
                               </tbody>
                           </table>
                         </div>

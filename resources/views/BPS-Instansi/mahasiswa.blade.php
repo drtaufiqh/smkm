@@ -36,7 +36,23 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr>
+                                @php $i = 0 @endphp
+                                @foreach ($mahasiswas as $mahasiswa)
+                                <tr>
+                                  <th scope="row">{{ $i += 1 }}</th>
+                                    <td>{{ $mahasiswa->nama }}</td>
+                                    <td>{{ $mahasiswa->no_rek }}</td>
+                                    <td>{{ $mahasiswa->bank }}</td>
+                                    <td>{{ $mahasiswa->PembimbingLapangan->nama }}</td>
+                                    <td><button type="button" class="btn btn-primary" style="color: white;" data-bs-toggle="modal" data-bs-target="#formmodal">Form Presensi</button></td>
+                                      <td>
+                                        <a href="bps-instansi-presensimahasiswa">
+                                          <button type="button" class="btn btn-primary" style="color: white;">Lihat</button>
+                                        </a>
+                                      </td>
+                                </tr>
+                                @endforeach
+                                  {{-- <tr>
                                       <th scope="row">1</th>
                                       <td>Andi</td>
                                       <td>123456789</td>
@@ -115,7 +131,7 @@
                                         </a>
                                       </td>
                                       
-                                  </tr>
+                                  </tr> --}}
                               </tbody>
                           </table>
                         </div>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use App\Models\PembimbingLapangan;
 
 class RoleBpsInstansiController extends Controller
 {
@@ -20,7 +22,8 @@ class RoleBpsInstansiController extends Controller
         return view('bps-instansi.mahasiswa', [
             'title'=> 'Mahasiswa | Instansi',
             'sidebar' => 'mahasiswa',
-            'circle_sidebar' => ''
+            'circle_sidebar' => '',
+            'mahasiswas' => Mahasiswa::all()
         ]);
     }
 
@@ -38,7 +41,8 @@ class RoleBpsInstansiController extends Controller
         return view('bps-instansi.pembimbinglap', [
             'title'=> 'Pembimbing Lapangan | Instansi',
             'sidebar' => 'pembimbing',
-            'circle_sidebar' => ''
+            'circle_sidebar' => '',
+            'pembimbing_lapangans' => PembimbingLapangan::all()
         ]);
     }
 

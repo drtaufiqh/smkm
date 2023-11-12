@@ -38,7 +38,20 @@
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr>
+                                @php $i = 0 @endphp
+                                @foreach ($pemilihan_lokasis as $pemilihan_lokasi)
+                                <tr>
+                                    <th scope="row">{{ $i += 1 }}</th>
+                                    <td>{{ $pemilihan_lokasi->mahasiswa->nama }}</td>
+                                    <td>{{ $pemilihan_lokasi->mahasiswa->nim }}</td>
+                                    <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
+                                    <td>{{ $pemilihan_lokasi->pilihan1->nama }}</td>
+                                    <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
+                                    <td>{{ $pemilihan_lokasi->pilihan2->nama }}</td>
+                                    <td>-</td>
+                                </tr>
+                                @endforeach
+                                  {{-- <tr>
                                       <th scope="row">1</th>
                                       <td>Andi</td>
                                       <td>123456789</td>
@@ -94,7 +107,7 @@
                                       <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
                                       <td>-</td>
                                       <td>-</td>
-                                  </tr>
+                                  </tr> --}}
                               </tbody>
                           </table>\
                           </div>
