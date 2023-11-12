@@ -33,12 +33,26 @@
                           <th scope="col">No</th>
                           <th scope="col">Nama Mahasiswa</th>
                           <th scope="col">NIM</th>
-                          <th scope="col">Kelas</th>
+                          <th scope="col">Jenis Kelamin</th>
                           <th scope="col">Detail Kegiatan</th>
                       </tr>
                   </thead>
                   <tbody>
+                    @php $i = 0 @endphp
+                    @foreach ($mahasiswas as $mahasiswa)
                       <tr>
+                        <th scope="row">{{ $i = $i + 1 }}</th>
+                        <td>{{ $mahasiswa->nama }}</td>
+                        <td>{{ $mahasiswa->nim }}</td>
+                        <td>{{ $mahasiswa->jenis_kelamin }}</td>
+                        <td class="edit-button">
+                          <a href="dospem-detail-biodata">
+                              <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                          </a>
+                        </td>                      
+                      </tr>
+                    @endforeach
+                      {{-- <tr>
                           <th scope="row">1</th>
                           <td>Khesya Belinda</td>
                           <td>222112135</td>
@@ -70,7 +84,7 @@
                               <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                           </a>
                         </td>
-                      </tr>
+                      </tr> --}}
                   </tbody>
               </table>
             </div>

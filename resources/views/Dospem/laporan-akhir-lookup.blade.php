@@ -3,127 +3,97 @@
 @section('container')
     @include('partials.sidebar-dospem')
 
-    <main id="main" class="main">
-      <div class="pagetitle">
-        <h1>Laporan Akhir</h1>
-        <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index">Home</a></li>
-            <li class="breadcrumb-item active">Laporan Akhir</li>
-          </ol>
-        </nav>
-      </div>
-      <!-- End Page Title -->
-      <section class="section">
-        <div class="row">
-          <div class="col-lg-5">
-            <div class="card">
-              <!-- <h6 class="card-title">Upload</h6> -->
-              <div class="filename card-header bg-primary-subtle text-center">
-                222111888_Sukamto_Laporan Akhir.pdf
-              </div>
-              <div style="margin: 10px;" class="text-center">
-                <button type="button" class="bi bi-download btn btn-primary btn-sm">
-                  Download
-                </button>
-                <button type="button" class="bi bi-eye btn btn-primary btn-sm">
-                  Lihat
-                </button>
-              </div>
-              <div class="card-body">
-                <!-- Accordion without outline borders -->
-                <div
-                  class="accordion accordion-flush"
-                  id="accordionFlushExample"
-                >
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseOne"
-                        aria-expanded="false"
-                        aria-controls="flush-collapseOne"
-                      >
-                        Beri Komentar
-                      </button>
-                    </h2>
-                    <div
-                      id="flush-collapseOne"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="flush-headingOne"
-                      data-bs-parent="#accordionFlushExample"
-                    >
-                      <div class="accordion-body">
-                        <textarea name="about" class="form-control" id="about" style="height: 100px">Tuliskan Komentar.</textarea>
-                      </div>
+  <main id="main" class="main">
 
-                      <div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwo">
-                      <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseTwo"
-                        aria-expanded="false"
-                        aria-controls="flush-collapseTwo"
-                      >
-                        Approval
-                      </button>
-                    </h2>
-                    <div
-                      id="flush-collapseTwo"
-                      class="accordion-collapse collapse"
-                      aria-labelledby="flush-headingTwo"
-                      data-bs-parent="#accordionFlushExample"
-                    >
-                      <div class="accordion-body">
-                        <button type="button" class="bi bi-file-earmark-check btn btn-success btn-sm">
-                          Approve
-                        </button>
-                        <button type="button" class="bi bi-file-earmark-excel btn btn-danger btn-sm">
-                          Revisi
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Accordion without outline borders -->
+    <div class="pagetitle">
+      <h1>Rekapitulasi Laporan Akhir Mahasiswa</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="dospem-dashboard">Home</a></li>
+          <li class="breadcrumb-item">Pages</li>
+          <li class="breadcrumb-item active">Blank</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
 
-                <!-- Vertical Form -->
+    <section class="section">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Status Persetujuan</h5>
 
-                <!-- Vertical Form -->
-              </div>
-            </div>
-          </div>
-          <!-- preview -->
-          <div class="col-lg-7">
-            <div class="card h-auto">
-              <div class="card-body m-0 p-0">
-                <div class="d-flex border border-dark" style="height: 600px">
-                  <iframe
-                    src="./assets/doc/Persetujuan Orang Tua.pdf"
-                    style="
-                      width: 100%;
-                      height: 100%;
-                      border: none;
-                      scrollbar-width: thin;
-                      scrollbar-color: #aab7cf transparent;
-                    "
-                  ></iframe>
+              <div class="row mb-3">
+                <div class="col">
+                  <input type="text" class="form-control" id="searchInput" placeholder="Cari...">
                 </div>
               </div>
+
+              <table class="table table-hover body-penilaian" id="penilaianTable">
+                <thead>
+                      <tr>
+                          <th scope="col">No</th>
+                          <th scope="col">Nama Mahasiswa</th>
+                          <th scope="col">NIM</th>
+                          <th scope="col">Jenis Kelamin</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    @php $i = 0 @endphp
+                    @foreach ($mahasiswas as $mahasiswa)
+                      <tr>
+                        <th scope="row">{{ $i = $i + 1 }}</th>
+                        <td>{{ $mahasiswa->nama }}</td>
+                        <td>{{ $mahasiswa->nim }}</td>
+                        <td>{{ $mahasiswa->jenis_kelamin }}</td>
+                        <td class="highlighted-text">Belum disetujui</td>
+                          <td class="edit-button">
+                            <a href="dospem-laporan-akhir-lookup">
+                                <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                            </a>
+                          </td>                        
+                      </tr>
+                    @endforeach
+                      {{-- <tr>
+                          <th scope="row">1</th>
+                          <td>Khesya Belinda</td>
+                          <td>222112135</td>
+                          <td>3SD2</td>
+                          <td class="highlighted-text">Belum disetujui</td>
+                          <td class="edit-button">
+                            <a href="dospem-laporan-akhir-lookup">
+                                <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                            </a>
+                          </td>                      
+                        </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Sabilla</td>
+                        <td>222112123</td>
+                        <td>3SD2</td>
+                        <td class="highlighted-text">Belum disetujui</td>
+                        <td class="edit-button">
+                          <a href="dospem-laporan-akhir-lookup">
+                              <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                          </a>
+                        </td> 
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Fauzan</td>
+                        <td>222112138</td>
+                        <td>3SD2</td>
+                        <td class="highlighted-text">Belum disetujui</td>
+                        <td class="edit-button">
+                          <a href="dospem-laporan-akhir-lookup">
+                              <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                          </a>
+                        </td> 
+                      </tr> --}}
+                  </tbody>
+              </table>
             </div>
           </div>
-          <!-- End Preview -->
-        </div>
-      </section>
-    </main>
-    <!-- End #main -->
+    </section>
+  </main><!-- End #main -->
 @endsection
