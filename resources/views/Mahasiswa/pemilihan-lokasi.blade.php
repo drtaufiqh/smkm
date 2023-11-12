@@ -34,7 +34,7 @@
                     {{-- <option selected>Sumatera Selatan</option>
                     <option value="1">Sulawesi Tenggara</option>
                     <option value="2">Jawa Tengah</option> --}}
-                    @foreach($provinsis as $provinsi)
+                    @foreach ($provinsis as $provinsi)
                       <option value="{{ $provinsi->nama }}">{{ $provinsi->nama }}</option>
                     @endforeach
                   </select>
@@ -51,7 +51,7 @@
                     {{-- <option selected>Pasaman Barat</option>
                     <option value="1">Lok-lok</option>
                     <option value="2">Merauke</option> --}}
-                    @foreach($kab_kotas as $kab_kota)
+                    @foreach ($kab_kotas as $kab_kota)
                       <option value="{{ $kab_kota->nama }}">{{ $kab_kota->nama }}</option>
                     @endforeach
                   </select>
@@ -101,9 +101,9 @@
                     id="floatingSelect"
                     aria-label="Eselon 1"
                   >
-                  @foreach($provinsis as $provinsi)
-                    <option value="{{ $provinsi->nama }}">{{ $provinsi->nama }}</option>
-                  @endforeach
+                    <option selected>Jatim</option>
+                    <option value="1">Jatim</option>
+                    <option value="2">Jateng</option>
                   </select>
                   <label for="floatingSelect">Eselon 1</label>
                 </div>
@@ -115,9 +115,9 @@
                     id="floatingSelect"
                     aria-label="Eselon 1"
                   >
-                  @foreach($instansis as $instansi)
-                    <option value="{{ $instansi->nama }}">{{ $instansi->nama }}</option>
-                  @endforeach
+                    <option selected>Surabaya</option>
+                    <option value="1">Ponorogo</option>
+                    <option value="2">Surabaya</option>
                   </select>
                   <label for="floatingSelect">Eselon 2</label>
                 </div>
@@ -143,9 +143,9 @@
                     id="floatingSelect"
                     aria-label="Eselon 1"
                   >
-                  @foreach($provinsis as $provinsi)
-                    <option value="{{ $provinsi->nama }}">{{ $provinsi->nama }}</option>
-                  @endforeach
+                    <option selected>Jatim</option>
+                    <option value="1">Jatim</option>
+                    <option value="2">Jateng</option>
                   </select>
                   <label for="floatingSelect">Eselon 1</label>
                 </div>
@@ -157,9 +157,9 @@
                     id="floatingSelect"
                     aria-label="Eselon 1"
                   >
-                  @foreach($instansis as $instansi)
-                    <option value="{{ $instansi->nama }}">{{ $instansi->nama }}</option>
-                  @endforeach
+                    <option selected>Surabaya</option>
+                    <option value="1">Ponorogo</option>
+                    <option value="2">Surabaya</option>
                   </select>
                   <label for="floatingSelect">Eselon 2</label>
                 </div>

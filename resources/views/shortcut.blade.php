@@ -5,6 +5,9 @@
 </head>
 <body>
     <h1>Admin Shortcut Menu</h1>
+    {{-- @foreach ($pemilihan_lokasis as $pemilihan_lokasi)
+        <h2>{{ $pemilihan_lokasi->mahasiswa->nama }}</h2>
+    @endforeach --}}
     <ul>
         <li><a href="/admin-bandinglokasi">Admin Banding Lokasi</a></li>
         <li><a href="/admin-dashboard">Admin Dashboard</a></li>

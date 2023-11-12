@@ -33,24 +33,59 @@
                           <th scope="col">No</th>
                           <th scope="col">Nama Mahasiswa</th>
                           <th scope="col">NIM</th>
+                          <th scope="col">Jenis Kelamin</th>
                           <th scope="col">Detail Info</th>
                       </tr>
                   </thead>
                   <tbody>
-                    @php $i = 0 @endphp
+                    {{ $i = 0 }}
                     @foreach ($mahasiswas as $mahasiswa)
+                    {{ $i = $i + 1 }}
                       <tr>
-                        <th scope="row">{{ $i = $i + 1 }}</th>
+                        <th scope="row">{{ $i }}</th>
                         <td>{{ $mahasiswa->nama }}</td>
                         <td>{{ $mahasiswa->nim }}</td>
                         <td>{{ $mahasiswa->jenis_kelamin }}</td>
                         <td class="edit-button">
-                          <a href="dospem-detail-biodata">
+                          <a href="detail-biodata">
                               <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                           </a>
-                        </td>                      
+                        </td> 
                       </tr>
                     @endforeach
+                      {{-- <tr>
+                          <th scope="row">1</th>
+                          <td>Khesya Belinda</td>
+                          <td>222112135</td>
+                          <td>3SD2</td>
+                          <td class="edit-button">
+                            <a href="dospem-detail-biodata">
+                                <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                            </a>
+                          </td>                      
+                        </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Sabilla</td>
+                        <td>222112123</td>
+                        <td>3SD2</td>
+                        <td class="edit-button">
+                          <a href="detail-biodata">
+                              <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                          </a>
+                        </td> 
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Fauzan</td>
+                        <td>222112138</td>
+                        <td>3SD2</td>
+                        <td class="edit-button">
+                          <a href="detail-biodata">
+                              <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                          </a>
+                        </td> 
+                      </tr> --}}
                   </tbody>
               </table>
             </div>

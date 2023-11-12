@@ -15,6 +15,7 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
+
     <section class="section profile">
       <div class="row">
         <div class="col-xl-4">
@@ -55,10 +56,14 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">NIP</div>
+                    <div class="col-lg-3 col-md-4 label">NIM</div>
                     <div class="col-lg-9 col-md-8">112113223</div>
                   </div>
 
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Kelas</div>
+                    <div class="col-lg-9 col-md-8">3SD2</div>
+                  </div>
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
                     <div class="col-lg-9 col-md-8">222112135@stis.ac.id</div>

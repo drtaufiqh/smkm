@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use App\Http\Controllers\SesiController;
+use Closure;
+use Illuminate\Http\Request;
+
+class UserAkses
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     */
+    public function handle(Request $request, Closure $next, $role)
+    {
+        if(auth()->user()->role == $role){
+            return $next($request);
+        }
+
+        // return response()->json(['anda tidak diperbolehkan akses halaman ini']);
+        return redirect('/home');
+    }
+}

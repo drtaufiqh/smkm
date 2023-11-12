@@ -36,21 +36,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              {{ $i = 0 }}
-                                @foreach ($pemilihan_lokasis as $pemilihan_lokasi)
-                                {{ $i = $i + 1 }}
-                                  <tr>
-                                    <th scope="row">{{ $i }}</th>
-                                    <td>{{ $pemilihan_lokasi->mahasiswa->nama }}</td>
-                                    <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
-                                    <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
-                                    <td>{{ $pemilihan_lokasi->instansiBanding->nama }}</td>
-                                    <td>{{ $pemilihan_lokasi->alasan_banding }}</td>
-                                    <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalterus">Teruskan</button>
-                                      <button type="button" class="btn btn-danger" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModaltolak">Penolakan</button></td>
-                                  </tr>
-                                  @endforeach
-                                <!-- <tr>
+                                <tr>
                                     <th scope="row">1</th>
                                     <td>Andi</td>
                                     <td>Jakarta Utara</td>
@@ -112,7 +98,7 @@
                                     <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalterus">Teruskan</button>
                                       <button type="button" class="btn btn-danger" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModaltolak">Penolakan</button></td>
                                     
-                                </tr> -->
+                                </tr>
                             </tbody>
                         </table>
                       </div>

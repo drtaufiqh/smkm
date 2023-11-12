@@ -48,18 +48,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              @foreach ($jadwal_bimbingans as $jadwal_bimbingan)
                                 <tr>
-                                  <td>{{ $jadwal_bimbingan->tanggal }}</td>
-                                  <td>Jane Doe</td>
-                                  <td>Telah Disetujui</td>
-                                  <td class="edit-button">
-                                      <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                                          <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
-                                      </a>
-                                  </td>   
+                                    <td>2023-11-05</td>
+                                    <td>Jane Doe</td>
+                                    <td>Telah Disetujui</td>
+                                    <td class="edit-button">
+                                        <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
+                                            <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                                        </a>
+                                    </td>   
                                 </tr>
-                              @endforeach
+                                <tr>
+                                    <td>2023-11-06</td>
+                                    <td>John Smith</td>
+                                    <td>Belum Disetujui</td>
+                                    <td class="edit-button">
+                                        <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
+                                            <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                                        </a>
+                                    </td>   
+                                </tr>
                                 <!-- Anda dapat menambahkan baris-baris lain sesuai dengan data Anda -->
                             </tbody>
                         </table>                          

@@ -213,33 +213,52 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @php $i = 0 @endphp
-                        @foreach ($jurnaling_harians as $jurnaling_harian)
-                        @php $i = $i + 1 @endphp
                         <tr>
-                          <th scope="row">{{ $i }}</th>
-                          <td>{{ $jurnaling_harian->tanggal }}</td>
-                          <td>{{ $jurnaling_harian->deskripsi_pekerjaan }}</td>
-                          <td>{{ $jurnaling_harian->kuantitas_volume }}</td>
-                          <td>{{ $jurnaling_harian->kuantitas_satuan }}</td>
-                          <td>{{ $jurnaling_harian->durasi_waktu }}</td>
-                          <td>{{ $jurnaling_harian->pemberi_tugas }}</td>
+                          <th scope="row">1</th>
+                          <td>2016-05-25</td>
+                          <td>Membaca buku Soekarno</td>
+                          <td>500</td>
+                          <td>buah</td>
+                          <td>2 jam</td>
+                          <td>Suedi</td>
                           <td>
                             <div class="progress">
                               <div
                                 class="progress-bar"
                                 role="progressbar"
-                                style="width: {{ $jurnaling_harian->status_penyelesaian }}%"
-                                aria-valuenow="{{ $jurnaling_harian->status_penyelesaian }}"
+                                style="width: 90%"
+                                aria-valuenow="90"
                                 aria-valuemin="0"
                                 aria-valuemax="100"
                               >
-                                {{ $jurnaling_harian->status_penyelesaian }}
+                                90%
                               </div>
                             </div>
                           </td>
                         </tr>
-                        @endforeach
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>2016-05-25</td>
+                          <td>Membaca buku Soekarno</td>
+                          <td>500</td>
+                          <td>buah</td>
+                          <td>2 jam</td>
+                          <td>Suedi</td>
+                          <td>
+                            <div class="progress">
+                              <div
+                                class="progress-bar"
+                                role="progressbar"
+                                style="width: 80%"
+                                aria-valuenow="80"
+                                aria-valuemin="0"
+                                aria-valuemax="100"
+                              >
+                                80%
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>

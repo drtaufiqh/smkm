@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
 class RolePemlapController extends Controller
@@ -21,8 +20,7 @@ class RolePemlapController extends Controller
         return view('pemlap.database-mahasiswa', [
             'title'=> 'Daftar Mahasiswa | Pembimbing Lapangan',
             'sidebar' => 'mahasiswa',
-            'circle_sidebar' => '',
-            'mahasiswas' => Mahasiswa::all()
+            'circle_sidebar' => ''
         ]);
     }
 
@@ -40,8 +38,7 @@ class RolePemlapController extends Controller
         return view('pemlap.jurnal-bulanan', [
             'title'=> 'Jurnaling Bulanan | Pembimbing Lapangan',
             'sidebar' => 'jurnaling',
-            'circle_sidebar' => 'bulanan',
-            'mahasiswas' => Mahasiswa::all()
+            'circle_sidebar' => 'bulanan'
         ]);
     }
 
@@ -50,8 +47,7 @@ class RolePemlapController extends Controller
         return view('pemlap.jurnal-harian', [
             'title'=> 'Jurnaling Harian | Pembimbing Lapangan',
             'sidebar' => 'jurnaling',
-            'circle_sidebar' => 'harian',
-            'mahasiswas' => Mahasiswa::all()
+            'circle_sidebar' => 'harian'
         ]);
     }
 
@@ -69,8 +65,7 @@ class RolePemlapController extends Controller
         return view('pemlap.laporan-akhir', [
             'title'=> 'Laporan Akhir | Pembimbing Lapangan',
             'sidebar' => 'laporan akhir',
-            'circle_sidebar' => '',
-            'mahasiswas' => Mahasiswa::all()
+            'circle_sidebar' => ''
         ]);
     }
 
@@ -97,8 +92,7 @@ class RolePemlapController extends Controller
         return view('pemlap.penilaian-kinerja1', [
             'title'=> 'Penilaian Kinerja | Pembimbing Lapangan',
             'sidebar' => 'penilaian',
-            'circle_sidebar' => 'kinerja',
-            'mahasiswas' => Mahasiswa::all()
+            'circle_sidebar' => 'kinerja'
         ]);
     }
 
@@ -107,8 +101,7 @@ class RolePemlapController extends Controller
         return view('pemlap.penilaian-kinerja2', [
             'title'=> 'Penilaian Kinerja | Pembimbing Lapangan',
             'sidebar' => 'penilaian',
-            'circle_sidebar' => 'kinerja',
-            'mahasiswas' => Mahasiswa::all()
+            'circle_sidebar' => 'kinerja'
         ]);
     }
 
@@ -117,8 +110,7 @@ class RolePemlapController extends Controller
         return view('pemlap.penilaian-laporan1', [
             'title'=> 'Penilaian Laporan | Pembimbing Lapangan',
             'sidebar' => 'penilaian',
-            'circle_sidebar' => 'laporan',
-            'mahasiswas' => Mahasiswa::all()
+            'circle_sidebar' => 'laporan'
         ]);
     }
 
@@ -127,8 +119,7 @@ class RolePemlapController extends Controller
         return view('pemlap.penilaian-laporan2', [
             'title'=> 'Penilaian Laporan | Pembimbing Lapangan',
             'sidebar' => 'penilaian',
-            'circle_sidebar' => 'laporan',
-            'mahasiswas' => Mahasiswa::all()
+            'circle_sidebar' => 'laporan'
         ]);
     }
 

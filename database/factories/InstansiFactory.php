@@ -21,7 +21,7 @@ class InstansiFactory extends Factory
         $isProv = fake()->boolean;
 
         $nama = 'BPS ' . ($isProv ? fake()->state : fake()->city);
-        $user->role = ($isProv ? 'prov' : 'kabkota');
+        $user->role = ($isProv ? 'prov' : 'instansi');
         $user->save();
 
         return [

@@ -39,22 +39,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @php $i = 0 @endphp
-                    @foreach ($jurnaling_harians as $jurnaling_harian)
-                    @php $i = $i + 1 @endphp
                     <tr>
-                      <th scope="row">{{ $i }}</th>
-                      <td>{{ $jurnaling_harian->tanggal }}</td>
-                      <td>{{ $jurnaling_harian->deskripsi_pekerjaan }}</td>
-                      <td>{{ $jurnaling_harian->kuantitas_volume }}</td>
-                      <td>{{ $jurnaling_harian->kuantitas_satuan }}</td>
-                      <td>{{ $jurnaling_harian->durasi_waktu }}</td>
-                      <td>{{ $jurnaling_harian->pemberi_tugas }}</td>
-                      <td>{{ $jurnaling_harian->status_penyelesaian }}</td>
-                      <td>98</td>
-                    </tr>
-                    @endforeach
-                    {{-- <tr>
                       <th scope="row">1</th>
                       <td>2016-05-25</td>
                       <td>Membaca buku Soekarno</td>
@@ -119,7 +104,7 @@
                       <td>Suedi</td>
                       <td>100%</td>
                       <td>98</td> 
-                    </tr> --}}
+                    </tr>
                   </tbody>
                 </table>
                 <!-- End Table with stripped rows -->
