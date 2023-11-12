@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\PemilihanLokasi;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleAdminController;
 use App\Http\Controllers\RoleDospemController;

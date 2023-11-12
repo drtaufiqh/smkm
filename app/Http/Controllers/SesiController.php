@@ -59,11 +59,11 @@ class SesiController extends Controller
         } elseif ($role === 'dospem') {
             return redirect('/dospem-dashboard');
         } elseif ($role === 'instansi') {
-            return redirect('/instansi-dashboard');
+            return redirect('/bps-instansi-dashboard');
         } elseif ($role === 'mhs') {
             return redirect('/mahasiswa-index');
         } elseif ($role === 'prov') {
-            return redirect('/prov-dashboard');
+            return redirect('/bps-provinsi-dashboard');
         } elseif ($role === 'pemlap') {
             return redirect('/pemlap-dashboard');
         }
