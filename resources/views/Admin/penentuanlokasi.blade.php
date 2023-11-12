@@ -38,7 +38,22 @@
                                 </tr>
                             </thead>
                             <tbody>
+                              @php $i = 0 @endphp
+                              @foreach ($pemilihan_lokasis as $pemilihan_lokasi)
+                              @php $i = $i + 1 @endphp
                                 <tr>
+                                  <th scope="row">{{ $i }}</th>
+                                  <td>{{ $pemilihan_lokasi->mahasiswa->nama }}</td>
+                                  <td>{{ $pemilihan_lokasi->mahasiswa->jenis_kelamin }}</td>
+                                  <td>{{ $pemilihan_lokasi->pilihan1->nama }}</td>
+                                  <td>{{ $pemilihan_lokasi->pilihan2->nama }}</td>
+                                  <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
+                                    <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
+                                  <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalEdit">Edit</button></td>
+                                  <td>{{ $pemilihan_lokasi->mahasiswa->instansi->nama }}</td>
+                                </tr>
+                                @endforeach
+                                <!-- <tr>
                                     <th scope="row">1</th>
                                     <td>Andi</td>
                                     <td>3SD2</td>
@@ -100,7 +115,7 @@
                                     <td>Belum Ditentukan</td>
                                     <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Ajukan</button></td>
                                     <td>Belum Ditentukan</td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                       </div>
