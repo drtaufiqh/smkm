@@ -9,7 +9,7 @@
       <h1>Profil BPS Kota Jakarta Timur</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="bps-instansi-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/bps-instansi/dashboard">Home</a></li>
           <li class="breadcrumb-item active">Profil BPS Kabupaten/Kota</li>
         </ol>
       </nav>

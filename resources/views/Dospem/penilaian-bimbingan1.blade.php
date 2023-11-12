@@ -9,7 +9,7 @@
       <h1>Penilaian Bimbingan Mahasiswa</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="dospem-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/dospem/dashboard">Home</a></li>
           <li class="breadcrumb-item">Pages</li>
           <li class="breadcrumb-item active">Blank</li>
         </ol>
@@ -48,7 +48,7 @@
                         <td>{{ $mahasiswa->jenis_kelamin }}</td>
                         <td class="highlighted-text">Belum dinilai</td>
                           <td class="edit-button">
-                            <a href="dospem-penilaian-bimbingan2">
+                            <a href="/dospem/penilaian-bimbingan2">
                                 <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                           </td>                     
@@ -61,7 +61,7 @@
                           <td>3SD2</td>
                           <td class="highlighted-text">Belum dinilai</td>
                           <td class="edit-button">
-                            <a href="dospem-penilaian-bimbingan2">
+                            <a href="/dospem/penilaian-bimbingan2">
                                 <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                           </td>                      
@@ -73,7 +73,7 @@
                         <td>3SD2</td>
                         <td class="highlighted-text">Belum dinilai</td>
                         <td class="edit-button">
-                          <a href="dospem-penilaian-bimbingan2">
+                          <a href="/dospem/penilaian-bimbingan2">
                               <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
                           </a>
                         </td> 
@@ -85,7 +85,7 @@
                         <td>3SD2</td>
                         <td class="highlighted-text">Belum dinilai</td>
                         <td class="edit-button">
-                          <a href="dospem-penilaian-bimbingan2">
+                          <a href="/dospem/penilaian-bimbingan2">
                               <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
                           </a>
                         </td> 

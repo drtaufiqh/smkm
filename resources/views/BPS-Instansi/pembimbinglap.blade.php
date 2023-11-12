@@ -6,14 +6,14 @@
   <main id="main" class="main">
 
     <div class="text-end">
-        <a href="bps-instansi-buatpembimbing"><button type="button" class="btn btn-success btn">Buat Akun Pembimbing</button></a>
+        <a href="/bps-instansi/buatpembimbing"><button type="button" class="btn btn-success btn">Buat Akun Pembimbing</button></a>
     </div>
 
     <div class="pagetitle">
       <h1>Daftar Pembimbing Lapangan</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="bps-instansi-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/bps-instansi/dashboard">Home</a></li>
           <li class="breadcrumb-item active">Pembimbing Lapangan</li>
         </ol>
       </nav>

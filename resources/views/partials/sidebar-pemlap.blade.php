@@ -5,14 +5,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link {{ ($sidebar === 'dashboard') ? '' : 'collapsed'}}" href="pemlap-dashboard">
+        <a class="nav-link {{ ($sidebar === 'dashboard') ? '' : 'collapsed'}}" href="/pemlap/dashboard">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link {{ ($sidebar === 'mahasiswa') ? '' : 'collapsed'}}" href="pemlap-database-mahasiswa">
+        <a class="nav-link {{ ($sidebar === 'mahasiswa') ? '' : 'collapsed'}}" href="/pemlap/database-mahasiswa">
           <i class="bi bi-file-earmark-person-fill"></i>
           <span>Database Mahasiswa</span>
         </a>
@@ -24,12 +24,12 @@
         </a>
         <ul id="jurnalingNav" class="nav-content {{ ($sidebar === 'jurnaling') ? '' : 'collapse'}}" data-bs-parent="#sidebar-nav">
             <li>
-                <a href="pemlap-jurnal-harian" class="{{ $circle_sidebar === 'harian' ? 'active' : '' }}">
+                <a href="/pemlap/jurnal-harian" class="{{ $circle_sidebar === 'harian' ? 'active' : '' }}">
                     <i class="bi bi-circle"></i><span>Jurnal Harian</span>
                 </a>
             </li>
             <li>
-                <a href="pemlap-jurnal-bulanan" class="{{ $circle_sidebar === 'bulanan' ? 'active' : '' }}">
+                <a href="/pemlap/jurnal-bulanan" class="{{ $circle_sidebar === 'bulanan' ? 'active' : '' }}">
                     <i class="bi bi-circle"></i><span>Jurnal Bulanan</span>
                 </a>
             </li>
@@ -37,7 +37,7 @@
     </li><!-- Jurnaling -->
 
     <li class="nav-item">
-        <a class="nav-link {{ ($sidebar === 'laporan akhir') ? '' : 'collapsed'}}" href="pemlap-laporan-akhir">
+        <a class="nav-link {{ ($sidebar === 'laporan akhir') ? '' : 'collapsed'}}" href="/pemlap/laporan-akhir">
             <i class="bi bi-book-fill"></i>
             <span>Laporan Akhir Magang</span>
         </a>
@@ -49,12 +49,12 @@
         </a>
         <ul id="penilaianNav" class="nav-content {{ ($sidebar === 'penilaian') ? '' : 'collapse'}}" data-bs-parent="#sidebar-nav">
             <li>
-                <a href="pemlap-penilaian-kinerja1" class="{{ $circle_sidebar === 'kinerja' ? 'active' : '' }}">
+                <a href="/pemlap/penilaian-kinerja1" class="{{ $circle_sidebar === 'kinerja' ? 'active' : '' }}">
                     <i class="bi bi-circle"></i><span>Penilaian Kinerja</span>
                 </a>
             </li>
             <li>
-                <a href="pemlap-penilaian-laporan1" class="{{ $circle_sidebar === 'laporan' ? 'active' : '' }}">
+                <a href="/pemlap/penilaian-laporan1" class="{{ $circle_sidebar === 'laporan' ? 'active' : '' }}">
                     <i class="bi bi-circle"></i><span>Penilaian Laporan</span>
                 </a>
             </li>

@@ -9,7 +9,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="bps-provinsi-dashboard">
+        <a class="nav-link collapsed" href="/bps-provinsi/dashboard">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -22,12 +22,12 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="bps-provinsi-approvalmahasiswa">
+            <a href="/bps-provinsi/approvalmahasiswa">
               <i class="bi bi-circle"></i><span>Approval Lokasi Mahasiswa</span>
             </a>
           </li>
           <li>
-            <a href="bps-provinsi-bandingmahasiswa" class="active">
+            <a href="/bps-provinsi/bandingmahasiswa" class="active">
               <i class="bi bi-circle"></i><span>Banding Lokasi Mahasiswa</span>
             </a>
           </li>
@@ -42,7 +42,7 @@
       <h1>Banding Lokasi Mahasiswa</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="bps-provinsi-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/bps-provinsi/dashboard">Home</a></li>
           <li class="breadcrumb-item active">Lokasi Mahasiswa-Banding</li>
         </ol>
       </nav>

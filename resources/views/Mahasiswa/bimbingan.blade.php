@@ -9,10 +9,10 @@
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="mahasiswa-index">Home</a>
+              <a href="/mahasiswa/index">Home</a>
             </li>
             <li class="breadcrumb-item">
-              <a href="mahasiswa-jadwal_bimbingan">Jadwal Bimbingan</a>
+              <a href="/mahasiswa/jadwal_bimbingan">Jadwal Bimbingan</a>
             </li>
             <li class="breadcrumb-item active">Detail Bimbingan</li>
           </ol>

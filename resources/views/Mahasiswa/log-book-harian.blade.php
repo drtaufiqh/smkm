@@ -9,7 +9,7 @@
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="mahasiswa-index">Home</a>
+              <a href="/mahasiswa/index">Home</a>
             </li>
             <li class="breadcrumb-item active">Log Book Harian</li>
           </ol>

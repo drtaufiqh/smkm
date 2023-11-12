@@ -9,9 +9,9 @@
       <h1>Edit Daftar Bimbingan</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="bps-instansi-dashboard">Home</a></li>
-          <li class="breadcrumb-item"><a href="bps-instansi-daftarbimbingan">Daftar Bimbingan</a></li>
-          <li class="breadcrumb-item"><a href="bps-instansi-tabelbimbingan">Tabel Bimbingan</a></li>
+          <li class="breadcrumb-item"><a href="/bps-instansi/dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/bps-instansi/daftarbimbingan">Daftar Bimbingan</a></li>
+          <li class="breadcrumb-item"><a href="/bps-instansi/tabelbimbingan">Tabel Bimbingan</a></li>
           <li class="breadcrumb-item active">Edit Daftar Bimbingan</li>
         </ol>
       </nav>

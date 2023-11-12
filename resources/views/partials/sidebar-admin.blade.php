@@ -5,14 +5,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link {{ ($sidebar === 'dashboard') ? '' : 'collapsed'}}" href="admin-dashboard">
+        <a class="nav-link {{ ($sidebar === 'dashboard') ? '' : 'collapsed'}}" href="/admin/dashboard">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link {{ ($sidebar === 'database') ? '' : 'collapsed'}}" href="admin-database">
+        <a class="nav-link {{ ($sidebar === 'database') ? '' : 'collapsed'}}" href="/admin/database">
           <i class="bi bi-database"></i>
           <span>Database</span>
         </a>
@@ -26,12 +26,12 @@
         </a>
         <ul id="tables-nav" class="nav-content {{ ($sidebar === 'lokasi') ? '' : 'collapse'}}" data-bs-parent="#sidebar-nav">
           <li>
-            <a class="{{ $circle_sidebar === 'penentuan' ? 'active' : '' }}" href="admin-penentuanlokasi">
+            <a class="{{ $circle_sidebar === 'penentuan' ? 'active' : '' }}" href="/admin/penentuanlokasi">
               <i class="bi bi-circle"></i><span>Penentuan</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'banding' ? 'active' : '' }}" href="admin-bandinglokasi" class="active">
+            <a class="{{ $circle_sidebar === 'banding' ? 'active' : '' }}" href="/admin/bandinglokasi" class="active">
               <i class="bi bi-circle"></i><span>Banding</span>
             </a>
           </li>

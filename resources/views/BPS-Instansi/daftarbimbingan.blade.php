@@ -9,7 +9,7 @@
       <h1>Daftar Bimbingan</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="bps-instansi-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/bps-instansi/dashboard">Home</a></li>
           <li class="breadcrumb-item active">Daftar Bimbingan</li>
         </ol>
       </nav>
@@ -78,7 +78,7 @@
     
           
             <div class="text-center">
-              <a href="bps-instansi-tabelbimbingan" class="btn btn-warning" style="color: white;">Tabel Daftar Bimbingan</a>
+              <a href="/bps-instansi/tabelbimbingan" class="btn btn-warning" style="color: white;">Tabel Daftar Bimbingan</a>
               <button type="submit" class="btn btn-primary">Sumbit</button>
             </div>
           </form><!-- End floating Labels Form -->

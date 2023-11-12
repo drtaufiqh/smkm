@@ -9,7 +9,7 @@
       <h1>Daftar Mahasiswa Magang</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="bps-instansi-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/bps-instansi/dashboard">Home</a></li>
           <li class="breadcrumb-item active">Mahasiswa Magang BPS Kabupaten/Kota</li>
         </ol>
       </nav>
@@ -46,7 +46,7 @@
                                     <td>{{ $mahasiswa->PembimbingLapangan->nama }}</td>
                                     <td><button type="button" class="btn btn-primary" style="color: white;" data-bs-toggle="modal" data-bs-target="#formmodal">Form Presensi</button></td>
                                       <td>
-                                        <a href="bps-instansi-presensimahasiswa">
+                                        <a href="/bps-instansi/presensimahasiswa">
                                           <button type="button" class="btn btn-primary" style="color: white;">Lihat</button>
                                         </a>
                                       </td>
@@ -60,7 +60,7 @@
                                       <td>Anang</td>
                                       <td><button type="button" class="btn btn-primary" style="color: white;" data-bs-toggle="modal" data-bs-target="#formmodal">Form Presensi</button></td>
                                       <td>
-                                        <a href="bps-instansi-presensimahasiswa">
+                                        <a href="/bps-instansi/presensimahasiswa">
                                           <button type="button" class="btn btn-primary" style="color: white;">Lihat</button>
                                         </a>
                                       </td>
@@ -73,7 +73,7 @@
                                       <td>Boni</td>
                                       <td><button type="button" class="btn btn-primary" style="color: white;" data-bs-toggle="modal" data-bs-target="#formmodal">Form Presensi</button></td>
                                       <td>
-                                        <a href="bps-instansi-presensimahasiswa">
+                                        <a href="/bps-instansi/presensimahasiswa">
                                           <button type="button" class="btn btn-primary" style="color: white;">Lihat</button>
                                         </a>
                                       </td>
@@ -86,7 +86,7 @@
                                       <td>Charles</td>
                                       <td><button type="button" class="btn btn-primary" style="color: white;" data-bs-toggle="modal" data-bs-target="#formmodal">Form Presensi</button></td>
                                       <td>
-                                        <a href="bps-instansi-presensimahasiswa">
+                                        <a href="/bps-instansi/presensimahasiswa">
                                           <button type="button" class="btn btn-primary" style="color: white;">Lihat</button>
                                         </a>
                                       </td>
@@ -99,7 +99,7 @@
                                       <td>Danang</td>
                                       <td><button type="button" class="btn btn-primary" style="color: white;" data-bs-toggle="modal" data-bs-target="#formmodal">Form Presensi</button></td>
                                       <td>
-                                        <a href="bps-instansi-presensimahasiswa">
+                                        <a href="/bps-instansi/presensimahasiswa">
                                           <button type="button" class="btn btn-primary" style="color: white;">Lihat</button>
                                         </a>
                                       </td>
@@ -112,7 +112,7 @@
                                       <td>Erna</td>
                                       <td><button type="button" class="btn btn-primary" style="color: white;" data-bs-toggle="modal" data-bs-target="#formmodal">Form Presensi</button></td>
                                       <td>
-                                        <a href="bps-instansi-presensimahasiswa">
+                                        <a href="/bps-instansi/presensimahasiswa">
                                           <button type="button" class="btn btn-primary" style="color: white;">Lihat</button>
                                         </a>
                                       </td>
@@ -126,7 +126,7 @@
                                       <td>Fely</td>
                                       <td><button type="button" class="btn btn-primary" style="color: white;" data-bs-toggle="modal" data-bs-target="#formmodal">Form Presensi</button></td>
                                       <td>
-                                        <a href="bps-instansi-presensimahasiswa">
+                                        <a href="/bps-instansi/presensimahasiswa">
                                           <button type="button" class="btn btn-primary" style="color: white;">Lihat</button>
                                         </a>
                                       </td>

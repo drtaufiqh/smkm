@@ -9,8 +9,8 @@
       <h1>Presensi Mahasiswa BPS Kabupaten/Kota</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="bps-instansi-dashboard">Home</a></li>
-          <li class="breadcrumb-item"><a href="bps-instansi-mahasiswa">Mahasiswa</a></li>
+          <li class="breadcrumb-item"><a href="/bps-instansi/dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/bps-instansi/mahasiswa">Mahasiswa</a></li>
           <li class="breadcrumb-item active">Presensi Mahasiswa</li>
         </ol>
       </nav>

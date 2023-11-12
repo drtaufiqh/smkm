@@ -9,7 +9,7 @@
       <h1>Banding Lokasi Admin</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="admin-dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
           <li class="breadcrumb-item active">Banding Lokasi</li>
         </ol>
       </nav>

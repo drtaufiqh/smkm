@@ -8,8 +8,8 @@
       <h1>Daftar Bimbingan</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="bps-instansi-dashboard">Home</a></li>
-          <li class="breadcrumb-item active"><a href="bps-instansi-daftarbimbingan">Daftar Bimbingan</a></li>
+          <li class="breadcrumb-item"><a href="/bps-instansi/dashboard">Home</a></li>
+          <li class="breadcrumb-item active"><a href="/bps-instansi/daftarbimbingan">Daftar Bimbingan</a></li>
           <li class="breadcrumb-item active">Tabel Bimbingan</li>
         </ol>
       </nav>
@@ -43,7 +43,7 @@
                                     <td>Adrian</td>
                                     <td>1111111111</td>
                                     <td rowspan="5" style="vertical-align: middle; text-align: center;">
-                                        <a href="bps-instansi-editdaftarbimbingan">
+                                        <a href="/bps-instansi/editdaftarbimbingan">
                                             <button type="button" class="btn btn-primary" style="color: white;">Edit</button>
                                         </a>
                                     </td>
@@ -85,7 +85,7 @@
                                             <td>John</td>
                                             <td>1111111111</td>
                                             <td rowspan="5" style="vertical-align: middle; text-align: center;">
-                                                <a href="bps-instansi-editdaftarbimbingan">
+                                                <a href="/bps-instansi/editdaftarbimbingan">
                                                     <button type="button" class="btn btn-primary" style="color: white;">Edit</button>
                                                 </a>
                                             </td>
