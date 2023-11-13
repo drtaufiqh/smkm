@@ -86,50 +86,50 @@
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                   <!-- Profile Edit Form -->
-                  <form>
+                  <form method="POST" action="" enctype="multipart/form-data">
+                    @csrf
                     <div class="row mb-3">
-                      <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-                      <div class="col-md-8 col-lg-9">
-                        <img src="/assets/img/profile-img.jpg" alt="Profile">
-                        <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                        <label for="foto" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                        <div class="col-md-8 col-lg-9">
+                            <img id="fotoPreview" src="{{ asset(Auth::user()->info()->foto) }}" alt="Profile">
+                            <div class="pt-2">
+                                <input type="file" name="foto" id="foto" class="form-control" onchange="previewImage()">
+                            </div>
                         </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="nama" class="col-md-4 col-lg-3 col-form-label">Nama</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="nama" type="text" class="form-control" id="nama" value="{{ Auth::user()->info()->nama }}">
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama</label>
+                      <label for="nip_lama" class="col-md-4 col-lg-3 col-form-label">NIP Lama</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                        <input name="nip_lama" type="text" class="form-control" id="nip_lama" value="{{ Auth::user()->info()->nip_lama }}">
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="company" class="col-md-4 col-lg-3 col-form-label">NIP Lama</label>
+                      <label for="nip_baru" class="col-md-4 col-lg-3 col-form-label">NIP Baru</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="company" type="text" class="form-control" id="company" value="000111222">
+                        <input name="nip_baru" type="text" class="form-control" id="nip_baru" value="{{ Auth::user()->info()->nip_baru }}">
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="Job" class="col-md-4 col-lg-3 col-form-label">NIP Baru</label>
+                      <label for="no_hp" class="col-md-4 col-lg-3 col-form-label">Nomor HP</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="job" type="text" class="form-control" id="Job" value="55566677">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
+                        <input name="no_hp" type="text" class="form-control" id="no_hp" value="{{ Auth::user()->info()->no_hp }}">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+                        <input name="email" type="email" class="form-control" id="Email" value="{{ Auth::user()->info()->email }}">
                       </div>
                     </div>
 
@@ -182,4 +182,21 @@
     </section>
 
   </main><!-- End #main -->
+
+  <script>
+    function previewImage() {
+        var input = document.getElementById('foto');
+        var preview = document.getElementById('fotoPreview');
+        
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 @endsection

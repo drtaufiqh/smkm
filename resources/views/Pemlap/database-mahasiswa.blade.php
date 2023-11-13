@@ -48,7 +48,7 @@
                           <td>{{ $mahasiswa->jenis_kelamin }}</td>
                           <td class="edit-button">
                             <a href="/pemlap/detail-biodata">
-                                <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                             </a>
                           </td> 
                         </tr>
@@ -61,7 +61,7 @@
                           <td>3SD2</td>
                           <td class="edit-button">
                             <a href="/pemlap/detail-biodata">
-                                <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                             </a>
                           </td>                      
                         </tr>
@@ -72,7 +72,7 @@
                         <td>3SD2</td>
                         <td class="edit-button">
                           <a href="datail-bio">
-                              <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                              <img src="/assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                           </a>
                         </td> 
                       </tr>
@@ -83,7 +83,7 @@
                         <td>3SD2</td>
                         <td class="edit-button">
                           <a href="datail-bio">
-                              <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                              <img src="/assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                           </a>
                         </td> 
                       </tr> -->

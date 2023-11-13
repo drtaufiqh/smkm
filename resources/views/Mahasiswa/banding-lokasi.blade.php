@@ -92,7 +92,7 @@
       <!-- Gambar -->
       <div class="gambar-pengumuman col-6 mx-auto">
         <img
-          src="assets/img/not-found.svg"
+          src="/assets/img/not-found.svg"
           class="img-fluid py-2"
           alt="Page Not Found"
         />

@@ -50,7 +50,7 @@
                             <td class="highlighted-text">Belum disetujui</td>
                             <td class="edit-button">
                             <a href="pemlap-laporan-akhir-lookup">
-                                <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                             </a>
                             </td> 
                           </tr>
@@ -63,7 +63,7 @@
                           <td class="highlighted-text">Belum disetujui</td>
                           <td class="edit-button">
                             <a href="pemlap-laporan-akhir-lookup">
-                                <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                             </a>
                           </td>                      
                         </tr>
@@ -75,7 +75,7 @@
                         <td class="highlighted-text">Belum disetujui</td>
                         <td class="edit-button">
                           <a href="pemlap-laporan-akhir-lookup">
-                              <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                              <img src="/assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                           </a>
                         </td> 
                       </tr>
@@ -87,7 +87,7 @@
                         <td class="highlighted-text">Belum disetujui</td>
                         <td class="edit-button">
                           <a href="pemlap-laporan-akhir-lookup">
-                              <img src="assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
+                              <img src="/assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                           </a>
                         </td> 
                       </tr> -->

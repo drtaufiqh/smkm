@@ -49,7 +49,7 @@
                         <td class="highlighted-text">Belum dinilai</td>
                           <td class="edit-button">
                             <a href="/dospem/penilaian-bimbingan2">
-                                <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                           </td>                     
                       </tr>
@@ -62,7 +62,7 @@
                           <td class="highlighted-text">Belum dinilai</td>
                           <td class="edit-button">
                             <a href="/dospem/penilaian-laporan2">
-                                <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                           </td>                      
                         </tr>
@@ -74,7 +74,7 @@
                         <td class="highlighted-text">Belum dinilai</td>
                         <td class="edit-button">
                           <a href="/dospem/penilaian-laporan2">
-                              <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                              <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                           </a>
                         </td> 
                       </tr>
@@ -86,7 +86,7 @@
                         <td class="highlighted-text">Belum dinilai</td>
                         <td class="edit-button">
                           <a href="/dospem/penilaian-laporan2">
-                              <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                              <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                           </a>
                         </td> 
                       </tr> --}}

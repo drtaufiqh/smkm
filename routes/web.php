@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DosenPembimbingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleAdminController;
 use App\Http\Controllers\RoleDospemController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\RoleMahasiswaController;
 use App\Http\Controllers\RoleBpsInstansiController;
 use App\Http\Controllers\RoleBpsProvinsiController;
 use App\Http\Controllers\SesiController;
+use App\Http\Controllers\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,6 +75,9 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/dospem/penilaian-laporan1', [RoleDospemController::class, 'penilaianLaporan1']);
         Route::get('/dospem/penilaian-laporan2', [RoleDospemController::class, 'penilaianLaporan2']);
         Route::get('/dospem/profil', [RoleDospemController::class, 'profil']);
+
+        // #update profil
+        // Route::post('/dospem/update-profil/{user}', [DosenPembimbingController::class, 'updateProfile'])->name('update.profile');
     });
 
     # mahasiswa
