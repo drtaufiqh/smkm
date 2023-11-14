@@ -8,6 +8,7 @@ use App\Models\LaporanAkhir;
 use Illuminate\Http\Request;
 use App\Models\JurnalingHarian;
 use App\Models\JurnalingBulanan;
+use App\Models\Mahasiswa;
 
 class RoleMahasiswaController extends Controller
 {
@@ -37,7 +38,8 @@ class RoleMahasiswaController extends Controller
             'title' => 'Dashboard | Mahasiswa',
             'sidebar' => 'dashboard',
             'circle_sidebar' => '',
-            'jurnaling_harians' => JurnalingHarian::all()
+            'jurnaling_harians' => JurnalingHarian::all(),
+            'mahasiswas' => Mahasiswa::all()
         ]);
     }
 
