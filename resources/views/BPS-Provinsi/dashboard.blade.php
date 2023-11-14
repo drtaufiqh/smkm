@@ -52,19 +52,19 @@
                   <div class="align-items-center text-center">
                     <div class="row">
                       <div class="col ms-4">
-                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success">Total Pengajuan<br><b>100 Mahasiswa</b></a>
+                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success">Total Pengajuan<br><b> : {{$mhs1Count}} Mahasiswa</b></a>
                       </div>
                       <div class="col me-4">
-                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success">Total Banding<br><b>40 Mahasiswa</b></a>
-                      </div>
+                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success">Total Banding<br><b>: {{$mhs2Count}} Mahasiswa</b></a>
                     </div>
+                  </div>
                     
                     <div class="row">
                       <div class="col ms-4">
-                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success">Total Approval<br><b>100 Mahasiswa</b></a>
+                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success">Total Approval<br><b>: {{$mhs3Count}} Mahasiswa</b></a>
                       </div>
                       <div class="col me-4">
-                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success">Belum Approval<br><b>30 Mahasiswa</b></a>
+                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success">Belum Approval<br><b>: {{$mhs4Count}} Mahasiswa</b></a>
                       </div>
                     </div>
                   </div>
@@ -74,6 +74,72 @@
             </div>
 
             <div class="col-lg-12">
+              <div class="card">
+                  <div class="card-body">
+                      <h5 class="card-title text-center">Sebaran Pengajuan Lokasi Mahasiswa</h5>
+          
+                      <!-- Bar Chart -->
+                      <div id="barChart"></div>
+          
+                      <script>
+                          document.addEventListener("DOMContentLoaded", () => {
+                              // Initialize arrays for categories and data
+                              let categories = [];
+                              let data = [];
+
+                              // Iterate through the pemilihan_lokasi collection
+                              @foreach ($pemilihan_lokasis as $lokasi)
+                                  //let lksCount = {{ \App\Models\Instansi::where('id', $lokasi->id_instansi)->count() }};
+                                  @php
+                                        $lks = \App\Models\Instansi::where('id', $lokasi->id_instansi)->get();
+                                        $lks1 = \App\Models\Instansi::where('id', $lokasi->id_instansi)->pluck('nama')->first();
+                                        //$lks = \App\Models\Instansi::where('id', $lokasi->id_instansi)->pluck('id')->first();
+                                        $lksCount = $lks->count();
+                                        // if ($lksCount === 0) {
+                                        //     $lksCount = 10;
+                                        // }
+                                  @endphp
+
+                                  categories.push("{{ $lks1 }}");
+                                  data.push({{ $lksCount }});
+                              @endforeach
+          
+                              // Use the generated categories and data in the chart
+                              new ApexCharts(document.querySelector("#barChart"), {
+                                  series: [{
+                                      data: data,
+                                  }],
+                                  chart: {
+                                      type: 'bar',
+                                      height: 350
+                                  },
+                                  plotOptions: {
+                                      bar: {
+                                          borderRadius: 7,
+                                          horizontal: true,
+                                      }
+                                  },
+                                  dataLabels: {
+                                      enabled: false
+                                  },
+                                  xaxis: {
+                                      categories: categories,
+                                  },
+                                  yaxis: {
+                                      min: 0,    // Set the minimum value for the y-axis
+                                      max: 10,   // Set the maximum value for the y-axis
+                                      tickAmount: 5,  // Set the number of ticks on the y-axis
+                                  }
+                              }).render();
+                          });
+                      </script>
+                      <!-- End Bar Chart -->
+          
+                  </div>
+              </div>
+          </div>          
+
+            {{-- <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title text-center">Sebaran Pengajuan Lokasi Mahasiswa</h5>
@@ -112,7 +178,7 @@
                     </div>
                   </div>
 
-            </div>
+            </div> --}}
             </div><!-- End Revenue Card -->
     </section>
 

@@ -29,10 +29,29 @@ class RoleBpsProvinsiController extends Controller
 
     public function dashboard()
     {
+        $mhs1 = PemilihanLokasi::all();
+        $mhs2 = PemilihanLokasi::whereNotNull('id_instansi_banding')->get();
+        $mhs3 = PemilihanLokasi::whereNotNull('id_instansi')->get();
+        $mhs4 = PemilihanLokasi::whereNull('id_instansi')->get();
+
+        $mhs1Count = $mhs1->count();
+        $mhs2Count = $mhs2->count();
+        $mhs3Count = $mhs3->count();
+        $mhs4Count = $mhs4->count();
+
         return view('bps-provinsi.dashboard', [
             'title'=> 'Dashboard | BPS Provinsi',
             'sidebar' => 'dashboard',
-            'circle_sidebar' => ''
+            'circle_sidebar' => '',
+            'mhs1' => $mhs1,
+            'mhs2' => $mhs2,
+            'mhs3' => $mhs3,
+            'mhs4' => $mhs4,
+            'mhs1Count' => $mhs1Count,
+            'mhs2Count' => $mhs2Count,
+            'mhs3Count' => $mhs3Count,
+            'mhs4Count' => $mhs4Count,
+            'pemilihan_lokasis' => PemilihanLokasi::all(),
         ]);
     }
 
