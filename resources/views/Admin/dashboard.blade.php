@@ -77,8 +77,7 @@
                                         ],
                                         datasets: [{
                                           label: 'My First Dataset',
-                                          data: [300, 50],
-                                          backgroundColor: [
+                                          data: [{{ $mhs2Count }}, {{ $mhsCount }}],                                          backgroundColor: [
                                             'rgb(255, 99, 132)',
                                             'rgb(54, 162, 235)'
                                           ],
@@ -113,7 +112,7 @@
                                         ],
                                         datasets: [{
                                           label: 'My First Dataset',
-                                          data: [50, 100],
+                                          data: [{{ $lapCount }}, {{ $lap2Count }}],
                                           backgroundColor: [
                                             'rgb(54, 162, 235)',
                                             'rgb(255, 205, 86)'
