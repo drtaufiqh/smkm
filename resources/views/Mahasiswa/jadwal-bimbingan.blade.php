@@ -11,7 +11,9 @@
             <li class="breadcrumb-item">
               <a href="/mahasiswa/index">Home</a>
             </li>
-            <li class="breadcrumb-item active">Jadwal Bimbingan</li>
+            <li class="breadcrumb-item active">
+              <a href="/mahasiswa/jadwal-bimbingan">Jadwal Bimbingan</a>
+            </li>
           </ol>
         </nav>
       </div>
@@ -30,10 +32,14 @@
 
               <div class="card-body">
                 <h5 class="card-title">Bimbingan 1</h5>
-                <p class="card-text">16 November 2023</p>
+                {{-- <p class="card-text">16 November 2023</p>
                 <p class="card-text">16.00 WIB</p>
                 <p class="card-text">Sujiwo Tejo</p>
-                <a href="#">Ruang Virtual 30</a>
+                <a href="#">Ruang Virtual 30</a> --}}
+                <p class="card-text">{{ $jadwal_bimbingans->first()->tanggal }}</p>
+                <p class="card-text">{{ $jadwal_bimbingans->first()->jam }}</p>
+                <p class="card-text">{{ $jadwal_bimbingans->first()->DosenPembimbing->nama }}</p>
+                <a href="{{ $jadwal_bimbingans->first()->link }}">Ruang Virtual</a>
                 <div class="text-start mt-3">
                   <button type="button" class="btn btn-primary">Hadir</button>
                 </div>

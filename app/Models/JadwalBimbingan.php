@@ -10,6 +10,6 @@ class JadwalBimbingan extends Model
     use HasFactory;
 
     public function dosenPembimbing(){
-        return $this->belongsTo(DosenPembimbing::class);
+        return $this->belongsTo(DosenPembimbing::class, 'id_dosen_pembimbing');
     }
 }
