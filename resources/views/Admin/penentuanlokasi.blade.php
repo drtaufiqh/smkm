@@ -137,9 +137,14 @@
                                         <label for="provfinal">Provinsi Final</label>
                                           <select class="form-select" aria-label="Default select example" id="provfinal" name="pengalihan">
                                             <option selected>Pilih Provinsi</option>
-                                            <option value="kabupaten1">Provinsi 1</option>
+                                            {{-- <option value="kabupaten1">Provinsi 1</option>
                                             <option value="kabupaten2">Provinsi 2</option>
-                                            <option value="kabupaten3">Provinsi 3</option>
+                                            <option value="kabupaten3">Provinsi 3</option> --}}
+                                            @foreach ($pemilihan_lokasis as $pemilihan_lokasi)
+                                            <option value="{{ $pemilihan_lokasi->instansi }}">{{ $pemilihan_lokasi->instansi }}</option>
+                                            @endforeach
+                                            <!-- Tambahkan opsi lain sesuai kebutuhan -->
+                                        </select>
                                           </select>
                                       </div>
                                       <div class="mb-3">

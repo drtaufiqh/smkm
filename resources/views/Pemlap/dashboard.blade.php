@@ -103,14 +103,14 @@
                             show: false
                           },
                           data: [{
-                              value: 1048,
+                              value: {{ $lapCount }},
                               name: 'Telah disetujui',
                               itemStyle: {
                                 color: 'blue'
                               }
                             },
                             {
-                              value: 484,
+                              value: {{ $lap2Count }},
                               name: 'Belum disetujui',
                               itemStyle: {
                                 color: 'red'
@@ -164,14 +164,14 @@
                               show: false
                             },
                             data: [{
-                                value: 100,
+                                value: {{ $kinerja2Count }},
                                 name: 'Telah dinilai',
                                 itemStyle: {
                                   color: 'blue'
                                 }
                               },
                               {
-                                value: 60,
+                                value: {{ $nilaiCount }},
                                 name: 'Belum dinilai',
                                 itemStyle: {
                                   color: 'red'
@@ -225,14 +225,14 @@
                               show: false
                             },
                             data: [{
-                                value: 20,
+                                value: {{ $nilaiCount }},
                                 name: 'Telah dinilai',
                                 itemStyle: {
                                   color: 'blue'
                                 }
                               },
                               {
-                                value: 50,
+                                value: {{ $nilai2Count }},
                                 name: 'Belum dinilai',
                                 itemStyle: {
                                   color: 'red'

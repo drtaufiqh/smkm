@@ -23,7 +23,7 @@
           <div class="card">
             <div class="card-body prosfile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+              <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
               <h2>Khesya Belinda</h2>
               <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="ri ri-chat-3-fill"></i></a>

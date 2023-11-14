@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\KabKota;
+use App\Models\Instansi;
 use App\Models\Provinsi;
+use App\Models\Mahasiswa;
+use App\Models\KartuKendali;
 use App\Models\LaporanAkhir;
 use Illuminate\Http\Request;
+use App\Models\JadwalBimbingan;
 use App\Models\JurnalingHarian;
 use App\Models\JurnalingBulanan;
 
@@ -13,49 +17,75 @@ class RoleMahasiswaController extends Controller
 {
     public function bandingLokasi()
     {
+        $mahasiswas = Mahasiswa::all();
+        $instansis = Instansi::all();
         return view('mahasiswa.banding-lokasi', [
             'title' => 'Lokasi Magang | Mahasiswa',
             'sidebar' => 'lokasi',
             'circle_sidebar' => '',
             'provinsis' => Provinsi::all(),
-            'kab_kotas' => KabKota::all()
+            'kab_kotas' => KabKota::all(),
+            'mahasiswas' => $mahasiswas,
+            'instansis' => $instansis
         ]);
     }
 
     public function bimbingan()
     {
+        $jadwal_bimbingans = JadwalBimbingan::all();
+        $kartu_kendalis = KartuKendali::all();
+
         return view('mahasiswa.bimbingan', [
             'title' => 'Bimbingan | Mahasiswa',
             'sidebar' => 'bimbingan',
-            'circle_sidebar' => 'jadwal'
+            'circle_sidebar' => 'jadwal',
+            'jadwal_bimbingans' => $jadwal_bimbingans,
+            'kartu_kendalis' => $kartu_kendalis
         ]);
     }
 
     public function index()
     {
+        $mahasiswas = Mahasiswa::all();
+        $jurnal = JurnalingHarian::whereNotNull('tanggal')->get();
+
+        $jurnalCount = $jurnal->count();
+
         return view('mahasiswa.index', [
             'title' => 'Dashboard | Mahasiswa',
             'sidebar' => 'dashboard',
             'circle_sidebar' => '',
-            'jurnaling_harians' => JurnalingHarian::all()
+            'jurnaling_harians' => JurnalingHarian::all(),
+            'mahasiswas' => $mahasiswas,
+            'jurnal' => $jurnal,
+            'jurnalCount' => $jurnalCount,
         ]);
     }
 
     public function jadwalBimbingan()
     {
+        $jadwal_bimbingans = JadwalBimbingan::all();
+
         return view('mahasiswa.jadwal-bimbingan', [
             'title' => 'Jadwal Bimbingan',
             'sidebar' => 'bimbingan',
-            'circle_sidebar' => 'jadwal'
+            'circle_sidebar' => 'jadwal',
+            'jadwal_bimbingans' => $jadwal_bimbingans,
+
         ]);
     }
 
     public function laporanAkhir()
     {
+        $mahasiswas = Mahasiswa::all();
+        $laporan_akhirs = LaporanAkhir::all();
+
         return view('mahasiswa.laporan-akhir', [
             'title' => 'Laporan Akhir | Mahasiswa',
             'sidebar' => 'laporan akhir',
-            'circle_sidebar' => ''
+            'circle_sidebar' => '',
+            'mahasiswas' => $mahasiswas,
+            'laporan_akhirs' => $laporan_akhirs
         ]);
     }
 
@@ -86,7 +116,8 @@ class RoleMahasiswaController extends Controller
             'sidebar' => 'lokasi',
             'circle_sidebar' => '',
             'provinsis' => Provinsi::all(),
-            'kab_kotas' => KabKota::all()
+            'kab_kotas' => KabKota::all(),
+            'instansis' => Instansi::all()
         ]);
     }
 }

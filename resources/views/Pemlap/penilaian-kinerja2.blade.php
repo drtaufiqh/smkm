@@ -56,7 +56,7 @@
                           <td class="skor-text">89</td>
                           <td class="edit-button">
                             <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                                <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                           </td>                      
                         </tr>
@@ -69,7 +69,7 @@
                         <td class="skor-text">90</td>
                         <td class="edit-button">
                             <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                                <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                         </td> 
                       </tr>
@@ -82,7 +82,7 @@
                         <td class="skor-text">98</td>
                         <td class="edit-button">
                             <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                                <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                         </td> 
                       </tr>
@@ -95,7 +95,7 @@
                         <td class="skor-text">92</td>
                         <td class="edit-button">
                             <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                                <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                         </td> 
                       </tr>
@@ -108,7 +108,7 @@
                         <td class="skor-text">90</td>
                         <td class="edit-button">
                             <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                                <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                         </td> 
                       </tr>
@@ -121,7 +121,7 @@
                         <td class="skor-text">94</td>
                         <td class="edit-button">
                             <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                                <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                         </td> 
                       </tr>
@@ -134,7 +134,7 @@
                         <td class="skor-text">88</td>
                         <td class="edit-button">
                             <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                                <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                         </td> 
                       </tr>
@@ -147,7 +147,7 @@
                         <td class="skor-text">97</td>
                         <td class="edit-button">
                             <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                                <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                         </td> 
                       </tr>
@@ -160,7 +160,7 @@
                         <td class="skor-text">99</td>
                         <td class="edit-button">
                             <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                                <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                                <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                             </a>
                         </td> 
                       </tr>
@@ -173,7 +173,7 @@
                         <td class="skor-text">98</td>
                         <td class="edit-button">
                           <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                              <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                              <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                           </a>
                         </td>
                       </tr>

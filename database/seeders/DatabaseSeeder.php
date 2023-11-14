@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Admin;
 use Illuminate\Database\Seeder;
 use \App\Models\User;
 use \App\Models\DosenPembimbing;
@@ -63,10 +65,37 @@ class DatabaseSeeder extends Seeder
         ProvinsiSeeder::run();
         KabKotaSeeder::run();
         KecamatanSeeder::run();
-        DosenPembimbing::factory(10)->create();
-        Instansi::factory(10)->create();
+
+        $admin = new Admin();
+        $admin->nama = "Admin";
+        $admin->id_user = 1;
+        $admin->save();
+
+        DosenPembimbing::factory(9)->create();
+        $dospem = DosenPembimbing::factory()->create();
+        $dospem->id_user = 3;
+        $dospem->save();
+
+        Instansi::factory(8)->create();
+        $instansi = Instansi::factory()->create();
+        $instansi->is_prov = false;
+        $instansi->id_user = 6;
+        $instansi->save();
+        $instansi = Instansi::factory()->create();
+        $instansi->is_prov = true;
+        $instansi->id_user = 5;
+        $instansi->save();
+
         PembimbingLapangan::factory(10)->create();
+        $pemlap = PembimbingLapangan::factory()->create();
+        $pemlap->id_user = 4;
+        $pemlap->save();
+
         Mahasiswa::factory(10)->create();
+        $mhs = Mahasiswa::factory()->create();
+        $mhs->id_user = 2;
+        $mhs->save();
+
         PemilihanLokasi::factory(10)->create();
         JadwalBimbingan::factory(10)->create();
         KartuKendali::factory(10)->create();

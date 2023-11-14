@@ -45,8 +45,8 @@
                         <i class="bi bi-people"></i>
                       </div>
                       <div class="ps-3">
-                        <p class="mb-0">Andika Rahmat Saifudin</p>
-                        <span class="text-muted small">222111893</span>
+                        <p class="mb-0">{{ Auth::user()->info()->nama }}</p>
+                        <span class="text-muted small">{{ Auth::user()->info()->nim }}</span>
                       </div>
                     </div>
                     <div class="d-flex align-items-center mt-2">
@@ -56,7 +56,7 @@
                         <i class="bi bi-building"></i>
                       </div>
                       <div class="ps-3">
-                        <p class="mb-0">BPS Kota Mojokerto</p>
+                        <p class="mb-0">{{ Auth::user()->info()->instansi->nama }}</p>
                         <!-- <button class="btn btn-primary btn-sm">Tentukan</button> -->
                       </div>
                     </div>
@@ -78,7 +78,7 @@
                       </div>
                       <div class="ps-3">
                         <p class="mb-0">Dosen pembimbing</p>
-                        <span class="text-muted small">Edi Cahyadi</span>
+                        <span class="text-muted small">{{ Auth::user()->info()->dosenpembimbing->nama }}</span>
                       </div>
                     </div>
                     <div class="d-flex align-items-center mt-2">
@@ -89,7 +89,7 @@
                       </div>
                       <div class="ps-3">
                         <p class="mb-0">Pembimbing lapangan</p>
-                        <span class="text-muted small">Edi Maruli</span>
+                        <span class="text-muted small">{{ Auth::user()->info()->pembimbinglapangan->nama }}</span>
                       </div>
                     </div>
                   </div>

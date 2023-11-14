@@ -10,10 +10,28 @@ class RoleBpsInstansiController extends Controller
 {
     public function dashboard()
     {
+        $mhs1 = Mahasiswa::whereNotNull('id_pembimbing_lapangan')->get();
+        $mhs2 = Mahasiswa::whereNull('id_pembimbing_lapangan')->get();
+        $pl1 = Mahasiswa::all();
+        $pl2 = PembimbingLapangan::all();
+    
+        $mhs1Count = $mhs1->count();
+        $mhs2Count = $mhs2->count();
+        $pl1Count = $pl1->count();
+        $pl2Count = $pl2->count();
+
         return view('bps-instansi.dashboard', [
             'title'=> 'Dashboard | Instansi',
             'sidebar' => 'dashboard',
-            'circle_sidebar' => ''
+            'circle_sidebar' => '',
+            'mhs1' => $mhs1,
+            'mhs2' => $mhs2,
+            'pl1' => $pl1,
+            'pl2' => $pl2,
+            'mhs1Count' => $mhs1Count,
+            'mhs2Count' => $mhs2Count,
+            'pl1Count' => $pl1Count,
+            'pl2Count' => $pl2Count
         ]);
     }
 
@@ -78,7 +96,8 @@ class RoleBpsInstansiController extends Controller
         return view('bps-instansi.tabelbimbingan', [
             'title'=> 'Bimbingan | Instansi',
             'sidebar' => 'bimbingan',
-            'circle_sidebar' => ''
+            'circle_sidebar' => '',
+            'pembimbing_lapangans' => PembimbingLapangan::all(),
         ]);
     }
     

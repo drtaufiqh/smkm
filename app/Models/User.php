@@ -42,4 +42,44 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function info(){
+        switch ($this->role) {
+            case "mhs":
+                return Mahasiswa::where('id_user', $this->id)->first();
+            case "dospem":
+                return DosenPembimbing::where('id_user', $this->id)->first();
+            case "pemlap":
+                return PembimbingLapangan::where('id_user', $this->id)->first();
+            case "instansi":
+                return Instansi::where('id_user', $this->id)->where('is_prov', false)->first();
+            case "prov":
+                return Instansi::where('id_user', $this->id)->where('is_prov', true)->first();
+            case "admin":
+                return Admin::where('id_user', $this->id)->first();
+            default:
+                // Handle case when role is not recognized or handle accordingly
+                return null;
+        }
+    }
+    
+    public function showRole(){
+        switch ($this->role) {
+            case "mhs":
+                return 'Mahasiswa';
+            case "dospem":
+                return 'Dosen Pembimbing';
+            case "pemlap":
+                return 'Pembimbing Lapangan';
+            case "instansi":
+                return 'BPS Instansi';
+            case "prov":
+                return 'BPS Provinsi';
+            case "admin":
+                return 'Admin';
+            default:
+                // Handle case when role is not recognized or handle accordingly
+                return null;
+        }
+    }
 }

@@ -3,16 +3,65 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mahasiswa;
+use App\Models\LaporanAkhir;
 use Illuminate\Http\Request;
+use App\Models\PenilaianKinerja;
 
 class RolePemlapController extends Controller
 {
     public function dashboard()
     {
+        $laporan = LaporanAkhir::whereIn('approval_akhir_pemlap', [1])->get();
+        $laporan2 = LaporanAkhir::whereIn('approval_akhir_pemlap', [0])->get();
+        $lapCount = $laporan->count();
+        $lap2Count = $laporan2->count();
+        $nilai = LaporanAkhir::whereNotNull('approval_akhir_pemlap')->get();
+        $nilai2 = LaporanAkhir::whereNull('approval_akhir_pemlap')->get();
+        $nilaiCount = $nilai->count();
+        $nilai2Count = $nilai2->count();
+        $kinerja = PenilaianKinerja::whereNotNull('nilai_k1')
+                                    ->whereNotNull('nilai_k2')
+                                    ->whereNotNull('nilai_k3')
+                                    ->whereNotNull('nilai_k4')
+                                    ->whereNotNull('nilai_k5')
+                                    ->whereNotNull('nilai_k6')
+                                    ->whereNotNull('nilai_k7')
+                                    ->whereNotNull('nilai_k8')
+                                    ->whereNotNull('nilai_k9')
+                                    ->whereNotNull('nilai_k10')
+                                    ->get();
+        $kinerja2 = PenilaianKinerja::whereNull('nilai_k1')
+                                    ->whereNull('nilai_k2')
+                                    ->whereNull('nilai_k3')
+                                    ->whereNull('nilai_k4')
+                                    ->whereNull('nilai_k5')
+                                    ->whereNull('nilai_k6')
+                                    ->whereNull('nilai_k7')
+                                    ->whereNull('nilai_k8')
+                                    ->whereNull('nilai_k9')
+                                    ->whereNull('nilai_k10')
+                                    ->get();
+        $kinerjaCount = $kinerja->count();
+        $kinerja2Count = $kinerja2->count();
+
+
         return view('pemlap.dashboard', [
             'title'=> 'Dashboard | Pembimbing Lapangan',
             'sidebar' => 'dashboard',
-            'circle_sidebar' => ''
+            'circle_sidebar' => '',
+            'mahasiswas' => Mahasiswa::all(),
+            'laporan'=>$laporan,
+            'laporan2'=>$laporan2,
+            'lapCount'=>$lapCount,
+            'lap2Count'=>$lap2Count,
+            'nilai'=>$nilai,
+            'nilai2'=>$nilai2,
+            'nilaiCount'=>$nilaiCount,
+            'nilai2Count'=>$nilai2Count,
+            'kinerja'=>$kinerja,
+            'kinerja2'=>$kinerja2,
+            'kinerjaCount'=>$kinerjaCount,
+            'kinerja2Count'=>$kinerja2Count
         ]);
     }
 

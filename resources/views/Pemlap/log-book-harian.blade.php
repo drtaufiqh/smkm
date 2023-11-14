@@ -52,7 +52,7 @@
                       <td>98</td>
                       <td class="edit-button">
                         <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                            <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                            <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                         </a>
                       </td> 
                     </tr>
@@ -68,7 +68,7 @@
                       <td>98</td>
                       <td class="edit-button">
                         <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                            <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                            <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                         </a>
                       </td> 
                     </tr>
@@ -84,7 +84,7 @@
                       <td>98</td>
                       <td class="edit-button">
                         <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                            <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                            <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                         </a>
                       </td> 
                     </tr>
@@ -100,7 +100,7 @@
                       <td>98</td>
                       <td class="edit-button">
                         <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                            <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                            <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                         </a>
                       </td> 
                     </tr>
@@ -116,7 +116,7 @@
                       <td>98</td>
                       <td class="edit-button">
                         <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                            <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                            <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                         </a>
                       </td> 
                     </tr>
@@ -132,7 +132,7 @@
                       <td>98</td>
                       <td class="edit-button">
                         <a type="button" data-bs-toggle="modal" data-bs-target="#verticalycentered">
-                            <img src="assets/img/edit-button.png" alt="Edit" width="30" height="30">
+                            <img src="/assets/img/edit-button.png" alt="Edit" width="30" height="30">
                         </a>
                       </td> 
                     </tr>

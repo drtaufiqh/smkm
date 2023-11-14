@@ -15,7 +15,7 @@
         >
           <h4 class="alert-heading">Selamat!</h4>
           <p>Lokasi magang Anda adalah</p>
-          <h5 class="alert-heading">BPS Kota Mojokerto</h5>
+          <h5 class="alert-heading">{{ Auth::user()->info()->instansi }}</h5>
           <hr />
           <button type="button" class="btn btn-success">Konfirmasi</button>
           <button type="button" class="btn btn-danger btn-banding">
@@ -45,14 +45,14 @@
                 <select
                   class="form-select"
                   id="floatingSelect"
-                  aria-label="Eselon 1"
+                  aria-label="Provinsi"
                   disabled
                 >
                 @foreach($provinsis as $provinsi)
                   <option value="{{ $provinsi->nama }}">{{ $provinsi->nama }}</option>
                 @endforeach
                 </select>
-                <label for="floatingSelect">Eselon 1</label>
+                <label for="floatingSelect">Provinsi</label>
               </div>
             </div>
             <div class="col-md-6">
@@ -60,13 +60,13 @@
                 <select
                   class="form-select"
                   id="floatingSelect"
-                  aria-label="Eselon 1"
+                  aria-label="Instansi"
                 >
                 @foreach($kab_kotas as $kab_kota)
                   <option value="{{ $kab_kota->nama }}">{{ $kab_kota->nama }}</option>
                 @endforeach
                 </select>
-                <label for="floatingSelect">Eselon 2</label>
+                <label for="floatingSelect">Instansi</label>
               </div>
             </div>
             <div class="col-12">
@@ -92,7 +92,7 @@
       <!-- Gambar -->
       <div class="gambar-pengumuman col-6 mx-auto">
         <img
-          src="assets/img/not-found.svg"
+          src="/assets/img/not-found.svg"
           class="img-fluid py-2"
           alt="Page Not Found"
         />

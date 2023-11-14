@@ -51,8 +51,15 @@
                                     <td><a href="#"><button type="button" class="btn btn-success my-4" style="color: white;" data-bs-toggle="modal">Lihat</button></a></td>
                                     <td><a href="#"><button type="button" class="btn btn-success w-100 my-2" style="color: white;" data-bs-toggle="modal">Harian</button></a>
                                         <a href="#"><button type="button" class="btn btn-success w-100" style="color: white;" data-bs-toggle="modal">Bulanan</button></a></td>
-                                    <td>Belum Dikumpulkan</td>
-                                  </tr>
+                                    {{-- <!-- <td>{{ $mahasiswa->laporanAkhir->laporan_final }} </td> --> --}}
+                                    <td>
+                                      @if ($mahasiswa->laporanAkhir && $mahasiswa->laporanAkhir->laporan_final)
+                                          Sudah Dikumpulkan
+                                      @else
+                                          Belum Dikumpulkan
+                                      @endif
+                                  </td>
+                                </tr>
                                   @endforeach
                                 <!-- <tr>
                                     <th scope="row">1</th>

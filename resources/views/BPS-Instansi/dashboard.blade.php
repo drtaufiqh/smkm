@@ -43,7 +43,7 @@
                       <i class="ri ri-account-pin-circle-fill"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>100</h6>
+                      <h6>{{$mhs1Count}}</h6>
                       
 
                     </div>
@@ -78,7 +78,7 @@
                       <i class="ri ri-account-pin-circle-line"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>145</h6>
+                      <h6>{{$mhs2Count}}</h6>
              
 
                     </div>
@@ -113,7 +113,7 @@
                       <i class="ri ri-account-pin-box-line"></i> 
                     </div>
                     <div class="ps-3">
-                      <h6>24</h6>
+                      <h6>{{$pl1Count}}</h6>
                       
 
                     </div>
@@ -149,7 +149,7 @@
                       <i class="ri ri-account-pin-box-fill"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>20</h6>
+                      <h6>{{$pl2Count}}</h6>
                       
 
                     </div>
