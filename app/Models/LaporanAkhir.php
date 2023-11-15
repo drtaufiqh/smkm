@@ -13,4 +13,8 @@ class LaporanAkhir extends Model
     {
         return $this->belongsTo(Mahasiswa::class, 'id_mhs');
     }
+
+    public function penilaianLaporan(){
+        return $this->hasOne(PenilaianLaporan::class);
+    }
 }

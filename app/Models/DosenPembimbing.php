@@ -12,4 +12,8 @@ class DosenPembimbing extends Model
     public function user(){
         return $this->belongsTo(User::class, 'id_user', 'info'); //untuk mendefinisikan hubungan antara tabel mahasiswas dan users,
     }
+
+    public function mahasiswas(){
+        return $this->hasMany(Mahasiswa::class);
+    }
 }

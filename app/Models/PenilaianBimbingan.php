@@ -10,7 +10,7 @@ class PenilaianBimbingan extends Model
     use HasFactory;
 
     
-    public function mhs()
+    public function mahasiswa()
     {
         return $this->belongsTo(Mahasiswa::class, 'id_mhs');
     }

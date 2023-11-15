@@ -16,4 +16,12 @@ class PembimbingLapangan extends Model
     public function instansi(){
         return $this->belongsTo(Instansi::class, 'id_instansi');
     }
+
+    public function jurnalingBulanan(){
+        return $this->hasMany(JurnalingBulanan::class);
+    }
+
+    public function jurnalingHarian(){
+        return $this->hasMany(JurnalingHarian::class);
+    }
 }

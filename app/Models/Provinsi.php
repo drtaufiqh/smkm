@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Provinsi extends Model
 {
     use HasFactory;
+
+    public function kabKota(){
+        return $this->hasOne(KabKota::class);
+    }
 }

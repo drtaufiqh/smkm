@@ -12,4 +12,8 @@ class KabKota extends Model
     public function prov(){
         return $this->belongsTo(Provinsi::class, 'id_prov');
     }
+    
+    public function kecamatan(){
+        return $this->hasOne(KabKota::class);
+    }
 }

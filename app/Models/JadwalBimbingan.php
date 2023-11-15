@@ -12,4 +12,8 @@ class JadwalBimbingan extends Model
     public function dosenPembimbing(){
         return $this->belongsTo(DosenPembimbing::class, 'id_dosen_pembimbing');
     }
+
+    public function kartuKendali(){
+        return $this->hasOne(KartuKendali::class);
+    }
 }
