@@ -8,6 +8,7 @@ use App\Http\Controllers\KabKotaController;
 use App\Http\Controllers\InstansiController;
 use App\Http\Controllers\ProvinsiController;
 use App\Http\Controllers\KecamatanController;
+use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\RoleAdminController;
 use App\Http\Controllers\RoleDospemController;
@@ -69,6 +70,7 @@ Route::middleware(['auth'])->group(function() {
         Route::resource('/admin/dosen_pembimbings', DosenPembimbingController::class);
         Route::resource('/admin/jurnaling_bulanans', JurnalingBulananController::class);
         Route::resource('/admin/jadwal_bimbingans', JadwalBimbinganController::class);
+        Route::resource('/admin/mahasiswas', MahasiswaController::class);
     });
 
     # bps instansi

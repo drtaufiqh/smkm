@@ -78,6 +78,11 @@
             </a>
           </li>
           <li>
+            <a class="{{ $circle_sidebar === 'mahasiswas' ? 'active' : '' }}" href="/admin/mahasiswas" class="active">
+              <i class="bi bi-circle"></i><span>mahasiswas</span>
+            </a>
+          </li>
+          <li>
             <a class="{{ $circle_sidebar === 'pembimbing_lapangans' ? 'active' : '' }}" href="/admin/pembimbing_lapangans" class="active">
               <i class="bi bi-circle"></i><span>pembimbing_lapangans</span>
             </a>
