@@ -8,12 +8,12 @@
 
 <main id="main" class="main">
 @include('komponen.pesan')
-<form action='{{ url('pembimbing_lapangans/'.$data->id) }}' method='post' enctype="multipart/form-data">
+<form action='{{ url('/admin/pembimbing_lapangans/'.$data->id) }}' method='post' enctype="multipart/form-data">
 @csrf
 @method('PUT')
 
 <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <a href="{{ url('pembimbing_lapangans') }}" class="btn btn-secondary"> << Kembali</a>
+    <a href="{{ url('/admin/pembimbing_lapangans') }}" class="btn btn-secondary"> << Kembali</a>
     {{-- ini tampilkan id tapi tidak bisa diedit --}}
     <div class="mb-3 row">
         <label for="id" class="col-sm-2 col-form-label">ID User</label>

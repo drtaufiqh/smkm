@@ -8,10 +8,10 @@
 
 <main id="main" class="main">
 @include('komponen.pesan')
-<form action='{{ url('users') }}' method='post'>
+<form action='{{ url('/admin/users') }}' method='post'>
 @csrf
 <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <a href="{{ url('users') }}" class="btn btn-secondary"> << Kembali</a>
+    <a href="{{ url('/admin/users') }}" class="btn btn-secondary"> << Kembali</a>
     {{-- <div class="mb-3 row">
         <label for="id" class="col-sm-2 col-form-label">id</label>
         <div class="col-sm-10">

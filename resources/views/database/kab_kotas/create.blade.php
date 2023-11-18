@@ -9,10 +9,10 @@
 <main id="main" class="main">
 @include('komponen.pesan')
 <!-- START FORM -->
-<form action='{{ url('kab_kotas') }}' method='post'>
+<form action='{{ url('/admin/kab_kotas') }}' method='post'>
     @csrf 
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <a href="{{ url('kab_kotas') }}" class="btn btn-secondary"><< kembali</a>
+        <a href="{{ url('/admin/kab_kotas') }}" class="btn btn-secondary"><< kembali</a>
         {{-- <div class="mb-3 row">
             <label for="id" class="col-sm-2 col-form-label">Id</label>
             <div class="col-sm-10">

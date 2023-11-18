@@ -28,92 +28,92 @@
 
             
       <li class="nav-item">
-        <a class="nav-link {{ ($sidebar === 'database') ? '' : 'collapsed'}}" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link {{ ($sidebar === 'database') ? '' : 'collapsed'}}" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="/admin/#">
           <i class="bi bi-geo-alt"></i><span>Database</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="tables-nav" class="nav-content {{ ($sidebar === 'database') ? '' : 'collapse'}}" data-bs-parent="#sidebar-nav">
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="dosen_pembimbings">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/dosen_pembimbings">
               <i class="bi bi-circle"></i><span>dosen_pembimbings</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="instansis" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/instansis" class="active">
               <i class="bi bi-circle"></i><span>instansis</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="jadwal_bimbingans" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/jadwal_bimbingans" class="active">
               <i class="bi bi-circle"></i><span>jadwal_bimbingans</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="jurnaling_bulanans" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/jurnaling_bulanans" class="active">
               <i class="bi bi-circle"></i><span>jurnaling_bulanans</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="jurnaling_harians" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/jurnaling_harians" class="active">
               <i class="bi bi-circle"></i><span>jurnaling_harians</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="kab_kotas" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/kab_kotas" class="active">
               <i class="bi bi-circle"></i><span>kab_kotas</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="kartu_kendalis" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/kartu_kendalis" class="active">
               <i class="bi bi-circle"></i><span>kartu_kendalis</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="kecamatans" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/kecamatans" class="active">
               <i class="bi bi-circle"></i><span>kecamatans</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="laporan_akhirs" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/laporan_akhirs" class="active">
               <i class="bi bi-circle"></i><span>laporan_akhirs</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="pembimbing_lapangans" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/pembimbing_lapangans" class="active">
               <i class="bi bi-circle"></i><span>pembimbing_lapangans</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="pemilihan_lokasis" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/pemilihan_lokasis" class="active">
               <i class="bi bi-circle"></i><span>pemilihan_lokasis</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="penilaian_bimbingans" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/penilaian_bimbingans" class="active">
               <i class="bi bi-circle"></i><span>penilaian_bimbingans</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="penilaian_kinerjas" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/penilaian_kinerjas" class="active">
               <i class="bi bi-circle"></i><span>penilaian_kinerjas</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="penilaian_laporans" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/penilaian_laporans" class="active">
               <i class="bi bi-circle"></i><span>penilaian_laporans</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="penilaians" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/penilaians" class="active">
               <i class="bi bi-circle"></i><span>penilaians</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="provinsis" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/provinsis" class="active">
               <i class="bi bi-circle"></i><span>provinsis</span>
             </a>
           </li>
           <li>
-            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="users" class="active">
+            <a class="{{ $circle_sidebar === 'nama tabel' ? 'active' : '' }}" href="/admin/users" class="active">
               <i class="bi bi-circle"></i><span>users</span>
             </a>
           </li>
@@ -122,7 +122,7 @@
 
             
       <li class="nav-item">
-        <a class="nav-link {{ ($sidebar === 'lokasi') ? '' : 'collapsed'}}" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link {{ ($sidebar === 'lokasi') ? '' : 'collapsed'}}" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="/admin/#">
           <i class="bi bi-geo-alt"></i><span>Lokasi</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="tables-nav" class="nav-content {{ ($sidebar === 'lokasi') ? '' : 'collapse'}}" data-bs-parent="#sidebar-nav">
@@ -140,21 +140,21 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link {{ ($sidebar === 'dosbing') ? '' : 'collapsed'}}" href="#">
+        <a class="nav-link {{ ($sidebar === 'dosbing') ? '' : 'collapsed'}}" href="/admin/#">
           <i class="bi bi-person"></i>
           <span>Dosbing</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link {{ ($sidebar === 'laporan akhir') ? '' : 'collapsed'}}" href="#">
+        <a class="nav-link {{ ($sidebar === 'laporan akhir') ? '' : 'collapsed'}}" href="/admin/#">
           <i class="bi bi-file-earmark-text"></i>
           <span>Laporan Akhir</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link {{ ($sidebar === 'penilaian') ? '' : 'collapsed'}}" href="#">
+        <a class="nav-link {{ ($sidebar === 'penilaian') ? '' : 'collapsed'}}" href="/admin/#">
           <i class="bi bi-star"></i>
           <span>Penilaian</span>
         </a>

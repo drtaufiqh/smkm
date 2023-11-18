@@ -8,10 +8,10 @@
 
 <main id="main" class="main">
 @include('komponen.pesan')
-<form action='{{ url('jurnaling_harians') }}' method='post'>
+<form action='{{ url('/admin/jurnaling_harians') }}' method='post'>
 @csrf
 <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <a href="{{ url('jurnaling_harians') }}" class="btn btn-secondary"> << Kembali</a>
+    <a href="{{ url('/admin/jurnaling_harians') }}" class="btn btn-secondary"> << Kembali</a>
     {{-- Ini id disembunyikan dan tidak diinput karena auto increament --}}
     {{-- <div class="mb-3 row">
         <label for="id" class="col-sm-2 col-form-label">id</label>

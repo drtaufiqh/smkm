@@ -9,11 +9,11 @@
 <main id="main" class="main">
 @include('komponen.pesan')
 <!-- START FORM -->
-<form action='{{ url('kecamatans/'.$data->id) }}' method='post'>
+<form action='{{ url('/admin/kecamatans/'.$data->id) }}' method='post'>
     @csrf 
     @method('PUT')
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <a href="{{ url('kecamatans') }}" class="btn btn-secondary"><< kembali</a>
+        <a href="{{ url('/admin/kecamatans') }}" class="btn btn-secondary"><< kembali</a>
         {{-- <div class="mb-3 row">
             <label for="id" class="col-sm-2 col-form-label">Id</label>
             <div class="col-sm-10">

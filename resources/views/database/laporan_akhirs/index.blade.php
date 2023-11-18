@@ -10,7 +10,7 @@
 <div class="my-3 p-3 bg-body rounded shadow-sm">
       <!-- FORM PENCARIAN -->
       <div class="pb-3">
-        <form class="d-flex" action="{{ url('laporan_akhirs') }}" method="get">
+        <form class="d-flex" action="{{ url('/admin/laporan_akhirs') }}" method="get">
             <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci" aria-label="Search">
             <button class="btn btn-secondary" type="submit">Cari</button>
         </form>
@@ -18,7 +18,7 @@
       
       <!-- TOMBOL TAMBAH DATA -->
       <div class="pb-3">
-        <a href='{{ url('laporan_akhirs/create') }}' class="btn btn-primary">+ Tambah Data</a>
+        <a href='{{ url('/admin/laporan_akhirs/create') }}' class="btn btn-primary">+ Tambah Data</a>
       </div>
 
       <div class="table-responsive mb-3">
@@ -63,8 +63,8 @@
                   <td>{{ $item->created_at }}</td>
                   <td>{{ $item->updated_at }}</td>
                   <td class="">
-                      <a href='{{ url('laporan_akhirs/'.$item->id.'/edit') }}' class="btn btn-warning btn-sm">Edit</a>
-                      <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('laporan_akhirs/'.$item->id) }}" method="post">
+                      <a href='{{ url('/admin/laporan_akhirs/'.$item->id.'/edit') }}' class="btn btn-warning btn-sm">Edit</a>
+                      <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('/admin/laporan_akhirs/'.$item->id) }}" method="post">
                         @csrf
                         @method("DELETE")
                         <button type="submit" class="btn btn-danger btn-sm">Del</button>

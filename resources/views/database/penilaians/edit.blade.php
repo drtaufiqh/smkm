@@ -8,12 +8,12 @@
 
 <main id="main" class="main">
 @include('komponen.pesan')
-<form action='{{ url('penilaians/'.$data->id) }}' method='post' enctype="multipart/form-data">
+<form action='{{ url('/admin/penilaians/'.$data->id) }}' method='post' enctype="multipart/form-data">
 @csrf
 @method('PUT')
 
 <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <a href="{{ url('penilaians') }}" class="btn btn-secondary"> << Kembali</a>
+    <a href="{{ url('/admin/penilaians') }}" class="btn btn-secondary"> << Kembali</a>
 
 
     
