@@ -1,15 +1,31 @@
 <?php
 
-use App\Http\Controllers\DosenPembimbingController;
+use App\Http\Controllers\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SesiController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\KabKotaController;
+use App\Http\Controllers\InstansiController;
+use App\Http\Controllers\ProvinsiController;
+use App\Http\Controllers\KecamatanController;
+use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\RoleAdminController;
 use App\Http\Controllers\RoleDospemController;
 use App\Http\Controllers\RolePemlapController;
+use App\Http\Controllers\KartuKendaliController;
+use App\Http\Controllers\LaporanAkhirController;
 use App\Http\Controllers\RoleMahasiswaController;
+use App\Http\Controllers\DosenPembimbingController;
+use App\Http\Controllers\JadwalBimbinganController;
+use App\Http\Controllers\JurnalingHarianController;
+use App\Http\Controllers\PemilihanLokasiController;
 use App\Http\Controllers\RoleBpsInstansiController;
 use App\Http\Controllers\RoleBpsProvinsiController;
-use App\Http\Controllers\SesiController;
-use App\Http\Controllers\Request;
+use App\Http\Controllers\JurnalingBulananController;
+use App\Http\Controllers\PenilaianKinerjaController;
+use App\Http\Controllers\PenilaianLaporanController;
+use App\Http\Controllers\PembimbingLapanganController;
+use App\Http\Controllers\PenilaianBimbinganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +51,24 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/admin/dashboard', [RoleAdminController::class, 'dashboard']);
         Route::get('/admin/database', [RoleAdminController::class, 'database']);
         Route::get('/admin/penentuanlokasi', [RoleAdminController::class, 'penentuanLokasi']);
+
+        Route::resource('/admin/users', UserController::class);
+        Route::resource('/admin/jurnaling_harians', JurnalingHarianController::class);
+        Route::resource('/admin/penilaian_kinerjas', PenilaianKinerjaController::class);
+        Route::resource('/admin/penilaian_bimbingans', PenilaianBimbinganController::class);
+        Route::resource('/admin/penilaian_laporans', PenilaianLaporanController::class);
+        Route::resource('/admin/laporan_akhirs', LaporanAkhirController::class);
+        Route::resource('/admin/penilaians', PenilaianController::class);
+        Route::resource('/admin/kab_kotas', KabKotaController::class);
+        Route::resource('/admin/instansis', InstansiController::class);
+        Route::resource('/admin/kecamatans', KecamatanController::class);
+        Route::resource('/admin/provinsis', ProvinsiController::class);
+        Route::resource('/admin/pemilihan_lokasis', PemilihanLokasiController::class);
+        Route::resource('/admin/pembimbing_lapangans', PembimbingLapanganController::class);
+        Route::resource('/admin/kartu_kendalis', KartuKendaliController::class);
+        Route::resource('/admin/dosen_pembimbings', DosenPembimbingController::class);
+        Route::resource('/admin/jurnaling_bulanans', JurnalingBulananController::class);
+        Route::resource('/admin/jadwal_bimbingans', JadwalBimbinganController::class);
     });
 
     # bps instansi

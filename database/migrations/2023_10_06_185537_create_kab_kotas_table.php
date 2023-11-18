@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('kode',4);
             $table->string('nama',60);
             $table->string('akronim',60);
-            $table->foreignId('id_prov');
-            $table->foreign('id_prov')->references('id')->on('Provinsis');
+            $table->foreignId('id_prov')->nullable();
+            $table->foreign('id_prov')->references('id')->on('Provinsis')->onDelete('set null')->onUpdate('set null');
             // $table->foreignId('kode_prov');
             // $table->foreign('kode_prov')->references('kode')->on('Provinsis');
             

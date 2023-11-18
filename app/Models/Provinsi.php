@@ -8,8 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Provinsi extends Model
 {
     use HasFactory;
-
-    public function kabKota(){
-        return $this->hasOne(KabKota::class);
-    }
+    protected $fillable = ['kode', 'nama', 'akronim', 'created at', 'updated at'];
+    protected $table = 'provinsis'; 
+    public $timestamp = false;
 }

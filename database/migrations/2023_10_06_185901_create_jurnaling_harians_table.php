@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('jurnaling_harians', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_mhs');
-            $table->foreign('id_mhs')->references('id')->on('mahasiswas');
-            $table->foreignId('id_penilai');
-            $table->foreign('id_penilai')->references('id')->on('pembimbing_lapangans');
+            $table->foreign('id_mhs')->references('id')->on('mahasiswas')->onDelete('cascade');
+            $table->foreignId('id_penilai')->nullable();
+            $table->foreign('id_penilai')->references('id')->on('pembimbing_lapangans')->onDelete('set null');
             $table->date('tanggal');
             $table->text('deskripsi_pekerjaan');
             $table->integer('kuantitas_volume');

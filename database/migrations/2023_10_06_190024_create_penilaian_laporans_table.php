@@ -15,18 +15,18 @@ return new class extends Migration {
         Schema::create('penilaian_laporans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_laporan');
-            $table->foreign('id_laporan')->references('id')->on('laporan_akhirs');
+            $table->foreign('id_laporan')->references('id')->on('laporan_akhirs')->onDelete('cascade')->onUpdate('cascade');
             $table->enum('penilai', ['dospem', 'pemlap']);
-            $table->double('nilai_k1', 5, 2);
-            $table->double('nilai_k2', 5, 2);
-            $table->double('nilai_k3', 5, 2);
-            $table->double('nilai_k4', 5, 2);
-            $table->double('nilai_k5', 5, 2);
-            $table->double('nilai_k6', 5, 2);
-            $table->double('nilai_k7', 5, 2);
-            $table->double('nilai_k8', 5, 2);
-            $table->double('nilai_k9', 5, 2);
-            $table->double('nilai_k10', 5, 2);
+            $table->double('nilai_k1', 5, 2)->nullable();
+            $table->double('nilai_k2', 5, 2)->nullable();
+            $table->double('nilai_k3', 5, 2)->nullable();
+            $table->double('nilai_k4', 5, 2)->nullable();
+            $table->double('nilai_k5', 5, 2)->nullable();
+            $table->double('nilai_k6', 5, 2)->nullable();
+            $table->double('nilai_k7', 5, 2)->nullable();
+            $table->double('nilai_k8', 5, 2)->nullable();
+            $table->double('nilai_k9', 5, 2)->nullable();
+            $table->double('nilai_k10', 5, 2)->nullable();
 
             $table->timestamps();
         });

@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('dosen_pembimbings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nama',50);
-            $table->string('nip_lama',50);
-            $table->string('nip_baru',50);
+            $table->string('nip_lama',50)->nullable();
+            $table->string('nip_baru',50)->nullable();
             $table->string('email',100);
             $table->string('no_hp',20);
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
-            $table->string('foto',255);
+            $table->string('foto',255)->nullable();
             
             $table->timestamps();
         });

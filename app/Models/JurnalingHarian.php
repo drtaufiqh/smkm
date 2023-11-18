@@ -9,11 +9,28 @@ class JurnalingHarian extends Model
 {
     use HasFactory;
 
-    public function mahasiswa(){
+    protected $fillable = [
+        'id_mhs',
+        'id_penilai',
+        'tanggal',
+        'deskripsi_pekerjaan',
+        'kuantitas_volume',
+        'kuantitas_satuan',
+        'durasi_waktu',
+        'pemberi_tugas',
+        'status_penyelesaian',
+        'status_final_mhs',
+        'status_final_penilai'
+    ];
+    protected $table = 'jurnaling_harians';
+
+    public function mahasiswa()
+    {
         return $this->belongsTo(Mahasiswa::class, 'id_mhs');
     }
-    
-    public function pembimbingLapangan(){
+
+    public function pembimbingLapangan()
+    {
         return $this->belongsTo(PembimbingLapangan::class, 'id_penilai');
     }
 }

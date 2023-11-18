@@ -16,4 +16,10 @@ class Instansi extends Model
     public function kecamatan(){
         return $this->belongsTo(Kecamatan::class);
     }
+    
+    protected $fillable = ['id_user', 'nama', 'id_kecamatan', 'alamat_lengkap', 'is_prov', 'created_at', 'updated_at'];
+    protected $tables = 'instansis';
+    public static $rules = [
+        'id_user' => 'exists:users,id',
+    ];
 }

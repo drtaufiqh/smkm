@@ -18,9 +18,9 @@ return new class extends Migration
             $table->date('tanggal');
             $table->time('jam');
             $table->enum('lokasi',['offline','online']);
-            $table->text('link');
+            $table->text('link')->nullable();
             $table->foreignId('id_dosen_pembimbing');
-            $table->foreign('id_dosen_pembimbing')->references('id')->on('dosen_pembimbings');
+            $table->foreign('id_dosen_pembimbing')->references('id')->on('dosen_pembimbings')->onDelete('cascade');
             
             $table->timestamps();
         });

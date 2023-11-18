@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('instansis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_user');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nama',50);
-            $table->foreignId('id_kecamatan');
-            $table->foreign('id_kecamatan')->references('id')->on('kecamatans');
+            $table->foreignId('id_kecamatan')->nullable();
+            $table->foreign('id_kecamatan')->references('id')->on('kecamatans')->onDelete('set null')->onUpdate('cascade');
             $table->text('alamat_lengkap');
             $table->boolean('is_prov');
             

@@ -32,36 +32,4 @@ class Mahasiswa extends Model
     public function instansi(){
         return $this->belongsTo(Instansi::class,'id_instansi');
     }
-
-    public function penilaian(){
-        return $this->hasOne(Penilaian::class);
-    }
-
-    public function penilaianBimbingan(){
-        return $this->hasOne(PenilaianBimbingan::class);
-    }
-
-    public function penilaianKinerja(){
-        return $this->hasOne(PenilaianKinerja::class);
-    }
-
-    public function penilaianLaporan(){
-        return $this->hasOne(PenilaianKinerja::class)->hasOne(PenilaianLaporan::class);
-    }
-
-    public function laporanAkhir(){
-        return $this->hasOne(LaporanAkhir::class);
-    }
-
-    public function pemilihanLokasi(){
-        return $this->hasOne(PemilihanLokasi::class);
-    }
-
-    public function jurnalingBulanan(){
-        return $this->hasMany(JurnalingBulanan::class);
-    }
-
-    public function jurnalingHarian(){
-        return $this->hasMany(JurnalingHarian::class);
-    }
 }
