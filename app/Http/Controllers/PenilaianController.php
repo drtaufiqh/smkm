@@ -86,7 +86,7 @@ class PenilaianController extends Controller
             'nilai_akhir' => $request->nilai_akhir,
         ];
         Penilaian::create($data);
-        return redirect()->to('penilaians')->with('success','Berhasi menambahkan data');
+        return redirect()->to('/admin/penilaians')->with('success','Berhasi menambahkan data');
     }
 
     /**
@@ -144,7 +144,7 @@ class PenilaianController extends Controller
             'nilai_akhir' => $request->nilai_akhir,
         ];
         Penilaian::where('id',$id)->update($data);
-        return redirect()->to('penilaians')->with('success','Berhasi melakukan update data');
+        return redirect()->to('/admin/penilaians')->with('success','Berhasi melakukan update data');
     }
 
     /**
@@ -156,6 +156,6 @@ class PenilaianController extends Controller
     public function destroy(string $id)
     {
         Penilaian::where('id',$id)->delete();
-        return redirect()->to('penilaians')->with('success','Berhasil melakukan delete data');
+        return redirect()->to('/admin/penilaians')->with('success','Berhasil melakukan delete data');
     }
 }

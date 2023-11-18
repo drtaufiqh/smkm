@@ -80,7 +80,7 @@ class KartuKendaliController extends Controller
         ];
 
         KartuKendali::create($data);
-        return redirect()->to('kartu_kendalis')->with('success', 'Berhasil menambahkan data')->with('kartu_kendalis', KartuKendali::all());
+        return redirect()->to('/admin/kartu_kendalis')->with('success', 'Berhasil menambahkan data')->with('kartu_kendalis', KartuKendali::all());
     }
 
     /**
@@ -133,7 +133,7 @@ class KartuKendaliController extends Controller
         ];
 
         KartuKendali::where('id', $id)->update($data);
-        return redirect()->to('kartu_kendalis')->with('success', 'Berhasil melakukan update data');
+        return redirect()->to('/admin/kartu_kendalis')->with('success', 'Berhasil melakukan update data');
     }
 
     /**
@@ -145,6 +145,6 @@ class KartuKendaliController extends Controller
     public function destroy($id)
     {
         KartuKendali::where('id', $id)->delete();
-        return redirect()->to('kartu_kendalis')->with('success','Data berhasil dihapus!');
+        return redirect()->to('/admin/kartu_kendalis')->with('success','Data berhasil dihapus!');
     }
 }

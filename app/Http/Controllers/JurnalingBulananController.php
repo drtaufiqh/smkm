@@ -104,7 +104,7 @@ class JurnalingBulananController extends Controller
         ];
 
         JurnalingBulanan::create($data);
-        return redirect()->to('jurnaling_bulanans')->with('success', 'Berhasil menambahkan data');
+        return redirect()->to('/admin/jurnaling_bulanans')->with('success', 'Berhasil menambahkan data');
     }
 
     /**
@@ -187,7 +187,7 @@ class JurnalingBulananController extends Controller
         ];
 
         JurnalingBulanan::where('id', $id)->update($data);
-        return redirect()->to('jurnaling_bulanans')->with('success', 'Berhasil melakukan update data');
+        return redirect()->to('/admin/jurnaling_bulanans')->with('success', 'Berhasil melakukan update data');
     }
 
     /**
@@ -199,6 +199,6 @@ class JurnalingBulananController extends Controller
     public function destroy( $id)
     {
         JurnalingBulanan::where('id', $id)->delete();
-        return redirect()->to('jurnaling_bulanans')->with('success','Data berhasil dihapus!');
+        return redirect()->to('/admin/jurnaling_bulanans')->with('success','Data berhasil dihapus!');
     }
 }

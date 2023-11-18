@@ -108,7 +108,7 @@ class PemilihanLokasiController extends Controller
             'id_instansi' => $request->id_instansi,
         ];   
         PemilihanLokasi::create($data);        
-        return redirect()->to('pemilihan_lokasis')->with('success', 'berhasil menambahkan data');
+        return redirect()->to('/admin/pemilihan_lokasis')->with('success', 'berhasil menambahkan data');
     }
 
     /**
@@ -184,7 +184,7 @@ class PemilihanLokasiController extends Controller
             'id_instansi' => $request->id_instansi,
         ];
         PemilihanLokasi::where('id', $id)->update($data);
-        return redirect()->to('pemilihan_lokasis')->with('success', 'berhasil mengupdate data');
+        return redirect()->to('/admin/pemilihan_lokasis')->with('success', 'berhasil mengupdate data');
     }
 
     /**
@@ -193,6 +193,6 @@ class PemilihanLokasiController extends Controller
     public function destroy($id)
     {
         PemilihanLokasi::where('id', $id)->delete();
-        return redirect()->to('pemilihan_lokasis')->with('success', 'berhasil menghapus data');
+        return redirect()->to('/admin/pemilihan_lokasis')->with('success', 'berhasil menghapus data');
     }
 }

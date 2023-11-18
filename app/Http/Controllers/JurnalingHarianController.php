@@ -103,7 +103,7 @@ class JurnalingHarianController extends Controller
             'status_final_penilai' => $request->status_final_penilai
         ];
         JurnalingHarian::create($data);
-        return redirect()->to('jurnaling_harians')->with('success', 'Berhasil menambahkan kegiatan pada Log Book');
+        return redirect()->to('/admin/jurnaling_harians')->with('success', 'Berhasil menambahkan kegiatan pada Log Book');
     }
 
     /**
@@ -190,7 +190,7 @@ class JurnalingHarianController extends Controller
             'status_final_penilai' => $request->status_final_penilai
         ];
         JurnalingHarian::where('id', $id)->update($data);
-        return redirect()->to('jurnaling_harians')->with('success', 'Berhasil mengubah data log book');
+        return redirect()->to('/admin/jurnaling_harians')->with('success', 'Berhasil mengubah data log book');
     }
 
     /**
@@ -202,6 +202,6 @@ class JurnalingHarianController extends Controller
     public function destroy($id)
     {
         JurnalingHarian::where('id', $id)->delete();
-        return redirect()->to('jurnaling_harians')->with('success', 'Data berhasil dihapus!');
+        return redirect()->to('/admin/jurnaling_harians')->with('success', 'Data berhasil dihapus!');
     }
 }

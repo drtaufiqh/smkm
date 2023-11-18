@@ -113,7 +113,7 @@ class PenilaianLaporanController extends Controller
             'nilai_k10' => $request->nilai_k10
         ];
         PenilaianLaporan::create($data);
-        return redirect()->to('penilaian_laporans')->with('success', 'Berhasil menambahkan nilai laporan');
+        return redirect()->to('/admin/penilaian_laporans')->with('success', 'Berhasil menambahkan nilai laporan');
     }
     /**
      * Display the specified resource.
@@ -212,7 +212,7 @@ class PenilaianLaporanController extends Controller
             'nilai_k10' => $request->nilai_k10
         ];
         PenilaianLaporan::where('id', $id)->update($data);
-        return redirect()->to('penilaian_laporans')->with('success', 'Berhasil mengubah nilai laporan');
+        return redirect()->to('/admin/penilaian_laporans')->with('success', 'Berhasil mengubah nilai laporan');
     }
 
     /**
@@ -224,6 +224,6 @@ class PenilaianLaporanController extends Controller
     public function destroy($id)
     {
         PenilaianLaporan::where('id', $id)->delete();
-        return redirect()->to('penilaian_laporans')->with('success', 'Data berhasil dihapus!');
+        return redirect()->to('/admin/penilaian_laporans')->with('success', 'Data berhasil dihapus!');
     }
 }

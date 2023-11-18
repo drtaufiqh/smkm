@@ -111,7 +111,7 @@ class PenilaianKinerjaController extends Controller
             'nilai_k10' => $request->nilai_k10
         ];
         PenilaianKinerja::create($data);
-        return redirect()->to('penilaian_kinerjas')->with('success', 'Berhasil menambahkan nilai kinerja');
+        return redirect()->to('/admin/penilaian_kinerjas')->with('success', 'Berhasil menambahkan nilai kinerja');
     }
 
     /**
@@ -210,7 +210,7 @@ class PenilaianKinerjaController extends Controller
             'nilai_k10' => $request->nilai_k10
         ];
         PenilaianKinerja::where('id', $id)->update($data);
-        return redirect()->to('penilaian_kinerjas')->with('success', 'Berhasil mengubah nilai kinerja');
+        return redirect()->to('/admin/penilaian_kinerjas')->with('success', 'Berhasil mengubah nilai kinerja');
     }
 
     /**
@@ -222,6 +222,6 @@ class PenilaianKinerjaController extends Controller
     public function destroy($id)
     {
         PenilaianKinerja::where('id', $id)->delete();
-        return redirect()->to('penilaian_kinerjas')->with('success', 'Data berhasil dihapus!');
+        return redirect()->to('/admin/penilaian_kinerjas')->with('success', 'Data berhasil dihapus!');
     }
 }

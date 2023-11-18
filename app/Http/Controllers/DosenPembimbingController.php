@@ -97,7 +97,7 @@ class DosenPembimbingController extends Controller
         ];
 
         DosenPembimbing::create($data);
-        return redirect()->to('dosen_pembimbings')->with('success', 'Berhasil menambahkan data');
+        return redirect()->to('/admin/dosen_pembimbings')->with('success', 'Berhasil menambahkan data');
     }
 
     /**
@@ -166,7 +166,7 @@ class DosenPembimbingController extends Controller
         ];
 
         DosenPembimbing::where('id', $id)->update($data);
-        return redirect()->to('dosen_pembimbings')->with('success', 'Berhasil melakukan update data');
+        return redirect()->to('/admin/dosen_pembimbings')->with('success', 'Berhasil melakukan update data');
     }
 
     /**
@@ -178,13 +178,13 @@ class DosenPembimbingController extends Controller
     // public function destroy($id)
     // {
     //     DosenPembimbing::where('id', $id)->delete();
-    //     return redirect()->to('dosen_pembimbings')->with('success','Data berhasil dihapus!');
+    //     return redirect()->to('/admin/dosen_pembimbings')->with('success','Data berhasil dihapus!');
     // }
 
     public function destroy($id)
     {
     // Hapus terlebih dahulu baris terkait di tabel jadwal_bimbingans
     JadwalBimbingan::where('id_dosen_pembimbing', $id)->delete();
-    return redirect()->to('dosen_pembimbings')->with('success', 'Data berhasil dihapus!');
+    return redirect()->to('/admin/dosen_pembimbings')->with('success', 'Data berhasil dihapus!');
     }
 }

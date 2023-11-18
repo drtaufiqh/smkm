@@ -81,7 +81,7 @@ class JadwalBimbinganController extends Controller
         ];
 
         JadwalBimbingan::create($data);
-        return redirect()->to('jadwal_bimbingans')->with('success', 'Berhasil menambahkan data');
+        return redirect()->to('/admin/jadwal_bimbingans')->with('success', 'Berhasil menambahkan data');
     }
 
     /**
@@ -139,7 +139,7 @@ class JadwalBimbinganController extends Controller
         ];
 
         JadwalBimbingan::where('id', $id)->update($data);
-        return redirect()->to('jadwal_bimbingans')->with('success', 'Berhasil melakukan update data');
+        return redirect()->to('/admin/jadwal_bimbingans')->with('success', 'Berhasil melakukan update data');
 
     }
 
@@ -152,6 +152,6 @@ class JadwalBimbinganController extends Controller
     public function destroy($id)
     {
         JadwalBimbingan::where('id', $id)->delete();
-        return redirect()->to('jadwal_bimbingans')->with('success','Data berhasil dihapus!');
+        return redirect()->to('/admin/jadwal_bimbingans')->with('success','Data berhasil dihapus!');
     }
 }

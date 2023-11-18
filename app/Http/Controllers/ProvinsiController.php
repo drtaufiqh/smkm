@@ -71,7 +71,7 @@ class ProvinsiController extends Controller
             'akronim' => $request->akronim,
         ];
         Provinsi::create($data);
-        return redirect()->to('provinsis')->with('success', 'berhasil menambahkan data');
+        return redirect()->to('/admin/provinsis')->with('success', 'berhasil menambahkan data');
     }
 
     /**
@@ -117,7 +117,7 @@ class ProvinsiController extends Controller
             'akronim' => $request->akronim,
         ];
         Provinsi::where('id', $id)->update($data);
-        return redirect()->to('provinsis')->with('success', 'berhasil mengupdate data');
+        return redirect()->to('/admin/provinsis')->with('success', 'berhasil mengupdate data');
     }
 
     /**
@@ -126,6 +126,6 @@ class ProvinsiController extends Controller
     public function destroy($id)
     {
         Provinsi::where('id', $id)->delete();
-        return redirect()->to('provinsis')->with('success', 'berhasil menghapus data');
+        return redirect()->to('/admin/provinsis')->with('success', 'berhasil menghapus data');
     }
 }

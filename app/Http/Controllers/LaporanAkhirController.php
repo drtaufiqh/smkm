@@ -104,7 +104,7 @@ class LaporanAkhirController extends Controller
             'nilai_akhir_dospem' => $request->nilai_akhir_dospem,
         ];
         LaporanAkhir::create($data);
-        return redirect()->to('laporan_akhirs')->with('success','Berhasi menambahkan data');
+        return redirect()->to('/admin/laporan_akhirs')->with('success','Berhasi menambahkan data');
     }
 
     /**
@@ -176,7 +176,7 @@ class LaporanAkhirController extends Controller
             'nilai_akhir_dospem' => $request->nilai_akhir_dospem,
         ];
         LaporanAkhir::where('id',$id)->update($data);
-        return redirect()->to('laporan_akhirs')->with('success','Berhasi melakukan update data');
+        return redirect()->to('/admin/laporan_akhirs')->with('success','Berhasi melakukan update data');
     }
 
     /**
@@ -188,6 +188,6 @@ class LaporanAkhirController extends Controller
     public function destroy(string $id)
     {
         LaporanAkhir::where('id',$id)->delete();
-        return redirect()->to('laporan_akhirs')->with('success','Berhasil melakukan delete data');
+        return redirect()->to('/admin/laporan_akhirs')->with('success','Berhasil melakukan delete data');
     }
 }

@@ -95,7 +95,7 @@ class InstansiController extends Controller
         ];
 
         Instansi::create($data);
-        return redirect()->to('instansis')->with('success', 'Berhasil menambahkan data');
+        return redirect()->to('/admin/instansis')->with('success', 'Berhasil menambahkan data');
     }
 
     /**
@@ -163,7 +163,7 @@ class InstansiController extends Controller
         ];
 
         Instansi::where('id', $id)->update($data);
-        return redirect()->to('instansis')->with('success', 'Berhasil mengupdate data');
+        return redirect()->to('/admin/instansis')->with('success', 'Berhasil mengupdate data');
     }
 
     /**
@@ -175,6 +175,6 @@ class InstansiController extends Controller
     public function destroy($id)
     {
         Instansi::where('id', $id)->delete();
-        return redirect()->to('instansis')->with('success','Data berhasil dihapus!');
+        return redirect()->to('/admin/instansis')->with('success','Data berhasil dihapus!');
     }
 }

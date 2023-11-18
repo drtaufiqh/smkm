@@ -84,7 +84,7 @@ class PenilaianBimbinganController extends Controller
             'nilai_k5' => $request->nilai_k5,
         ];
         PenilaianBimbingan::create($data);
-        return redirect()->to('penilaian_bimbingans')->with('success', 'Berhasil menambahkan nilai bimbingan');
+        return redirect()->to('/admin/penilaian_bimbingans')->with('success', 'Berhasil menambahkan nilai bimbingan');
     }
 
     /**
@@ -156,7 +156,7 @@ class PenilaianBimbinganController extends Controller
             'nilai_k5' => $request->nilai_k5,
         ];
         PenilaianBimbingan::where('id', $id)->update($data);
-        return redirect()->to('penilaian_bimbingans')->with('success', 'Berhasil mengubah nilai bimbingan');
+        return redirect()->to('/admin/penilaian_bimbingans')->with('success', 'Berhasil mengubah nilai bimbingan');
     }
 
     /**
@@ -168,6 +168,6 @@ class PenilaianBimbinganController extends Controller
     public function destroy($id)
     {
         PenilaianBimbingan::where('id', $id)->delete();
-        return redirect()->to('penilaian_bimbingans')->with('success', 'Data berhasil dihapus!');
+        return redirect()->to('/admin/penilaian_bimbingans')->with('success', 'Data berhasil dihapus!');
     }
 }

@@ -77,7 +77,7 @@ class KecamatanController extends Controller
             'id_kabkota' => $request->id_kabkota,
         ];
         Kecamatan::create($data);
-        return redirect()->to('kecamatans')->with('success', 'berhasil menambahkan data');
+        return redirect()->to('/admin/kecamatans')->with('success', 'berhasil menambahkan data');
     }
 
     /**
@@ -127,7 +127,7 @@ class KecamatanController extends Controller
             'id_kabkota' => $request->id_kabkota,
         ];
         Kecamatan::where('id', $id)->update($data);
-        return redirect()->to('kecamatans')->with('success', 'berhasil mengupdate data');
+        return redirect()->to('/admin/kecamatans')->with('success', 'berhasil mengupdate data');
     }
 
     /**
@@ -136,6 +136,6 @@ class KecamatanController extends Controller
     public function destroy($id)
     {
         Kecamatan::where('id', $id)->delete();
-        return redirect()->to('kecamatans')->with('success', 'berhasil menghapus data');
+        return redirect()->to('/admin/kecamatans')->with('success', 'berhasil menghapus data');
     }
 }

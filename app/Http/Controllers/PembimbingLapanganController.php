@@ -102,7 +102,7 @@ class PembimbingLapanganController extends Controller
             'foto'=>$request->foto
         ];
         PembimbingLapangan::create($data);
-        return redirect()->to('pembimbing_lapangans')->with('Berhasil menambahkan data!');
+        return redirect()->to('/admin/pembimbing_lapangans')->with('Berhasil menambahkan data!');
     }
 
     /**
@@ -174,7 +174,7 @@ class PembimbingLapanganController extends Controller
         ];
 
         PembimbingLapangan::where('id', $id)->update($data);
-        return redirect()->to('pembimbing_lapangans')->with('success', 'Berhasil melakukan update data!');
+        return redirect()->to('/admin/pembimbing_lapangans')->with('success', 'Berhasil melakukan update data!');
     }
 
     /**
@@ -186,7 +186,7 @@ class PembimbingLapanganController extends Controller
     public function destroy($id)
     {
         PembimbingLapangan::where('id', $id)->delete();
-        return redirect()->to('pembimbing_lapangans')->with('success','Data berhasil dihapus!');
+        return redirect()->to('/admin/pembimbing_lapangans')->with('success','Data berhasil dihapus!');
 
     }
 }

@@ -86,7 +86,7 @@ class KabKotaController extends Controller
         ];
 
         KabKota::create($data);
-        return redirect()->to('kab_kotas')->with('success', 'Berhasil menambahkan data');
+        return redirect()->to('/admin/kab_kotas')->with('success', 'Berhasil menambahkan data');
     }
 
     /**
@@ -148,7 +148,7 @@ class KabKotaController extends Controller
         ];
 
         KabKota::where('id', $id)->update($data);
-        return redirect()->to('kab_kotas')->with('success', 'Berhasil mengupdate data');
+        return redirect()->to('/admin/kab_kotas')->with('success', 'Berhasil mengupdate data');
     }
 
     /**
@@ -160,6 +160,6 @@ class KabKotaController extends Controller
     public function destroy($id)
     {
         KabKota::where('id', $id)->delete();
-        return redirect()->to('kab_kotas')->with('success','Data berhasil dihapus!');
+        return redirect()->to('/admin/kab_kotas')->with('success','Data berhasil dihapus!');
     }
 }
