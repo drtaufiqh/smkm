@@ -71,6 +71,8 @@ Route::middleware(['auth'])->group(function() {
         Route::resource('/admin/jurnaling_bulanans', JurnalingBulananController::class);
         Route::resource('/admin/jadwal_bimbingans', JadwalBimbinganController::class);
         Route::resource('/admin/mahasiswas', MahasiswaController::class);
+
+        Route::put('/admin/do_tentukanlokasi/{id}/{pilihan}', [RoleAdminController::class, 'do_tentukanlokasi']);
     });
 
     # bps instansi
