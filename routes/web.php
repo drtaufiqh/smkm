@@ -126,6 +126,8 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/mahasiswa/log-book-bulanan', [RoleMahasiswaController::class, 'logBookBulanan']);
         Route::get('/mahasiswa/log-book-harian', [RoleMahasiswaController::class, 'logBookHarian']);
         Route::get('/mahasiswa/pemilihan-lokasi', [RoleMahasiswaController::class, 'pemilihanLokasi']);
+        Route::post('/mahasiswa/submitted-pemilihan-lokasi/{id_user}', [RoleMahasiswaController::class, 'submittedPemilihanLokasi'])->name('submitted-pemilihan-lokasi');
+        Route::get('/mahasiswa/submitted-pemilihan-lokasi', [RoleMahasiswaController::class, 'waitingPemilihanLokasi']);
     });
 
     # pemlap

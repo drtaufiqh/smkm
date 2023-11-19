@@ -12,6 +12,10 @@ use Illuminate\Http\Request;
 use App\Models\JadwalBimbingan;
 use App\Models\JurnalingHarian;
 use App\Models\JurnalingBulanan;
+use App\Models\PemilihanLokasi;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Ramsey\Collection\Set;
 
 class RoleMahasiswaController extends Controller
 {
@@ -118,6 +122,28 @@ class RoleMahasiswaController extends Controller
             'provinsis' => Provinsi::all(),
             'kab_kotas' => KabKota::all(),
             'instansis' => Instansi::all()
+        ]);
+    }
+
+    public function submittedPemilihanLokasi(Request $request, $id_user)
+    {
+        $data = [
+            'id_mhs' => $id_user,
+            'id_pilihan_1' => $request->input('id_pilihan_1'),
+            'id_pilihan_2' => $request->input('id_pilihan_2'),
+            'alasan_pilihan_1' => $request->input('alasan_pilihan_1'),
+            'alasan_pilihan_2' => $request->input('alasan_pilihan_2')
+        ];
+
+        PemilihanLokasi::create($data);
+        return redirect()->to('/mahasiswa/submitted-pemilihan-lokasi');
+    }
+
+    public function waitingPemilihanLokasi(){
+        return view('mahasiswa.submitted-pemilihan-lokasi', [
+            'title' => 'Lokasi Magang | Mahasiswa',
+            'sidebar' => 'lokasi',
+            'circle_sidebar' => ''
         ]);
     }
 }
