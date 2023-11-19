@@ -44,10 +44,10 @@ Route::get('/', function () {
 });
 
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth'])->group(function () {
 
     # admin
-    Route::middleware(['userAkses:admin'])->group(function() {
+    Route::middleware(['userAkses:admin'])->group(function () {
         Route::get('/admin/bandinglokasi', [RoleAdminController::class, 'bandingLokasi']);
         Route::get('/admin/dashboard', [RoleAdminController::class, 'dashboard']);
         Route::get('/admin/database', [RoleAdminController::class, 'database']);
@@ -74,7 +74,7 @@ Route::middleware(['auth'])->group(function() {
     });
 
     # bps instansi
-    Route::middleware(['userAkses:instansi'])->group(function() {
+    Route::middleware(['userAkses:instansi'])->group(function () {
         Route::get('/bps-instansi/buatpembimbing', [RoleBpsInstansiController::class, 'buatPembimbing']);
         Route::get('/bps-instansi/daftarbimbingan', [RoleBpsInstansiController::class, 'daftarBimbingan']);
         Route::get('/bps-instansi/dashboard', [RoleBpsInstansiController::class, 'dashboard']);
@@ -87,15 +87,16 @@ Route::middleware(['auth'])->group(function() {
     });
 
     # bps provinsi
-    Route::middleware(['userAkses:prov'])->group(function() {
+    Route::middleware(['userAkses:prov'])->group(function () {
         Route::get('/bps-provinsi/approvalmahasiswa', [RoleBpsProvinsiController::class, 'approvalMahasiswa']);
         Route::get('/bps-provinsi/bandingmahasiswa', [RoleBpsProvinsiController::class, 'bandingMahasiswa']);
         Route::get('/bps-provinsi/dashboard', [RoleBpsProvinsiController::class, 'dashboard']);
         Route::get('/bps-provinsi/profil', [RoleBpsProvinsiController::class, 'profil']);
+        Route::put('/bps-provinsi/setujui-pemilihan/{id}', [RoleBpsProvinsiController::class, 'setujuiPemilihan']);
     });
 
     # dospem
-    Route::middleware(['userAkses:dospem'])->group(function() {
+    Route::middleware(['userAkses:dospem'])->group(function () {
         Route::get('/dospem/dashboard', [RoleDospemController::class, 'dashboard']);
         Route::get('/dospem/database-mahasiswa', [RoleDospemController::class, 'databaseMahasiswa']);
         Route::get('/dospem/detail-biodata', [RoleDospemController::class, 'detailBiodata']);
@@ -117,7 +118,7 @@ Route::middleware(['auth'])->group(function() {
     });
 
     # mahasiswa
-    Route::middleware(['userAkses:mhs'])->group(function() {
+    Route::middleware(['userAkses:mhs'])->group(function () {
         Route::get('/mahasiswa/banding-lokasi', [RoleMahasiswaController::class, 'bandingLokasi']);
         Route::get('/mahasiswa/bimbingan', [RoleMahasiswaController::class, 'bimbingan']);
         Route::get('/mahasiswa/index', [RoleMahasiswaController::class, 'index']);
@@ -129,7 +130,7 @@ Route::middleware(['auth'])->group(function() {
     });
 
     # pemlap
-    Route::middleware(['userAkses:pemlap'])->group(function() {
+    Route::middleware(['userAkses:pemlap'])->group(function () {
         Route::get('/pemlap/dashboard', [RolePemlapController::class, 'dashboard']);
         Route::get('/pemlap/database-mahasiswa', [RolePemlapController::class, 'databaseMahasiswa']);
         Route::get('/pemlap/detail-biodata', [RolePemlapController::class, 'detailBiodata']);
@@ -151,7 +152,7 @@ Route::middleware(['auth'])->group(function() {
 });
 
 # middleware
-Route::middleware(['guest'])->group(function() {
+Route::middleware(['guest'])->group(function () {
     # login
     Route::get('/login', [SesiController::class, 'index'])->name('login');
     Route::post('/login', [SesiController::class, 'login']);
