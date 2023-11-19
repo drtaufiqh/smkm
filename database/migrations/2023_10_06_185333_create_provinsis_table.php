@@ -15,6 +15,7 @@ return new class extends Migration {
         Schema::create('provinsis', function (Blueprint $table) {
             $table->id();
             $table->string('kode',2);
+            // $table->string('kode',2)->primary();
             $table->string('nama',60);
             $table->string('akronim',60);            
 

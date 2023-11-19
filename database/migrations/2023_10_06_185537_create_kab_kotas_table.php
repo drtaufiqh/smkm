@@ -16,12 +16,13 @@ return new class extends Migration
         Schema::create('kab_kotas', function (Blueprint $table) {
             $table->id();
             $table->string('kode',4);
+            // $table->string('kode',4)->primary();
             $table->string('nama',60);
             $table->string('akronim',60);
-            $table->foreignId('id_prov');
-            $table->foreign('id_prov')->references('id')->on('Provinsis');
-            // $table->foreignId('kode_prov');
-            // $table->foreign('kode_prov')->references('kode')->on('Provinsis');
+            $table->foreignId('id_prov')->nullable();
+            $table->foreign('id_prov')->references('id')->on('Provinsis')->onDelete('set null')->onUpdate('set null');
+            // $table->foreignId('kode_prov')->nullable();
+            // $table->foreign('kode_prov')->references('kode')->on('Provinsis')->onDelete('set null')->onUpdate('set null');
             
             $table->timestamps();
         });

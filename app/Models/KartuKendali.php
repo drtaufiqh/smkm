@@ -9,11 +9,15 @@ class KartuKendali extends Model
 {
     use HasFactory;
 
-    public function jadwalBimbingan(){
-        return $this->belongsTo(JadwalBimbingan::class);
+    protected $fillable = [
+        'id_bimbingan','id_mhs','pokok_bahasan', 'diketahui'
+    ];
+
+    public function bimbingan(){
+        return $this->belongsTo(JadwalBimbingan::class, 'id_bimbingan');
     }
 
     public function mahasiswa(){
-        return $this->belongsTo(Mahasiswa::class);
+        return $this->belongsTo(Mahasiswa::class, 'id_mhs');
     }
 }

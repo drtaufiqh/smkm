@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('jurnaling_bulanans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_mhs');
-            $table->foreign('id_mhs')->references('id')->on('mahasiswas');
-            $table->foreignId('id_penilai');
-            $table->foreign('id_penilai')->references('id')->on('pembimbing_lapangans');
+            $table->foreign('id_mhs')->references('id')->on('mahasiswas')->onDelete('cascade');
+            $table->foreignId('id_penilai')->nullable();
+            $table->foreign('id_penilai')->references('id')->on('pembimbing_lapangans')->onDelete('set null');
             $table->integer('periode');
             $table->text('uraian_kegiatan');
             $table->string('satuan',50);
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->integer('kuantitas_realisasi');
             $table->double('tingkat_kuantitas', 5, 2);
             $table->double('tingkat_kualitas', 5, 2);
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->boolean('status_final_mhs');
             $table->boolean('status_final_penilai');
             
