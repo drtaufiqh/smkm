@@ -26,9 +26,15 @@ return new class extends Migration
             $table->text('alamat_1')->nullable();
             $table->foreignId('id_kecamatan_alamat_1')->nullable();
             $table->foreign('id_kecamatan_alamat_1')->references('id')->on('kecamatans')->onDelete('set null');
+            // $table->foreignId('kode_kabkota_1')->nullable();
+            // $table->foreign('kode_kabkota_1')->references('id')->on('kab_kotas')->onDelete('set null')->onUpdate('cascade');
+            $table->string('kecamatan_1')->nullable();
             $table->text('alamat_2')->nullable();
             $table->foreignId('id_kecamatan_alamat_2')->nullable();
             $table->foreign('id_kecamatan_alamat_2')->references('id')->on('kecamatans')->onDelete('set null');
+            // $table->foreignId('kode_kabkota_2')->nullable();
+            // $table->foreign('kode_kabkota_2')->references('id')->on('kab_kotas')->onDelete('set null')->onUpdate('cascade');
+            $table->string('kecamatan_2')->nullable();
             $table->string('bank',20)->nullable();
             $table->string('an_bank',50)->nullable();
             $table->string('no_rek',50)->nullable();

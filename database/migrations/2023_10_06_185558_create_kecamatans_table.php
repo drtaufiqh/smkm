@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode',7);
             $table->string('nama',60);
-            $table->string('akronim',60);
+            $table->string('akronim',60)->nullable();
             $table->foreignId('id_kabkota')->nullable();
             $table->foreign('id_kabkota')->references('id')->on('kab_kotas')->onDelete('set null')->onUpdate('set null');
             

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('nama',50);
             $table->foreignId('id_kecamatan')->nullable();
             $table->foreign('id_kecamatan')->references('id')->on('kecamatans')->onDelete('set null')->onUpdate('cascade');
+            // $table->foreignId('kode_kabkota')->nullable();
+            // $table->foreign('kode_kabkota')->references('id')->on('kab_kotas')->onDelete('set null')->onUpdate('cascade');
             $table->text('alamat_lengkap');
             $table->boolean('is_prov');
             
