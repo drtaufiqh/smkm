@@ -51,8 +51,8 @@
                     {{-- <option selected>Pasaman Barat</option>
                     <option value="1">Lok-lok</option>
                     <option value="2">Merauke</option> --}}
-                    @foreach($kab_kotas as $kab_kota)
-                      <option value="{{ $kab_kota->nama }}">{{ $kab_kota->nama }}</option>
+                    @foreach($instansis as $instansi)
+                      <option value="{{ $instansi->nama }}">{{ $instansi->nama }}</option>
                     @endforeach
                   </select>
                   <label for="floatingSelect">Kab/Kota</label>

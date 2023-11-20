@@ -33,7 +33,7 @@
                                       <th scope="col">Domisili</th>
                                       <th scope="col">BPS Kab/Kota Pilihan</th>
                                       <th scope="col">Status</th>
-                                      <th scope="col">BPS Kab/Kota Pengalihan</th>
+                                      <th scope="col">BPS yang Disetujui</th>
                                       <th scope="col">Keterangan</th>
                                   </tr>
                               </thead>
@@ -45,75 +45,25 @@
                                     <td>{{ $pemilihan_lokasi->mahasiswa->nama }}</td>
                                     <td>{{ $pemilihan_lokasi->mahasiswa->nim }}</td>
                                     <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
-                                    <td>{{ $pemilihan_lokasi->pilihan1->nama }}</td>
-                                    <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
-                                    <td>{{ $pemilihan_lokasi->pilihan2->nama }}</td>
+                                    <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
+                                    <td class="status-column">
+                                        <form action="/bps-provinsi/setujui-pemilihan/{{ $pemilihan_lokasi->id }}" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-success mx-4">Setujui</button>
+                                        </form>
+                                        <a href="#" class="btn btn-danger mx-4" data-bs-toggle="modal" data-bs-target="#tidakSetujuiModal">Tidak Setujui</a>
+                                    </td>
+                                    <td>{{ $pemilihan_lokasi->instansi->nama }}</td>
                                     <td>-</td>
                                 </tr>
                                 @endforeach
-                                  {{-- <tr>
-                                      <th scope="row">1</th>
-                                      <td>Andi</td>
-                                      <td>123456789</td>
-                                      <td>Jakarta Timur</td>
-                                      <td>BPS Jakarta Timur</td>
-                                      <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
-                                      <td>-</td>
-                                      <td>-</td>
-                                  </tr>
-                                  <th scope="row">2</th>
-                                      <td>Budi</td>
-                                      <td>222222222</td>
-                                      <td>Jakarta Barat</td>
-                                      <td>BPS Jakarta Timur</td>
-                                      <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
-                                      <td>-</td>
-                                      <td>-</td>
-                                  </tr>
-                                  <th scope="row">3</th>
-                                      <td>Caca</td>
-                                      <td>333333333</td>
-                                      <td>Jakarta Pusat</td>
-                                      <td>BPS Jakarta Pusat</td>
-                                      <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
-                                      <td>-</td>
-                                      <td>-</td>
-                                  <tr>
-                                  <th scope="row">4</th>
-                                      <td>Dono</td>
-                                      <td>444444444</td>
-                                      <td>Jakarta Utara</td>
-                                      <td>BPS Jakarta Utara</td>
-                                      <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
-                                      <td>-</td>
-                                      <td>-</td>
-                                  </tr>
-                                  <tr>
-                                  <th scope="row">5</th>
-                                      <td>Ela</td>
-                                      <td>555555555</td>
-                                      <td>Jakarta Barat</td>
-                                      <td>BPS Jakarta Barat</td>
-                                      <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
-                                      <td>-</td>
-                                      <td>-</td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">6</th>
-                                      <td>Feny</td>
-                                      <td>666666666</td>
-                                      <td>Jakarta Selatan</td>
-                                      <td>BPS Jakarta Selatan</td>
-                                      <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
-                                      <td>-</td>
-                                      <td>-</td>
-                                  </tr> --}}
                               </tbody>
-                          </table>\
+                          </table>
                           </div>
                           <!-- End Table with stripped rows -->
 
-                    <!-- Modal -->
+                    {{-- <!-- Modal -->
                     <div class="modal fade mt-5" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
                       <div class="modal-dialog mt-5">
                           <div class="modal-content">
@@ -124,14 +74,14 @@
                               <div class="modal-body">
                                   <div class="card-body text-center">
                                       <p class="card-text">
-                                          <a href="#" class="btn btn-success mx-4" data-bs-toggle="modal" >Setujui</a>
+                                          <a href="/bps-provinsi/setujuiPemilihan/{{ $id }}" class="btn btn-success mx-4" data-bs-toggle="modal" >Setujui</a>
                                           <a href="#" class="btn btn-danger mx-4" data-bs-toggle="modal" data-bs-target="#tidakSetujuiModal">Tidak Setujui</a>
                                       </p>
                                   </div>
                               </div>
                           </div>
                       </div>
-                  </div>
+                  </div> --}}
 
                   <!-- Modal untuk "Tidak Setujui" -->
                   <div class="modal fade mt-5" id="tidakSetujuiModal" tabindex="-1" aria-labelledby="tidakSetujuiModalLabel" aria-hidden="true">
@@ -146,10 +96,13 @@
                                   <div class="mb-3">
                                     <label for="pengalihan">BPS Kabupaten/Kota Pengalihan</label>
                                       <select class="form-select" aria-label="Default select example" id="pengalihan" name="pengalihan">
-                                        <option selected>Pilih Kabupaten/Kota</option>
-                                        <option value="kabupaten1">BPS Kabupaten 1</option>
+                                        <option selected>Pilih BPS Instansi</option>
+                                        @foreach($instansis as $instansi)
+                                            <option value="{{ $instansi->nama }}">{{ $instansi->nama }}</option>
+                                        @endforeach
+                                        {{-- <option value="kabupaten1">BPS Kabupaten 1</option>
                                         <option value="kabupaten2">BPS Kabupaten 2</option>
-                                        <option value="kabupaten3">BPS Kabupaten 3</option>
+                                        <option value="kabupaten3">BPS Kabupaten 3</option> --}}
                                       </select>
                                   </div>
                                   <div class="mb-3">
@@ -174,6 +127,20 @@
   </div>
 </section>
 
+<script>
+    $(document).ready(function() {
+        // Menangani klik pada tombol "Setujui" di setiap baris
+        $('.btn-setujui').click(function() {
+            var pemilihanId = $(this).data('id');
+            $('#setujuiLink').attr('href', '/bps-provinsi/setujuiPemilihan/' + pemilihanId);
+        });
+
+        // Menangani klik pada tombol "Setujui" di modal
+        $('.btn-setujui-modal').click(function() {
+            // Lakukan sesuatu ketika tombol "Setujui" di modal diklik
+        });
+    });
+</script>
 
   </main><!-- End #main -->
 @endsection
