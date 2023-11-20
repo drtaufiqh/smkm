@@ -28,6 +28,25 @@
 
             
       <li class="nav-item">
+        <a class="nav-link {{ ($sidebar === 'lokasi') ? '' : 'collapsed'}}" data-bs-target="#lokasi-nav" data-bs-toggle="collapse" href="/admin/#">
+          <i class="bi bi-geo-alt"></i><span>Lokasi</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="lokasi-nav" class="nav-content {{ ($sidebar === 'lokasi') ? '' : 'collapse'}}" data-bs-parent="#sidebar-nav">
+          <li>
+            <a class="{{ $circle_sidebar === 'penentuan' ? 'active' : '' }}" href="/admin/penentuanlokasi">
+              <i class="bi bi-circle"></i><span>Penentuan</span>
+            </a>
+          </li>
+          <li>
+            <a class="{{ $circle_sidebar === 'banding' ? 'active' : '' }}" href="/admin/bandinglokasi" class="active">
+              <i class="bi bi-circle"></i><span>Banding</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+            
+      <li class="nav-item">
         <a class="nav-link {{ ($sidebar === 'database') ? '' : 'collapsed'}}" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="/admin/#">
           <i class="bi bi-geo-alt"></i><span>Database</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
@@ -120,25 +139,6 @@
           <li>
             <a class="{{ $circle_sidebar === 'users' ? 'active' : '' }}" href="/admin/users" class="active">
               <i class="bi bi-circle"></i><span>users</span>
-            </a>
-          </li>
-        </ul>
-      </li>
-
-            
-      <li class="nav-item">
-        <a class="nav-link {{ ($sidebar === 'lokasi') ? '' : 'collapsed'}}" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="/admin/#">
-          <i class="bi bi-geo-alt"></i><span>Lokasi</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="tables-nav" class="nav-content {{ ($sidebar === 'lokasi') ? '' : 'collapse'}}" data-bs-parent="#sidebar-nav">
-          <li>
-            <a class="{{ $circle_sidebar === 'penentuan' ? 'active' : '' }}" href="/admin/penentuanlokasi">
-              <i class="bi bi-circle"></i><span>Penentuan</span>
-            </a>
-          </li>
-          <li>
-            <a class="{{ $circle_sidebar === 'banding' ? 'active' : '' }}" href="/admin/bandinglokasi" class="active">
-              <i class="bi bi-circle"></i><span>Banding</span>
             </a>
           </li>
         </ul>
