@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\finalisasi;
 use App\Models\Mahasiswa;
 use App\Models\LaporanAkhir;
 use Illuminate\Http\Request;
@@ -72,7 +73,31 @@ class RoleAdminController extends Controller
             'id_instansi_ajuan' => $pilihan
         ];
         PemilihanLokasi::where('id', $id)->update($data);
-        return redirect()->to('/admin/penentuanlokasi');
+        return redirect()->to('/admin/penentuanlokasi')->with('success', 'Berhasil mengubah lokasi ajuan');
+    }
+
+    public function do_finalisasi_lokasi()
+    {
+        
+        // Ambil semua baris dari tabel pemilihan_lokasis
+        $pemilihan_lokasis = PemilihanLokasi::get();
+
+        // Loop melalui setiap baris dan lakukan operasi
+        foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
+            // Ambil nilai id_instansi_tujuan dari baris saat ini
+            $id_instansi_ajuan = $pemilihan_lokasi->id_instansi_ajuan;
+
+            // Update kolom id_instansi pada baris saat ini dengan nilai id_instansi_ajuan
+            $pemilihan_lokasi->update(['id_instansi' => $id_instansi_ajuan]);
+        }
+        Finalisasi::create([
+            // Sesuaikan dengan kolom-kolom dan nilai-nilai yang sesuai di tabel instansis
+            'finalisasi_penentuan_lokasi_admin' => 1,
+            'finalisasi_banding_lokasi_admin' => 0
+        ]);
+
+              return redirect()->to('/admin/penentuanlokasi')->with('success', 'Berhasil finalisasi');
+        
     }
 
 }
