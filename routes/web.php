@@ -74,6 +74,9 @@ Route::middleware(['auth'])->group(function() {
 
         Route::put('/admin/do_tentukanlokasi/{id}/{pilihan}', [RoleAdminController::class, 'do_tentukanlokasi']);
         Route::put('/admin/do_finalisasi_lokasi', [RoleAdminController::class, 'do_finalisasi_lokasi']);
+        Route::put('/admin/do_terima_banding/{id}/{banding}', [RoleAdminController::class, 'do_terima_banding']);
+        Route::put('/admin/do_tolak_banding/{id}', [RoleAdminController::class, 'do_tolak_banding']);
+        Route::put('/admin/do_finalisasi_banding', [RoleAdminController::class, 'do_finalisasi_banding']);
 
     });
 

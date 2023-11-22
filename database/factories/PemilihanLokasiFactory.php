@@ -22,10 +22,10 @@ class PemilihanLokasiFactory extends Factory
             'id_pilihan_2' => fake()->numberBetween(1,10),
             'alasan_pilihan_1' => fake()->text,
             'alasan_pilihan_2' => fake()->text,
-            'id_instansi_ajuan' => fake()->numberBetween(1,10),
+            // 'id_instansi_ajuan' => fake()->numberBetween(1,10),
             'id_instansi_banding' => fake()->numberBetween(1,10),
             'alasan_banding' => fake()->text,
-            'id_instansi' => fake()->numberBetween(1,10),
+            // 'id_instansi' => fake()->numberBetween(1,10),
         ];
     }
 }

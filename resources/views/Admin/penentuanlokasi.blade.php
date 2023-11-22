@@ -38,7 +38,7 @@
                                     <th scope="col">Pilihan 1</th>
                                     <th scope="col">Pilihan 2</th>
                                     <th scope="col">Domisili Terbaru</th>
-                                    <th scope="col">Pengajuan Lokasi Magang Final</th>
+                                    <th scope="col">Pengajuan Lokasi Magang</th>
                                     @if (!$finalisasiDone) <!-- Tampilkan kolom aksi hanya jika finalisasi belum dilakukan -->
                                       <th scope="col">Aksi</th>
                                     @endif
@@ -56,7 +56,11 @@
                                   <td>{{ $pemilihan_lokasi->pilihan1->nama }}</td>
                                   <td>{{ $pemilihan_lokasi->pilihan2->nama }}</td>
                                   <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
-                                  <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
+                                  @if ($pemilihan_lokasi->id_instansi_ajuan != NULL)
+                                    <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
+                                  @else
+                                    <td>-</td>
+                                  @endif
                                   {{-- <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalEdit">Edit</button></td> --}}
                                   @if (!$finalisasiDone) <!-- Tampilkan tombol aksi hanya jika finalisasi belum dilakukan -->
                                       <td>
@@ -72,7 +76,11 @@
                                           </form>
                                       </td>
                                   @endif
+                                  @if ($pemilihan_lokasi->id_instansi != NULL)
                                   <td>{{ $pemilihan_lokasi->mahasiswa->instansi->nama }}</td>
+                                  @else
+                                  <td>-</td>
+                                  @endif
                                 </tr>
                                 @endforeach
                                 <!-- <tr>
