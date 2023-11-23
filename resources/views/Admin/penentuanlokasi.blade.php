@@ -48,8 +48,20 @@
                                   <td>{{ $pemilihan_lokasi->pilihan1->nama }}</td>
                                   <td>{{ $pemilihan_lokasi->pilihan2->nama }}</td>
                                   <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
-                                    <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
-                                  <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalEdit">Edit</button></td>
+                                  <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
+                                  {{-- <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalEdit">Edit</button></td> --}}
+                                  <td>
+                                    <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_1 }}" method="post">
+                                      @csrf
+                                      @method('PUT')
+                                      <button type="submit" class="btn btn-warning mb-2" style="color: white;">Pilihan 1</button>
+                                    </form>
+                                    <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_2 }}" method="post">
+                                      @csrf
+                                      @method('PUT')
+                                      <button type="submit" class="btn btn-warning mb-2" style="color: white;">Pilihan 2</button>
+                                    </form>
+                                  </td>
                                   <td>{{ $pemilihan_lokasi->mahasiswa->instansi->nama }}</td>
                                 </tr>
                                 @endforeach

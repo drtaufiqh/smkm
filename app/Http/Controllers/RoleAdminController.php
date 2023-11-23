@@ -67,5 +67,13 @@ class RoleAdminController extends Controller
         ]);
     }
 
+    public function do_tentukanlokasi($id, $pilihan){
+        $data = [
+            'id_instansi_ajuan' => $pilihan
+        ];
+        PemilihanLokasi::where('id', $id)->update($data);
+        return redirect()->to('/admin/penentuanlokasi');
+    }
+
 }
 
