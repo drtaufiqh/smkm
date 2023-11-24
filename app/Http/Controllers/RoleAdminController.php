@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\finalisasi;
 use App\Models\Mahasiswa;
 use App\Models\LaporanAkhir;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class RoleAdminController extends Controller
             'title'=> 'Banding Lokasi Magang | Admin',
             'sidebar'=> 'lokasi',
             'circle_sidebar'=> 'banding',
-            'pemilihan_lokasis' => PemilihanLokasi::all()
+            'pemilihan_lokasis' => PemilihanLokasi::whereNotNull('id_instansi_banding')->get()
         ]);
     }
 
@@ -72,7 +73,63 @@ class RoleAdminController extends Controller
             'id_instansi_ajuan' => $pilihan
         ];
         PemilihanLokasi::where('id', $id)->update($data);
-        return redirect()->to('/admin/penentuanlokasi');
+        return redirect()->to('/admin/penentuanlokasi')->with('success', 'Berhasil mengubah lokasi ajuan');
+    }
+
+    public function do_terima_banding($id, $banding){
+        // $data = [
+        //     'id_instansi' => $banding
+        // ];
+        // PemilihanLokasi::where('id', $id)->update($data);
+        return redirect()->to('/admin/bandinglokasi')->with('success', 'Berhasil meneruskan banding lokasi');
+    }
+
+    public function do_tolak_banding($id){
+        $data = [
+            'id_instansi_banding' => NULL
+        ];
+        PemilihanLokasi::where('id', $id)->update($data);
+
+        return redirect()->to('/admin/bandinglokasi')->with('success', 'Berhasil menolak banding');
+    }
+
+    public function do_finalisasi_lokasi()
+    {
+        
+        // $pemilihan_lokasis = PemilihanLokasi::get();
+
+        // foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
+        //     $id_instansi_ajuan = $pemilihan_lokasi->id_instansi_ajuan;
+
+        //     $pemilihan_lokasi->update(['id_instansi' => $id_instansi_ajuan]);
+        // }
+        Finalisasi::create([
+            'finalisasi_penentuan_lokasi_admin' => 1,
+            'finalisasi_banding_lokasi_admin' => 0
+        ]);
+
+              return redirect()->to('/admin/penentuanlokasi')->with('success', 'Berhasil finalisasi');
+        
+    }
+
+    public function do_finalisasi_banding()
+    {
+        
+        // $pemilihan_lokasis = PemilihanLokasi::whereNotNull('id_instansi_banding')->get();
+
+        // foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
+        //     $id_instansi_banding = $pemilihan_lokasi->id_instansi_banding;
+
+        //     $pemilihan_lokasi->update(['id_instansi' => $id_instansi_banding]);
+        // }
+
+        $finalisasis = Finalisasi::get();
+        foreach ($finalisasis as $finalisasi) {
+
+            $finalisasi->update(['finalisasi_banding_lokasi_admin' => 1]);
+        }
+        return redirect()->to('/admin/penentuanlokasi')->with('success', 'Berhasil finalisasi');
+        
     }
 
 }

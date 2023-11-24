@@ -1,7 +1,12 @@
 @extends('layouts.main')
+@php
+  $finalisasiDone = \App\Models\Finalisasi::isFinalisasiDone();
+  // $finalisasiDone = false;
+@endphp
 
 @section('container')
     @include('partials.sidebar-admin')
+    
 
   <main id="main" class="main">
 
@@ -21,6 +26,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-lg-center">Penentuan Lokasi oleh Admin</h5>
+                        @include('komponen.pesan')
                         <!-- Table with stripped rows -->
                         <div class="table-responsive">
                         <table class="table datatable text-center">
@@ -32,8 +38,10 @@
                                     <th scope="col">Pilihan 1</th>
                                     <th scope="col">Pilihan 2</th>
                                     <th scope="col">Domisili Terbaru</th>
-                                    <th scope="col">Pengajuan Lokasi Magang Final</th>
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col">Pengajuan Lokasi Magang</th>
+                                    @if (!$finalisasiDone) <!-- Tampilkan kolom aksi hanya jika finalisasi belum dilakukan -->
+                                      <th scope="col">Aksi</th>
+                                    @endif
                                     <th scope="col">Lokasi Magang Final</th>
                                 </tr>
                             </thead>
@@ -48,21 +56,31 @@
                                   <td>{{ $pemilihan_lokasi->pilihan1->nama }}</td>
                                   <td>{{ $pemilihan_lokasi->pilihan2->nama }}</td>
                                   <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
-                                  <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
+                                  @if ($pemilihan_lokasi->id_instansi_ajuan != NULL)
+                                    <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
+                                  @else
+                                    <td>-</td>
+                                  @endif
                                   {{-- <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalEdit">Edit</button></td> --}}
-                                  <td>
-                                    <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_1 }}" method="post">
-                                      @csrf
-                                      @method('PUT')
-                                      <button type="submit" class="btn btn-warning mb-2" style="color: white;">Pilihan 1</button>
-                                    </form>
-                                    <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_2 }}" method="post">
-                                      @csrf
-                                      @method('PUT')
-                                      <button type="submit" class="btn btn-warning mb-2" style="color: white;">Pilihan 2</button>
-                                    </form>
-                                  </td>
+                                  @if (!$finalisasiDone) <!-- Tampilkan tombol aksi hanya jika finalisasi belum dilakukan -->
+                                      <td>
+                                          <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_1 }}" method="post">
+                                              @csrf
+                                              @method('PUT')
+                                              <button type="submit" class="btn btn-warning mb-2" style="color: white;">Pilihan 1</button>
+                                          </form>
+                                          <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_2 }}" method="post">
+                                              @csrf
+                                              @method('PUT')
+                                              <button type="submit" class="btn btn-warning mb-2" style="color: white;">Pilihan 2</button>
+                                          </form>
+                                      </td>
+                                  @endif
+                                  @if ($pemilihan_lokasi->id_instansi != NULL)
                                   <td>{{ $pemilihan_lokasi->mahasiswa->instansi->nama }}</td>
+                                  @else
+                                  <td>-</td>
+                                  @endif
                                 </tr>
                                 @endforeach
                                 <!-- <tr>
@@ -225,9 +243,29 @@
         </div>
     </div>
 </div>
+
+@if (!$finalisasiDone)
 <div class="text-center">
-  <button type="button" class="btn btn-primary btn-lg">Finalisasi</button>
+  <form action='/admin/do_finalisasi_lokasi' method="post">
+    @csrf 
+    @method('PUT') <!-- Tambahkan ini untuk menentukan metode PUT -->
+    <button type="submit" class="btn btn-primary btn-lg">Finalisasi</button>
+  </form>
 </div>
+@else
+<div class="alert alert-warning alert-dismissible fade show text-center" role="alert"
+
+  <i class="bi bi-info-circle me-1"></i>
+  Telah dilakukan finalisasi pengajuan lokasi
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+@endif
+
 </section>
 
   </main><!-- End #main -->

@@ -1,4 +1,8 @@
 @extends('layouts.main')
+@php
+  $finalisasi_Banding_Done = \App\Models\Finalisasi::isFinalisasiBandingDone();
+  // $finalisasi_Banding_Done = false;
+@endphp
 
 @section('container')
     @include('partials.sidebar-admin')
@@ -21,6 +25,8 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-lg-center">Banding Lokasi oleh Admin</h5>
+                        @include('komponen.pesan')
+
                         <!-- Table with stripped rows -->
                         <div class="table-responsive">
                         <table class="table datatable text-center">
@@ -32,7 +38,9 @@
                                     <th scope="col">Lokasi Awal</th>
                                     <th scope="col">Lokasi Banding</th>
                                     <th scope="col">Alasan</th>
-                                    <th scope="col">Aksi</th>
+                                    @if (!$finalisasi_Banding_Done)
+                                      <th scope="col">Aksi</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -43,83 +51,38 @@
                                     <th scope="row">{{ $i }}</th>
                                     <td>{{ $pemilihan_lokasi->mahasiswa->nama }}</td>
                                     <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
-                                    <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
+                                    @if ($pemilihan_lokasi->id_instansi_ajuan != NULL)
+                                      <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
+                                    @else
+                                      <td>-</td>
+                                    @endif
                                     <td>{{ $pemilihan_lokasi->instansiBanding->nama }}</td>
                                     <td>{{ $pemilihan_lokasi->alasan_banding }}</td>
-                                    <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalterus">Teruskan</button>
-                                      <button type="button" class="btn btn-danger" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModaltolak">Penolakan</button></td>
+                                    @if (!$finalisasi_Banding_Done)
+                                    <td>
+                                        <form action="/admin/do_terima_banding/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_instansi_banding }}" method="POST">
+                                          @csrf 
+                                          @method('PUT')
+                                          <button type="submit" class="btn btn-success mb-2" style="color: white;">Teruskan</button>
+                                        </form>
+                                        <form action="/admin/do_tolak_banding/{{ $pemilihan_lokasi->id }}" method="post">
+                                          @csrf
+                                          @method('PUT')
+                                          <button type="submit" class="btn btn-danger" style="color: white;">Tolak</button>
+                                        </form>
+                                    </td>
+                                    @endif
+
                                   </tr>
                                   @endforeach
-                                <!-- <tr>
-                                    <th scope="row">1</th>
-                                    <td>Andi</td>
-                                    <td>Jakarta Utara</td>
-                                    <td>BPS Jakarta Pusat</td>
-                                    <td>BPS Jakarta Timur</td>
-                                    <td>Tidak Izin Orang Tua</td>
-                                    <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalterus">Teruskan</button>
-                                      <button type="button" class="btn btn-danger" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModaltolak">Penolakan</button></td>
-                                    
-                                </tr>
-                                <th scope="row">2</th>
-                                    <td>Budi</td>
-                                    <td>Jakarta Barat</td>
-                                    <td>BPS Jakarta Pusat</td>
-                                    <td>BPS Jakarta Timur</td>
-                                    <td>Tidak Izin Orang Tua</td>
-                                    <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalterus">Teruskan</button>
-                                      <button type="button" class="btn btn-danger" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModaltolak">Penolakan</button></td>
-                                    
-                                </tr>
-                                <th scope="row">3</th>
-                                    <td>Caca</td>
-                                    <td>Jakarta Selatan</td>
-                                    <td>BPS Jakarta Pusat</td>
-                                    <td>BPS Jakarta Utara</td>
-                                    <td>Tidak Izin Orang Tua</td>
-                                    <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalterus">Teruskan</button>
-                                      <button type="button" class="btn btn-danger" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModaltolak">Penolakan</button></td>
-                                    
-                                <tr>
-                                <th scope="row">4</th>
-                                    <td>Dono</td>
-                                    <td>Jakarta Timur</td>
-                                    <td>BPS Jakarta Utara</td>
-                                    <td>BPS Jakarta Timur</td>
-                                    <td>Tidak Izin Orang Tua</td>
-                                    <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalterus">Teruskan</button>
-                                      <button type="button" class="btn btn-danger" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModaltolak">Penolakan</button></td>
-                                    
-                                </tr>
-                                <tr>
-                                <th scope="row">5</th>
-                                    <td>Ela</td>
-                                    <td>Jakarta Timur</td>
-                                    <td>BPS Jakarta Barat</td>
-                                    <td>BPS Jakarta Selatan</td>
-                                    <td>Tidak Izin Orang Tua</td>
-                                    <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalterus">Teruskan</button>
-                                      <button type="button" class="btn btn-danger" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModaltolak">Penolakan</button></td>
-                                    
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>Feny</td>
-                                    <td>Jakarta Selatan</td>
-                                    <td>BPS Jakarta Barat</td>
-                                    <td>BPS Jakarta Timur</td>
-                                    <td>Tidak Izin Orang Tua</td>
-                                    <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalterus">Teruskan</button>
-                                      <button type="button" class="btn btn-danger" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModaltolak">Penolakan</button></td>
-                                    
-                                </tr> -->
+                               
                             </tbody>
                         </table>
                       </div>
                         <!-- End Table with stripped rows -->
 
                   <!-- Modal Teruskan -->
-                  <div class="modal fade mt-5" id="myModalterus" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                  {{-- <div class="modal fade mt-5" id="myModalterus" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog mt-5">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -132,10 +95,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Modal Penolakan -->
-                <div class="modal fade mt-5" id="myModaltolak" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                {{-- <div class="modal fade mt-5" id="myModaltolak" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
                   <div class="modal-dialog mt-5">
                       <div class="modal-content">
                           <div class="modal-header">
@@ -148,14 +111,32 @@
                           </div>
                       </div>
                   </div>
-              </div>
+              </div> --}}
             </div>
         </div>
     </div>
 </div>
+@if (!$finalisasi_Banding_Done)
 <div class="text-center">
-  <button type="button" class="btn btn-primary btn-lg">Finalisasi</button>
+  <form action='/admin/do_finalisasi_banding' method="post">
+    @csrf 
+    @method('PUT') <!-- Tambahkan ini untuk menentukan metode PUT -->
+    <button type="submit" class="btn btn-primary btn-lg">Finalisasi</button>
+  </form>
 </div>
+@else
+<div class="alert alert-warning alert-dismissible fade show text-center" role="alert"
+
+  <i class="bi bi-info-circle me-1"></i>
+  Telah dilakukan finalisasi banding lokasi
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+@endif
 </section>
 
   </main><!-- End #main -->
