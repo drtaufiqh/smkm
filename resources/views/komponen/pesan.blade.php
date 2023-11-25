@@ -1,8 +1,10 @@
-@if (Session::has('success') || $errors->any())
+@if (Session::has('success') || Session::has('failed')|| $errors->any())
     <div class="pt-3" id="notification">
         @if (Session::has('success'))
             <p class="alert alert-success">{{ Session::get('success') }}</p>
-        @elseif (Session::has('failed'))
+        @endif
+
+        @if (Session::has('failed'))
             <p class="alert alert-danger">{{ Session::get('failed') }}</p>
         @endif
 

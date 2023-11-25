@@ -103,7 +103,7 @@ class RoleAdminController extends Controller
             $id_instansi_ajuan = $pemilihan_lokasi->id_instansi_ajuan;
 
             if ($id_instansi_ajuan == NULL){
-              return redirect()->to('/admin/penentuanlokasi')->with('success', 'Terdapat mahasiswa yang belum diajukan');
+              return redirect()->to('/admin/penentuanlokasi')->with('failed', 'Terdapat mahasiswa yang belum diajukan');
             }
         }
         Finalisasi::create([
