@@ -7,6 +7,7 @@ use App\Models\Mahasiswa;
 use App\Models\LaporanAkhir;
 use Illuminate\Http\Request;
 use App\Models\PemilihanLokasi;
+use SebastianBergmann\Type\NullType;
 
 class RoleAdminController extends Controller
 {
@@ -96,13 +97,15 @@ class RoleAdminController extends Controller
     public function do_finalisasi_lokasi()
     {
         
-        // $pemilihan_lokasis = PemilihanLokasi::get();
+        $pemilihan_lokasis = PemilihanLokasi::get();
 
-        // foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
-        //     $id_instansi_ajuan = $pemilihan_lokasi->id_instansi_ajuan;
+        foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
+            $id_instansi_ajuan = $pemilihan_lokasi->id_instansi_ajuan;
 
-        //     $pemilihan_lokasi->update(['id_instansi' => $id_instansi_ajuan]);
-        // }
+            if ($id_instansi_ajuan == NULL){
+              return redirect()->to('/admin/penentuanlokasi')->with('success', 'Terdapat mahasiswa yang belum diajukan');
+            }
+        }
         Finalisasi::create([
             'finalisasi_penentuan_lokasi_admin' => 1,
             'finalisasi_banding_lokasi_admin' => 0
