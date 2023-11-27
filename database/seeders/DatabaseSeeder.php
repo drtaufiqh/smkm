@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Admin;
+use App\Models\TemplateImport;
 use Illuminate\Database\Seeder;
 use \App\Models\User;
 use \App\Models\DosenPembimbing;

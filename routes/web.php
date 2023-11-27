@@ -78,6 +78,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/admin/import-mahasiswa', [MahasiswaController::class, 'mahasiswaImportExcel']);
 
         Route::post('/admin/import-akun-mahasiswa', [RoleAdminController::class, 'imporAkunMahasiswa']);
+        Route::get('/admin/export-template-akun-mahasiswa', [RoleAdminController::class, 'exportTemplateAkunMahasiswa']);
     });
 
     # bps instansi

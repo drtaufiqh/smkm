@@ -25,9 +25,9 @@
                 <!-- TOMBOL TAMBAH EXPORT IMPORT DATA -->
                 <div class="pb-3">
                   {{-- <a href='{{ url('/admin/mahasiswas/create') }}' class="btn btn-primary">+ Tambah Data</a> --}}
-                  {{-- <a href='{{ url('/admin/export-mahasiswa') }}' class="btn btn-primary">Export</a> --}}
+                  <a href='{{ url('/admin/export-template-akun-mahasiswa') }}' class="btn btn-primary">Template Daftar Akun Mahasiswa</a>
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importModal">
-                    Import
+                    Import Daftar Akun Mahasiswa
                   </button>
                 </div>
 
@@ -36,7 +36,7 @@
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="importModalLabel">Modal title</h1>
+                        <h1 class="modal-title fs-5" id="importModalLabel">Import Daftar Akun Mahasiswa</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <form action="/admin/import-akun-mahasiswa" method="post" enctype="multipart/form-data">
@@ -78,9 +78,9 @@
                                     <th scope="row">{{ $i }}</th>
                                     <td>{{ $mahasiswa->nama }}</td>
                                     <td>{{ $mahasiswa->jenis_kelamin }}</td>
-                                    <td>{{ optional($mahasiswa->instansi)->nama }}</td>
-                                    <td>{{ optional($mahasiswa->pembimbingLapangan)->nama }}</td>
-                                    <td>{{ optional($mahasiswa->dosenPembimbing)->nama }}</td>
+                                    <td>{{ optional($mahasiswa->instansi)->nama ?? '-' }}</td>
+                                    <td>{{ optional($mahasiswa->pembimbingLapangan)->nama ?? '-' }}</td>
+                                    <td>{{ optional($mahasiswa->dosenPembimbing)->nama ?? '-' }}</td>
                                     <td><a href="#"><button type="button" class="btn btn-success my-4" style="color: white;" data-bs-toggle="modal">Lihat</button></a></td>
                                     <td><a href="#"><button type="button" class="btn btn-success w-100 my-2" style="color: white;" data-bs-toggle="modal">Harian</button></a>
                                         <a href="#"><button type="button" class="btn btn-success w-100" style="color: white;" data-bs-toggle="modal">Bulanan</button></a></td>

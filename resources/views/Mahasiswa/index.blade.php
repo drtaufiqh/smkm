@@ -56,7 +56,8 @@
                         <i class="bi bi-building"></i>
                       </div>
                       <div class="ps-3">
-                        <p class="mb-0">{{ Auth::user()->info()->instansi->nama }}</p>
+                        <p class="mb-0">Lokasi Magang</p>
+                        <span class="text-muted small">{{ optional(Auth::user()->info()->instansi)->nama ?? '-' }}</span>
                         <!-- <button class="btn btn-primary btn-sm">Tentukan</button> -->
                       </div>
                     </div>
@@ -78,7 +79,7 @@
                       </div>
                       <div class="ps-3">
                         <p class="mb-0">Dosen pembimbing</p>
-                        <span class="text-muted small">{{ Auth::user()->info()->dosenpembimbing->nama }}</span>
+                        <span class="text-muted small">{{ (Auth::user()->info()->dosenpembimbing) ? Auth::user()->info()->dosenpembimbing->nama : '-' }}</span>
                       </div>
                     </div>
                     <div class="d-flex align-items-center mt-2">
@@ -89,7 +90,7 @@
                       </div>
                       <div class="ps-3">
                         <p class="mb-0">Pembimbing lapangan</p>
-                        <span class="text-muted small">{{ Auth::user()->info()->pembimbinglapangan->nama }}</span>
+                        <span class="text-muted small">{{ (Auth::user()->info()->pembimbinglapangan) ? Auth::user()->info()->pembimbinglapangan->nama : '-' }}</span>
                       </div>
                     </div>
                   </div>

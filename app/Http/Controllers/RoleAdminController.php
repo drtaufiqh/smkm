@@ -96,5 +96,8 @@ class RoleAdminController extends Controller
         Excel::import(new AkunMahasiswaImport, public_path("/AkunMahasiswa/$namaFile"));
         return redirect()->to('/admin/daftar-mahasiswa');
     }
+    public function exportTemplateAkunMahasiswa(){
+        return response()->download(public_path("/AkunMahasiswa/TemplateDaftarAkunMahasiswa.xlsx"), "Template Daftar Akun Mahasiswa.xlsx");
+    }
 }
 
