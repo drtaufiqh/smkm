@@ -139,7 +139,8 @@ class RoleMahasiswaController extends Controller
         return redirect()->to('/mahasiswa/submitted-pemilihan-lokasi');
     }
 
-    public function waitingPemilihanLokasi(){
+    public function waitingPemilihanLokasi()
+    {
         return view('mahasiswa.submitted-pemilihan-lokasi', [
             'title' => 'Lokasi Magang | Mahasiswa',
             'sidebar' => 'lokasi',

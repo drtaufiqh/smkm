@@ -10,34 +10,40 @@ class PemilihanLokasi extends Model
     use HasFactory;
 
     protected $fillable = ['id_mhs', 'id_pilihan_1', 'id_pilihan_2', 'alasan_pilihan_1', 'alasan_pilihan_2', 'id_instansi_ajuan', 'id_instansi_banding', 'alasan_banding', 'id_instansi', 'created at', 'updated at'];
-    protected $table = 'pemilihan_lokasis'; 
+    protected $table = 'pemilihan_lokasis';
     public $timestamp = false;
 
     public static $rules = [
         'id_mhs' => 'exists:mahasiswas,id'
     ];
 
-    public function mahasiswa(){
-        return $this->belongsTo(Mahasiswa::class, 'id_mhs');
+    public function mahasiswa()
+    {
+        return $this->belongsTo(Mahasiswa::class, 'id_mhs', 'id');
     }
 
-    public function pilihan1(){
+    public function pilihan1()
+    {
         return $this->belongsTo(Instansi::class, 'id_pilihan_1');
     }
 
-    public function pilihan2(){
+    public function pilihan2()
+    {
         return $this->belongsTo(Instansi::class, 'id_pilihan_2');
     }
 
-    public function instansiAjuan(){
+    public function instansiAjuan()
+    {
         return $this->belongsTo(Instansi::class, 'id_instansi_ajuan');
     }
 
-    public function instansiBanding(){
+    public function instansiBanding()
+    {
         return $this->belongsTo(Instansi::class, 'id_instansi_banding');
     }
 
-    public function instansi(){
-        return $this->belongsTo(Instansi::class, 'id_instansi');
+    public function instansi()
+    {
+        return $this->belongsTo(Instansi::class, 'id_instansi', 'id');
     }
 }

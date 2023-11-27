@@ -95,6 +95,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/bps-provinsi/dashboard', [RoleBpsProvinsiController::class, 'dashboard']);
         Route::get('/bps-provinsi/profil', [RoleBpsProvinsiController::class, 'profil']);
         Route::put('/bps-provinsi/setujui-pemilihan/{id}', [RoleBpsProvinsiController::class, 'setujuiPemilihan']);
+        // Route::put('/bps-provinsi/setujui-banding/{id}', [RoleBpsProvinsiController::class, 'setujuiBanding']);
+        // Route::put('/bps-provinsi/tolak-banding/{id}', [RoleBpsProvinsiController::class, 'tolakBanding']);
+        Route::put('/bps-provinsi/do_keputusanbanding/{id}/{lokasi_banding}/{action}', [RoleBpsProvinsiController::class, 'do_keputusanbanding']);
     });
 
     # dospem

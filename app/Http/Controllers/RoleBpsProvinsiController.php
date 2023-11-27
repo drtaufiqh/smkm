@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Instansi;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use App\Models\PemilihanLokasi;
 
@@ -74,5 +75,57 @@ class RoleBpsProvinsiController extends Controller
         ];
         $pemilihan_lokasi->update($data);
         return redirect()->to('/bps-provinsi/approvalmahasiswa');
+    }
+
+    // public function setujuiBanding($id)
+    // {
+    //     $lokasi_banding = PemilihanLokasi::where('id', $id)->first();
+    //     $data = [
+    //         'id_instansi' => $lokasi_banding->id_instansi_banding
+    //     ];
+    //     $lokasi_banding->update($data);
+    //     return redirect()->to('/bps-provinsi/bandingmahasiswa');
+    // }
+
+    // public function tolakBanding($id)
+    // {
+    //     $lokasi_banding = PemilihanLokasi::where('id', $id)->first();
+    //     $data = [
+    //         'id_instansi' => $lokasi_banding->mahasiswa->id_instansi
+    //     ];
+    //     $lokasi_banding->update($data);
+    //     return redirect()->to('/bps-provinsi/bandingmahasiswa');
+    // }
+
+    // public function do_keputusanbanding($id, $lokasi_banding)
+    // {
+    //     $lokasi_banding = PemilihanLokasi::where('id', $id)->first();
+    //     $data = [
+    //         'id_instansi' => $lokasi_banding
+    //     ];
+    //     $lokasi_banding->mahasiswa->update($data);
+    //     return redirect()->to('/bps-provinsi/bandingmahasiswa');
+    // }
+
+
+    public function do_keputusanbanding($id, $lokasi_banding, $action)
+    {
+        // Dapatkan data pemilihan lokasi berdasarkan ID
+        $pemilihan_lokasi = PemilihanLokasi::find($id);
+
+        if ($pemilihan_lokasi) {
+            // Tentukan tindakan berdasarkan parameter $action
+            if ($action == 'setujui') {
+                // Lakukan pembaruan pada tabel mahasiswa berdasarkan id_instansi banding
+                $pemilihan_lokasi->mahasiswa->update(['id_instansi' => $lokasi_banding]);
+            } elseif ($action == 'tidaksetujui') {
+                // Lakukan pembaruan pada tabel mahasiswa berdasarkan id_instansi pada tabel pemilihan lokasi
+                $pemilihan_lokasi->mahasiswa->update(['id_instansi' => $pemilihan_lokasi->id_instansi]);
+            }
+
+            return redirect()->to('/bps-provinsi/bandingmahasiswa');
+        } else {
+            return redirect()->to('/bps-provinsi/bandingmahasiswa');
+        }
     }
 }

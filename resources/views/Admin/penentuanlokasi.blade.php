@@ -65,69 +65,6 @@
                                   <td>{{ $pemilihan_lokasi->mahasiswa->instansi->nama }}</td>
                                 </tr>
                                 @endforeach
-                                <!-- <tr>
-                                    <th scope="row">1</th>
-                                    <td>Andi</td>
-                                    <td>3SD2</td>
-                                    <td>BPS Jakarta Utara</td>
-                                    <td>BPS Jakarta Timur</td>
-                                    <td>Jakarta Utara</td>
-                                    <td>Belum Ditentukan</td>
-                                    <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalEdit">Edit</button></td>
-                                    <td>BPS Jakarta Timur</td>
-                                </tr>
-                                <th scope="row">2</th>
-                                    <td>Budi</td>
-                                    <td>3SD2</td>
-                                    <td>BPS Jakarta Barat</td>
-                                    <td>BPS Jakarta Timur</td>
-                                    <td>Jakarta Barat</td>
-                                    <td>Belum Ditentukan</td>
-                                    <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModalEdit">Edit</button></td>
-                                    <td>BPS Jakarta Timur</td>
-                                </tr>
-                                <th scope="row">3</th>
-                                    <td>Caca</td>
-                                    <td>3SD2</td>
-                                    <td>BPS Jakarta Pusat</td>
-                                    <td>BPS Jakarta Utara</td>
-                                    <td>Jakarta Selatan</td>
-                                    <td>Belum Ditentukan</td>
-                                    <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Ajukan</button></td>
-                                    <td>Belum Ditentukan</td>
-                                <tr>
-                                <th scope="row">4</th>
-                                    <td>Dono</td>
-                                    <td>3SD2</td>
-                                    <td>BPS Jakarta Utara</td>
-                                    <td>BPS Jakarta Timur</td>
-                                    <td>Jakarta Timur</td>
-                                    <td>Belum Ditentukan</td>
-                                    <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Ajukan</button></td>
-                                    <td>Belum Ditentukan</td>
-                                </tr>
-                                <tr>
-                                <th scope="row">5</th>
-                                    <td>Ela</td>
-                                    <td>3SD2</td>
-                                    <td>BPS Jakarta Barat</td>
-                                    <td>BPS Jakarta Selatan</td>
-                                    <td>Jakarta Timur</td>
-                                    <td>Belum Ditentukan</td>
-                                    <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Ajukan</button></td>
-                                    <td>Belum Ditentukan</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>Feny</td>
-                                    <td>3SD2</td>
-                                    <td>BPS Jakarta Selatan</td>
-                                    <td>BPS Jakarta Timur</td>
-                                    <td>Jakarta Selatan</td>
-                                    <td>Belum Ditentukan</td>
-                                    <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Ajukan</button></td>
-                                    <td>Belum Ditentukan</td>
-                                </tr> -->
                             </tbody>
                         </table>
                       </div>

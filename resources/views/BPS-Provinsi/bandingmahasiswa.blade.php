@@ -64,10 +64,11 @@
                                     <th scope="col">Nama Mahasiswa</th>
                                     <th scope="col">NIM</th>
                                     <th scope="col">Domisili</th>
-                                    <th scope="col">BPS Kab/Kota Awal</th>
-                                    <th scope="col">BPS Kab/Kota Banding</th>
+                                    <th scope="col">BPS Instansi Awal</th>
+                                    <th scope="col">BPS Instansi Banding</th>
                                     <th scope="col">Alasan</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">BPS Instansi yang Disetujui</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,96 +79,30 @@
                                     <td>{{ $pemilihan_lokasi->mahasiswa->nama }}</td>
                                     <td>{{ $pemilihan_lokasi->mahasiswa->nim }}</td>
                                     <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
-                                    <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
+                                    <td>{{ $pemilihan_lokasi->instansi->nama }}</td>
                                     <td>{{ $pemilihan_lokasi->instansiBanding->nama }}</td>
-                                    <td>-</td>
-                                    <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
+                                    <td>{{ $pemilihan_lokasi->alasan_banding }}</td>
+                                    <td>
+                                      <form action="/bps-provinsi/do_keputusanbanding/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_instansi_banding }}/setujui" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-success mb-2">Setujui</button>
+                                    </form>
+                                    
+                                    <form action="/bps-provinsi/do_keputusanbanding/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_instansi }}/tidaksetujui" method="post">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-danger">Tidak Setujui</button>
+                                    </form>
+                                    
+                                    </td>
+                                    <td>{{ $pemilihan_lokasi->mahasiswa->instansi->nama }}</td>
                                 </tr>
                                 @endforeach
-                                {{-- <tr>
-                                    <th scope="row">1</th>
-                                    <td>Andi</td>
-                                    <td>123456789</td>
-                                    <td>Jakarta Timur</td>
-                                    <td>BPS Jakarta Utara</td>
-                                    <td>BPS Jakarta Timur</td>
-                                    <td>Jauh ke Jakarta Utara</td>
-                                    <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Budi</td>
-                                    <td>222222222</td>
-                                    <td>Jakarta Barat</td>
-                                    <td>BPS Jakarta Selatan</td>
-                                    <td>BPS Jakarta Timur</td>
-                                    <td>Lebih dekat ke BPS Jakarta Timur</td>
-                                    <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Caca</td>
-                                    <td>333333333</td>
-                                    <td>Jakarta Pusat</td>
-                                    <td>BPS Jakarta Selatan</td>
-                                    <td>BPS Jakarta Pusat</td>
-                                    <td>Mahal Ongkir Kesana</td>
-                                    <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">4</th>
-                                    <td>Dono</td>
-                                    <td>444444444</td>
-                                    <td>Jakarta Utara</td>
-                                    <td>BPS Jakarta Timur</td>
-                                    <td>BPS Jakarta Utara</td>
-                                    <td>Orang tua tidak izin</td>
-                                    <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">5</th>
-                                    <td>Ela</td>
-                                    <td>555555555</td>
-                                    <td>Jakarta Barat</td>
-                                    <td>BPS Jakarta Pusat</td>
-                                    <td>BPS Jakarta Barat</td>
-                                    <td>Takut ga sesuai kemampuan</td>
-                                    <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">6</th>
-                                    <td>Feny</td>
-                                    <td>666666666</td>
-                                    <td>Jakarta Selatan</td>
-                                    <td>BPS Jakarta Timur</td>
-                                    <td>BPS Jakarta Selatan</td>
-                                    <td>Belum terbiasa lingkungannya</td>
-                                    <td><button type="button" class="btn btn-warning" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Diajukan</button></td>
-                                </tr> --}}
                             </tbody>
                         </table>
                         </div>
                           <!-- End Table with stripped rows -->
-
-                    <!-- Modal -->
-                    <div class="modal fade mt-5" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-dialog mt-5">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h5 class="modal-title">Approval Pengajuan Mahasiswa</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                  <div class="card-body text-center">
-                                      <p class="card-text">
-                                          <a href="#" class="btn btn-success mx-4" data-bs-toggle="modal" >Setujui</a>
-                                          <a href="#" class="btn btn-danger mx-4" data-bs-toggle="modal" >Tidak Setujui</a>
-                                      </p>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
 
                 </div>
           </div>
@@ -176,6 +111,27 @@
   <div class="text-center">
     <button type="button" class="btn btn-primary btn-lg">Finalisasi</button>
   </div>
+
+  {{-- @if (!$finalisasiDone)
+  <div class="text-center">
+    <form action='/admin/do_finalisasi_lokasi' method="post">
+      @csrf 
+      @method('PUT') <!-- Tambahkan ini untuk menentukan metode PUT -->
+      <button type="submit" class="btn btn-primary btn-lg">Finalisasi</button>
+    </form>
+  </div>
+  @else
+  <div class="alert alert-warning alert-dismissible fade show text-center" role="alert"
+    <i class="bi bi-info-circle me-1"></i>
+    Telah dilakukan finalisasi pengajuan lokasi
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  @endif --}}
 </section>
 
 
