@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Instansi;
 use App\Models\Mahasiswa;
+use App\Models\Finalisasi;
 use Illuminate\Http\Request;
 use App\Models\PemilihanLokasi;
 
@@ -77,37 +78,6 @@ class RoleBpsProvinsiController extends Controller
         return redirect()->to('/bps-provinsi/approvalmahasiswa');
     }
 
-    // public function setujuiBanding($id)
-    // {
-    //     $lokasi_banding = PemilihanLokasi::where('id', $id)->first();
-    //     $data = [
-    //         'id_instansi' => $lokasi_banding->id_instansi_banding
-    //     ];
-    //     $lokasi_banding->update($data);
-    //     return redirect()->to('/bps-provinsi/bandingmahasiswa');
-    // }
-
-    // public function tolakBanding($id)
-    // {
-    //     $lokasi_banding = PemilihanLokasi::where('id', $id)->first();
-    //     $data = [
-    //         'id_instansi' => $lokasi_banding->mahasiswa->id_instansi
-    //     ];
-    //     $lokasi_banding->update($data);
-    //     return redirect()->to('/bps-provinsi/bandingmahasiswa');
-    // }
-
-    // public function do_keputusanbanding($id, $lokasi_banding)
-    // {
-    //     $lokasi_banding = PemilihanLokasi::where('id', $id)->first();
-    //     $data = [
-    //         'id_instansi' => $lokasi_banding
-    //     ];
-    //     $lokasi_banding->mahasiswa->update($data);
-    //     return redirect()->to('/bps-provinsi/bandingmahasiswa');
-    // }
-
-
     public function do_keputusanbanding($id, $lokasi_banding, $action)
     {
         // Dapatkan data pemilihan lokasi berdasarkan ID
@@ -122,10 +92,38 @@ class RoleBpsProvinsiController extends Controller
                 // Lakukan pembaruan pada tabel mahasiswa berdasarkan id_instansi pada tabel pemilihan lokasi
                 $pemilihan_lokasi->mahasiswa->update(['id_instansi' => $pemilihan_lokasi->id_instansi]);
             }
-
             return redirect()->to('/bps-provinsi/bandingmahasiswa');
         } else {
             return redirect()->to('/bps-provinsi/bandingmahasiswa');
         }
+    }
+
+    // public function do_finalisasi_banding()
+    // {
+    //     $finalisasis = Finalisasi::get();
+    //     foreach ($finalisasis as $finalisasi) {
+
+    //         $finalisasi->update(['finalisasi_banding_lokasi_bpsprov' => 1]);
+    //     }
+    //     return redirect()->to('/bps-provinsi/bandingmahasiswa')->with('success', 'Berhasil Finalisasi');
+    // }
+
+    public function do_finalisasi_banding()
+    {
+
+        $pemilihan_lokasis = PemilihanLokasi::get();
+
+        foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
+            $id_instansi = $pemilihan_lokasi->mahasiswa->id_instansi;
+
+            if ($id_instansi == NULL) {
+                return redirect()->to('/bps-provinsi/bandingmahasiswa')->with('failed', 'Terdapat mahasiswa yang belum diberi keputusan');
+            }
+        }
+        Finalisasi::create([
+            'finalisasi_banding_lokasi_bpsprov' => 1
+        ]);
+
+        return redirect()->to('/bps-provinsi/bandingmahasiswa')->with('success', 'Berhasil finalisasi');
     }
 }

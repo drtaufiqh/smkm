@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@php
+  $finalisasiDone = \App\Models\Finalisasi::isFinalisasiDone();
+@endphp
+
 @section('container')
     @include('partials.sidebar-prov')
 
@@ -82,6 +86,7 @@
                                     <td>{{ $pemilihan_lokasi->instansi->nama }}</td>
                                     <td>{{ $pemilihan_lokasi->instansiBanding->nama }}</td>
                                     <td>{{ $pemilihan_lokasi->alasan_banding }}</td>
+                                    @if (!$finalisasiDone) 
                                     <td>
                                       <form action="/bps-provinsi/do_keputusanbanding/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_instansi_banding }}/setujui" method="post">
                                         @csrf
@@ -96,6 +101,7 @@
                                     </form>
                                     
                                     </td>
+                                    @endif
                                     <td>{{ $pemilihan_lokasi->mahasiswa->instansi->nama }}</td>
                                 </tr>
                                 @endforeach
@@ -108,30 +114,21 @@
           </div>
       </div>
   </div>
-  <div class="text-center">
-    <button type="button" class="btn btn-primary btn-lg">Finalisasi</button>
-  </div>
 
-  {{-- @if (!$finalisasiDone)
+  @if (!$finalisasiDone)
   <div class="text-center">
-    <form action='/admin/do_finalisasi_lokasi' method="post">
+    <form action='/bps-provinsi/do_finalisasi_banding' method="post">
       @csrf 
       @method('PUT') <!-- Tambahkan ini untuk menentukan metode PUT -->
       <button type="submit" class="btn btn-primary btn-lg">Finalisasi</button>
     </form>
   </div>
   @else
-  <div class="alert alert-warning alert-dismissible fade show text-center" role="alert"
-    <i class="bi bi-info-circle me-1"></i>
-    Telah dilakukan finalisasi pengajuan lokasi
-    <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="alert"
-      aria-label="Close"
-    ></button>
+  <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+    Telah dilakukan finalisasi banding lokasi
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
-  @endif --}}
+  @endif
 </section>
 
 
