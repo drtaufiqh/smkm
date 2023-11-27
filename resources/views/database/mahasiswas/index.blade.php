@@ -17,9 +17,37 @@
         </form>
       </div>
       
-      <!-- TOMBOL TAMBAH DATA -->
+      <!-- TOMBOL TAMBAH EXPORT IMPORT DATA -->
       <div class="pb-3">
         <a href='{{ url('/admin/mahasiswas/create') }}' class="btn btn-primary">+ Tambah Data</a>
+        <a href='{{ url('/admin/export-mahasiswa') }}' class="btn btn-primary">Export</a>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importModal">
+          Import
+        </button>
+      </div>
+
+      <!-- Modal Import -->
+      <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="importModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/admin/import-mahasiswa" method="post" enctype="multipart/form-data">
+              <div class="modal-body">
+                {{ csrf_field() }}
+                <div class="from-group">
+                  <input type="file" name="file_import" required accept=".xlsx, .csv">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Import</button>
+              </div>
+            </form>
+        </div>
+        </div>
       </div>
 
       <div class="table-responsive mb-3">

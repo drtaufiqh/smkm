@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\MahasiswaImport;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use App\Exports\MahasiswaExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Session;
 
 class MahasiswaController extends Controller
@@ -36,7 +39,7 @@ class MahasiswaController extends Controller
                     ->orWhere('id_instansi', 'like', "%$katakunci%")
                     ->paginate($jumlahbaris);
         }else{
-            $data = Mahasiswa::orderBy('id', 'asc')->paginate($jumlahbaris);
+            $data = Mahasiswa::orderBy('id', 'desc')->paginate($jumlahbaris);
         }
         return view('database.mahasiswas.index')->with('data', $data);
     }
@@ -299,5 +302,19 @@ class MahasiswaController extends Controller
     {
         Mahasiswa::where('id', $id)->delete();
         return redirect()->to('/admin/mahasiswas')->with('success','Data berhasil dihapus!');
+    }
+
+    public function mahasiswaExport(){
+        return Excel::download(new MahasiswaExport, 'Mahasiswa.xlsx');
+    }
+
+    public function mahasiswaImportExcel(Request $request){
+        // dd($request->file('file_import'));
+        $file = $request->file('file_import');
+        $namaFile = $file->getClientOriginalName();
+        $file->move('DataMahasiswa', $namaFile);
+
+        Excel::import(new MahasiswaImport, public_path("/DataMahasiswa/$namaFile"));
+        return redirect()->to('/admin/mahasiwas');
     }
 }
