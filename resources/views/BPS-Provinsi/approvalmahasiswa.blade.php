@@ -69,15 +69,12 @@
                                         @if ($pemilihan_lokasi->id_instansi_ajuan == $pemilihan_lokasi->id_instansi)
                                         <td>
                                             <div class="alert alert-success text-center" role="alert">
-                                            
-                                            <i class="bi bi-info-circle me-1"></i>
                                             Disetujui
                                             </div>
                                         </td>
                                         @else
                                         <td>
                                             <div class="alert alert-danger text-center" role="alert">
-            
                                             Dialihkan
                                             </div>
                                           </td>
