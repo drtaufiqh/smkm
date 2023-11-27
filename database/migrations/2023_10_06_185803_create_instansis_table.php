@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('id_kecamatan')->nullable()->constraint('kecamatans')->onDelete('set null')->onUpdate('cascade');
             // $table->foreign('id_kecamatan')->references('id')->on('kecamatans')->onDelete('set null')->onUpdate('cascade');
             $table->foreignId('id_kab_kota')->nullable()->constraint('kab_kotas')->onDelete('set null')->onUpdate('cascade');
+            $table->string('kode_kabkota',4);
             // $table->foreignId('kode_kabkota')->nullable();
             // $table->foreign('kode_kabkota')->references('id')->on('kab_kotas')->onDelete('set null')->onUpdate('cascade');
             $table->text('alamat_lengkap');

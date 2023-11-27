@@ -66,6 +66,7 @@ class DatabaseSeeder extends Seeder
         ProvinsiSeeder::run();
         KabKotaSeeder::run();
         KecamatanSeeder::run();
+        InstansiSeeder::run();
 
         $admin = new Admin();
         $admin->nama = "Admin";
@@ -77,15 +78,15 @@ class DatabaseSeeder extends Seeder
         $dospem->id_user = 3;
         $dospem->save();
 
-        Instansi::factory(8)->create();
-        $instansi = Instansi::factory()->create();
-        $instansi->is_prov = false;
-        $instansi->id_user = 6;
-        $instansi->save();
-        $instansi = Instansi::factory()->create();
-        $instansi->is_prov = true;
-        $instansi->id_user = 5;
-        $instansi->save();
+        // Instansi::factory(8)->create();
+        // $instansi = Instansi::factory()->create();
+        // $instansi->is_prov = false;
+        // $instansi->id_user = 6;
+        // $instansi->save();
+        // $instansi = Instansi::factory()->create();
+        // $instansi->is_prov = true;
+        // $instansi->id_user = 5;
+        // $instansi->save();
 
         PembimbingLapangan::factory(10)->create();
         $pemlap = PembimbingLapangan::factory()->create();
