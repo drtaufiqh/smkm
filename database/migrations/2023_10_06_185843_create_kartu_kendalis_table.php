@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('kartu_kendalis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_bimbingan');
-            $table->foreign('id_bimbingan')->references('id')->on('jadwal_bimbingans')->onDelete('cascade');
-            $table->foreignId('id_mhs');
-            $table->foreign('id_mhs')->references('id')->on('mahasiswas')->onDelete('cascade');
+            $table->foreignId('id_bimbingan')->constraint('jadwal_bimbingans')->onDelete('cascade');
+            // $table->foreign('id_bimbingan')->references('id')->on('jadwal_bimbingans')->onDelete('cascade');
+            $table->foreignId('id_mhs')->constaint('mahasiswas')->onDelete('cascade');
+            // $table->foreign('id_mhs')->references('id')->on('mahasiswas')->onDelete('cascade');
             $table->text('pokok_bahasan')->nullable();
             $table->boolean('diketahui');
             

@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::create('penilaian_laporans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_laporan');
+            $table->foreignId('id_laporan')->constraint('laporan_akhirs')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_laporan')->references('id')->on('laporan_akhirs')->onDelete('cascade')->onUpdate('cascade');
             $table->enum('penilai', ['dospem', 'pemlap']);
             $table->double('nilai_k1', 5, 2)->nullable();
