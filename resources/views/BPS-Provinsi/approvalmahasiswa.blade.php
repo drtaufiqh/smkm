@@ -121,7 +121,7 @@
   
   @if ($finalisasiPenentuanAdminDone)
   
-  @if (!$finalisasiDone)
+  @if (!$finalisasiPenentuanBpsProvDone)
   <div class="text-center">
     <form action='/bps-provinsi/do_finalisasi_pemilihan' method="post">
       @csrf 
