@@ -104,7 +104,7 @@
                                     
                                     </td>
                                     @endif
-                                    <td>{{ $pemilihan_lokasi->mahasiswa->instansi->nama }}</td>
+                                    <td>{{ optional($pemilihan_lokasi->mahasiswa->instansi)->nama ?? '-' }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
