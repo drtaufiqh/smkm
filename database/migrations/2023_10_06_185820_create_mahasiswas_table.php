@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user');
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');            
+            $table->foreignId('id_user')->constraint('users')->onDelete('cascade')->onUpdate('cascade');;
+            // $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');            
             $table->string('nama',50);
             $table->string('nim',9);
             $table->string('email',100);
@@ -24,14 +24,16 @@ return new class extends Migration
             $table->string('foto',255)->nullable();
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
             $table->text('alamat_1')->nullable();
-            $table->foreignId('id_kecamatan_alamat_1')->nullable();
-            $table->foreign('id_kecamatan_alamat_1')->references('id')->on('kecamatans')->onDelete('set null');
+            $table->foreignId('id_kecamatan_alamat_1')->nullable()->constraint('kecamatans')->onDelete('set null')->onUpdate('cascade');
+            // $table->foreign('id_kecamatan_alamat_1')->references('id')->on('kecamatans')->onDelete('set null');
+            $table->foreignId('id_kab_kota_alamat_1')->nullable()->constraint('kab_kotas')->onDelete('set null')->onUpdate('cascade');
             // $table->foreignId('kode_kabkota_1')->nullable();
             // $table->foreign('kode_kabkota_1')->references('id')->on('kab_kotas')->onDelete('set null')->onUpdate('cascade');
             $table->string('kecamatan_1')->nullable();
             $table->text('alamat_2')->nullable();
-            $table->foreignId('id_kecamatan_alamat_2')->nullable();
-            $table->foreign('id_kecamatan_alamat_2')->references('id')->on('kecamatans')->onDelete('set null');
+            $table->foreignId('id_kecamatan_alamat_2')->nullable()->constraint('kecamatans')->onDelete('set null')->onUpdate('cascade');
+            // $table->foreign('id_kecamatan_alamat_2')->references('id')->on('kecamatans')->onDelete('set null');
+            $table->foreignId('id_kab_kota_alamat_2')->nullable()->constraint('kab_kotas')->onDelete('set null')->onUpdate('cascade');
             // $table->foreignId('kode_kabkota_2')->nullable();
             // $table->foreign('kode_kabkota_2')->references('id')->on('kab_kotas')->onDelete('set null')->onUpdate('cascade');
             $table->string('kecamatan_2')->nullable();

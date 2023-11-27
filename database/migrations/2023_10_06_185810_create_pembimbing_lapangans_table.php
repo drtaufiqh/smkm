@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('pembimbing_lapangans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user');
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('id_user')->constraint('users')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('nama',50);
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
             $table->string('nip_lama',50)->nullable();
@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('jabatan',10)->nullable();
             $table->string('email',100);
             $table->string('no_hp',20)->nullable();
-            $table->foreignId('id_instansi')->nullable();
-            $table->foreign('id_instansi')->references('id')->on('Instansis')->onDelete('set null')->onUpdate('cascade');
+            $table->foreignId('id_instansi')->nullable()->constraint('instansis')->onDelete('set null')->onUpdate('cascade');
+            // $table->foreign('id_instansi')->references('id')->on('Instansis')->onDelete('set null')->onUpdate('cascade');
             $table->string('foto',255)->nullable();
             
             $table->timestamps();

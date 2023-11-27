@@ -14,8 +14,8 @@ return new class extends Migration {
     {
         Schema::create('penilaian_kinerjas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_mhs');
-            $table->foreign('id_mhs')->references('id')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('id_mhs')->constraint('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('id_mhs')->references('id')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
             $table->double('nilai_k1', 5, 2)->nullable();
             $table->double('nilai_k2', 5, 2)->nullable();
             $table->double('nilai_k3', 5, 2)->nullable();

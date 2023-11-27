@@ -14,8 +14,8 @@ return new class extends Migration {
     {
         Schema::create('laporan_akhirs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_mhs');
-            $table->foreign('id_mhs')->references('id')->on('mahasiswas')->onDelete('cascade');
+            $table->foreignId('id_mhs')->constraint('mahasiswas')->onDelete('cascade');
+            // $table->foreign('id_mhs')->references('id')->on('mahasiswas')->onDelete('cascade');
             $table->string('laporan_awal');
             $table->text('komentar_pemlap');
             $table->boolean('approval_awal_pemlap');
