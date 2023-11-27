@@ -28,7 +28,6 @@ class ProvinsiSeeder extends Seeder
             ['nama' => 'Kepulauan Riau', 'akronim' => 'KEPRI', 'kode' => '21'],
             ['nama' => 'DKI Jakarta', 'akronim' => 'DKIJKT', 'kode' => '31'],
             ['nama' => 'Jawa Barat', 'akronim' => 'JABAR', 'kode' => '32'],
-            ['nama' => 'Jawa Barat', 'akronim' => 'JABAR', 'kode' => '32'],
             ['nama' => 'Jawa Tengah', 'akronim' => 'JATENG', 'kode' => '33'],
             ['nama' => 'Daerah Istimewa Yogyakarta', 'akronim' => 'DIY', 'kode' => '34'],
             ['nama' => 'Jawa Timur', 'akronim' => 'JATIM', 'kode' => '35'],

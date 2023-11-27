@@ -18,7 +18,7 @@ class InstansiSeeder extends Seeder
     public static function run()
     {
         $instansi = [
-            ['id_user' => 1001, 'nama' => 'BPS Provinsi Aceh', 'alamat_lengkap' => 'Jl. Tgk. H. M. Daud Bereueh No. 50, Kuta Alam, Banda Aceh', 'is_prov' => 1, 'kode_kabkota' => '1171', 'id_kab_kota' => KabKota::where('kode', '1171')->first()->id],
+            ['id_user' => 1001, 'nama' => 'BPS Provinsi Nanggroe Aceh Darussalam', 'alamat_lengkap' => 'Jl. Tgk. H. M. Daud Bereueh No. 50, Kuta Alam, Banda Aceh', 'is_prov' => 1, 'kode_kabkota' => '1171', 'id_kab_kota' => KabKota::where('kode', '1171')->first()->id],
             ['id_user' => 1002, 'nama' => 'BPS Kabupaten Aceh Selatan', 'alamat_lengkap' => 'Jl. Tgk. Diujung, Desa Air Dingin, Sinabang', 'is_prov' => 0, 'kode_kabkota' => '1101', 'id_kab_kota' => KabKota::where('kode', '1101')->first()->id],
             ['id_user' => 1003, 'nama' => 'BPS Kabupaten Aceh Tenggara', 'alamat_lengkap' => 'Jl. H. Sayuthi No. 2, Pulo Sarok, Singkil', 'is_prov' => 0, 'kode_kabkota' => '1102', 'id_kab_kota' => KabKota::where('kode', '1102')->first()->id],
             ['id_user' => 1004, 'nama' => 'BPS Kabupaten Aceh Timur', 'alamat_lengkap' => 'Jl. T. Ben Mahmud, Lhok Keutapang, Tapaktuan', 'is_prov' => 0, 'kode_kabkota' => '1103', 'id_kab_kota' => KabKota::where('kode', '1103')->first()->id],
@@ -267,7 +267,7 @@ class InstansiSeeder extends Seeder
             ['id_user' => 3507, 'nama' => 'BPS Kabupaten Malang', 'alamat_lengkap' => 'Jl. Raya Jati Rejo No. 1A Kepanjen, Malang 64182', 'is_prov' => 0, 'kode_kabkota' => '3507', 'id_kab_kota' => KabKota::where('kode', '3507')->first()->id],
             ['id_user' => 3508, 'nama' => 'BPS Kabupaten Lumajang', 'alamat_lengkap' => 'Jl.Gatot Subroto No. 89 Lumajang 67352', 'is_prov' => 0, 'kode_kabkota' => '3508', 'id_kab_kota' => KabKota::where('kode', '3508')->first()->id],
             ['id_user' => 3509, 'nama' => 'BPS Kabupaten Jember', 'alamat_lengkap' => 'Jl.Cendrawasih No. 20 Jember 69116', 'is_prov' => 0, 'kode_kabkota' => '3509', 'id_kab_kota' => KabKota::where('kode', '3509')->first()->id],
-            ['id_user' => 3510, 'nama' => 'BPS Kabupaten Banyuwangi', 'alamat_lengkap' => 'Jl. Akhmad Yani No. 91 Banyuwangi 68416', 'is_prov' => 0, 'kode_kabkota' =>'3510', 'id_kab_kota' => KabKota::where('kode', '3510')->first()->id],
+            ['id_user' => 3510, 'nama' => 'BPS Kabupaten Banyuwangi', 'alamat_lengkap' => 'Jl. Akhmad Yani No. 91 Banyuwangi 68416', 'is_prov' => 0, 'kode_kabkota' => '3510', 'id_kab_kota' => KabKota::where('kode', '3510')->first()->id],
             ['id_user' => 3511, 'nama' => 'BPS Kabupaten Bondowoso', 'alamat_lengkap' => 'Jl. K.Hasyim Ashari No. 7 Bondowoso 68217', 'is_prov' => 0, 'kode_kabkota' => '3511', 'id_kab_kota' => KabKota::where('kode', '3511')->first()->id],
             ['id_user' => 3512, 'nama' => 'BPS Kabupaten Situbondo', 'alamat_lengkap' => 'Jl. Raya Wringinanom Kec. Panarukan, Situbondo 68351', 'is_prov' => 0, 'kode_kabkota' => '3512', 'id_kab_kota' => KabKota::where('kode', '3512')->first()->id],
             ['id_user' => 3513, 'nama' => 'BPS Kabupaten Probolinggo', 'alamat_lengkap' => 'Jl. Lumajang Km. 5, Sumbertaman, Probolinggo 67215', 'is_prov' => 0, 'kode_kabkota' => '3513', 'id_kab_kota' => KabKota::where('kode', '3513')->first()->id],
@@ -452,7 +452,7 @@ class InstansiSeeder extends Seeder
             ['id_user' => 7403, 'nama' => 'BPS Kabupaten Konawe', 'alamat_lengkap' => 'Jl. Komplek Perkantoran Pemda Kabupaten Konawe', 'is_prov' => 0, 'kode_kabkota' => '7403', 'id_kab_kota' => KabKota::where('kode', '7403')->first()->id],
             ['id_user' => 7404, 'nama' => 'BPS Kabupaten Kolaka', 'alamat_lengkap' => 'Jl. Pahlawan No. 75 Kel. Lamokato, Kolaka 93516', 'is_prov' => 0, 'kode_kabkota' => '7404', 'id_kab_kota' => KabKota::where('kode', '7404')->first()->id],
             ['id_user' => 7405, 'nama' => 'BPS Kabupaten Konawe Selatan', 'alamat_lengkap' => 'Komplek Perkantoran Pemda Kabupaten Konawe Selatan, Jl. Poros 60 Andolo 93811 bps7405@bps.go.id', 'is_prov' => 0, 'kode_kabkota' => '7405', 'id_kab_kota' => KabKota::where('kode', '7405')->first()->id],
-            ['id_user' => 7406, 'nama' => 'BPS Kabupaten Bombana', 'alamat_lengkap' => 'Jl. Tampobatu Kel. Lameroro Kec. Rumbia 93771 bps7406@bps.go.id', 'is_prov' => 0, 'kode_kabkota' => '7406', 'id_kab_kota' => KabKota::where('kode', '7406')->first()->id], 
+            ['id_user' => 7406, 'nama' => 'BPS Kabupaten Bombana', 'alamat_lengkap' => 'Jl. Tampobatu Kel. Lameroro Kec. Rumbia 93771 bps7406@bps.go.id', 'is_prov' => 0, 'kode_kabkota' => '7406', 'id_kab_kota' => KabKota::where('kode', '7406')->first()->id],
             ['id_user' => 1457, 'nama' => 'BPS Kabupaten Wakatobi', 'alamat_lengkap' => 'Jl. Utudae Samad No. 25, Kelurahan Mandari III, Kec. Wangi-Wangi Selatan, Kab. Wakatobi, Sulawesi Tenggara', 'is_prov' => 0, 'kode_kabkota' => '7407', 'id_kab_kota' => KabKota::where('kode', '7407')->first()->id],
             ['id_user' => 1458, 'nama' => 'BPS Kabupaten Kolaka Utara', 'alamat_lengkap' => 'Jl. Protokol Poros Kantor DPRD, Kel. Lasusua, Lasusua 93553', 'is_prov' => 0, 'kode_kabkota' => '7408', 'id_kab_kota' => KabKota::where('kode', '7408')->first()->id],
             ['id_user' => 1459, 'nama' => 'BPS Kabupaten Konawe Utara', 'alamat_lengkap' => 'Jl. Trans Sulawesi Kel. Wanggudu, Asera 93353', 'is_prov' => 0, 'kode_kabkota' => '7409', 'id_kab_kota' => KabKota::where('kode', '7409')->first()->id],
@@ -463,8 +463,8 @@ class InstansiSeeder extends Seeder
             ['id_user' => 1465, 'nama' => 'BPS Kabupaten Buton Selatan', 'alamat_lengkap' => 'Jl. Protokol Kel. Saragi Kec. Pasarwajo Kab. Buton', 'is_prov' => 0, 'kode_kabkota' => '7415', 'id_kab_kota' => KabKota::where('kode', '7415')->first()->id],
             ['id_user' => 1465, 'nama' => 'BPS Kota Kendari', 'alamat_lengkap' => 'Jl. Balai Kota II No. 97 Kendari 93117', 'is_prov' => 0, 'kode_kabkota' => '7471', 'id_kab_kota' => KabKota::where('kode', '7471')->first()->id],
             ['id_user' => 1466, 'nama' => 'BPS Kota Bau-Bau', 'alamat_lengkap' => 'Jl. Murhum No. 52  Bau-Bau 93726', 'is_prov' => 0, 'kode_kabkota' => '7472', 'id_kab_kota' => KabKota::where('kode', '7472')->first()->id],
-        
-        
+
+
             ['id_user' => 1468, 'nama' => 'BPS Provinsi Gorontalo', 'alamat_lengkap' => 'Jl. Prof. Dr. Aloe Saboe No.117, Wongkaditi Utara, Gorontalo', 'is_prov' => 1, 'kode_kabkota' => '7571', 'id_kab_kota' => KabKota::where('kode', '7571')->first()->id],
             ['id_user' => 1469, 'nama' => 'BPS Kabupaten Gorontalo', 'alamat_lengkap' => 'Jl. Samaun Pulubuhu, Kelurahan Tenilo, Kecamatan Limboto, Kabupaten Gorontalo', 'is_prov' => 0, 'kode_kabkota' => '7501', 'id_kab_kota' => KabKota::where('kode', '7501')->first()->id],
             ['id_user' => 1470, 'nama' => 'BPS Kabupaten Boalemo', 'alamat_lengkap' => 'Jl. Trans Sulawesi Desa Lamu, Kecamatan Tilamuta Kabupaten Boalemo', 'is_prov' => 0, 'kode_kabkota' => '7502', 'id_kab_kota' => KabKota::where('kode', '7502')->first()->id],
@@ -472,16 +472,16 @@ class InstansiSeeder extends Seeder
             ['id_user' => 1472, 'nama' => 'BPS Kabupaten Pohuwato', 'alamat_lengkap' => 'Jl. P. Diponegoro, Kompleks Blok Plan Perkantoran Marisa, Kab. Pohuwato Gorontalo 96266', 'is_prov' => 0, 'kode_kabkota' => '7504', 'id_kab_kota' => KabKota::where('kode', '7504')->first()->id],
             ['id_user' => 1473, 'nama' => 'BPS Kabupaten Gorontalo Utara', 'alamat_lengkap' => 'Jl. Kusnodanupojo, Desa Mootinelo, Kecamatan Kwandang', 'is_prov' => 0, 'kode_kabkota' => '7505', 'id_kab_kota' => KabKota::where('kode', '7505')->first()->id],
             ['id_user' => 1474, 'nama' => 'BPS Kota Gorontalo', 'alamat_lengkap' => 'Jalan Dewi Sartika No. 21, Kota Tengah, Kota Gorontalo', 'is_prov' => 0, 'kode_kabkota' => '7571', 'id_kab_kota' => KabKota::where('kode', '7571')->first()->id],
-        
-        
+
+
             ['id_user' => 1475, 'nama' => 'BPS Provinsi Sulawesi Barat', 'alamat_lengkap' => 'JL. RE MARTADINATA No. 10 MAMUJU 91511', 'is_prov' => 1, 'kode_kabkota' => '7602', 'id_kab_kota' => KabKota::where('kode', '7602')->first()->id],
             ['id_user' => 1476, 'nama' => 'BPS Kabupaten Pasangkayu', 'alamat_lengkap' => 'JL IR SOEKARNO, PASANGKAYU 91571', 'is_prov' => 0, 'kode_kabkota' => '7601', 'id_kab_kota' => KabKota::where('kode', '7601')->first()->id],
             ['id_user' => 1477, 'nama' => 'BPS Kabupaten Mamuju', 'alamat_lengkap' => 'JL. TRANS SULAWESI, KEL MAMUNYU, MAMUJU 91511', 'is_prov' => 0, 'kode_kabkota' => '7602', 'id_kab_kota' => KabKota::where('kode', '7602')->first()->id],
             ['id_user' => 1478, 'nama' => 'BPS Kabupaten Mamasa', 'alamat_lengkap' => 'JL. POROS BANGGO - BUNTU KASISI, OSANGO', 'is_prov' => 0, 'kode_kabkota' => '7603', 'id_kab_kota' => KabKota::where('kode', '7603')->first()->id],
             ['id_user' => 1479, 'nama' => 'BPS Kabupaten Polewali Mandar', 'alamat_lengkap' => 'JL. TRITURA, POLEWALI MANDAR 91315', 'is_prov' => 0, 'kode_kabkota' => '7604', 'id_kab_kota' => KabKota::where('kode', '7604')->first()->id],
             ['id_user' => 1480, 'nama' => 'BPS Kabupaten Majene', 'alamat_lengkap' => 'JL. JEND AHMAD YANI, KEL RANGAS, KEC BANGGAE', 'is_prov' => 0, 'kode_kabkota' => '7605', 'id_kab_kota' => KabKota::where('kode', '7605')->first()->id],
-        
-        
+
+
             ['id_user' => 1482, 'nama' => 'BPS Provinsi Maluku', 'alamat_lengkap' => 'Jl. Wolter Monginsidi, Passo-Ambon 97232', 'is_prov' => 1, 'kode_kabkota' => '8171', 'id_kab_kota' => KabKota::where('kode', '8171')->first()->id],
             ['id_user' => 1483, 'nama' => 'BPS Kabupaten Maluku Tengah', 'alamat_lengkap' => 'Jl. R.A. Kartini No. 15, Kel. Namaelo, Kec. Kota Masohi 97512', 'is_prov' => 0, 'kode_kabkota' => '8101', 'id_kab_kota' => KabKota::where('kode', '8101')->first()->id],
             ['id_user' => 1484, 'nama' => 'BPS Kabupaten Maluku Tenggara', 'alamat_lengkap' => 'Jl. Soekarno hatta Ohoijang - Langgur 97611', 'is_prov' => 0, 'kode_kabkota' => '8102', 'id_kab_kota' => KabKota::where('kode', '8102')->first()->id],
@@ -493,7 +493,7 @@ class InstansiSeeder extends Seeder
             ['id_user' => 1490, 'nama' => 'BPS Kabupaten Maluku Barat Daya', 'alamat_lengkap' => 'Jl. Marrouw No. 50 Abusur – Wonreli, Kel. Tiakur, Kec. Moa, Kabupaten Maluku Barat Daya', 'is_prov' => 0, 'kode_kabkota' => '8108', 'id_kab_kota' => KabKota::where('kode', '8108')->first()->id],
             ['id_user' => 1491, 'nama' => 'BPS Kabupaten Buru Selatan', 'alamat_lengkap' => 'Jl. Rehen Sap. Raja Fogi, Kamlanglale, Namrole, Buru Selatan', 'is_prov' => 0, 'kode_kabkota' => '8109', 'id_kab_kota' => KabKota::where('kode', '8109')->first()->id],
             ['id_user' => 1492, 'nama' => 'BPS Kota Ambon', 'alamat_lengkap' => 'Jl. Haruhun, Karang Panjang Komp. Puleh, Kel. Waihakota, Kec. Sirimau, Ambon 97121', 'is_prov' => 0, 'kode_kabkota' => '8171', 'id_kab_kota' => KabKota::where('kode', '8171')->first()->id],
-           
+
             ['id_user' => 1494, 'nama' => 'BPS Provinsi Maluku Utara', 'alamat_lengkap' => 'Jl. Stadion No.65 Kel. Stadion Kec. Ternate Tengah, Ternate 97712', 'is_prov' => 1, 'kode_kabkota' => '8271', 'id_kab_kota' => KabKota::where('kode', '8271')->first()->id],
             ['id_user' => 1495, 'nama' => 'BPS Kabupaten Halmahera Barat', 'alamat_lengkap' => 'Jl. Mohammad Hatta, Desa Hatebicara, Jailolo Maluku Utara 97752', 'is_prov' => 0, 'kode_kabkota' => '8201', 'id_kab_kota' => KabKota::where('kode', '8201')->first()->id],
             ['id_user' => 1496, 'nama' => 'BPS Kabupaten Halmahera Tengah', 'alamat_lengkap' => 'Jl. Weda-Payahe, Halmahera Tengah, Maluku Utara', 'is_prov' => 0, 'kode_kabkota' => '8202', 'id_kab_kota' => KabKota::where('kode', '8202')->first()->id],
@@ -503,7 +503,7 @@ class InstansiSeeder extends Seeder
             ['id_user' => 1500, 'nama' => 'BPS Kabupaten Halmahera Timur', 'alamat_lengkap' => 'Jl. Trans Halmahera Soagimalaha, Kota Maba', 'is_prov' => 0, 'kode_kabkota' => '8206', 'id_kab_kota' => KabKota::where('kode', '8206')->first()->id],
             ['id_user' => 1503, 'nama' => 'BPS Kota Ternate', 'alamat_lengkap' => 'Gg. Arrahma RT 004/RW 03, Lingk. Falajawa II, Kel. Bastiong Karance, Kec Ternate Selatan – Kota Ternate', 'is_prov' => 0, 'kode_kabkota' => '8271', 'id_kab_kota' => KabKota::where('kode', '8271')->first()->id],
             ['id_user' => 1504, 'nama' => 'BPS Kota Tidore Kepulauan', 'alamat_lengkap' => 'Jl. Sultan Syaifuddin, Kel. Gamtufkange Soasio, Tidore', 'is_prov' => 0, 'kode_kabkota' => '8272', 'id_kab_kota' => KabKota::where('kode', '8272')->first()->id],
-                   
+
             ['id_user' => 1505, 'nama' => 'BPS Provinsi Papua', 'alamat_lengkap' => 'JL. DR. SAMRATULANGI DOK II JAYAPURA, PAPUA 99112', 'is_prov' => 1, 'kode_kabkota' => '9171', 'id_kab_kota' => KabKota::where('kode', '9171')->first()->id],
             ['id_user' => 1506, 'nama' => 'BPS Kabupaten Jayapura', 'alamat_lengkap' => 'JL. SENTANI - DEPAPRE, KOMPLEK KANTOR BUPATI GUNUNG MERAH, SENTANI 99352', 'is_prov' => 0, 'kode_kabkota' => '9103', 'id_kab_kota' => KabKota::where('kode', '9103')->first()->id],
             ['id_user' => 1507, 'nama' => 'BPS Kabupaten Kepulauan Yapen', 'alamat_lengkap' => 'JL. SUMATRA NO. 10, SERUI 98211', 'is_prov' => 0, 'kode_kabkota' => '9105', 'id_kab_kota' => KabKota::where('kode', '9105')->first()->id],
@@ -513,45 +513,45 @@ class InstansiSeeder extends Seeder
             ['id_user' => 1511, 'nama' => 'BPS Kabupaten Waropen', 'alamat_lengkap' => 'JL. POROS SP V, RONGGAIWA, UREI FASEI, KAB. WAROPEN 98261', 'is_prov' => 0, 'kode_kabkota' => '9115', 'id_kab_kota' => KabKota::where('kode', '9115')->first()->id],
             ['id_user' => 1512, 'nama' => 'BPS Kabupaten Supiori', 'alamat_lengkap' => 'JL. SORENDIWERI, KORIDO, SUPIORI TIMUR, 98161', 'is_prov' => 0, 'kode_kabkota' => '9119', 'id_kab_kota' => KabKota::where('kode', '9119')->first()->id],
             ['id_user' => 1514, 'nama' => 'BPS Kota Jayapura', 'alamat_lengkap' => 'JL. DEWI SARTIKA NO. 2 KOTA JAYAPURA 99351', 'is_prov' => 0, 'kode_kabkota' => '9171', 'id_kab_kota' => KabKota::where('kode', '9171')->first()->id],
-        
-        
+
+
             ['id_user' => 1515, 'nama' => 'BPS Provinsi Papua Barat', 'alamat_lengkap' => 'Jl. Trikora Sowi IV No. 99, Manokwari, Papua Barat', 'is_prov' => 1, 'kode_kabkota' => '9201', 'id_kab_kota' => KabKota::where('kode', '9201')->first()->id],
             ['id_user' => 1516, 'nama' => 'BPS Kabupaten Manokwari', 'alamat_lengkap' => 'Jl. Percetakan Negara, Kabupaten Manokwari, Provinsi Papua Barat', 'is_prov' => 0, 'kode_kabkota' => '9202', 'id_kab_kota' => KabKota::where('kode', '9202')->first()->id],
             ['id_user' => 1517, 'nama' => 'BPS Kabupaten Fakfak', 'alamat_lengkap' => 'Jl. DPRD No.1 Fak-Fak', 'is_prov' => 0, 'kode_kabkota' => '9203', 'id_kab_kota' => KabKota::where('kode', '9203')->first()->id],
             ['id_user' => 1518, 'nama' => 'BPS Kabupaten Teluk Bintuni', 'alamat_lengkap' => 'Jl. Bintuni Raya KM. 04 Wesiri Teluk Bintuni', 'is_prov' => 0, 'kode_kabkota' => '9206', 'id_kab_kota' => KabKota::where('kode', '9206')->first()->id],
             ['id_user' => 1519, 'nama' => 'BPS Kabupaten Teluk Wondama', 'alamat_lengkap' => 'Kompleks Perkantoran Pemda Teluk Wondama, Jl. Rasiey-Wasior 98362', 'is_prov' => 0, 'kode_kabkota' => '9207', 'id_kab_kota' => KabKota::where('kode', '9207')->first()->id],
             ['id_user' => 1520, 'nama' => 'BPS Kabupaten Kaimana', 'alamat_lengkap' => 'Jl. Casuarina No. 11 Kaimana – Papua Barat', 'is_prov' => 0, 'kode_kabkota' => '9208', 'id_kab_kota' => KabKota::where('kode', '9208')->first()->id],
-        
-        
+
+
             ['id_user' => 1524, 'nama' => 'BPS Kabupaten Sorong', 'alamat_lengkap' => 'Jl. Basuki Rahmat Km.13,5 Klasaman Sorong', 'is_prov' => 0, 'kode_kabkota' => '9201', 'id_kab_kota' => KabKota::where('kode', '9201')->first()->id],
             ['id_user' => 1525, 'nama' => 'BPS Kabupaten Sorong Selatan', 'alamat_lengkap' => 'Kompleks Pemda Kabupaten Sorong Selatan, Jalan Teminabuan-Ayamaru, Teminabuan – Sorong Selatan', 'is_prov' => 0, 'kode_kabkota' => '9204', 'id_kab_kota' => KabKota::where('kode', '9204')->first()->id],
             ['id_user' => 1526, 'nama' => 'BPS Kabupaten Raja Ampat', 'alamat_lengkap' => 'Jl. Jend. Ahmad Yani, Kota Waisai, Raja Ampat – Papua Barat', 'is_prov' => 0, 'kode_kabkota' => '9205', 'id_kab_kota' => KabKota::where('kode', '9205')->first()->id],
             ['id_user' => 1527, 'nama' => 'BPS Kabupaten Tambrauw', 'alamat_lengkap' => 'Jln. Basuki Rahmat Km. 13.5, Sorong, Papua Barat 98315', 'is_prov' => 0, 'kode_kabkota' => '9209', 'id_kab_kota' => KabKota::where('kode', '9209')->first()->id],
             ['id_user' => 1528, 'nama' => 'BPS Kabupaten Maybrat', 'alamat_lengkap' => 'Kompleks PEMDA Kabupaten Sorong Selatan, Jalan Teminabuan-Ayamaru, Teminabuan - Sorong Selatan', 'is_prov' => 0, 'kode_kabkota' => '9210', 'id_kab_kota' => KabKota::where('kode', '9210')->first()->id],
             ['id_user' => 1529, 'nama' => 'BPS Kota Sorong', 'alamat_lengkap' => 'Jl. Merpati No. 7, Kelurahan Remu Utara, Kota Sorong, Papua Barat', 'is_prov' => 0, 'kode_kabkota' => '9271', 'id_kab_kota' => KabKota::where('kode', '9271')->first()->id],
-        
-        
+
+
             ['id_user' => 1531, 'nama' => 'BPS Kabupaten Merauke', 'alamat_lengkap' => 'JL. R. E. MARTADINATA NO. 2 MERAUKE 99611', 'is_prov' => 0, 'kode_kabkota' => '9301', 'id_kab_kota' => KabKota::where('kode', '9301')->first()->id],
             ['id_user' => 1532, 'nama' => 'BPS Kabupaten Boven Digoel', 'alamat_lengkap' => 'JL. TRANS PAPUA KM. 2 ARAH ASIKI, TANAH MERAH, BOVEN DIGOEL 99663', 'is_prov' => 0, 'kode_kabkota' => '9302', 'id_kab_kota' => KabKota::where('kode', '9302')->first()->id],
             ['id_user' => 1533, 'nama' => 'BPS Kabupaten Mappi', 'alamat_lengkap' => 'JL. POROS AGHAM KM. 5, KEPI 99871', 'is_prov' => 0, 'kode_kabkota' => '9303', 'id_kab_kota' => KabKota::where('kode', '9303')->first()->id],
             ['id_user' => 1534, 'nama' => 'BPS Kabupaten Asmat', 'alamat_lengkap' => 'JL. SAFAN NO. 1, BIS AGATS, AGATS, ASMAT 99777', 'is_prov' => 0, 'kode_kabkota' => '9304', 'id_kab_kota' => KabKota::where('kode', '9304')->first()->id],
-        
-        
+
+
             ['id_user' => 1536, 'nama' => 'BPS Kabupaten Nabire', 'alamat_lengkap' => 'JL. PEPERA NO. 18, NABIRE 99815', 'is_prov' => 0, 'kode_kabkota' => '9401', 'id_kab_kota' => KabKota::where('kode', '9401')->first()->id],
             ['id_user' => 1537, 'nama' => 'BPS Kabupaten Puncak Jaya', 'alamat_lengkap' => 'JL. PAPUA, DISTRIK PAGALEME, KAMPUNG KULOK ENGGAME, MULIA 98911', 'is_prov' => 0, 'kode_kabkota' => '9402', 'id_kab_kota' => KabKota::where('kode', '9402')->first()->id],
             ['id_user' => 1538, 'nama' => 'BPS Kabupaten Paniai', 'alamat_lengkap' => 'KOMPLEKS PERKANTORAN MADI, PANIAI TIMUR, PANIAI 98700', 'is_prov' => 0, 'kode_kabkota' => '9403', 'id_kab_kota' => KabKota::where('kode', '9403')->first()->id],
             ['id_user' => 1539, 'nama' => 'BPS Kabupaten Mimika', 'alamat_lengkap' => 'JL. HASANUDDIN NO. 01, KEL. SEMPAN, DISTRIK MIMIKA BARU, MIMIKA 99910', 'is_prov' => 0, 'kode_kabkota' => '9404', 'id_kab_kota' => KabKota::where('kode', '9404')->first()->id],
             ['id_user' => 1540, 'nama' => 'BPS Kabupaten Puncak', 'alamat_lengkap' => 'KAMPUNG KIMAK, DISTRIK ILAGA 98972', 'is_prov' => 0, 'kode_kabkota' => '9405', 'id_kab_kota' => KabKota::where('kode', '9405')->first()->id],
-        
-        
+
+
             ['id_user' => 1545, 'nama' => 'BPS Kabupaten Jayawijaya', 'alamat_lengkap' => 'JL. DIPONEGORO NO. 25 WAMENA, KAB. JAYAWIJAYA 99551', 'is_prov' => 0, 'kode_kabkota' => '9501', 'id_kab_kota' => KabKota::where('kode', '9501')->first()->id],
             ['id_user' => 1546, 'nama' => 'BPS Kabupaten Pegunungan Bintang', 'alamat_lengkap' => 'KAMPUNG DABOLDING, DISTRIK KOLOMDOL, PEGUNUNGAN BINTANG 99573', 'is_prov' => 0, 'kode_kabkota' => '9502', 'id_kab_kota' => KabKota::where('kode', '9502')->first()->id],
             ['id_user' => 1547, 'nama' => 'BPS Kabupaten Yahukimo', 'alamat_lengkap' => 'JL. YAHULI, SUMOHAI, DEKAI 99571', 'is_prov' => 0, 'kode_kabkota' => '9503', 'id_kab_kota' => KabKota::where('kode', '9503')->first()->id],
             ['id_user' => 1548, 'nama' => 'BPS Kabupaten Tolikara', 'alamat_lengkap' => 'JL. KOTA BARU KAMPUNG GURIKME, DISTRIK KARUBAGA, TOLIKARA 99411', 'is_prov' => 0, 'kode_kabkota' => '9504', 'id_kab_kota' => KabKota::where('kode', '9504')->first()->id],
         ];
 
-        foreach ($instansi as $data) { 
-            if($data['is_prov'] == 1){
+        foreach ($instansi as $data) {
+            if ($data['is_prov'] == 1) {
                 $email = 'prov' . $data['kode_kabkota'] . '@bps.go.id';
                 $role = 'prov';
             } else {
