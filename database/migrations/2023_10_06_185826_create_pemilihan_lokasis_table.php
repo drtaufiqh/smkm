@@ -30,6 +30,9 @@ return new class extends Migration
             $table->text('alasan_banding')->nullable();
             $table->foreignId('id_instansi')->nullable();
             $table->foreign('id_instansi')->references('id')->on('instansis')->onDelete('set null');
+            $table->text('keterangan')->nullable();
+            $table->foreignId('id_pengalihan')->nullable();
+            $table->foreign('id_pengalihan')->references('id')->on('instansis')->onDelete('set null');
             
             $table->timestamps();
         });

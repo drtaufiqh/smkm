@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Instansi;
+use App\Models\Finalisasi;
 use Illuminate\Http\Request;
 use App\Models\PemilihanLokasi;
+
 
 class RoleBpsProvinsiController extends Controller
 {
@@ -72,7 +74,58 @@ class RoleBpsProvinsiController extends Controller
         $data = [
             'id_instansi' => $pemilihan_lokasi->id_instansi_ajuan
         ];
-        $pemilihan_lokasi->update($data);
+        $pemilihan_lokasi->mahasiswa->update($data);
         return redirect()->to('/bps-provinsi/approvalmahasiswa');
     }
+
+    public function tolakPemilihan(Request $request, $id)
+    {
+
+        $pemilihan_lokasi = PemilihanLokasi::where('id', $id)->first();
+        $data = [
+            'id_instansi' => $request->input('id_pengalihan') ? $request->input('id_pengalihan') : null
+        ];
+        $pemilihan_lokasi->mahasiswa->update($data);
+        
+        return view('BPS-Provinsi.tolak-pemilihan', ['pemilihan_lokasis' => PemilihanLokasi::all(),'instansis' => Instansi::all(),'pemilihan_lokasi' => $pemilihan_lokasi]);
+
+    }
+
+    public function updateApprovalMahasiswa(Request $request, $id)
+    {
+        $pemilihan_lokasi = PemilihanLokasi::findOrFail($id);
+        $pemilihan_lokasi = PemilihanLokasi::where('id', $id)->first();
+
+        // Lakukan validasi atau operasi lain sesuai kebutuhan
+
+        $pemilihan_lokasi->id_pengalihan = $request->input('id_pengalihan');
+        $pemilihan_lokasi->keterangan = $request->input('keterangan');
+         $data = [
+            'id_instansi' => $request->input('id_pengalihan') ? $request->input('id_pengalihan') : null
+        ];
+        $pemilihan_lokasi->mahasiswa->update($data);
+        $pemilihan_lokasi->save();
+
+        return redirect()->to('/bps-provinsi/approvalmahasiswa')->with('success', 'Data berhasil diperbarui.');
+    }
+
+    public function do_finalisasi_pemilihan()
+    {
+
+        $pemilihan_lokasis = PemilihanLokasi::get();
+
+        foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
+            $id_instansi = $pemilihan_lokasi->mahasiswa->id_instansi;
+
+            if ($id_instansi == NULL) {
+                return redirect()->to('/bps-provinsi/approvalmahasiswa')->with('failed', 'Terdapat mahasiswa yang belum diberi keputusan');
+            }
+        }
+        Finalisasi::create([
+            'finalisasi_pemilihan_lokasi_bpsprov' => 1
+        ]);
+
+        return redirect()->to('/bps-provinsi/approvalmahasiswa')->with('success', 'Berhasil finalisasi');
+    }
+  
 }

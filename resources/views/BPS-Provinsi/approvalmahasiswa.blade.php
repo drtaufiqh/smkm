@@ -1,5 +1,9 @@
 @extends('layouts.main')
 
+@php
+  $finalisasiDone = \App\Models\Finalisasi::isFinalisasiDone();
+@endphp
+
 @section('container')
     @include('partials.sidebar-prov')
 
@@ -31,8 +35,10 @@
                                       <th scope="col">Nama Mahasiswa</th>
                                       <th scope="col">NIM</th>
                                       <th scope="col">Domisili</th>
-                                      <th scope="col">BPS Kab/Kota Pilihan</th>
+                                      <th scope="col">BPS Instansi Pilihan</th>
+                                      @if (!$finalisasiDone)
                                       <th scope="col">Status</th>
+                                      @endif
                                       <th scope="col">BPS yang Disetujui</th>
                                       <th scope="col">Keterangan</th>
                                   </tr>
@@ -46,100 +52,71 @@
                                     <td>{{ $pemilihan_lokasi->mahasiswa->nim }}</td>
                                     <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
                                     <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
+                                    @if (!$finalisasiDone)
                                     <td class="status-column">
                                         <form action="/bps-provinsi/setujui-pemilihan/{{ $pemilihan_lokasi->id }}" method="post">
                                             @csrf
                                             @method('PUT')
-                                            <button type="submit" class="btn btn-success mx-4">Setujui</button>
+                                            <button type="submit" class="btn btn-success mx-4 mb-2">Setujui</button>
                                         </form>
-                                        <a href="#" class="btn btn-danger mx-4" data-bs-toggle="modal" data-bs-target="#tidakSetujuiModal">Tidak Setujui</a>
+                                        <form action="{{ url('/bps-provinsi/tolak-pemilihan/' . $pemilihan_lokasi->id) }}" method="post">
+                                            @csrf
+                                            @method('PUT')
+                                            <button type="submit" class="btn btn-danger mx-4 ">Tidak Setujui</button>
+                                        </form>
+                                       
                                     </td>
-                                    <td>{{ $pemilihan_lokasi->instansi->nama }}</td>
-                                    <td>-</td>
+                                    @endif
+                                    <td>{{ optional($pemilihan_lokasi->mahasiswa->instansi)->nama }}</td>
+                                    <td>{{ $pemilihan_lokasi->keterangan }}</td>
+                                    
                                 </tr>
                                 @endforeach
                               </tbody>
                           </table>
                           </div>
-                          <!-- End Table with stripped rows -->
-
-                    {{-- <!-- Modal -->
-                    <div class="modal fade mt-5" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-dialog mt-5">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h5 class="modal-title">Approval Pengajuan Mahasiswa</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                  <div class="card-body text-center">
-                                      <p class="card-text">
-                                          <a href="/bps-provinsi/setujuiPemilihan/{{ $id }}" class="btn btn-success mx-4" data-bs-toggle="modal" >Setujui</a>
-                                          <a href="#" class="btn btn-danger mx-4" data-bs-toggle="modal" data-bs-target="#tidakSetujuiModal">Tidak Setujui</a>
-                                      </p>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div> --}}
-
-                  <!-- Modal untuk "Tidak Setujui" -->
-                  <div class="modal fade mt-5" id="tidakSetujuiModal" tabindex="-1" aria-labelledby="tidakSetujuiModalLabel" aria-hidden="true">
-                      <div class="modal-dialog mt-5">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h5 class="modal-title">Pengalihan Pengajuan Mahasiswa</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                <form>
-                                  <div class="mb-3">
-                                    <label for="pengalihan">BPS Kabupaten/Kota Pengalihan</label>
-                                      <select class="form-select" aria-label="Default select example" id="pengalihan" name="pengalihan">
-                                        <option selected>Pilih BPS Instansi</option>
-                                        @foreach($instansis as $instansi)
-                                            <option value="{{ $instansi->nama }}">{{ $instansi->nama }}</option>
-                                        @endforeach
-                                        {{-- <option value="kabupaten1">BPS Kabupaten 1</option>
-                                        <option value="kabupaten2">BPS Kabupaten 2</option>
-                                        <option value="kabupaten3">BPS Kabupaten 3</option> --}}
-                                      </select>
-                                  </div>
-                                  <div class="mb-3">
-                                      <label for="alasan">Alasan Tidak Setujui</label>
-                                      <textarea class="form-control" id="alasan" name="alasan" rows="3"></textarea>
-                                  </div>
-                              </form>
-                              </div>
-                              <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                  <button type="button" class="btn btn-danger">Kirim</button>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+              
               </div>
           </div>
       </div>
   </div>
+  
+  @if (!$finalisasiDone)
   <div class="text-center">
-    <button type="button" class="btn btn-primary btn-lg">Finalisasi</button>
+    <form action='/bps-provinsi/do_finalisasi_pemilihan' method="post">
+      @csrf 
+      @method('PUT') <!-- Tambahkan ini untuk menentukan metode PUT -->
+      <button type="submit" class="btn btn-primary btn-lg">Finalisasi</button>
+    </form>
   </div>
+  @else
+  <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+    Telah dilakukan finalisasi pemilihan lokasi
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  @endif
+
+
 </section>
 
 <script>
-    $(document).ready(function() {
-        // Menangani klik pada tombol "Setujui" di setiap baris
-        $('.btn-setujui').click(function() {
-            var pemilihanId = $(this).data('id');
-            $('#setujuiLink').attr('href', '/bps-provinsi/setujuiPemilihan/' + pemilihanId);
-        });
+    // $(document).ready(function() {
 
-        // Menangani klik pada tombol "Setujui" di modal
-        $('.btn-setujui-modal').click(function() {
-            // Lakukan sesuatu ketika tombol "Setujui" di modal diklik
-        });
-    });
+
+    //     // Menangani klik pada tombol "Setujui" di setiap baris
+    //     $('.btn-setujui').click(function() {
+    //         var pemilihanId = $(this).data('id');
+    //         $('#setujuiLink').attr('href', '/bps-provinsi/setujuiPemilihan/' + pemilihanId);
+    //     });
+
+     
+    //     // Menangani klik pada tombol "Setujui" di modal
+    //     $('.btn-setujui-modal').click(function() {
+    //         // Lakukan sesuatu ketika tombol "Setujui" di modal diklik
+    //     });
+    // });
+
+    
 </script>
 
   </main><!-- End #main -->

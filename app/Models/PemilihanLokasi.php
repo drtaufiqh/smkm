@@ -9,7 +9,7 @@ class PemilihanLokasi extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id_mhs', 'id_pilihan_1', 'id_pilihan_2', 'alasan_pilihan_1', 'alasan_pilihan_2', 'id_instansi_ajuan', 'id_instansi_banding', 'alasan_banding', 'id_instansi', 'created at', 'updated at'];
+    protected $fillable = ['id_mhs', 'id_pilihan_1', 'id_pilihan_2', 'alasan_pilihan_1', 'alasan_pilihan_2', 'id_instansi_ajuan', 'id_instansi_banding', 'alasan_banding', 'id_instansi', 'id_pengalihan', 'id_keterangan', 'created at', 'updated at'];
     protected $table = 'pemilihan_lokasis'; 
     public $timestamp = false;
 
@@ -40,4 +40,10 @@ class PemilihanLokasi extends Model
     public function instansi(){
         return $this->belongsTo(Instansi::class, 'id_instansi');
     }
+
+    public function instansiPengalihan(){
+        return $this->belongsTo(Instansi::class, 'id_pengalihan');
+    }
+
+   
 }
