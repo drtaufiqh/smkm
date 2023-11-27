@@ -12,7 +12,7 @@ class Finalisasi extends Model
     protected $table = 'finalisasis';
 
     protected $fillable = [
-        'finalisasi_pemilihan_lokasi_bpsprov',
+        'finalisasi_penentuan_lokasi_bpsprov',
         'finalisasi_banding_lokasi_bpsprov',
         'finalisasi_penentuan_lokasi_admin',
         'finalisasi_banding_lokasi_admin',
@@ -28,7 +28,7 @@ class Finalisasi extends Model
             return false;
         }
 
-        return self::where('finalisasi_penentuan_lokasi_bpsprov', '=', 1)->count() === $totalRows;
+        return self::where('finalisasi_penentuan_lokasi_bpsprov', '=', 1)->count();
     }
 
     public static function isFinalisasiBandingBpsProvDone()

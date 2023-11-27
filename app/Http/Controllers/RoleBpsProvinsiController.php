@@ -76,6 +76,7 @@ class RoleBpsProvinsiController extends Controller
             'id_instansi' => $pemilihan_lokasi->id_instansi_ajuan
         ];
         $pemilihan_lokasi->mahasiswa->update($data);
+        $pemilihan_lokasi->update($data);
         return redirect()->to('/bps-provinsi/approvalmahasiswa');
     }
 
@@ -118,6 +119,7 @@ class RoleBpsProvinsiController extends Controller
             'id_instansi' => $request->input('id_pengalihan') ? $request->input('id_pengalihan') : null
         ];
         $pemilihan_lokasi->mahasiswa->update($data);
+        $pemilihan_lokasi->update($data);
         
         return view('BPS-Provinsi.tolak-pemilihan', ['pemilihan_lokasis' => PemilihanLokasi::all(),'instansis' => Instansi::all(),'pemilihan_lokasi' => $pemilihan_lokasi]);
 
@@ -125,10 +127,15 @@ class RoleBpsProvinsiController extends Controller
 
     public function updateApprovalMahasiswa(Request $request, $id)
     {
-        $pemilihan_lokasi = PemilihanLokasi::findOrFail($id);
+        // $pemilihan_lokasi = PemilihanLokasi::findOrFail($id);
         $pemilihan_lokasi = PemilihanLokasi::where('id', $id)->first();
 
         // Lakukan validasi atau operasi lain sesuai kebutuhan
+        $request->validate([
+            'id_pengalihan' =>'required'
+        ], [
+            'id_pengalihan.required' => 'BPS Pengalihan wajib diisi.'
+        ]);
 
         $pemilihan_lokasi->id_pengalihan = $request->input('id_pengalihan');
         $pemilihan_lokasi->keterangan = $request->input('keterangan');
@@ -136,6 +143,7 @@ class RoleBpsProvinsiController extends Controller
             'id_instansi' => $request->input('id_pengalihan') ? $request->input('id_pengalihan') : null
         ];
         $pemilihan_lokasi->mahasiswa->update($data);
+        $pemilihan_lokasi->update($data);
         $pemilihan_lokasi->save();
 
         return redirect()->to('/bps-provinsi/approvalmahasiswa')->with('success', 'Data berhasil diperbarui.');
@@ -154,14 +162,16 @@ class RoleBpsProvinsiController extends Controller
             }
         }
         // Finalisasi::create([
-        //     'finalisasi_banding_lokasi_bpsprov' => 1
+        //     'finalisasi_penentuan_lokasi_bpsprov' => 1
         // ]);
 
-        $finalisasis = Finalisasi::get();
-        foreach ($finalisasis as $finalisasi) {
+        // $finalisasis = Finalisasi::all();
+        // foreach ($finalisasis as $finalisasi) {
+        //     $finalisasi->update(['finalisasi_penentuan_lokasi_bpsprov' => 1]);
+        // }
 
-            $finalisasi->update(['finalisasi_banding_lokasi_bpsprov' => 1]);
-        }
+        $finalisasi = Finalisasi::first();
+        $finalisasi->update(['finalisasi_penentuan_lokasi_bpsprov' => 1]);
 
         return redirect()->to('/bps-provinsi/approvalmahasiswa')->with('success', 'Berhasil finalisasi');
     }
