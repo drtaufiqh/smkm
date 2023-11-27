@@ -78,15 +78,21 @@ class DatabaseSeeder extends Seeder
         $dospem->id_user = 3;
         $dospem->save();
 
-        // Instansi::factory(8)->create();
-        // $instansi = Instansi::factory()->create();
-        // $instansi->is_prov = false;
-        // $instansi->id_user = 6;
+        // Instansi::factory(2)->create();
+        $instansi = Instansi::factory()->create();
+        $instansi->is_prov = false;
+        $instansi->id_user = 6;
+        // $instansi->id_kabkota = 1;
         // $instansi->save();
-        // $instansi = Instansi::factory()->create();
-        // $instansi->is_prov = true;
-        // $instansi->id_user = 5;
+        // $instansi->kode_kabkota = $instansi->kabKota->kode;
+        $instansi->save();
+        $instansi = Instansi::factory()->create();
+        $instansi->is_prov = true;
+        $instansi->id_user = 5;
+        // $instansi->id_kabkota = 2;
         // $instansi->save();
+        // $instansi->kode_kabkota = $instansi->kabKota->kode;
+        $instansi->save();
 
         PembimbingLapangan::factory(10)->create();
         $pemlap = PembimbingLapangan::factory()->create();

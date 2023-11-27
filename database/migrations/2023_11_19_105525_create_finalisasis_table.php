@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('finalisasi_penentuan_lokasi_admin')->nullable();
             $table->string('finalisasi_banding_lokasi_admin')->nullable();
+            $table->string('finalisasi_penentuan_lokasi_bpsprov')->nullable();
+            $table->string('finalisasi_banding_lokasi_bpsprov')->nullable();
             $table->timestamps();
         });
     }

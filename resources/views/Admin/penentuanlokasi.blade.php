@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @php
-  $finalisasiDone = \App\Models\Finalisasi::isFinalisasiDone();
+  $finalisasiDone = \App\Models\Finalisasi::isFinalisasiPenentuanAdminDone();
   // $finalisasiDone = false;
 @endphp
 
@@ -190,7 +190,7 @@
   </form>
 </div>
 @else
-<div class="alert alert-warning alert-dismissible fade show text-center" role="alert"
+<div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
 
   <i class="bi bi-info-circle me-1"></i>
   Telah dilakukan finalisasi pengajuan lokasi

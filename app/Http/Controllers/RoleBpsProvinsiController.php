@@ -120,9 +120,15 @@ class RoleBpsProvinsiController extends Controller
                 return redirect()->to('/bps-provinsi/bandingmahasiswa')->with('failed', 'Terdapat mahasiswa yang belum diberi keputusan');
             }
         }
-        Finalisasi::create([
-            'finalisasi_banding_lokasi_bpsprov' => 1
-        ]);
+        // Finalisasi::create([
+        //     'finalisasi_banding_lokasi_bpsprov' => 1
+        // ]);
+
+        $finalisasis = Finalisasi::get();
+        foreach ($finalisasis as $finalisasi) {
+
+            $finalisasi->update(['finalisasi_banding_lokasi_bpsprov' => 1]);
+        }
 
         return redirect()->to('/bps-provinsi/bandingmahasiswa')->with('success', 'Berhasil finalisasi');
     }

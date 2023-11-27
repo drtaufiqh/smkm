@@ -17,6 +17,18 @@ class Finalisasi extends Model
         'finalisasi_banding_lokasi_admin',
         // Kolom-kolom lain yang mungkin ada di tabel ini
     ];
+    
+    public static function isFinalisasiPenentuanBpsProvDone()
+    {
+        $totalRows = self::count();
+
+        // Jika jumlah baris di tabel adalah 0, kembalikan false
+        if ($totalRows === 0) {
+            return false;
+        }
+
+        return self::where('finalisasi_penentuan_lokasi_bpsprov', '=', 1)->count() === $totalRows;
+    }
 
     public static function isFinalisasiBandingBpsProvDone()
     {

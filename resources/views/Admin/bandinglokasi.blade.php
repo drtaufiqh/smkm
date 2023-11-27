@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @php
-  $finalisasi_Banding_Done = \App\Models\Finalisasi::isFinalisasiBandingDone();
+  $finalisasi_Banding_Done = \App\Models\Finalisasi::isFinalisasiBandingAdminDone();
   // $finalisasi_Banding_Done = false;
 @endphp
 
@@ -125,7 +125,7 @@
   </form>
 </div>
 @else
-<div class="alert alert-warning alert-dismissible fade show text-center" role="alert"
+<div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
 
   <i class="bi bi-info-circle me-1"></i>
   Telah dilakukan finalisasi banding lokasi

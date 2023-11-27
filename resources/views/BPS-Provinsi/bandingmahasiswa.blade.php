@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @php
-  $finalisasiDone = \App\Models\Finalisasi::isFinalisasiDone();
+  $finalisasiDone = \App\Models\Finalisasi::isFinalisasiBandingDone();
 @endphp
 
 @section('container')
