@@ -31,7 +31,7 @@
                                       <th scope="col">Nama Mahasiswa</th>
                                       <th scope="col">NIM</th>
                                       <th scope="col">Domisili</th>
-                                      <th scope="col">BPS Kab/Kota Pilihan</th>
+                                      <th scope="col">BPS Instansi Pilihan</th>
                                       <th scope="col">Status</th>
                                       <th scope="col">BPS yang Disetujui</th>
                                       <th scope="col">Keterangan</th>
@@ -63,26 +63,6 @@
                           </div>
                           <!-- End Table with stripped rows -->
 
-                    {{-- <!-- Modal -->
-                    <div class="modal fade mt-5" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-                      <div class="modal-dialog mt-5">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h5 class="modal-title">Approval Pengajuan Mahasiswa</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                  <div class="card-body text-center">
-                                      <p class="card-text">
-                                          <a href="/bps-provinsi/setujuiPemilihan/{{ $id }}" class="btn btn-success mx-4" data-bs-toggle="modal" >Setujui</a>
-                                          <a href="#" class="btn btn-danger mx-4" data-bs-toggle="modal" data-bs-target="#tidakSetujuiModal">Tidak Setujui</a>
-                                      </p>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div> --}}
-
                   <!-- Modal untuk "Tidak Setujui" -->
                   <div class="modal fade mt-5" id="tidakSetujuiModal" tabindex="-1" aria-labelledby="tidakSetujuiModalLabel" aria-hidden="true">
                       <div class="modal-dialog mt-5">
@@ -94,15 +74,12 @@
                               <div class="modal-body">
                                 <form>
                                   <div class="mb-3">
-                                    <label for="pengalihan">BPS Kabupaten/Kota Pengalihan</label>
+                                    <label for="pengalihan">BPS Instansi Pengalihan</label>
                                       <select class="form-select" aria-label="Default select example" id="pengalihan" name="pengalihan">
                                         <option selected>Pilih BPS Instansi</option>
                                         @foreach($instansis as $instansi)
                                             <option value="{{ $instansi->nama }}">{{ $instansi->nama }}</option>
                                         @endforeach
-                                        {{-- <option value="kabupaten1">BPS Kabupaten 1</option>
-                                        <option value="kabupaten2">BPS Kabupaten 2</option>
-                                        <option value="kabupaten3">BPS Kabupaten 3</option> --}}
                                       </select>
                                   </div>
                                   <div class="mb-3">
@@ -113,7 +90,7 @@
                               </div>
                               <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                  <button type="button" class="btn btn-danger">Kirim</button>
+                                  <button type="submit" class="btn btn-danger">Kirim</button>
                               </div>
                           </div>
                       </div>
@@ -127,7 +104,7 @@
   </div>
 </section>
 
-<script>
+{{-- <script>
     $(document).ready(function() {
         // Menangani klik pada tombol "Setujui" di setiap baris
         $('.btn-setujui').click(function() {
@@ -140,7 +117,7 @@
             // Lakukan sesuatu ketika tombol "Setujui" di modal diklik
         });
     });
-</script>
+</script> --}}
 
   </main><!-- End #main -->
 @endsection

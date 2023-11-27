@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\finalisasi>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Finalisasi>
  */
 class FinalisasiFactory extends Factory
 {
@@ -14,7 +14,7 @@ class FinalisasiFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
             //
