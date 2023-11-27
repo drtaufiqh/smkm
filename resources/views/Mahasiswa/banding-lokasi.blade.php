@@ -17,8 +17,7 @@
         @foreach ($pemilihan_lokasis as $pemilihan_lokasi)
           <h4 class="alert-heading">Selamat!</h4>
           <p>Lokasi magang Anda adalah</p>
-          <h5 class="alert-heading">{{ $pemilihan_lokasi->instansi }}</h5>
-          <hr />
+          <h5 class="alert-heading">{{ Auth::user()->info()->instansi->nama }}</h5>
           <button type="button" class="btn btn-success">Konfirmasi</button>
           <button type="button" class="btn btn-danger btn-banding">
             Banding

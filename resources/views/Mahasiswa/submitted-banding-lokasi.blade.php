@@ -16,7 +16,7 @@
             </nav>
           </div>
           <div class="waiting-text" style="text-align: center; font-weight: bold; font-size: 24px;">
-            <p>Mohon Menungguu Persetujuan Lebih Lanjut</p>
+            <p>Mohon Menunggu Persetujuan Lebih Lanjut</p>
         </div>
         <div class="waiting-image" style="text-align: center;">
             <img src="{{ asset('assets/img/submitted.jpeg') }}" alt="Gambar Menunggu" style="display: block; margin: 0 auto; width: 600px;">
