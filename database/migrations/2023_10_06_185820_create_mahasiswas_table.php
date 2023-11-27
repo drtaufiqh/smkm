@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_user')->constraint('users')->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreignId('id_user')->constraint('users')->onDelete('cascade')->onUpdate('cascade');
             // $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');            
             $table->string('nama',50);
             $table->string('nim',9);
-            $table->string('email',100);
+            $table->string('email',100)->unique();
+            $table->string('kelas',4)->nullable();
             $table->string('no_hp',20)->nullable();
             $table->string('foto',255)->nullable();
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);

@@ -18,6 +18,13 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link {{ ($sidebar === 'mahasiswa') ? '' : 'collapsed'}}" href="/admin/daftar-mahasiswa">
+          <i class="bi bi-grid"></i>
+          <span>Daftar Mahasiswa</span>
+        </a>
+      </li><!-- End Mahasiswa Nav -->
+
       {{-- <li class="nav-item">
         <a class="nav-link {{ ($sidebar === 'database') ? '' : 'collapsed'}}" href="/admin/database">
           <i class="bi bi-database"></i>

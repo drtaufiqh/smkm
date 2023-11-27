@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['userAkses:admin'])->group(function () {
         Route::get('/admin/bandinglokasi', [RoleAdminController::class, 'bandingLokasi']);
         Route::get('/admin/dashboard', [RoleAdminController::class, 'dashboard']);
+        Route::get('/admin/daftar-mahasiswa', [RoleAdminController::class, 'daftarMahasiswa']);
         Route::get('/admin/database', [RoleAdminController::class, 'database']);
         Route::get('/admin/penentuanlokasi', [RoleAdminController::class, 'penentuanLokasi']);
 
@@ -75,6 +76,8 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/admin/do_tentukanlokasi/{id}/{pilihan}', [RoleAdminController::class, 'do_tentukanlokasi']);
         Route::get('/admin/export-mahasiswa', [MahasiswaController::class, 'mahasiswaExport']);
         Route::post('/admin/import-mahasiswa', [MahasiswaController::class, 'mahasiswaImportExcel']);
+
+        Route::post('/admin/import-akun-mahasiswa', [RoleAdminController::class, 'imporAkunMahasiswa']);
     });
 
     # bps instansi

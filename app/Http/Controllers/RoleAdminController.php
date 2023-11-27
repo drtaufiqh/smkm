@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\AkunMahasiswaImport;
 use App\Models\Mahasiswa;
 use App\Models\LaporanAkhir;
 use Illuminate\Http\Request;
 use App\Models\PemilihanLokasi;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RoleAdminController extends Controller
 {
@@ -46,6 +48,16 @@ class RoleAdminController extends Controller
         ]);
     }
 
+    public function daftarMahasiswa()
+    {
+        return view('admin.daftar-mahasiswa', [
+            'title'=> 'Daftar Mahasiswa | Admin',
+            'sidebar'=> 'mahasiswa',
+            'circle_sidebar'=> '',
+            'mahasiswas' => Mahasiswa::orderBy('id', 'desc')->get(),
+            'laporan_akhir' => LaporanAkhir::all()
+        ]);
+    }
     public function database()
     {
         return view('admin.database', [
@@ -75,5 +87,14 @@ class RoleAdminController extends Controller
         return redirect()->to('/admin/penentuanlokasi');
     }
 
+    public function imporAkunMahasiswa(Request $request){
+        // dd($request->file('file_import'));
+        $file = $request->file('file_import');
+        $namaFile = $file->getClientOriginalName();
+        $file->move('AkunMahasiswa', $namaFile);
+
+        Excel::import(new AkunMahasiswaImport, public_path("/AkunMahasiswa/$namaFile"));
+        return redirect()->to('/admin/daftar-mahasiswa');
+    }
 }
 
