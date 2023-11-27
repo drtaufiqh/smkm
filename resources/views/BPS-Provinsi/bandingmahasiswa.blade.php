@@ -71,7 +71,9 @@
                                     <th scope="col">BPS Instansi Awal</th>
                                     <th scope="col">BPS Instansi Banding</th>
                                     <th scope="col">Alasan</th>
+                                    @if (!$finalisasiDone)
                                     <th scope="col">Status</th>
+                                    @endif
                                     <th scope="col">BPS Instansi yang Disetujui</th>
                                 </tr>
                             </thead>
