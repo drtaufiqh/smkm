@@ -13,10 +13,11 @@
           class="alert alert-primary alert-dismissible fade show col-10 mx-auto text-center"
           role="alert"
         >
+        @php $i = 0 @endphp
+        @foreach ($pemilihan_lokasis as $pemilihan_lokasi)
           <h4 class="alert-heading">Selamat!</h4>
           <p>Lokasi magang Anda adalah</p>
-          <h5 class="alert-heading">{{ Auth::user()->info()->instansi }}</h5>
-          <hr />
+          <h5 class="alert-heading">{{ Auth::user()->info()->instansi->nama }}</h5>
           <button type="button" class="btn btn-success">Konfirmasi</button>
           <button type="button" class="btn btn-danger btn-banding">
             Banding
@@ -32,7 +33,8 @@
       >
         <div class="card-body">
           <!-- Floating Labels Form -->
-          <form class="row g-3">
+          <form class="row g-3" action="/mahasiswa/submitted-banding-lokasi/{{ Auth::user()->info()->id }}" method="POST">
+            @csrf
             <h5 class="card-title">Lokasi Banding</h5>
             <button
               type="button"
@@ -61,9 +63,10 @@
                   class="form-select"
                   id="floatingSelect"
                   aria-label="Instansi"
+                  name="id_instansi_banding"
                 >
-                @foreach($kab_kotas as $kab_kota)
-                  <option value="{{ $kab_kota->nama }}">{{ $kab_kota->nama }}</option>
+                @foreach($instansis as $instansi)
+                  <option value="{{ $instansi->id }}">{{ $instansi->nama }}</option>
                 @endforeach
                 </select>
                 <label for="floatingSelect">Instansi</label>
@@ -76,6 +79,7 @@
                   placeholder="Alasan"
                   id="floatingTextarea"
                   style="height: 80px"
+                  name="alasan_banding"
                 ></textarea>
                 <label for="floatingTextarea">Alasan</label>
               </div>
@@ -101,4 +105,5 @@
       <!-- Gambar End -->
     </main>
     <!-- End #main -->
+@endforeach
 @endsection

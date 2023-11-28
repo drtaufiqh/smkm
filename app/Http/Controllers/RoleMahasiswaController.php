@@ -23,14 +23,17 @@ class RoleMahasiswaController extends Controller
     {
         $mahasiswas = Mahasiswa::all();
         $instansis = Instansi::all();
+        $pemilihan_lokasis = PemilihanLokasi::all();
         return view('mahasiswa.banding-lokasi', [
             'title' => 'Lokasi Magang | Mahasiswa',
             'sidebar' => 'lokasi',
             'circle_sidebar' => '',
             'provinsis' => Provinsi::all(),
             'kab_kotas' => KabKota::all(),
+            'instansis' => Instansi::all(),
             'mahasiswas' => $mahasiswas,
-            'instansis' => $instansis
+            'instansis' => $instansis,
+            'pemilihan_lokasis' => $pemilihan_lokasis
         ]);
     }
 
@@ -83,13 +86,15 @@ class RoleMahasiswaController extends Controller
     {
         $mahasiswas = Mahasiswa::all();
         $laporan_akhirs = LaporanAkhir::all();
+        $pemilihan_lokasis = PemilihanLokasi::all();
 
         return view('mahasiswa.laporan-akhir', [
             'title' => 'Laporan Akhir | Mahasiswa',
             'sidebar' => 'laporan akhir',
             'circle_sidebar' => '',
             'mahasiswas' => $mahasiswas,
-            'laporan_akhirs' => $laporan_akhirs
+            'laporan_akhirs' => $laporan_akhirs,
+            'pemilihan_lokasis' => $pemilihan_lokasis
         ]);
     }
 
