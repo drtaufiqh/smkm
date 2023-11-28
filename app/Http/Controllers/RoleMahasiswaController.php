@@ -23,6 +23,12 @@ class RoleMahasiswaController extends Controller
 {
     public function bandingLokasi()
     {
+        $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
+        $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
+        if($pemilihan_lokasi->id_instansi_banding){
+            return redirect()->to('/mahasiswa/submitted-banding-lokasi');
+        }
+
         $mahasiswas = Mahasiswa::all();
         $instansis = Instansi::all();
         $pemilihan_lokasis = PemilihanLokasi::all();
@@ -167,4 +173,45 @@ class RoleMahasiswaController extends Controller
             'pemilihan_lokasi' => $pemilihan_lokasi
         ]);
     }
+
+
+    public function submittedBandingLokasi(Request $request, $id_user)
+    {
+        $data = [
+            'id_instansi_banding' => $request->input('id_instansi_banding'),
+            'alasan_banding' => $request->input('alasan_banding')
+        ];
+
+        PemilihanLokasi::where('id_mhs',$id_user)->update($data);
+        return redirect()->to('/mahasiswa/submitted-banding-lokasi');
+    }
+
+    public function waitingBandingLokasi(){
+        $finalisasiBandingBpsProvDone = Finalisasi::isFinalisasiBandingBpsProvDone();
+        if($finalisasiBandingBpsProvDone){
+            return redirect()->to('/mahasiswa/lokasi-magang');
+        }
+
+        $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
+        $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
+
+        return view('mahasiswa.submitted-banding-lokasi', [
+            'title' => 'Lokasi Magang | Mahasiswa',
+            'sidebar' => 'lokasi',
+            'circle_sidebar' => '',
+            'pemilihan_lokasi' => $pemilihan_lokasi
+        ]);
+    }
+    public function lokasiMagang(){
+        $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
+        $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
+
+        return view('mahasiswa.lokasi-magang', [
+            'title' => 'Lokasi Magang | Mahasiswa',
+            'sidebar' => 'lokasi',
+            'circle_sidebar' => '',
+            'pemilihan_lokasi' => $pemilihan_lokasi
+        ]);
+    }
+
 }

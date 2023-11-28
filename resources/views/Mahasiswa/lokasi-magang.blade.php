@@ -16,9 +16,7 @@
             </nav>
           </div>
           <div class="waiting-text" style="text-align: center; font-weight: bold; font-size: 24px;">
-            <p>Mohon Menunggu Persetujuan Lebih Lanjut</p>
-            <p>Lokasi Magang Awal: {{ $pemilihan_lokasi->instansi->nama }}</p>
-            <p>Lokasi Magang Banding: {{ $pemilihan_lokasi->instansiBanding->nama }}</p>
+            <p>Selamat Melaksanakan Kegiatan Magang di {{ Auth::user()->info()->instansi->nama }}</p>
         </div>
         <div class="waiting-image" style="text-align: center;">
             <img src="{{ url('/assets/img/submitted.jpeg') }}" alt="Gambar Menunggu" style="display: block; margin: 0 auto; width: 600px;">
