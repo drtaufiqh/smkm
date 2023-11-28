@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Finalisasi;
 use App\Models\KabKota;
 use App\Models\Instansi;
 use App\Models\Provinsi;
 use App\Models\Mahasiswa;
 use App\Models\KartuKendali;
 use App\Models\LaporanAkhir;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\JadwalBimbingan;
 use App\Models\JurnalingHarian;
@@ -120,6 +122,11 @@ class RoleMahasiswaController extends Controller
 
     public function pemilihanLokasi()
     {
+        $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
+        $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
+        if($pemilihan_lokasi){
+            return redirect()->to('/mahasiswa/submitted-pemilihan-lokasi');
+        }
         return view('mahasiswa.pemilihan-lokasi', [
             'title' => 'Lokasi Magang | Mahasiswa',
             'sidebar' => 'lokasi',
@@ -146,10 +153,18 @@ class RoleMahasiswaController extends Controller
 
     public function waitingPemilihanLokasi()
     {
+        $finalisasiPenentuanBpsProvDone = Finalisasi::isFinalisasiPenentuanBpsProvDone();
+        if($finalisasiPenentuanBpsProvDone){
+            return redirect()->to('/mahasiswa/banding-lokasi');
+        }
+
+        $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
+        $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
         return view('mahasiswa.submitted-pemilihan-lokasi', [
             'title' => 'Lokasi Magang | Mahasiswa',
             'sidebar' => 'lokasi',
-            'circle_sidebar' => ''
+            'circle_sidebar' => '',
+            'pemilihan_lokasi' => $pemilihan_lokasi
         ]);
     }
 }

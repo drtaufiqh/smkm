@@ -13,8 +13,6 @@
           class="alert alert-primary alert-dismissible fade show col-10 mx-auto text-center"
           role="alert"
         >
-        @php $i = 0 @endphp
-        @foreach ($pemilihan_lokasis as $pemilihan_lokasi)
           <h4 class="alert-heading">Selamat!</h4>
           <p>Lokasi magang Anda adalah</p>
           <h5 class="alert-heading">{{ Auth::user()->info()->instansi->nama }}</h5>
@@ -105,5 +103,4 @@
       <!-- Gambar End -->
     </main>
     <!-- End #main -->
-@endforeach
 @endsection
