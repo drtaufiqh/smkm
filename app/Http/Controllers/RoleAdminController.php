@@ -89,18 +89,24 @@ class RoleAdminController extends Controller
     }
 
     public function do_terima_banding($id, $banding){
-        // $data = [
-        //     'id_instansi' => $banding
-        // ];
-        // PemilihanLokasi::where('id', $id)->update($data);
+        $data = [
+            'id_instansi' => null
+        ];
+        PemilihanLokasi::where('id', $id)->first()->mahasiswa->update($data);
+        $data = [
+            'admin_setuju_banding' => 1
+        ];
+        PemilihanLokasi::where('id', $id)->update($data);
         return redirect()->to('/admin/bandinglokasi')->with('success', 'Berhasil meneruskan banding lokasi');
     }
 
     public function do_tolak_banding($id){
+        $pemilihan_lokasi = PemilihanLokasi::where('id', $id)->first();
         $data = [
-            'id_instansi_banding' => NULL
+            'id_instansi' => $pemilihan_lokasi->id_instansi
         ];
-        PemilihanLokasi::where('id', $id)->update($data);
+        $pemilihan_lokasi->mahasiswa->update($data);
+        $pemilihan_lokasi->update(['admin_setuju_banding' => null]);
 
         return redirect()->to('/admin/bandinglokasi')->with('success', 'Berhasil menolak banding');
     }
@@ -137,12 +143,24 @@ class RoleAdminController extends Controller
         //     $pemilihan_lokasi->update(['id_instansi' => $id_instansi_banding]);
         // }
 
+
+        $pemilihan_lokasis = PemilihanLokasi::get();
+
+        foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
+            $id_instansi = $pemilihan_lokasi->mahasiswa->id_instansi;
+
+            if (!$id_instansi) {
+                if(!$pemilihan_lokasi->admin_setuju_banding){
+                    return redirect()->to('/admin/bandinglokasi')->with('failed', 'Terdapat mahasiswa yang belum diberi keputusan');
+                }
+            }
+        }
+
         $finalisasis = Finalisasi::get();
         foreach ($finalisasis as $finalisasi) {
-
             $finalisasi->update(['finalisasi_banding_lokasi_admin' => 1]);
         }
-        return redirect()->to('/admin/penentuanlokasi')->with('success', 'Berhasil finalisasi');
+        return redirect()->to('/admin/bandinglokasi')->with('success', 'Berhasil finalisasi');
         
     }
 

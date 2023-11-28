@@ -28,7 +28,7 @@ class Finalisasi extends Model
             return false;
         }
 
-        return self::where('finalisasi_penentuan_lokasi_bpsprov', '=', 1)->count();
+        return self::where('finalisasi_penentuan_lokasi_bpsprov', '=', 1)->count() === $totalRows;
     }
 
     public static function isFinalisasiBandingBpsProvDone()

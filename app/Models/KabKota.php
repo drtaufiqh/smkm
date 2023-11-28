@@ -17,7 +17,7 @@ class KabKota extends Model
     // public $incrementing = false; // Tidak menggunakan incrementing
     // protected $keyType = 'string'; // Tipe data primary key
 
-    public function prov(){
+    public function provinsi(){
         return $this->belongsTo(Provinsi::class, 'id_prov');
     }
 }

@@ -9,27 +9,28 @@ class Mahasiswa extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'id_user',
-        'nama',
-        'nim',
-        'email',
-        'no_hp',
-        'foto',
-        'jenis_kelamin',
-        'alamat_1',
-        'id_kecamatan_alamat_1',
-        'alamat_2',
-        'id_kecamatan_alamat_2',
-        'bank',
-        'an_bank',
-        'no_rek',
-        'id_dosen_pembimbing',
-        'id_pembimbing_lapangan',
-        'id_instansi',
-        'created_at',
-        'update_at'
-    ];
+    // protected $fillable = [
+    //     'id_user',
+    //     'nama',
+    //     'nim',
+    //     'email',
+    //     'no_hp',
+    //     'foto',
+    //     'jenis_kelamin',
+    //     'alamat_1',
+    //     'id_kecamatan_alamat_1',
+    //     'alamat_2',
+    //     'id_kecamatan_alamat_2',
+    //     'bank',
+    //     'an_bank',
+    //     'no_rek',
+    //     'id_dosen_pembimbing',
+    //     'id_pembimbing_lapangan',
+    //     'id_instansi',
+    //     'created_at',
+    //     'update_at'
+    // ];
+    protected $guarded = 0;
     protected $tables = 'mahasiswa';
     public static $rules = [
         'id_user' => 'exists:users,id',

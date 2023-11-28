@@ -28,6 +28,7 @@ return new class extends Migration
             $table->foreignId('id_instansi_banding')->nullable()->constraint('instansis')->onDelete('set null');
             // $table->foreign('id_instansi_banding')->references('id')->on('instansis')->onDelete('set null');
             $table->text('alasan_banding')->nullable();
+            $table->boolean('admin_setuju_banding')->nullable();
             $table->foreignId('id_instansi')->nullable()->constraint('instansis')->onDelete('set null');
             // $table->foreign('id_instansi')->references('id')->on('instansis')->onDelete('set null');
             $table->text('keterangan')->nullable();

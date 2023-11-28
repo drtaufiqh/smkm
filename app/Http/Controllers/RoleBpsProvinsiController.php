@@ -28,7 +28,10 @@ class RoleBpsProvinsiController extends Controller
             'title' => 'Banding Lokasi | BPS Provinsi',
             'sidebar' => 'lokasi',
             'circle_sidebar' => 'banding',
-            'pemilihan_lokasis' => PemilihanLokasi::all()
+            'pemilihan_lokasis' => PemilihanLokasi::where('admin_setuju_banding', 1)->get()
+            // 'pemilihan_lokasis' => PemilihanLokasi::whereHas('mahasiswa', function ($query) {
+            //     $query->whereRaw('mahasiswas.id_instansi = pemilihan_lokasis.id_instansi_banding');
+            // })->get()
         ]);
     }
 
@@ -73,9 +76,11 @@ class RoleBpsProvinsiController extends Controller
     {
         $pemilihan_lokasi = PemilihanLokasi::where('id', $id)->first();
         $data = [
-            'id_instansi' => $pemilihan_lokasi->id_instansi_ajuan
+            'id_instansi' => $pemilihan_lokasi->id_instansi_ajuan,
+            'id_pengalihan' => null,
+            'keterangan' => null
         ];
-        $pemilihan_lokasi->mahasiswa->update($data);
+        $pemilihan_lokasi->mahasiswa->update(['id_instansi' => $pemilihan_lokasi->id_instansi_ajuan]);
         $pemilihan_lokasi->update($data);
         return redirect()->to('/bps-provinsi/approvalmahasiswa');
     }
@@ -100,15 +105,27 @@ class RoleBpsProvinsiController extends Controller
         }
     }
 
-    // public function do_finalisasi_banding()
-    // {
-    //     $finalisasis = Finalisasi::get();
-    //     foreach ($finalisasis as $finalisasi) {
+    public function do_finalisasi_banding()
+    {
+        $pemilihan_lokasis = PemilihanLokasi::get();
 
-    //         $finalisasi->update(['finalisasi_banding_lokasi_bpsprov' => 1]);
-    //     }
-    //     return redirect()->to('/bps-provinsi/bandingmahasiswa')->with('success', 'Berhasil Finalisasi');
-    // }
+        foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
+            $id_instansi = $pemilihan_lokasi->mahasiswa->id_instansi;
+
+            if (!$id_instansi) {
+                if($pemilihan_lokasi->admin_setuju_banding){
+                    return redirect()->to('/bps-provinsi/bandingmahasiswa')->with('failed', 'Terdapat mahasiswa yang belum diberi keputusan');
+                }
+            }
+        }
+
+        $finalisasis = Finalisasi::get();
+        foreach ($finalisasis as $finalisasi) {
+
+            $finalisasi->update(['finalisasi_banding_lokasi_bpsprov' => 1]);
+        }
+        return redirect()->to('/bps-provinsi/bandingmahasiswa')->with('success', 'Berhasil Finalisasi');
+    }
 
     // public function do_finalisasi_banding()
     public function tolakPemilihan(Request $request, $id)
@@ -155,7 +172,7 @@ class RoleBpsProvinsiController extends Controller
         $pemilihan_lokasis = PemilihanLokasi::get();
 
         foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
-            $id_instansi = $pemilihan_lokasi->mahasiswa->id_instansi;
+            $id_instansi = $pemilihan_lokasi->id_instansi;
 
             if ($id_instansi == NULL) {
                 return redirect()->to('/bps-provinsi/approvalmahasiswa')->with('failed', 'Terdapat mahasiswa yang belum diberi keputusan');

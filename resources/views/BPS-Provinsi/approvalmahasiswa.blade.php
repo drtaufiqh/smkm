@@ -25,21 +25,21 @@
               <div class="col-lg-12">
                   <div class="card">
                       <div class="card-body">
-                          <h5 class="card-title text-lg-center">Pengajuan di BPS Provinsi Jakarta</h5>
+                          <h5 class="card-title text-lg-center">Pengajuan di Provinsi {{ Auth::user()->info()->kabKota->provinsi->nama }}</h5>
                           @include('komponen.pesan')
                             @if ($finalisasiPenentuanAdminDone)
                             <!-- Table with stripped rows -->
                             <div class="table-responsive">
-                            <table class="table datatable">
+                            <table class="table datatable text-center">
                                 <thead>
                                     <tr>
                                         <th scope="col">Nomor</th>
                                         <th scope="col">Nama Mahasiswa</th>
                                         <th scope="col">NIM</th>
                                         <th scope="col">Domisili</th>
-                                        <th scope="col">BPS Instansi Pilihan</th>
+                                        <th scope="col">Lokasi Magang Ajuan</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">BPS yang Disetujui</th>
+                                        <th scope="col">Lokasi Magang Pengalihan</th>
                                         <th scope="col">Keterangan</th>
                                     </tr>
                                 </thead>
@@ -57,16 +57,17 @@
                                             <form action="/bps-provinsi/setujui-pemilihan/{{ $pemilihan_lokasi->id }}" method="post">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit" class="btn btn-success mx-4">Setujui</button>
+                                                <button type="submit" class="btn btn-outline-success mb-2">Setujui</button>
                                             </form>
+                                            
                                             <form action="{{ url('/bps-provinsi/tolak-pemilihan/' . $pemilihan_lokasi->id) }}" method="post">
                                                 @csrf
                                                 @method('PUT')
-                                                <button type="submit" class="btn btn-danger mx-4 ">Tidak Setujui</button>
+                                                <button type="submit" class="btn btn-outline-danger">Alihkan</button>
                                             </form>
                                         </td>
                                     @else
-                                        @if ($pemilihan_lokasi->id_instansi_ajuan == $pemilihan_lokasi->id_instansi)
+                                        @if (!$pemilihan_lokasi->id_pengalihan)
                                         <td>
                                             <div class="alert alert-success text-center" role="alert">
                                             Disetujui
@@ -81,7 +82,15 @@
                                         @endif
                                     @endif
                                     <td>{{ optional($pemilihan_lokasi->instansiPengalihan)->nama ?? '-' }}</td>
-                                    <td>{{ $pemilihan_lokasi->keterangan }}</td>
+                                    @if ($pemilihan_lokasi->id_instansi && !$pemilihan_lokasi->instansiPengalihan)
+                                      <td>
+                                          <div class="alert alert-success text-center" role="alert">
+                                          Disetujui
+                                          </div>
+                                      </td>
+                                    @else
+                                      <td>{{ ($pemilihan_lokasi->keterangan) ?? '-' }}</td>
+                                    @endif
                                 </tr>
                                 @endforeach
                                 </tbody>
@@ -92,7 +101,7 @@
                                 <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
 
                                     <i class="bi bi-info-circle me-1"></i>
-                                    Admin belum melakukan finalisasi penentuan lokasi mahasiswa.
+                                    Admin Politeknik Statistika STIS belum melakukan finalisasi penentuan lokasi mahasiswa.
                                     <button
                                     type="button"
                                     class="btn-close"

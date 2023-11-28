@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @php
-  $finalisasi_Banding_Done = \App\Models\Finalisasi::isFinalisasiBandingAdminDone();
-  // $finalisasi_Banding_Done = false;
+  $finalisasiPenentuanBpsProvDone = \App\Models\Finalisasi::isFinalisasiPenentuanBpsProvDone();
+  $finalisasiBandingAdminDone = \App\Models\Finalisasi::isFinalisasiBandingAdminDone();
 @endphp
 
 @section('container')
@@ -26,7 +26,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-lg-center">Banding Lokasi oleh Admin</h5>
                         @include('komponen.pesan')
-
+                        @if ($finalisasiPenentuanBpsProvDone)
                         <!-- Table with stripped rows -->
                         <div class="table-responsive">
                         <table class="table datatable text-center">
@@ -38,9 +38,10 @@
                                     <th scope="col">Lokasi Awal</th>
                                     <th scope="col">Lokasi Banding</th>
                                     <th scope="col">Alasan</th>
-                                    @if (!$finalisasi_Banding_Done)
+                                    @if (!$finalisasiBandingAdminDone)
                                       <th scope="col">Aksi</th>
                                     @endif
+                                    <th scope="col">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,14 +52,10 @@
                                     <th scope="row">{{ $i }}</th>
                                     <td>{{ $pemilihan_lokasi->mahasiswa->nama }}</td>
                                     <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
-                                    @if ($pemilihan_lokasi->id_instansi_ajuan != NULL)
-                                      <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
-                                    @else
-                                      <td>-</td>
-                                    @endif
-                                    <td>{{ $pemilihan_lokasi->instansiBanding->nama }}</td>
+                                    <td>{{ optional($pemilihan_lokasi->instansi)->nama ?? '-' }}</td>
+                                    <td>{{ optional($pemilihan_lokasi->instansiBanding)->nama ?? '-' }}</td>
                                     <td>{{ $pemilihan_lokasi->alasan_banding }}</td>
-                                    @if (!$finalisasi_Banding_Done)
+                                    @if (!$finalisasiBandingAdminDone)
                                     <td>
                                         <form action="/admin/do_terima_banding/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_instansi_banding }}" method="POST">
                                           @csrf 
@@ -73,6 +70,24 @@
                                     </td>
                                     @endif
 
+                                      @if ($pemilihan_lokasi->admin_setuju_banding)
+                                        <td>
+                                            <div class="alert alert-success text-center" role="alert">
+                                            Diteruskan
+                                            </div>
+                                        </td>
+                                      @else
+                                        @if (!$pemilihan_lokasi->mahasiswa->id_instansi)
+                                            <td>-</td>
+                                        @else
+                                          <td>
+                                            <div class="alert alert-danger text-center" role="alert">
+                                            Ditolak
+                                            </div>
+                                          </td>
+                                        @endif
+                                    @endif
+
                                   </tr>
                                   @endforeach
                                
@@ -80,6 +95,19 @@
                         </table>
                       </div>
                         <!-- End Table with stripped rows -->
+                        @else
+                            <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+
+                                <i class="bi bi-info-circle me-1"></i>
+                                BPS Provinsi belum melakukan finalisasi penentuan lokasi mahasiswa.
+                                <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="alert"
+                                aria-label="Close"
+                                ></button>
+                            </div>
+                        @endif
 
                   <!-- Modal Teruskan -->
                   {{-- <div class="modal fade mt-5" id="myModalterus" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -116,26 +144,28 @@
         </div>
     </div>
 </div>
-@if (!$finalisasi_Banding_Done)
-<div class="text-center">
-  <form action='/admin/do_finalisasi_banding' method="post">
-    @csrf 
-    @method('PUT') <!-- Tambahkan ini untuk menentukan metode PUT -->
-    <button type="submit" class="btn btn-primary btn-lg">Finalisasi</button>
-  </form>
-</div>
-@else
-<div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+@if ($finalisasiPenentuanBpsProvDone)
+  @if (!$finalisasiBandingAdminDone)
+  <div class="text-center">
+    <form action='/admin/do_finalisasi_banding' method="post">
+      @csrf 
+      @method('PUT') <!-- Tambahkan ini untuk menentukan metode PUT -->
+      <button type="submit" class="btn btn-primary btn-lg">Finalisasi</button>
+    </form>
+  </div>
+  @else
+  <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
 
-  <i class="bi bi-info-circle me-1"></i>
-  Telah dilakukan finalisasi banding lokasi
-  <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="Close"
-  ></button>
-</div>
+    <i class="bi bi-info-circle me-1"></i>
+    Telah dilakukan finalisasi banding lokasi
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  @endif
 @endif
 </section>
 

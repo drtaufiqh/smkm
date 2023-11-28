@@ -38,7 +38,7 @@ class MahasiswaFactory extends Factory
             'no_rek' => fake()->numerify('##############'),
             'id_dosen_pembimbing' => fake()->numberBetween(1,10),
             'id_pembimbing_lapangan' => fake()->numberBetween(1,10),
-            'id_instansi' => fake()->numberBetween(1,10),
+            // 'id_instansi' => fake()->numberBetween(1,10),
         ];
     }
 }
