@@ -183,6 +183,7 @@ class RoleMahasiswaController extends Controller
         ];
 
         PemilihanLokasi::where('id_mhs',$id_user)->update($data);
+        Mahasiswa::find($id_user)->update(['id_instansi' => null]);
         return redirect()->to('/mahasiswa/submitted-banding-lokasi');
     }
 
