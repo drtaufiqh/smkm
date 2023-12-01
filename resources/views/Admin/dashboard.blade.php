@@ -25,7 +25,7 @@
                         <h5 class="card-title text-center">Lokasi Magang Mahasiswa</h5>
                     
                               <!-- Bar Chart -->
-                              <div id="barChart"></div>
+                              <div id="grafikLokasi"></div>
                               <div class="text-center mt-3 text-center" style="color: white;">
                                 <a href="/admin/penentuanlokasi">
                                   <button type="button" class="btn btn-success btn-lg">Tentukan Lokasi</button>
@@ -34,29 +34,39 @@
                 
                               <script>
                                 document.addEventListener("DOMContentLoaded", () => {
-                                  new ApexCharts(document.querySelector("#barChart"), {
+                                  new ApexCharts(document.querySelector("#grafikLokasi"), {
                                     series: [{
-                                      data: [400,  448, 470, 1100]
+                                      data: [{{ $lokasi_blm }}, {{ $lokasi_wait_admin }}, {{ $lokasi_wait_instansi }}, {{ $lokasi_final }},{{ $lokasi_banding }}]
                                     }],
                                     chart: {
                                       type: 'bar',
-                                      height: 350
+                                      height: 400
                                     },
                                     plotOptions: {
                                       bar: {
                                         borderRadius: 7,
                                         horizontal: true,
+                                        dataLabels: {
+                                          position: 'center', 
+                                        }
                                       }
                                     },
                                     dataLabels: {
-                                      enabled: false
+                                      enabled: true,
+                                      formatter: function (val) {
+                                        return val; 
+                                      },
+                                      style: {
+                                        colors: ['white'],
+                                      }
                                     },
                                     xaxis: {
-                                      categories: ['Belum Menentukan','Menunggu','Final','Ditolak'],
+                                      categories: ['Belum Memilih','Sudah Memilih', 'Menunggu Admin', 'Menunggu Instansi Terkait', 'Telah ditentukan'],
                                     }
                                   }).render();
                                 });
                               </script>
+                              
                               <!-- End Bar Chart -->
                 
                             </div>
