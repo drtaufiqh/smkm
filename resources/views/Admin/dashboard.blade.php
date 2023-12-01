@@ -26,6 +26,11 @@
                     
                               <!-- Bar Chart -->
                               <div id="barChart"></div>
+                              <div class="text-center mt-3 text-center" style="color: white;">
+                                <a href="/admin/penentuanlokasi">
+                                  <button type="button" class="btn btn-success btn-lg">Tentukan Lokasi</button>
+                                </a>
+                              </div>
                 
                               <script>
                                 document.addEventListener("DOMContentLoaded", () => {
@@ -66,6 +71,11 @@
                   
                                 <!-- Doughnut Chart -->
                                 <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
+                                <div class="text-center mt-3 text-center" style="color: white;">
+                                  <a href="/admin/penentuandosbing">
+                                    <button type="button" class="btn btn-success btn-lg">Tentukan Dosbing</button>
+                                  </a>
+                                </div>
                                 <script>
                                   document.addEventListener("DOMContentLoaded", () => {
                                     new Chart(document.querySelector('#doughnutChart'), {
@@ -76,7 +86,7 @@
                                           'Sudah Ditentukan'
                                         ],
                                         datasets: [{
-                                          label: 'My First Dataset',
+                                          label: 'Mahasiswa',
                                           data: [{{ $mhs2Count }}, {{ $mhsCount }}],                                          backgroundColor: [
                                             'rgb(255, 99, 132)',
                                             'rgb(54, 162, 235)'
@@ -101,6 +111,7 @@
                   
                                 <!-- Pie Chart -->
                                 <canvas id="pieChart" style="max-height: 200px;"></canvas>
+                                
                                 <script>
                                   document.addEventListener("DOMContentLoaded", () => {
                                     new Chart(document.querySelector('#pieChart'), {
@@ -111,7 +122,7 @@
                                           'Belum Disetujui'
                                         ],
                                         datasets: [{
-                                          label: 'My First Dataset',
+                                          label: 'Mahasiswa',
                                           data: [{{ $lapCount }}, {{ $lap2Count }}],
                                           backgroundColor: [
                                             'rgb(54, 162, 235)',
@@ -129,7 +140,9 @@
                             </div>
                             <a href="#">
                             <div class="text-center mt-5 text-center" style="color: white;">
+                              <a href="/admin/database">
                                 <button type="button" class="btn btn-success btn-lg">Lihat Database</button>
+                              </a>
                             </div>
                             </a>
                           </div>

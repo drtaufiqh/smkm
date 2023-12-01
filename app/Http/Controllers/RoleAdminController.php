@@ -69,13 +69,38 @@ class RoleAdminController extends Controller
         ]);
     }
 
+    public function penentuandosbing()
+    {
+        return view('admin.pemilihandosbing', [
+            'title'=> 'Dosen Pembimbing | Admin',
+            'sidebar'=> 'dosbing',
+            'circle_sidebar'=> '',
+            'pemilihan_lokasis' => PemilihanLokasi::all(),
+            'mahasiswas' => Mahasiswa::all(),
+        ]);
+    }
+
     public function do_tentukanlokasi($id, $pilihan){
         $data = [
             'id_instansi_ajuan' => $pilihan
         ];
         PemilihanLokasi::where('id', $id)->update($data);
+        // return response()->json(['message' => 'ok']);
         return redirect()->to('/admin/penentuanlokasi')->with('success', 'Berhasil mengubah lokasi ajuan');
     }
+
+    // public function do_tentukanlokasi($id, $pilihan){
+    //     $data = [
+    //         'id_instansi_ajuan' => $pilihan
+    //     ];
+    
+    //     // Update data pada database
+    //     PemilihanLokasi::where('id', $id)->update($data);
+    
+    //     // Mengembalikan respons dalam format JSON
+    //     return response()->json(['success' => true, 'message' => 'Berhasil mengubah lokasi ajuan']);
+    // }
+    
 
     public function do_terima_banding($id, $banding){
         // $data = [
@@ -96,22 +121,23 @@ class RoleAdminController extends Controller
 
     public function do_finalisasi_lokasi()
     {
-        
+        # memeriksa apakah semua lokasi mahasiswa udah diajukan
         $pemilihan_lokasis = PemilihanLokasi::get();
 
         foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
             $id_instansi_ajuan = $pemilihan_lokasi->id_instansi_ajuan;
-
+            # kalo ada yang belum berarti gagal
             if ($id_instansi_ajuan == NULL){
               return redirect()->to('/admin/penentuanlokasi')->with('failed', 'Terdapat mahasiswa yang belum diajukan');
             }
         }
+        #logic finalisasi
         Finalisasi::create([
             'finalisasi_penentuan_lokasi_admin' => 1,
             'finalisasi_banding_lokasi_admin' => 0
         ]);
-
-              return redirect()->to('/admin/penentuanlokasi')->with('success', 'Berhasil finalisasi');
+            # kalo udah bener berarti berhasil
+            return redirect()->to('/admin/penentuanlokasi')->with('success', 'Berhasil finalisasi');
         
     }
 
