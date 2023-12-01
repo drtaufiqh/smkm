@@ -14,14 +14,14 @@ class RoleBpsInstansiController extends Controller
         $mhs2 = Mahasiswa::whereNull('id_pembimbing_lapangan')->get();
         $pl1 = Mahasiswa::all();
         $pl2 = PembimbingLapangan::all();
-    
+
         $mhs1Count = $mhs1->count();
         $mhs2Count = $mhs2->count();
         $pl1Count = $pl1->count();
         $pl2Count = $pl2->count();
 
         return view('bps-instansi.dashboard', [
-            'title'=> 'Dashboard | Instansi',
+            'title' => 'Dashboard | Instansi',
             'sidebar' => 'dashboard',
             'circle_sidebar' => '',
             'mhs1' => $mhs1,
@@ -38,7 +38,7 @@ class RoleBpsInstansiController extends Controller
     public function mahasiswa()
     {
         return view('bps-instansi.mahasiswa', [
-            'title'=> 'Mahasiswa | Instansi',
+            'title' => 'Mahasiswa | Instansi',
             'sidebar' => 'mahasiswa',
             'circle_sidebar' => '',
             'mahasiswas' => Mahasiswa::all()
@@ -48,7 +48,7 @@ class RoleBpsInstansiController extends Controller
     public function presensiMahasiswa()
     {
         return view('bps-instansi.presensimahasiswa', [
-            'title'=> 'Mahasiswa | Instansi',
+            'title' => 'Mahasiswa | Instansi',
             'sidebar' => 'mahasiswa',
             'circle_sidebar' => ''
         ]);
@@ -57,7 +57,7 @@ class RoleBpsInstansiController extends Controller
     public function pembimbingLap()
     {
         return view('bps-instansi.pembimbinglap', [
-            'title'=> 'Pembimbing Lapangan | Instansi',
+            'title' => 'Pembimbing Lapangan | Instansi',
             'sidebar' => 'pembimbing',
             'circle_sidebar' => '',
             'pembimbing_lapangans' => PembimbingLapangan::all()
@@ -67,7 +67,7 @@ class RoleBpsInstansiController extends Controller
     public function buatPembimbing()
     {
         return view('bps-instansi.buatpembimbing', [
-            'title'=> 'Akun Pembimbing Lapangan | Instansi',
+            'title' => 'Akun Pembimbing Lapangan | Instansi',
             'sidebar' => 'pembimbing',
             'circle_sidebar' => ''
         ]);
@@ -76,7 +76,7 @@ class RoleBpsInstansiController extends Controller
     public function daftarBimbingan()
     {
         return view('bps-instansi.daftarbimbingan', [
-            'title'=> 'Daftar Bimbingan | Instansi',
+            'title' => 'Daftar Bimbingan | Instansi',
             'sidebar' => 'bimbingan',
             'circle_sidebar' => ''
         ]);
@@ -85,7 +85,7 @@ class RoleBpsInstansiController extends Controller
     public function editDaftarBimbingan()
     {
         return view('bps-instansi.editdaftarbimbingan', [
-            'title'=> 'Edit Bimbingan | Instansi',
+            'title' => 'Edit Bimbingan | Instansi',
             'sidebar' => 'bimbingan',
             'circle_sidebar' => ''
         ]);
@@ -94,20 +94,19 @@ class RoleBpsInstansiController extends Controller
     public function tabelBimbingan()
     {
         return view('bps-instansi.tabelbimbingan', [
-            'title'=> 'Bimbingan | Instansi',
+            'title' => 'Bimbingan | Instansi',
             'sidebar' => 'bimbingan',
             'circle_sidebar' => '',
             'pembimbing_lapangans' => PembimbingLapangan::all(),
         ]);
     }
-    
+
     public function profil()
     {
         return view('bps-instansi.profil', [
-            'title'=> 'Profil | Instansi',
+            'title' => 'Profil | Instansi',
             'sidebar' => '',
             'circle_sidebar' => ''
         ]);
     }
 }
-

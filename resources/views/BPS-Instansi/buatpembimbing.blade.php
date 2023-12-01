@@ -23,7 +23,8 @@
           <h5 class="card-title text-xl-center">Form Buat Akun Pembimbing Lapangan</h5>
 
           <!-- Floating Labels Form -->
-          <form class="row g-3">
+          <form class="row g-3" action="/bps-instansi/pembimbinglap" method="POST">
+            @csrf
             <div class="col-md-12">
               <div class="form-floating">
                 <input type="text" class="form-control" id="floatingName" placeholder="Your Name">

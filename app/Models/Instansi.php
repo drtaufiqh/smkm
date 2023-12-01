@@ -9,17 +9,21 @@ class Instansi extends Model
 {
     use HasFactory;
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function kecamatan(){
+    public function kecamatan()
+    {
         return $this->belongsTo(Kecamatan::class, 'id_kecamatan');
     }
-    public function kabKota(){
+
+    public function kabKota()
+    {
         return $this->belongsTo(KabKota::class, 'id_kab_kota');
     }
-    
+
     protected $fillable = ['id_user', 'nama', 'id_kecamatan', 'alamat_lengkap', 'is_prov', 'created_at', 'updated_at'];
     protected $tables = 'instansis';
     public static $rules = [

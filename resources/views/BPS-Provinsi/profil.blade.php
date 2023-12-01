@@ -6,7 +6,7 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Profil BPS Provinsi DKI Jakarta</h1>
+      <h1>Profil {{ Auth::user()->info()->nama }}</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/bps-provinsi/dashboard">Home</a></li>
@@ -24,7 +24,7 @@
 
               <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
               <h2>BPS Provinsi</h2>
-              <h3>Provinsi DKI Jakarta</h3>
+              <h3>{{ Auth::user()->info()->kabKota->provinsi->nama }}</h3>
               <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -46,54 +46,54 @@
                 <li class="nav-item">
                   <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Ringkasan</button>
                 </li>
-
+{{-- 
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-lokasi">Lokasi Peta</button>
-                </li>
+                </li> --}}
 
               </ul>
               <div class="tab-content pt-2">
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                   <h5 class="card-title">Tentang</h5>
-                  <p class="small fst-italic">BPS Provinsi Jakarta adalah Badan Pusat Statistik (BPS) yang beroperasi di tingkat provinsi Jakarta, Indonesia. BPS adalah lembaga pemerintah yang bertanggung jawab untuk mengumpulkan, mengelola, dan menyediakan data statistik resmi untuk wilayah tersebut. Tugas utama BPS Provinsi Jakarta adalah mengumpulkan data statistik yang mencakup berbagai aspek kehidupan, seperti ekonomi, sosial, demografi, dan lingkungan.</p>
+                  <p class="small fst-italic">{{ Auth::user()->info()->nama }} adalah Badan Pusat Statistik (BPS) yang beroperasi di tingkat provinsi {{ Auth::user()->info()->kabKota->provinsi->nama }}, Indonesia. BPS adalah lembaga pemerintah yang bertanggung jawab untuk mengumpulkan, mengelola, dan menyediakan data statistik resmi untuk wilayah tersebut. Tugas utama {{ Auth::user()->info()->nama }} adalah mengumpulkan data statistik yang mencakup berbagai aspek kehidupan, seperti ekonomi, sosial, demografi, dan lingkungan.</p>
 
                   <h5 class="card-title">Profil Detail BPS</h5>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Nama Instansi</div>
-                    <div class="col-lg-9 col-md-8">BPS Provinsi Jakarta</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->nama }}</div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Negara</div>
-                    <div class="col-lg-9 col-md-8">Indonesia</div>
+                    <div class="col-lg-3 col-md-4 label">Provinsi</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->kabKota->provinsi->nama }}</div>
                   </div>
 
-                  <div class="row">
+                  {{-- <div class="row">
                     <div class="col-lg-3 col-md-4 label">Kepala BPS</div>
                     <div class="col-lg-9 col-md-8">Dwi Paramita Dewi</div>
-                  </div>
+                  </div> --}}
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Alamat</div>
-                    <div class="col-lg-9 col-md-8">Jl. Salemba Tengah No.36, RT.2/RW.4, Paseban, Senen, Central Jakarta City, Jakarta 10440</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->alamat_lengkap }}</div>
                   </div>
 
-                  <div class="row">
+                  {{-- <div class="row">
                     <div class="col-lg-3 col-md-4 label">Nomor Telepon</div>
                     <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
-                  </div>
+                  </div> --}}
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->email }}</div>
                   </div>
 
                 </div>
 
               
-                <div class="tab-pane fade pt-3" id="profile-lokasi">
+                {{-- <div class="tab-pane fade pt-3" id="profile-lokasi">
                   <!-- Change Password Form -->
                   <div class="col-lg-12">
                     <div class="card">
@@ -112,7 +112,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> --}}
               </div><!-- End Bordered Tabs -->
             </div>
           </div>
