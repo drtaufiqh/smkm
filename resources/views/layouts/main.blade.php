@@ -71,7 +71,10 @@
     <!-- Page CSS -->
 
     <link rel="stylesheet" href="/assets/vendor/css/app-calendar.css" />
+
+
     <!-- Helpers -->
+  
     <script src="/assets/vendor/js/helpers.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
@@ -105,6 +108,7 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
+
   <!-- Vendor JS Files -->
   <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -115,10 +119,15 @@
   <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="/assets/vendor/php-email-form/validate.js"></script>
 
+
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/penentuanLokasi.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 
   <script>
+    
     // Sembunyikan semua elemen yang memiliki class 'collapsed'
     document.querySelectorAll('.collapsed').forEach(function (el) {
         el.addEventListener('click', function () {
@@ -137,6 +146,8 @@
             });
         });
     });
+
+    $()
   </script>
 </body>
 

@@ -25,33 +25,48 @@
                         <h5 class="card-title text-center">Lokasi Magang Mahasiswa</h5>
                     
                               <!-- Bar Chart -->
-                              <div id="barChart"></div>
+                              <div id="grafikLokasi"></div>
+                              <div class="text-center mt-3 text-center" style="color: white;">
+                                <a href="/admin/penentuanlokasi">
+                                  <button type="button" class="btn btn-success btn-lg">Tentukan Lokasi</button>
+                                </a>
+                              </div>
                 
                               <script>
                                 document.addEventListener("DOMContentLoaded", () => {
-                                  new ApexCharts(document.querySelector("#barChart"), {
+                                  new ApexCharts(document.querySelector("#grafikLokasi"), {
                                     series: [{
-                                      data: [400,  448, 470, 1100]
+                                      data: [{{ $lokasi_blm }}, {{ $lokasi_wait_admin }}, {{ $lokasi_wait_instansi }}, {{ $lokasi_final }},{{ $lokasi_banding }}]
                                     }],
                                     chart: {
                                       type: 'bar',
-                                      height: 350
+                                      height: 400
                                     },
                                     plotOptions: {
                                       bar: {
                                         borderRadius: 7,
                                         horizontal: true,
+                                        dataLabels: {
+                                          position: 'center', 
+                                        }
                                       }
                                     },
                                     dataLabels: {
-                                      enabled: false
+                                      enabled: true,
+                                      formatter: function (val) {
+                                        return val; 
+                                      },
+                                      style: {
+                                        colors: ['white'],
+                                      }
                                     },
                                     xaxis: {
-                                      categories: ['Belum Menentukan','Menunggu','Final','Ditolak'],
+                                      categories: ['Belum Memilih','Sudah Memilih', 'Menunggu Admin', 'Menunggu Instansi Terkait', 'Telah ditentukan'],
                                     }
                                   }).render();
                                 });
                               </script>
+                              
                               <!-- End Bar Chart -->
                 
                             </div>
@@ -66,6 +81,11 @@
                   
                                 <!-- Doughnut Chart -->
                                 <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
+                                <div class="text-center mt-3 text-center" style="color: white;">
+                                  <a href="/admin/penentuandosbing">
+                                    <button type="button" class="btn btn-success btn-lg">Tentukan Dosbing</button>
+                                  </a>
+                                </div>
                                 <script>
                                   document.addEventListener("DOMContentLoaded", () => {
                                     new Chart(document.querySelector('#doughnutChart'), {
@@ -76,7 +96,7 @@
                                           'Sudah Ditentukan'
                                         ],
                                         datasets: [{
-                                          label: 'My First Dataset',
+                                          label: 'Mahasiswa',
                                           data: [{{ $mhs2Count }}, {{ $mhsCount }}],                                          backgroundColor: [
                                             'rgb(255, 99, 132)',
                                             'rgb(54, 162, 235)'
@@ -101,6 +121,7 @@
                   
                                 <!-- Pie Chart -->
                                 <canvas id="pieChart" style="max-height: 200px;"></canvas>
+                                
                                 <script>
                                   document.addEventListener("DOMContentLoaded", () => {
                                     new Chart(document.querySelector('#pieChart'), {
@@ -111,7 +132,7 @@
                                           'Belum Disetujui'
                                         ],
                                         datasets: [{
-                                          label: 'My First Dataset',
+                                          label: 'Mahasiswa',
                                           data: [{{ $lapCount }}, {{ $lap2Count }}],
                                           backgroundColor: [
                                             'rgb(54, 162, 235)',
@@ -129,7 +150,9 @@
                             </div>
                             <a href="#">
                             <div class="text-center mt-5 text-center" style="color: white;">
+                              <a href="/admin/database">
                                 <button type="button" class="btn btn-success btn-lg">Lihat Database</button>
+                              </a>
                             </div>
                             </a>
                           </div>

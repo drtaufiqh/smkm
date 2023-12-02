@@ -32,6 +32,12 @@ class RoleAdminController extends Controller
         $laporan2 = LaporanAkhir::whereIn('approval_akhir_kampus', [0])->get();
         $lapCount = $laporan->count();
         $lap2Count = $laporan2->count();
+        $lokasi_blm = Mahasiswa::all()->count()-PemilihanLokasi::whereNull('id_pilihan_1')->get()->count();
+        $lokasi_sdh = PemilihanLokasi::whereNotNull('id_pilihan_1')->get()->count();
+        $lokasi_wait_admin = PemilihanLokasi::whereNotNull('id_pilihan_1')->get()->count() - PemilihanLokasi::whereNull('id_instansi_ajuan')->get()->count();
+        $lokasi_wait_instansi = PemilihanLokasi::whereNotNull('id_instansi_ajuan')->get()->count() - PemilihanLokasi::whereNull('id_instansi')->get()->count();
+        $lokasi_final = PemilihanLokasi::whereNotNull('id_instansi')->get()->count();
+        $lokasi_banding = PemilihanLokasi::whereNotNull('id_instansi_banding')->get()->count();
 
         return view('admin.dashboard', [
             'title'=> 'Dashboard | Admin',
@@ -45,7 +51,13 @@ class RoleAdminController extends Controller
             'laporan'=>$laporan,
             'laporan2'=>$laporan2,
             'lapCount'=>$lapCount,
-            'lap2Count'=>$lap2Count
+            'lap2Count'=>$lap2Count,
+            'lokasi_blm'=>$lokasi_blm,
+            'lokasi_sdh'=>$lokasi_sdh,
+            'lokasi_wait_admin'=>$lokasi_wait_admin,
+            'lokasi_wait_instansi'=>$lokasi_wait_instansi,
+            'lokasi_final'=>$lokasi_final,
+            'lokasi_banding'=>$lokasi_banding
         ]);
     }
 
@@ -80,13 +92,38 @@ class RoleAdminController extends Controller
         ]);
     }
 
+    public function penentuandosbing()
+    {
+        return view('admin.pemilihandosbing', [
+            'title'=> 'Dosen Pembimbing | Admin',
+            'sidebar'=> 'dosbing',
+            'circle_sidebar'=> '',
+            'pemilihan_lokasis' => PemilihanLokasi::all(),
+            'mahasiswas' => Mahasiswa::all(),
+        ]);
+    }
+
     public function do_tentukanlokasi($id, $pilihan){
         $data = [
             'id_instansi_ajuan' => $pilihan
         ];
         PemilihanLokasi::where('id', $id)->update($data);
+        // return response()->json(['message' => 'ok']);
         return redirect()->to('/admin/penentuanlokasi')->with('success', 'Berhasil mengubah lokasi ajuan');
     }
+
+    // public function do_tentukanlokasi($id, $pilihan){
+    //     $data = [
+    //         'id_instansi_ajuan' => $pilihan
+    //     ];
+    
+    //     // Update data pada database
+    //     PemilihanLokasi::where('id', $id)->update($data);
+    
+    //     // Mengembalikan respons dalam format JSON
+    //     return response()->json(['success' => true, 'message' => 'Berhasil mengubah lokasi ajuan']);
+    // }
+    
 
     public function do_terima_banding($id, $banding){
         $data = [
@@ -113,16 +150,17 @@ class RoleAdminController extends Controller
 
     public function do_finalisasi_lokasi()
     {
-        
+        # memeriksa apakah semua lokasi mahasiswa udah diajukan
         $pemilihan_lokasis = PemilihanLokasi::get();
 
         foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
             $id_instansi_ajuan = $pemilihan_lokasi->id_instansi_ajuan;
-
+            # kalo ada yang belum berarti gagal
             if ($id_instansi_ajuan == NULL){
                 return redirect()->to('/admin/penentuanlokasi')->with('failed', 'Terdapat mahasiswa yang belum diajukan');
             }
         }
+        #logic finalisasi
         Finalisasi::create([
             'finalisasi_penentuan_lokasi_admin' => 1,
             'finalisasi_banding_lokasi_admin' => 0

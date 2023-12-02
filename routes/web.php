@@ -53,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/daftar-mahasiswa', [RoleAdminController::class, 'daftarMahasiswa']);
         Route::get('/admin/database', [RoleAdminController::class, 'database']);
         Route::get('/admin/penentuanlokasi', [RoleAdminController::class, 'penentuanLokasi']);
+        Route::get('/admin/penentuandosbing', [RoleAdminController::class, 'penentuandosbing']);
 
         Route::resource('/admin/users', UserController::class);
         Route::resource('/admin/jurnaling_harians', JurnalingHarianController::class);
