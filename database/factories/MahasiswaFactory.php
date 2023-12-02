@@ -26,7 +26,7 @@ class MahasiswaFactory extends Factory
             'nim' => fake()->unique()->numerify('#########'),
             'email' => fake()->unique()->safeEmail,
             'no_hp' => fake()->phoneNumber,
-            'foto' => 'path/to/your/photo.jpg', // Ganti dengan path foto yang sesuai
+            'foto' => '/storage/assets/img//1701534412_Foto 1x1.png', // Ganti dengan path foto yang sesuai
             'kelas' => fake()->randomElement(['3SD1', '3SD2', '3SD3', '3SI1', '3SI2', '3SI3', '3SK1', '3SK2', '3SK3', '3SE1', '3SE2', '3SE3']),
             'jenis_kelamin' => fake()->randomElement(['laki-laki', 'perempuan']),
             'alamat_1' => fake()->address,

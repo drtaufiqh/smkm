@@ -26,6 +26,7 @@ return new class extends Migration
             // $table->foreign('kode_kabkota')->references('id')->on('kab_kotas')->onDelete('set null')->onUpdate('cascade');
             $table->text('alamat_lengkap');
             $table->boolean('is_prov');
+            $table->string('foto')->nullable();
             
             $table->timestamps();
         });

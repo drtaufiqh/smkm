@@ -24,7 +24,8 @@ class Instansi extends Model
         return $this->belongsTo(KabKota::class, 'id_kab_kota');
     }
 
-    protected $fillable = ['id_user', 'nama', 'id_kecamatan', 'alamat_lengkap', 'is_prov', 'created_at', 'updated_at'];
+    // protected $fillable = ['id_user', 'nama', 'id_kecamatan', 'alamat_lengkap', 'is_prov', 'created_at', 'updated_at'];
+    protected $guarded = [];
     protected $tables = 'instansis';
     public static $rules = [
         'id_user' => 'exists:users,id',

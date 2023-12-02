@@ -34,6 +34,7 @@ class InstansiFactory extends Factory
             'kode_kabkota' => KabKota::where('id', fake()->numberBetween(1,10))->first()->kode,
             'alamat_lengkap' => fake()->text,
             'is_prov' => $isProv,
+            'foto' => '/storage/assets/img//1701535520_BPS.jpg'
         ];
     }
 }

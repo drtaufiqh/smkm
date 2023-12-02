@@ -568,6 +568,7 @@ class InstansiSeeder extends Seeder
             $user->save();
 
             $data['id_user'] = $user->id;
+            $data['foto'] = '/storage/assets/img//1701534412_Foto 1x1.png';
             DB::table('instansis')->insert($data);
         }
     }
