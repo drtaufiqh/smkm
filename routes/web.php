@@ -103,8 +103,8 @@ Route::middleware(['auth'])->group(function () {
 
     # bps provinsi
     Route::middleware(['userAkses:prov'])->group(function () {
-        Route::get('/bps-provinsi/approvalmahasiswa', [RoleBpsProvinsiController::class, 'approvalMahasiswa']);
-        Route::get('/bps-provinsi/bandingmahasiswa', [RoleBpsProvinsiController::class, 'bandingMahasiswa']);
+        Route::get('/bps-provinsi/approvalmahasiswa/{provId}', [RoleBpsProvinsiController::class, 'approvalMahasiswa']);
+        Route::get('/bps-provinsi/bandingmahasiswa/{provId}', [RoleBpsProvinsiController::class, 'bandingMahasiswa']);
         Route::get('/bps-provinsi/dashboard', [RoleBpsProvinsiController::class, 'dashboard']);
         Route::get('/bps-provinsi/profil', [RoleBpsProvinsiController::class, 'profil']);
 

@@ -32,8 +32,10 @@ class RoleAdminController extends Controller
         $laporan2 = LaporanAkhir::whereIn('approval_akhir_kampus', [0])->get();
         $lapCount = $laporan->count();
         $lap2Count = $laporan2->count();
-        $lokasi_blm = Mahasiswa::all()->count()-PemilihanLokasi::whereNull('id_pilihan_1')->get()->count();
+        $lokasi_blm = Mahasiswa::all()->count()-PemilihanLokasi::whereNotNull('id_pilihan_1')->get()->count();
+        // $lokasi_blm = Mahasiswa::all()->count()-PemilihanLokasi::whereNull('id_pilihan_1')->get()->count();
         $lokasi_sdh = PemilihanLokasi::whereNotNull('id_pilihan_1')->get()->count();
+        # hanya cocok jika belum ditentukan bps prov
         $lokasi_wait_admin = PemilihanLokasi::whereNotNull('id_pilihan_1')->get()->count() - PemilihanLokasi::whereNull('id_instansi_ajuan')->get()->count();
         $lokasi_wait_instansi = PemilihanLokasi::whereNotNull('id_instansi_ajuan')->get()->count() - PemilihanLokasi::whereNull('id_instansi')->get()->count();
         $lokasi_final = PemilihanLokasi::whereNotNull('id_instansi')->get()->count();
