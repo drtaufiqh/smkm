@@ -152,7 +152,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link {{ ($sidebar === 'dosbing') ? '' : 'collapsed'}}" href="/admin/#">
+        <a class="nav-link {{ ($sidebar === 'dosbing') ? '' : 'collapsed'}}" href="/admin/penentuandosbing">
           <i class="bi bi-person"></i>
           <span>Dosbing</span>
         </a>

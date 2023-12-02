@@ -45,9 +45,17 @@
                                     <th scope="row">{{ $i }}</th>
                                     <td>{{ $mahasiswa->nama }}</td>
                                     <td>{{ $mahasiswa->jenis_kelamin }}</td>
-                                    <td>{{ $mahasiswa->instansi->nama }}</td>
+                                    @if ($mahasiswa->instansi != NULL)
+                                      <td>{{ $mahasiswa->instansi->nama }}</td>   
+                                    @else
+                                      <td>-</td>                                 
+                                    @endif
                                     <td>{{ $mahasiswa->pembimbingLapangan->nama }}</td>
-                                    <td>{{ $mahasiswa->dosenPembimbing->nama }}</td>
+                                    @if ($mahasiswa->dosenPembimbing != NULL)
+                                      <td>{{ $mahasiswa->dosenPembimbing->nama }}</td>
+                                    @else
+                                      <td>-</td>
+                                    @endif
                                     <td><a href="#"><button type="button" class="btn btn-success my-4" style="color: white;" data-bs-toggle="modal">Lihat</button></a></td>
                                     <td><a href="#"><button type="button" class="btn btn-success w-100 my-2" style="color: white;" data-bs-toggle="modal">Harian</button></a>
                                         <a href="#"><button type="button" class="btn btn-success w-100" style="color: white;" data-bs-toggle="modal">Bulanan</button></a></td>

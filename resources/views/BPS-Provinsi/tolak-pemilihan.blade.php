@@ -42,8 +42,8 @@
                 <div class="col-sm-10">
                     <select class="form-control" name='id_pengalihan' id="id_pengalihan">
                         <option value="">Pilih BPS Pengalihan</option>
-                        @foreach ($instansis as $pilihan)
-                            <option value="{{ $pilihan->id }}">{{ $pilihan->nama }}</option>
+                        @foreach ($instansis as $instansi)
+                            <option value="{{ $instansi->id }}">{{ $instansi->nama }}</option>
                         @endforeach
                     </select>
                 </div>

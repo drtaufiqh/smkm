@@ -53,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/daftar-mahasiswa', [RoleAdminController::class, 'daftarMahasiswa']);
         Route::get('/admin/database', [RoleAdminController::class, 'database']);
         Route::get('/admin/penentuanlokasi', [RoleAdminController::class, 'penentuanLokasi']);
+        Route::get('/admin/penentuandosbing', [RoleAdminController::class, 'penentuandosbing']);
 
         Route::resource('/admin/users', UserController::class);
         Route::resource('/admin/jurnaling_harians', JurnalingHarianController::class);
@@ -110,7 +111,8 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/bps-provinsi/setujui-pemilihan/{id}', [RoleBpsProvinsiController::class, 'setujuiPemilihan']);
         Route::put('/bps-provinsi/do_keputusanbanding/{id}/{lokasi_banding}/{action}', [RoleBpsProvinsiController::class, 'do_keputusanbanding']);
         Route::put('/bps-provinsi/do_finalisasi_banding', [RoleBpsProvinsiController::class, 'do_finalisasi_banding']);
-        Route::put('/bps-provinsi/tolak-pemilihan/{id}', [RoleBpsProvinsiController::class, 'tolakPemilihan']);
+        // Route::put('/bps-provinsi/tolak-pemilihan/{id}', [RoleBpsProvinsiController::class, 'tolakPemilihan']);
+        Route::put('/bps-provinsi/tolak-pemilihan/{id}/{provId}', [RoleBpsProvinsiController::class, 'tolakPemilihan'])->name('tolakPemilihan');
         Route::get('/bps-provinsi/tolak-pemilihan/{id}', [RoleBpsProvinsiController::class, 'tolakPemilihan']);
         Route::put('/bps-provinsi/approvalmahasiswa/{id}', [RoleBpsProvinsiController::class, 'updateApprovalMahasiswa'])->name('approvalmahasiswa.update');
         Route::put('/bps-provinsi/do_finalisasi_pemilihan', [RoleBpsProvinsiController::class, 'do_finalisasi_pemilihan']);

@@ -62,11 +62,12 @@
                                                 <button type="submit" class="btn btn-outline-success mb-2">Setujui</button>
                                             </form>
                                             
-                                            <form action="{{ url('/bps-provinsi/tolak-pemilihan/' . $pemilihan_lokasi->id) }}" method="post">
-                                                @csrf
-                                                @method('PUT')
-                                                <button type="submit" class="btn btn-outline-danger">Alihkan</button>
-                                            </form>
+                                            <form action="{{ route('tolakPemilihan', ['id' => $pemilihan_lokasi->id, 'provId' => Auth::user()->info()->kabKota->provinsi->id]) }}" method="post">
+                                              @csrf
+                                              @method('PUT')
+                                              <button type="submit" class="btn btn-outline-danger">Alihkan</button>
+                                          </form>
+                                          
                                         </td>
                                     @else
                                         @if (!$pemilihan_lokasi->id_pengalihan)
