@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Instansi;
+use App\Models\Kecamatan;
+use App\Models\KabKota;
 use App\Models\Finalisasi;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
@@ -128,7 +130,7 @@ class RoleBpsProvinsiController extends Controller
     }
 
     // public function do_finalisasi_banding()
-    public function tolakPemilihan(Request $request, $id)
+    public function tolakPemilihan(Request $request, $id, $provId)
     {
 
         $pemilihan_lokasi = PemilihanLokasi::where('id', $id)->first();
@@ -137,8 +139,15 @@ class RoleBpsProvinsiController extends Controller
         ];
         $pemilihan_lokasi->mahasiswa->update($data);
         $pemilihan_lokasi->update($data);
+        // $id_prov = Auth::User()->info()->Kabkota->Prov->id;
+        $instansis = Instansi::select('instansis.*')
+        // ->join('kecamatans', 'instansis.id_kecamatan', '=', 'kecamatans.id')
+        ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
+        ->where('kab_kotas.id_prov', 'LIKE', $provId)
+        ->get();
+
         
-        return view('BPS-Provinsi.tolak-pemilihan', ['pemilihan_lokasis' => PemilihanLokasi::all(),'instansis' => Instansi::all(),'pemilihan_lokasi' => $pemilihan_lokasi]);
+        return view('BPS-Provinsi.tolak-pemilihan', ['pemilihan_lokasis' => PemilihanLokasi::all(),'instansis' => $instansis,'pemilihan_lokasi' => $pemilihan_lokasi]);
 
     }
 
