@@ -39,7 +39,6 @@ class RoleMahasiswaController extends Controller
             'circle_sidebar' => '',
             'provinsis' => Provinsi::all(),
             'kab_kotas' => KabKota::all(),
-            'instansis' => Instansi::all(),
             'mahasiswas' => $mahasiswas,
             'instansis' => $instansis,
             'pemilihan_lokasis' => $pemilihan_lokasis

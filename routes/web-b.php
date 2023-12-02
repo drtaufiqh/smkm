@@ -75,8 +75,6 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/mahasiswas', MahasiswaController::class);
 
         Route::put('/admin/do_tentukanlokasi/{id}/{pilihan}', [RoleAdminController::class, 'do_tentukanlokasi']);
-        Route::post('/admin/do_tentukanlokasi/{id}/{pilihan}', [RoleAdminController::class, 'do_tentukanlokasi']);
-        Route::get('/admin/do_tentukanlokasi/{id}/{pilihan}', [RoleAdminController::class, 'do_tentukanlokasi']);
         Route::get('/admin/export-mahasiswa', [MahasiswaController::class, 'mahasiswaExport']);
         Route::post('/admin/import-mahasiswa', [MahasiswaController::class, 'mahasiswaImportExcel']);
 

@@ -58,25 +58,23 @@
                         <td>{{ $pemilihan_lokasi->pilihan2->nama }}</td>
                         <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
                         @if ($pemilihan_lokasi->id_instansi_ajuan != NULL)
-                          <td id="ajuan_{{ $pemilihan_lokasi->id }}">{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
+                          <td>{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
                         @else
-                          <td id="ajuan_{{ $pemilihan_lokasi->id }}">-</td>
+                          <td>-</td>
                         @endif
                         
                         @if (!$finalisasiDone) 
                             <td>
-                                {{-- <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_1 }}" class="form-tentukan-lokasi" method="post">
+                                <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_1 }}" class="form-tentukan-lokasi" method="post">
                                   @csrf
                                   @method('PUT')
                                   <button type="submit" class="btn btn-warning mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan 1</button>
-                                </form> --}}
-                                <button data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ $pemilihan_lokasi->id_pilihan_1 }}" data-nama="{{ $pemilihan_lokasi->pilihan1->nama }}" class="btn btn-warning mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan 1</button>
-                                <button data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ $pemilihan_lokasi->id_pilihan_2 }}" data-nama="{{ $pemilihan_lokasi->pilihan2->nama }}" class="btn btn-warning mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan 2</button>
-                                {{-- <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_2 }}" class="form-tentukan-lokasi" method="post">
+                                </form>
+                                <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_2 }}" class="form-tentukan-lokasi" method="post">
                                   @csrf
                                   @method('PUT')
                                   <button type="submit" class="btn btn-warning mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan 2</button>
-                                </form> --}}
+                                </form>
                             </td>
                         @endif
                         @if ($pemilihan_lokasi->mahasiswa->instansi != NULL)
@@ -118,39 +116,5 @@
 
     </section>
 
-  </main>
-@endsection
-
-@section('js-bang')
-<script>
-  $(document).ready(function() {
-      $('.btn-tentukan-lokasi').click(function() {
-          var idLok = $(this).data('id_lok');
-          var idPil = $(this).data('id_pil');
-          var nama = $(this).data('nama');
-          var newValue = nama;
-  
-          $.ajax({
-              url: '/admin/do_tentukanlokasi/' + idLok + '/' + idPil,
-              type: 'POST',
-              data: { new_value: newValue, _token: '{{ csrf_token() }}' },
-              success: function (response) {
-                  if (response.success) {
-                      // Update nilai di tabel
-                      var ajuanElem = $('#ajuan_' + idLok + '');
-                      console.log(idLok);
-                      console.log('ajuanElem length:', ajuanElem.length); // Cek panjang elemen yang dipilih di konsol
-                      ajuanElem.text(newValue);
-                      // alert(response.message);
-                  } else {
-                      alert('Gagal mengubah nilai.');
-                  }
-              },
-              error: function (error) {
-                  console.log(error);
-              }
-          });
-      });
-  });
-</script>
+  </main><
 @endsection

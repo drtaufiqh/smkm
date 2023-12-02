@@ -64,16 +64,21 @@
     const btnBanding = document.querySelector(".btn-banding");
     const btnCloseBanding = document.querySelector(".btn-cls-banding");
     const formBanding = document.querySelector(".form-banding");
+    const btnTentukanLokasi = document.querySelector('.btn-tentukan-lokasi');
     const btnAddLogBook = document.querySelector(".btn-add-lb");
     const formAddLogBook = document.querySelector(".form-log-book");
 
-    btnBanding.addEventListener("click", function () {
-      formBanding.style.display = "block";
-    });
+    if (btnBanding) {
+      btnBanding.addEventListener("click", function () {
+          formBanding.style.display = "block";
+      });
+    }
 
-    btnCloseBanding.addEventListener("click", function () {
-      formBanding.style.display = "none";
-    });
+    if (btnCloseBanding) {
+      btnCloseBanding.addEventListener("click", function () {
+        formBanding.style.display = "none";
+      });
+    }
   });
 
   /**

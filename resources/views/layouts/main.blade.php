@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
+  
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+  
   <title>{{ isset($title) ? $title : 'Database | Admin' }}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -43,10 +43,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
 
     <!-- Icons -->
     <link rel="stylesheet" href="/assets/vendor/fonts/fontawesome.css" />
@@ -82,7 +79,20 @@
     {{-- <script src="/assets/vendor/js/template-customizer.js"></script> --}}
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/assets/js/config.js"></script>
-</head>
+    
+    
+    <!-- Vendor JS Files -->
+    <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="/assets/vendor/echarts/echarts.min.js"></script>
+    <script src="/assets/vendor/quill/quill.min.js"></script>
+    <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script>
+    
+
+  </head>
 
 <body>
   
@@ -108,47 +118,35 @@
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-
-  <!-- Vendor JS Files -->
-  <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="/assets/vendor/echarts/echarts.min.js"></script>
-  <script src="/assets/vendor/quill/quill.min.js"></script>
-  <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="/assets/vendor/php-email-form/validate.js"></script>
-
-
-  <!-- Template Main JS File -->
-  <script src="/assets/js/main.js"></script>
-  <script src="/assets/js/penentuanLokasi.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
-
   <script>
     
     // Sembunyikan semua elemen yang memiliki class 'collapsed'
     document.querySelectorAll('.collapsed').forEach(function (el) {
         el.addEventListener('click', function () {
-            this.classList.toggle('active');
+          this.classList.toggle('active');
         });
-    });
-
+      });
+      
     // Hanya satu dropdown yang akan terbuka pada satu waktu
     document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(function (el) {
         el.addEventListener('click', function () {
             const targetId = this.getAttribute('href');
             document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(function (otherEl) {
-                if (otherEl !== el && otherEl.getAttribute('href') !== targetId) {
+              if (otherEl !== el && otherEl.getAttribute('href') !== targetId) {
                     otherEl.classList.remove('active');
-                }
+                  }
             });
         });
-    });
+      });
 
-    $()
-  </script>
+      </script>
+    <!-- Template Main JS File -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    {{-- <script src="/assets/js/penentuanLokasi.js"></script> --}}
+    
+    @if (request()->segment(2) != 'penentuanlokasi')
+      <script src="/assets/js/main.js"></script>
+    @endif
+    @yield('js-bang')
 </body>
-
 </html>
