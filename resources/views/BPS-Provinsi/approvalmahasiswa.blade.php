@@ -1,4 +1,6 @@
 @extends('layouts.main')
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 @php
   $finalisasiPenentuanAdminDone = \App\Models\Finalisasi::isFinalisasiPenentuanAdminDone();
   $finalisasiPenentuanBpsProvDone = \App\Models\Finalisasi::isFinalisasiPenentuanBpsProvDone();
@@ -135,25 +137,6 @@
   @endif
 </section>
 
-<script>
-    // $(document).ready(function() {
-
-
-    //     // Menangani klik pada tombol "Setujui" di setiap baris
-    //     $('.btn-setujui').click(function() {
-    //         var pemilihanId = $(this).data('id');
-    //         $('#setujuiLink').attr('href', '/bps-provinsi/setujuiPemilihan/' + pemilihanId);
-    //     });
-
-     
-    //     // Menangani klik pada tombol "Setujui" di modal
-    //     $('.btn-setujui-modal').click(function() {
-    //         // Lakukan sesuatu ketika tombol "Setujui" di modal diklik
-    //     });
-    // });
-
-    
-</script>
 
   </main><!-- End #main -->
 @endsection

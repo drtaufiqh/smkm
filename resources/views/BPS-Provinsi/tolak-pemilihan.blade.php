@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            
+
             
             <div class="mb-3 row">
                 <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
