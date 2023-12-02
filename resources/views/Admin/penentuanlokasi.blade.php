@@ -77,8 +77,8 @@
                                 </form>
                             </td>
                         @endif
-                        @if ($pemilihan_lokasi->id_instansi != NULL)
-                        <td>{{ $pemilihan_lokasi->mahasiswa->instansi->nama }}</td>
+                        @if ($pemilihan_lokasi->mahasiswa->instansi != NULL)
+                          <td>{{ $pemilihan_lokasi->mahasiswa->instansi->nama }}</td>
                         @else
                         <td>-</td>
                         @endif
