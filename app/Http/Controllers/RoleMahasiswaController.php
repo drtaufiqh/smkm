@@ -203,6 +203,19 @@ class RoleMahasiswaController extends Controller
             'pemilihan_lokasi' => $pemilihan_lokasi
         ]);
     }
+
+    public function lokasiFiks(){
+        $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
+        $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
+
+        return view('mahasiswa.lokasi-fiks', [
+            'title' => 'Lokasi Magang | Mahasiswa',
+            'sidebar' => 'lokasi',
+            'circle_sidebar' => '',
+            'pemilihan_lokasi' => $pemilihan_lokasi
+        ]);
+    }
+
     public function lokasiMagang(){
         $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
         $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();

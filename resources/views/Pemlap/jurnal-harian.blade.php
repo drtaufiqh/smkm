@@ -47,7 +47,7 @@
                           <td>{{ $mahasiswa->nim }}</td>
                           <td>{{ $mahasiswa->jenis_kelamin }}</td>
                           <td class="edit-button">
-                            <a href="/pemlap/detail-biodata">
+                            <a href="/pemlap/log-book-harian">
                                 <img src="/assets/img/logo-lookup.png" alt="Edit" width="30" height="30">
                             </a>
                           </td> 
