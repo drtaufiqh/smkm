@@ -61,12 +61,14 @@
                                 <tr>
                                     <th scope="col">No</th>
                                     <th scope="col">Nama </th>
-                                    <th scope="col">Jenis Kelamin</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">NIM</th>
+                                    <th scope="col">Kelas</th>
                                     <th scope="col">Lokasi Magang</th>
                                     <th scope="col">Pembimbing Lapangan</th>
                                     <th scope="col">Dosen Pembimbing</th>
-                                    <th scope="col">Jadwal Bimbingan Magang</th>
-                                    <th scope="col">Log Book</th>
+                                    {{-- <th scope="col">Jadwal Bimbingan Magang</th>
+                                    <th scope="col">Log Book</th> --}}
                                     <th scope="col">Laporan Akhir Magang</th>
                                 </tr>
                             </thead>
@@ -77,13 +79,15 @@
                                   <tr>
                                     <th scope="row">{{ $i }}</th>
                                     <td>{{ $mahasiswa->nama }}</td>
-                                    <td>{{ $mahasiswa->jenis_kelamin }}</td>
+                                    <td>{{ $mahasiswa->email }}</td>
+                                    <td>{{ $mahasiswa->nim }}</td>
+                                    <td>{{ $mahasiswa->kelas }}</td>
                                     <td>{{ optional($mahasiswa->instansi)->nama ?? '-' }}</td>
                                     <td>{{ optional($mahasiswa->pembimbingLapangan)->nama ?? '-' }}</td>
                                     <td>{{ optional($mahasiswa->dosenPembimbing)->nama ?? '-' }}</td>
-                                    <td><a href="#"><button type="button" class="btn btn-success my-4" style="color: white;" data-bs-toggle="modal">Lihat</button></a></td>
+                                    {{-- <td><a href="#"><button type="button" class="btn btn-success my-4" style="color: white;" data-bs-toggle="modal">Lihat</button></a></td>
                                     <td><a href="#"><button type="button" class="btn btn-success w-100 my-2" style="color: white;" data-bs-toggle="modal">Harian</button></a>
-                                        <a href="#"><button type="button" class="btn btn-success w-100" style="color: white;" data-bs-toggle="modal">Bulanan</button></a></td>
+                                        <a href="#"><button type="button" class="btn btn-success w-100" style="color: white;" data-bs-toggle="modal">Bulanan</button></a></td> --}}
                                     {{-- <!-- <td>{{ $mahasiswa->laporanAkhir->laporan_final }} </td> --> --}}
                                     <td>
                                       @if ($mahasiswa->laporanAkhir && $mahasiswa->laporanAkhir->laporan_final)

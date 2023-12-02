@@ -36,7 +36,7 @@
                                 document.addEventListener("DOMContentLoaded", () => {
                                   new ApexCharts(document.querySelector("#grafikLokasi"), {
                                     series: [{
-                                      data: [{{ $lokasi_blm }}, {{ $lokasi_wait_admin }}, {{ $lokasi_wait_instansi }}, {{ $lokasi_final }},{{ $lokasi_banding }}]
+                                      data: [{{ $mahasiswa_count }}, {{ $lokasi_blm }}, {{ $lokasi_sdh }}, {{ $lokasi_wait_admin }}, {{ $lokasi_wait_instansi }}, {{ $lokasi_final }}]
                                     }],
                                     chart: {
                                       type: 'bar',
@@ -61,7 +61,7 @@
                                       }
                                     },
                                     xaxis: {
-                                      categories: ['Belum Memilih','Sudah Memilih', 'Menunggu Admin', 'Menunggu Instansi Terkait', 'Telah ditentukan'],
+                                      categories: ['Total Seluruh Mahasiswa','Belum Memilih','Sudah Memilih', 'Menunggu Admin', 'Menunggu Instansi Terkait', 'Telah ditentukan'],
                                     }
                                   }).render();
                                 });

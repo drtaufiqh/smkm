@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PemilihanLokasiFactory extends Factory
 {
+    private static $counter = 1; // Menambahkan counter
+
     /**
      * Define the model's default state.
      *
@@ -17,14 +19,14 @@ class PemilihanLokasiFactory extends Factory
     public function definition()
     {
         return [
-            'id_mhs' => fake()->numberBetween(1,10),
+            'id_mhs' => self::$counter++, // Menggunakan counter untuk mendapatkan nilai berurutan
             'id_pilihan_1' => fake()->numberBetween(1,10),
             'id_pilihan_2' => fake()->numberBetween(1,10),
             'alasan_pilihan_1' => fake()->text,
             'alasan_pilihan_2' => fake()->text,
             // 'id_instansi_ajuan' => fake()->numberBetween(1,10),
-            'id_instansi_banding' => fake()->numberBetween(1,10),
-            'alasan_banding' => fake()->text,
+            // 'id_instansi_banding' => fake()->numberBetween(1,10),
+            // 'alasan_banding' => fake()->text,
             // 'id_instansi' => fake()->numberBetween(1,10),
         ];
     }
