@@ -16,13 +16,35 @@
           <h4 class="alert-heading">Selamat!</h4>
           <p>Lokasi magang Anda adalah</p>
           <h5 class="alert-heading">{{ Auth::user()->info()->instansi->nama }}</h5>
-          <button type="button" class="btn btn-success">Konfirmasi</button>
+          <button id="btnKonfirmasi" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#konfirmasiModal">Konfirmasi</button>
           <button type="button" class="btn btn-danger btn-banding">
             Banding
           </button>
         </div>
       </section>
       <!-- End Pengumuman -->
+
+      <!-- Modal Konfirmasi -->
+      <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-labelledby="konfirmasiModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="konfirmasiModalLabel">Konfirmasi Lokasi Magang</h5>
+            </div>
+            <div class="modal-body">
+              <form id="konfirmasiForm" action="/mahasiswa/lokasi-fiks/{{ Auth::user()->info()->id }}" method="POST">
+                @csrf
+                <p>Apakah Anda yakin akan mengonfirmasi lokasi magang Anda?</p>
+                <!-- Anda bisa menambahkan input atau tombol tambahan di sini sesuai kebutuhan -->
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Ya</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>      
 
       <!-- Form Banding -->
       <div

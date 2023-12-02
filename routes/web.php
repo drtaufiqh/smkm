@@ -153,6 +153,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/mahasiswa/submitted-banding-lokasi/{id_user}', [RoleMahasiswaController::class, 'submittedBandingLokasi'])->name('submitted-banding-lokasi');
         Route::get('/mahasiswa/submitted-banding-lokasi', [RoleMahasiswaController::class, 'waitingBandingLokasi']);
         Route::get('/mahasiswa/lokasi-magang', [RoleMahasiswaController::class, 'lokasiMagang']);
+        Route::get('/mahasiswa/profil', [RoleMahasiswaController::class, 'profil']);
+        Route::put('/mahasiswa/profil/{id}', [RoleMahasiswaController::class, 'editProfil'])->name('editProfil');
+        Route::post('/mahasiswa/lokasi-fiks/{id_user}', [RoleMahasiswaController::class, 'lokasiFiks'])->name('lokasiFiks');
     });
 
     # pemlap

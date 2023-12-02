@@ -31,7 +31,7 @@ class Mahasiswa extends Model
     //     'update_at'
     // ];
     protected $guarded = 0;
-    protected $tables = 'mahasiswa';
+    protected $tables = 'mahasiswas';
     public static $rules = [
         'id_user' => 'exists:users,id',
         'id_kecamatan_alamat_1' => 'exists:kecamatans,id',

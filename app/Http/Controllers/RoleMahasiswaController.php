@@ -17,6 +17,7 @@ use App\Models\JurnalingBulanan;
 use App\Models\PemilihanLokasi;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Ramsey\Collection\Set;
 
 class RoleMahasiswaController extends Controller
@@ -203,6 +204,19 @@ class RoleMahasiswaController extends Controller
             'pemilihan_lokasi' => $pemilihan_lokasi
         ]);
     }
+
+    public function lokasiFiks(){
+        $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
+        $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
+
+        return view('mahasiswa.lokasi-fiks', [
+            'title' => 'Lokasi Magang | Mahasiswa',
+            'sidebar' => 'lokasi',
+            'circle_sidebar' => '',
+            'pemilihan_lokasi' => $pemilihan_lokasi
+        ]);
+    }
+
     public function lokasiMagang(){
         $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
         $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
@@ -215,4 +229,49 @@ class RoleMahasiswaController extends Controller
         ]);
     }
 
+    public function profil()
+    {
+        return view('mahasiswa.profil', [
+            'title' => 'Profil | Mahasiswa',
+            'sidebar' => '',
+            'circle_sidebar' => ''
+        ]);
+    }
+
+    public function editProfil(Request $request, $id_user)
+    {
+        $data = [
+            'foto' => $request->input('foto'),
+            'nama' => $request->input('nama'),
+            'nim' => $request->input('nim'),
+            'email' => $request->input('email'),
+            'no_hp' => $request->input('no_hp'),
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
+            'alamat_1' => $request->input('alamat_1'),
+            'alamat_2' => $request->input('alamat_2'),
+            'bank' => $request->input('bank'),
+            'an_bank' => $request->input('an_bank'),
+            'no_rek' => $request->input('no_rek')
+        ];
+
+        if ($request->hasFile('foto')) {
+            $foto = $request->file('foto');
+            $namaFoto = time() . '_' . $foto->getClientOriginalName();
+        
+            // Menyimpan foto ke penyimpanan file (storage)
+            $pathFoto = $foto->storeAs('public/assets/img/', $namaFoto);
+        
+            // Mendapatkan path foto yang disimpan
+            $pathFotoPublik = Storage::url($pathFoto);
+        
+            // Memperbarui path foto dalam $data
+            $data['foto'] = $pathFotoPublik;
+        }else {
+            // Jika tidak ada file foto yang diunggah, gunakan foto yang ada di database
+            $data['foto'] = Auth::user()->info()->foto;
+        }
+
+        Mahasiswa::where('id',$id_user)->update($data);
+        return redirect()->to('/mahasiswa/profil');
+    }
 }
