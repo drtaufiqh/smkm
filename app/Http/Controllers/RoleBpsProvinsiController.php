@@ -13,24 +13,36 @@ use App\Models\PemilihanLokasi;
 
 class RoleBpsProvinsiController extends Controller
 {
-    public function approvalMahasiswa()
+    public function approvalMahasiswa($provId)
     {
+        $pemilihan_lokasis = PemilihanLokasi::select('pemilihan_lokasis.*')
+        ->join('instansis','id_instansi_ajuan', '=', 'instansis.id')
+        ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
+        ->where('kab_kotas.id_prov', 'LIKE', $provId)
+        ->get();
         return view('bps-provinsi.approvalmahasiswa', [
             'title' => 'Approval Lokasi | BPS Provinsi',
             'sidebar' => 'lokasi',
             'circle_sidebar' => 'approval',
-            'pemilihan_lokasis' => PemilihanLokasi::all(),
+            'pemilihan_lokasis' => $pemilihan_lokasis,
             'instansis' => Instansi::all()
         ]);
     }
 
-    public function bandingMahasiswa()
+    public function bandingMahasiswa($provId)
     {
+        $pemilihan_lokasis = PemilihanLokasi::select('pemilihan_lokasis.*')
+        ->join('instansis','id_instansi_ajuan', '=', 'instansis.id')
+        ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
+        ->where('kab_kotas.id_prov', 'LIKE', $provId)
+        ->where('admin_setuju_banding','=',1)
+        ->get();
         return view('bps-provinsi.bandingmahasiswa', [
             'title' => 'Banding Lokasi | BPS Provinsi',
             'sidebar' => 'lokasi',
             'circle_sidebar' => 'banding',
-            'pemilihan_lokasis' => PemilihanLokasi::where('admin_setuju_banding', 1)->get()
+            'pemilihan_lokasis' => $pemilihan_lokasis
+            // 'pemilihan_lokasis' => PemilihanLokasi::where('admin_setuju_banding', 1)->get()
             // 'pemilihan_lokasis' => PemilihanLokasi::whereHas('mahasiswa', function ($query) {
             //     $query->whereRaw('mahasiswas.id_instansi = pemilihan_lokasis.id_instansi_banding');
             // })->get()

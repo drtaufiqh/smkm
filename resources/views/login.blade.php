@@ -1,3 +1,43 @@
+{{-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+    <title>Login</title>
+</head>
+<body>
+    <div class="container py-5">
+        <div class="w-50 center border rounded px-3 py-3 mx-auto">
+        <h1>Login</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        <form action="" method="POST">
+            @csrf
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" value="{{ old('email') }}" name="email" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control">
+            </div>
+            <div class="mb-3 d-grid">
+                <button name="submit" type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+    </div> 
+    </div>
+</body>
+</html> --}}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -86,8 +126,8 @@
                       @endif
                     </div>
 
-                    <form class="row g-3 needs-validation" action="" method="POST">
-                      @csrf
+                    <form action="" method="POST" class="row g-3 needs-validation" novalidate> 
+                        @csrf
                       <div class="col-12">
                         <label for="email" class="form-label">Email</label>
                         <div class="has-validation">

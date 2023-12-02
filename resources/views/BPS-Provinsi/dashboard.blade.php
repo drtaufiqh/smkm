@@ -37,12 +37,12 @@
                             </div>
 
                             <a
-                                href="/bps-provinsi/approvalmahasiswa"
+                                href="/bps-provinsi/approvalmahasiswa/{{ Auth::user()->info()->kabKota->provinsi->id }}"
                                 class="btn btn-primary btn-lg my-1"
                                 >Approval Mahasiswa</a
                             >
                             <a
-                                href="/bps-provinsi/bandingmahasiswa"
+                                href="/bps-provinsi/bandingmahasiswa/{{ Auth::user()->info()->kabKota->provinsi->id }}"
                                 class="btn btn-primary btn-lg my-1"
                                 >Banding Mahasiswa</a
                             >
