@@ -149,8 +149,8 @@ class RoleMahasiswaController extends Controller
             'id_mhs' => $id_user,
             'id_pilihan_1' => $request->input('id_pilihan_1'),
             'id_pilihan_2' => $request->input('id_pilihan_2'),
-            'alasan_pilihan_1' => $request->input('alasan_pilihan_1'),
-            'alasan_pilihan_2' => $request->input('alasan_pilihan_2')
+            // 'alasan_pilihan_1' => $request->input('alasan_pilihan_1'),
+            // 'alasan_pilihan_2' => $request->input('alasan_pilihan_2')
         ];
 
         PemilihanLokasi::create($data);

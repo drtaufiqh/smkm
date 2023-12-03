@@ -47,7 +47,7 @@
                   <label for="provinsi-domisili">Provinsi</label>
                 </div>
               </div>
-              <div class="col-md-12 mt-lg-0 mt-md-3">
+              <div class="col-md-12 mt-3">
                 <div class="form-floating">
                   <select
                     class="form-select"
