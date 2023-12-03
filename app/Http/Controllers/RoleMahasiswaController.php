@@ -130,7 +130,7 @@ class RoleMahasiswaController extends Controller
     {
         $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
         $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
-        if($pemilihan_lokasi){
+        if($pemilihan_lokasi->pilihan1){
             return redirect()->to('/mahasiswa/submitted-pemilihan-lokasi');
         }
         return view('mahasiswa.pemilihan-lokasi', [

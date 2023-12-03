@@ -23,7 +23,7 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="{{ Auth::user()->info()->foto }}" alt="Profile" class="rounded-circle">
+              <img src="{{ (Auth::user()->info()->foto) ?? "/storage/assets/img//1701535520_BPS.jpg" }}" alt="Profile" class="rounded-circle">
               <h2>{{ Auth::user()->info()->nama }}</h2>
             </div>
           </div>
@@ -64,42 +64,42 @@
                   
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Jenis Kelamin</div>
-                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->jenis_kelamin }}</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->jenis_kelamin ?? "-" }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->email }}</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->email ?? "-" }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">No Handphone</div>
-                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->no_hp }}</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->no_hp ?? "-" }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Alamat Domisili</div>
-                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->alamat_1 }}</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->alamat_1 ?? "-" }}</div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Alamat di Luar Domisili</div>
-                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->alamat_2 }}</div>
+                    <div class="col-lg-3 col-md-4 label">Alamat Lain di Luar Domisili (Opsional)</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->alamat_2 ?? "-" }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Bank</div>
-                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->bank }}</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->bank ?? "-" }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Atas Nama Bank</div>
-                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->an_bank }}</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->an_bank ?? "-" }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">No Rekening</div>
-                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->no_rek }}</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->no_rek ?? "-" }}</div>
                   </div>
                 </div>
 
@@ -112,7 +112,7 @@
                     <div class="row mb-3">
                         <label for="foto" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                         <div class="col-md-8 col-lg-9">
-                            <img id="fotoPreview" src="{{ asset(Auth::user()->info()->foto) }}" alt="Profile">
+                            <img id="fotoPreview" src="{{ (Auth::user()->info()->foto) ?? "/storage/assets/img//1701535520_BPS.jpg" }}" alt="Profile">
                             <div class="pt-2">
                                 <input type="file" name="foto" id="foto" class="form-control" onchange="previewImage()">
                             </div>
@@ -165,7 +165,7 @@
                     </div>
                     
                     <div class="row mb-3">
-                        <label for="alamat_2" class="col-md-4 col-lg-3 col-form-label">Alamat di Luar Domisili</label>
+                        <label for="alamat_2" class="col-md-4 col-lg-3 col-form-label">Alamat Lain di Luar Domisili (Opsional)</label>
                         <div class="col-md-8 col-lg-9">
                           <input name="alamat_2" type="alamat_2" class="form-control" id="alamat_2" value="{{ Auth::user()->info()->alamat_2 }}">
                         </div>

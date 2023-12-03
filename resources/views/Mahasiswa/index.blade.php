@@ -31,7 +31,7 @@
                         transition: 0.3s;
                         font-size: 1rem;
                       "
-                      >11 November 2023</a
+                      >{{ now()->format('d M Y') }}</a
                     >
                   </div>
 
