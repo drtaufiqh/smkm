@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KabKotaController;
+use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\InstansiController;
 use App\Http\Controllers\ProvinsiController;
 use App\Http\Controllers\KecamatanController;
@@ -162,6 +163,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/mahasiswa/profil', [RoleMahasiswaController::class, 'profil']);
         Route::put('/mahasiswa/profil/{id}', [RoleMahasiswaController::class, 'editProfil'])->name('editProfil');
         Route::post('/mahasiswa/lokasi-fiks/{id_user}', [RoleMahasiswaController::class, 'lokasiFiks'])->name('lokasiFiks');
+        // routes/web.php
+        Route::get('/get-provinsi', [DropdownController::class,'getProvinsi']);
+        Route::get('/get-kota/{id}', [DropdownController::class,'getKota']);
     });
 
     # pemlap

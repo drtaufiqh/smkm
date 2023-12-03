@@ -110,10 +110,12 @@ class RoleAdminController extends Controller
         $data = [
             'id_instansi_ajuan' => $pilihan
         ];
-        PemilihanLokasi::where('id', $id)->update($data);
+        $pemilihan_lokasi = PemilihanLokasi::where('id', $id)->first();
+        $pemilihan_lokasi->update($data);
+        $nama = $pemilihan_lokasi->instansiAjuan->nama;
         // return response()->json(['message' => 'ok']);
         // return redirect()->to('/admin/penentuanlokasi')->with('success', 'Berhasil mengubah lokasi ajuan');
-        return response()->json(['success' => true, 'message' => 'Nilai berhasil diubah']);
+        return response()->json(['success' => true, 'message' => 'Nilai berhasil diubah', 'nama' => $nama]);
     }
 
     // public function do_tentukanlokasi($id, $pilihan){

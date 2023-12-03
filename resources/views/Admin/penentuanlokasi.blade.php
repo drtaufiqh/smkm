@@ -57,12 +57,7 @@
                         <td>{{ optional($pemilihan_lokasi->pilihan1)->nama ?? '-' }}</td>
                         <td>{{ optional($pemilihan_lokasi->pilihan2)->nama ?? '-' }}</td>
                         <td>{{ ($pemilihan_lokasi->mahasiswa->alamat_1) ?? "-" }}</td>
-                        @if ($pemilihan_lokasi->id_instansi_ajuan != NULL)
-                          <td id="ajuan_{{ $pemilihan_lokasi->id }}">{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
-                        @else
-                          <td id="ajuan_{{ $pemilihan_lokasi->id }}">-</td>
-                        @endif
-                        
+                        <td id="ajuan_{{ $pemilihan_lokasi->id }}">{{ optional($pemilihan_lokasi->instansiAjuan)->nama ?? "-" }}</td>                        
                         @if (!$finalisasiDone) 
                             <td>
                                 {{-- <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_1 }}" class="form-tentukan-lokasi" method="post">
@@ -129,18 +124,18 @@
           var idPil = $(this).data('id_pil');
           var nama = $(this).data('nama');
           var newValue = nama;
+          var ajuanElem = $('#ajuan_' + idLok + '');
   
           $.ajax({
               url: '/admin/do_tentukanlokasi/' + idLok + '/' + idPil,
-              type: 'POST',
-              data: { new_value: newValue, _token: '{{ csrf_token() }}' },
+              type: 'GET',
+              // data: { new_value: newValue, _token: '{{ csrf_token() }}' },
               success: function (response) {
                   if (response.success) {
                       // Update nilai di tabel
-                      var ajuanElem = $('#ajuan_' + idLok + '');
                       console.log(idLok);
                       console.log('ajuanElem length:', ajuanElem.length); // Cek panjang elemen yang dipilih di konsol
-                      ajuanElem.text(newValue);
+                      ajuanElem.text(nama);
                       // alert(response.message);
                   } else {
                       alert('Gagal mengubah nilai.');
@@ -151,6 +146,12 @@
               }
           });
       });
+      
+      // if (select(".toggle-sidebar-btn")) {
+        $(".toggle-sidebar-btn").click(function (e) {
+          $("body").toggleClass("toggle-sidebar");
+        });
+      // }
   });
 </script>
 @endsection

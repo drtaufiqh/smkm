@@ -157,21 +157,74 @@
                       </div>
                     </div>                  
 
-                    <div class="row mb-3">
+                    <div class="row mb-3 mt-3">
                         <label for="alamat_1" class="col-md-4 col-lg-3 col-form-label">Alamat Domisili</label>
-                        <div class="col-md-8 col-lg-9">
-                          <input name="alamat_1" type="alamat_1" class="form-control" id="alamat_1" value="{{ Auth::user()->info()->alamat_1 }}">
+                        <div class="col-md-5 col-lg-6">
+                          <textarea name="alamat_1" type="area" class="form-control" id="alamat_1" value="{{ Auth::user()->info()->alamat_1 }}" style="height: 137px"></textarea>
                         </div>
+                        <div class="col-md-3 mt-lg-0 mt-md-0">
+                          <div class="form-floating">
+                            <select
+                              class="form-select"
+                              id="provinsi-alamat-1"
+                              aria-label="provinsi-alamat-1"
+                              name = "id_prov"
+                            >
+                              <option value="">Provinsi</option>
+                              @foreach($provinsis as $provinsi)
+                                <option value="{{ $provinsi->id }}">{{ $provinsi->nama }}</option>
+                              @endforeach
+                            </select>
+                            <label for="provinsi-alamat-1">Provinsi</label>
+                          </div>
+                          <div class="form-floating mt-3">
+                            <select
+                              class="form-select"
+                              id="kabkota-alamat-1"
+                              aria-label="kabkota-alamat-1"
+                              name = "id_kab_kota_alamat_1"
+                            >
+                              <option value="">Pilih Provinsi Dahulu</option>
+                            </select>
+                            <label for="kabkota-alamat-1">Kabupaten/Kota</label>
+                          </div>
+                        </div>
+                        {{-- <div class="col-md-3 mt-lg-0 mt-md-0">
+                        </div> --}}
                     </div>
                     
-                    <div class="row mb-3">
-                        <label for="alamat_2" class="col-md-4 col-lg-3 col-form-label">Alamat Lain di Luar Domisili (Opsional)</label>
-                        <div class="col-md-8 col-lg-9">
-                          <input name="alamat_2" type="alamat_2" class="form-control" id="alamat_2" value="{{ Auth::user()->info()->alamat_2 }}">
+                    <div class="row mb-3 mt-3">
+                      <label for="alamat_2" class="col-md-4 col-lg-3 col-form-label">Alamat Lain di Luar Domisili (Opsional)</label>
+                      <div class="col-md-5 col-lg-6">
+                        <textarea name="alamat_2" type="area" class="form-control" id="alamat_2" value="{{ Auth::user()->info()->alamat_2 }}" style="height: 137px"></textarea>
+                      </div>
+                      <div class="col-md-3 mt-lg-0 mt-md-0">
+                        <div class="form-floating">
+                          <select
+                            class="form-select"
+                            id="provinsi-alamat-2"
+                            aria-label="provinsi-alamat-2"
+                            name = "id_prov"
+                          >
+                            <option value="">Provinsi</option>
+                          </select>
+                          <label for="provinsi-alamat-2">Provinsi</label>
                         </div>
+                        <div class="form-floating mt-3">
+                          <select
+                            class="form-select"
+                            id="kabkota-alamat-2"
+                            aria-label="kabkota-alamat-2"
+                            name = "id_kab_kota_alamat_2"
+                          >
+                            <option value="">Kabupaten/Kota</option>
+                          </select>
+                          <label for="kabkota-alamat-2">Kabupaten/Kota</label>
+                        </div>
+                      </div>
                     </div>
                     
-                    <div class="row mb-3">
+                    <div class="row mb-3 mt-3">
                         <label for="bank" class="col-md-4 col-lg-3 col-form-label">Bank</label>
                         <div class="col-md-8 col-lg-9">
                           <input name="bank" type="bank" class="form-control" id="bank" value="{{ Auth::user()->info()->bank }}">
@@ -226,4 +279,48 @@
         }
     }
 </script>
+@endsection
+
+@section('js-bang')
+  <script>
+      $(document).ready(function () {
+          // Mengisi dropdown provinsi saat halaman dimuat
+          $.ajax({
+              url: '/get-provinsi',
+              type: 'GET',
+              success: function (response) {
+                  $.each(response, function (nama, id) {
+                      $('#provinsi-alamat-1').append(new Option(nama, id));
+                  });
+              },
+              error: function (error) {
+                  console.error('Error fetching provinces:', error);
+              }
+          });
+  
+          // Menangani perubahan pada dropdown provinsi
+          $('#provinsi-alamat-1').change(function () {
+              var idProvinsi = $(this).val();
+  
+              // Mengosongkan dropdown kota
+              $('#kabkota-alamat-1').empty().append(new Option('Pilih Kabupaten/Kota', ''));
+  
+              // Mengisi dropdown kota berdasarkan provinsi yang dipilih
+              if (idProvinsi) {
+                  $.ajax({
+                      url: '/get-kota/' + idProvinsi,
+                      type: 'GET',
+                      success: function (response) {
+                          $.each(response, function (id, nama) {
+                              $('#kabkota-alamat-1').append(new Option(nama, id));
+                          });
+                      },
+                      error: function (error) {
+                          console.error('Error fetching cities:', error);
+                      }
+                  });
+              }
+          });
+      });
+  </script>
 @endsection

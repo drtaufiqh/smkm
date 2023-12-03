@@ -233,7 +233,8 @@ class RoleMahasiswaController extends Controller
         return view('mahasiswa.profil', [
             'title' => 'Profil | Mahasiswa',
             'sidebar' => '',
-            'circle_sidebar' => ''
+            'circle_sidebar' => '',
+            'provinsis' => Provinsi::all()
         ]);
     }
 
