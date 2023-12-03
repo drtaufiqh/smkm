@@ -53,6 +53,14 @@ class Mahasiswa extends Model
         return $this->belongsTo(Kecamatan::class,'id_kecamatan_alamat_2');
     }
 
+    public function kabKotaAlamat1(){
+        return $this->belongsTo(KabKota::class,'id_kab_kota_alamat_1');
+    }
+
+    public function kabKotaAlamat2(){
+        return $this->belongsTo(KabKota::class,'id_kab_kota_alamat_2');
+    }
+
     public function dosenPembimbing(){
         return $this->belongsTo(DosenPembimbing::class,'id_dosen_pembimbing');
     }

@@ -265,10 +265,11 @@ class RoleMahasiswaController extends Controller
         
             // Memperbarui path foto dalam $data
             $data['foto'] = $pathFotoPublik;
-        }else {
-            // Jika tidak ada file foto yang diunggah, gunakan foto yang ada di database
-            $data['foto'] = Auth::user()->info()->foto;
         }
+        // else {
+        //     // Jika tidak ada file foto yang diunggah, gunakan foto yang ada di database
+        //     $data['foto'] = Auth::user()->info()->foto;
+        // }
 
         Mahasiswa::where('id',$id_user)->update($data);
         return redirect()->to('/mahasiswa/profil');

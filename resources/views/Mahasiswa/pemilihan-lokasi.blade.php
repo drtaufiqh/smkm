@@ -25,49 +25,59 @@
               <div class="col-12 mt-0">
                 <h5 class="card-title mb-0 mt-2">Domisili</h5>
               </div>
-              <div class="col-md-6 mt-0">
+              <div class="col-md-12 mt-0">
                 <div class="form-floating">
                   <select
                     class="form-select"
-                    id="floatingSelect"
+                    id="provinsi-domisili"
                     aria-label="Provinsi"
                   >
                     <!-- {{-- <option selected>Sumatera Selatan</option>
                     <option value="1">Sulawesi Tenggara</option>
                     <option value="2">Jawa Tengah</option> --}} -->
                     @foreach($provinsis as $provinsi)
-                      <option value="{{ $provinsi->nama }}">{{ $provinsi->nama }}</option>
+                      <option 
+                        value="{{ $provinsi->nama }}"
+                        {{ (optional(Auth::user()->info()->kabKotaAlamat1)->id_prov == $provinsi->id) ? 'selected' : '' }}
+                      >
+                        {{ $provinsi->nama }}
+                      </option>
                     @endforeach
                   </select>
-                  <label for="floatingSelect">Provinsi</label>
+                  <label for="provinsi-domisili">Provinsi</label>
                 </div>
               </div>
-              <div class="col-md-6 mt-lg-0 mt-md-3">
+              <div class="col-md-12 mt-lg-0 mt-md-3">
                 <div class="form-floating">
                   <select
                     class="form-select"
-                    id="floatingSelect"
+                    id="kabkota-domisili"
                     aria-label="Kab/Kota"
                   >
                     <!-- {{-- <option selected>Pasaman Barat</option>
                     <option value="1">Lok-lok</option>
                     <option value="2">Merauke</option> --}} -->
                     @foreach($kab_kotas as $kab_kota)
-                      <option value="{{ $kab_kota->id }}">{{ $kab_kota->nama }}</option>
+                      <option 
+                        value="{{ $kab_kota->id }}"
+                        {{ (optional(Auth::user()->info()->kabKotaAlamat1)->id == $kab_kota->id) ? 'selected' : '' }}
+                      >
+                        {{ $kab_kota->nama }}
+                      </option>
                     @endforeach
                   </select>
-                  <label for="floatingSelect">Kab/Kota</label>
+                  <label for="kabkota-domisili">Kab/Kota</label>
                 </div>
               </div>
-              <div class="col-md-7">
+              {{-- <div class="col-md-6">
                 <div class="form-floating">
                   <input
                     type="text"
                     class="form-control"
-                    id="floatingZip"
-                    placeholder="Zip"
+                    id="kecamatan-domisili"
+                    placeholder="Kecamatan"
                   />
-                  <label for="floatingZip">Kecamatan</label>
+                  <label for="kecamatan-domisili">Kecamatan</label>
                 </div>
               </div>
               <div class="col-md-5">
@@ -80,104 +90,116 @@
                   />
                   <label for="floatingZip">Kode Pos</label>
                 </div>
-              </div>
+              </div> --}}
               <div class="col-md-12 mb-0">
                 <div class="form-floating">
                   <input
                     type="text"
                     class="form-control"
-                    id="floatingName"
-                    placeholder="Link Gmaps Alamat"
+                    id="alamat-domisili"
+                    placeholder="Contoh: Jalan Contoh No 1, Kelurahan Makalah, Kecamatan Paper"
                   />
-                  <label for="floatingName">Alamat Lengkap</label>
+                  <label for="alamat-domisili">Alamat Lengkap</label>
                 </div>
               </div>
               <div class="col-12 mt-0">
-                <h5 class="card-title mb-0 mt-0">Prioritas 1</h5>
+                <h5 class="card-title mb-0 mt-0">Pilihan 1</h5>
               </div>
-              <div class="col-lg-6 mt-0">
+              {{-- <div class="col-lg-6 mt-0">
                 <div class="form-floating">
                   <select
                     class="form-select"
-                    id="floatingSelect"
+                    id="provinsi-pilihan-1"
                     aria-label="Eselon 1"
                   >
                   @foreach($provinsis as $provinsi)
-                    <option value="{{ $provinsi->nama }}">{{ $provinsi->nama }}</option>
+                    <option 
+                      value="{{ $provinsi->id }}" 
+                    >
+                      {{ $provinsi->nama }}
+                    </option>
                   @endforeach
                   </select>
-                  <label for="floatingSelect">Provinsi</label>
+                  <label for="provinsi-pilihan-1">Provinsi</label>
                 </div>
-              </div>
-              <div class="col-md-6 mt-lg-0 mt-md-0">
+              </div> --}}
+              <div class="col-md-12 mt-lg-0 mt-md-0">
                 <div class="form-floating">
                   <select
                     class="form-select"
-                    id="floatingSelect"
+                    id="instansi-pilihan-1"
                     aria-label="Instansi Pilihan 1"
                     name = "id_pilihan_1"
                   >
+                    <option value="">Pilihan Lokasi Magang Prioritas 1</option>
                   @foreach($instansis as $instansi)
+                    @if (($instansi->is_prov == 1))
+                        <option value="">{{ '===== PROVINSI ' . Str::upper($instansi->kabKota->provinsi->nama) . ' =====' }}</option>
+                    @endif
                     <option value="{{ $instansi->id }}">{{ $instansi->nama }}</option>
                   @endforeach
                   </select>
-                  <label for="floatingSelect">Instansi</label>
+                  <label for="instansi-pilihan-1">Instansi</label>
                 </div>
               </div>
-              <div class="col-12 mb-0">
+              {{-- <div class="col-12 mb-0">
                 <div class="form-floating">
                   <textarea
                     class="form-control"
-                    id="floatingTextarea"
+                    id="alasan-pilihan-1"
                     style="height: 100px"
                     name = "alasan_pilihan_1"
                   ></textarea>
-                  <label for="floatingTextarea">Alasan</label>
+                  <label for="alasan-pilihan-1">Alasan</label>
                 </div>
-              </div>
+              </div> --}}
               <div class="col-12 mt-0">
-                <h5 class="card-title mb-0 mt-0">Prioritas 2</h5>
+                <h5 class="card-title mb-0 mt-0">Pilihan 2</h5>
               </div>
-              <div class="col-lg-6 mt-0">
+              {{-- <div class="col-lg-6 mt-0">
                 <div class="form-floating">
                   <select
                     class="form-select"
-                    id="floatingSelect"
+                    id="provinsi-pilihan-2"
                     aria-label="Eselon 1"
                   >
                   @foreach($provinsis as $provinsi)
                     <option value="{{ $provinsi->nama }}">{{ $provinsi->nama }}</option>
                   @endforeach
                   </select>
-                  <label for="floatingSelect">Provinsi</label>
+                  <label for="provinsi-pilihan-2">Provinsi</label>
                 </div>
-              </div>
-              <div class="col-md-6 mt-lg-0 mt-md-0">
+              </div> --}}
+              <div class="col-md-12 mt-lg-0 mt-md-0">
                 <div class="form-floating">
                   <select
                     class="form-select"
-                    id="floatingSelect"
+                    id="instansi-pilihan-2"
                     aria-label="Eselon 1"
                     name = "id_pilihan_2"
                   >
+                    <option value="">Pilihan Lokasi Magang Prioritas 2</option>
                   @foreach($instansis as $instansi)
+                    @if (($instansi->is_prov == 1))
+                        <option value="">{{ '===== PROVINSI ' . Str::upper($instansi->kabKota->provinsi->nama) . ' =====' }}</option>
+                    @endif
                     <option value="{{ $instansi->id }}">{{ $instansi->nama }}</option>
                   @endforeach
                   </select>
-                  <label for="floatingSelect">Instansi</label>
+                  <label for="instansi-pilihan-2">Instansi</label>
                 </div>
               </div>
-              <div class="col-12 mb-0">
+              {{-- <div class="col-12 mb-0">
                 <div class="form-floating">
                   <textarea
                     class="form-control"
-                    id="floatingTextarea"
+                    id="alasan-pilihan-2"
                     style="height: 100px"
                     name="alasan_pilihan_2"
                   ></textarea>
-                  <label for="floatingTextarea">Alasan</label>
+                  <label for="alasan-pilihan-2">Alasan</label>
                 </div>
-              </div>
+              </div> --}}
 
               <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
