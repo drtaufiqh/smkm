@@ -38,7 +38,10 @@
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                   {{-- <h5 class="card-title">Akun</h5> --}}
-                    @include('komponen.pesan')
+                  @include('komponen.pesan')
+                  <form action="" method="POST" action="{{ route('ubah_password_instansi', ['id' => Auth::user()->info()->id]) }}" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
 
                     <div class="row mt-2 mb-3 disabled">
                       <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
@@ -48,14 +51,11 @@
                     </div>
 
                     <div class="row mb-3">
-                      <label for="password" class="col-md-4 col-lg-3 col-form-label">Password Lama</label>
+                      <label for="password_lama" class="col-md-4 col-lg-3 col-form-label">Password Lama</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="password" type="password" class="form-control" id="password" value="{{ Auth::user()->password }}">
+                        <input name="password_lama" type="password" class="form-control" id="password_lama">
                       </div>
                     </div>
-                  <form action="" method="POST" action="{{ route('ubah_password_instansi', ['id' => Auth::user()->info()->id]) }}" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
 
                     <div class="row mb-3">
                       <label for="password_baru" class="col-md-4 col-lg-3 col-form-label">Password Baru</label>

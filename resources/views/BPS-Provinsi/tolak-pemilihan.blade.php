@@ -1,7 +1,7 @@
 @extends('layout.template')
 
 @section('konten')
-    <form action="{{ route('approvalmahasiswa.update', ['id' => $pemilihan_lokasi->id]) }}" method='post' enctype="multipart/form-data">
+    <form action="{{ route('approvalmahasiswa.update', ['id' => $pemilihan_lokasi->id, 'provId' => Auth::user()->info()->kabKota->provinsi->id]) }}" method='post' enctype="multipart/form-data">
         @csrf
         @method('PUT')
 

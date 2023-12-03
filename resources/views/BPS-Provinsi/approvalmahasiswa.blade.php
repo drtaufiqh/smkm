@@ -56,7 +56,7 @@
                                     <td>{{ optional($pemilihan_lokasi->instansiAjuan)->nama ?? '-' }}</td>
                                     @if (!$finalisasiPenentuanBpsProvDone)
                                         <td class="status-column">
-                                            <form action="/bps-provinsi/setujui-pemilihan/{{ $pemilihan_lokasi->id }}" method="post">
+                                            <form action="{{ route('setujuiPemilihan', ['id' => $pemilihan_lokasi->id, 'provId' => Auth::user()->info()->kabKota->provinsi->id]) }}" method="post">
                                                 @csrf
                                                 @method('PUT')
                                                 <button type="submit" class="btn btn-outline-success mb-2">Setujui</button>
