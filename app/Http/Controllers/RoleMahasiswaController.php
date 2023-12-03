@@ -89,11 +89,36 @@ class RoleMahasiswaController extends Controller
 
     public function ubah_password(Request $request, $id_user)
     {
+        $user = User::find($id_user);
+        $email = $request->input('email');
+        $password_lama = $request->input('password_lama');
+        
+        // if(bcrypt($request->input('password_lama')) != $user->password){
+        //     return redirect()->to('/mahasiswa/password')->with('failed', 'Password lama salah');
+        // }
+
+        // if (Auth::user()->getAuthPassword() != bcrypt($request->input('password_lama'))) {
+        //     // Password benar
+        // } 
+
+        if (!Auth::attempt(['email' => $email, 'password' => $password_lama])) {
+            return redirect()->to('/mahasiswa/password')->with('failed', 'Password lama salah');
+        }
+
+        $request->validate([
+            'password_baru'=>['required'],
+            'ulangi_password_baru'=>['required','same:password_baru']
+        ], [
+            'password_baru.required' => "Masukkan Password Baru",
+            'ulangi_password_baru.required' => "Masukkan Konfirmasi Password",
+            'ulangi_password_baru.same' => "Konfirmasi Password tidak sama dengan Password baru"
+        ]);
+
         $data = [
-            'password' => $request->input('password_baru')
+            'password' => bcrypt($request->input('password_baru'))
         ];
 
-        User::where('id',$id_user)->update($data);
+        $user->update($data);
         return redirect()->to('/mahasiswa/password')->with('success', 'Berhasil mengubah password');
     }
 
