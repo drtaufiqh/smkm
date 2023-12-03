@@ -9,7 +9,7 @@ use App\Models\Finalisasi;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use App\Models\PemilihanLokasi;
-
+use App\Models\User;
 
 class RoleBpsProvinsiController extends Controller
 {
@@ -84,6 +84,25 @@ class RoleBpsProvinsiController extends Controller
             'sidebar' => '',
             'circle_sidebar' => ''
         ]);
+    }
+
+    public function password()
+    {
+        return view('bps-provinsi.password', [
+            'title' => 'Profil | BPS Provinsi',
+            'sidebar' => '',
+            'circle_sidebar' => ''
+        ]);
+    }
+
+    public function ubah_password(Request $request, $id_user)
+    {
+        $data = [
+            'password' => $request->input('password_baru')
+        ];
+
+        User::where('id',$id_user)->update($data);
+        return redirect()->to('/bps-provinsi/password')->with('success', 'Berhasil mengubah password');
     }
 
     public function setujuiPemilihan($id)

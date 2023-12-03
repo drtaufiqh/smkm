@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use App\Models\PembimbingLapangan;
+use App\Models\User;
+
 
 class RoleBpsInstansiController extends Controller
 {
@@ -108,5 +110,24 @@ class RoleBpsInstansiController extends Controller
             'sidebar' => '',
             'circle_sidebar' => ''
         ]);
+    }
+
+    public function password()
+    {
+        return view('bps-instansi.password', [
+            'title' => 'Profil | BPS Provinsi',
+            'sidebar' => '',
+            'circle_sidebar' => ''
+        ]);
+    }
+
+    public function ubah_password(Request $request, $id_user)
+    {
+        $data = [
+            'password' => $request->input('password_baru')
+        ];
+
+        User::where('id',$id_user)->update($data);
+        return redirect()->to('/bps-instansi/password')->with('success', 'Berhasil mengubah password');
     }
 }

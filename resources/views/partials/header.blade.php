@@ -34,6 +34,12 @@
                         <hr class="dropdown-divider">
                     </li>
                     <li>
+                        <a class="dropdown-item d-flex align-items-center" href="password">
+                            <i class="bi bi-key"></i>
+                            <span>Ubah Password</span>
+                        </a>
+                    </li>
+                    <li>
                         <hr class="dropdown-divider">
                     </li>
                     <li>

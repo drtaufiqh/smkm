@@ -53,7 +53,11 @@
                                     <th scope="row">{{ $i }}</th>
                                     <td>{{ $mahasiswa->nama }}</td>
                                     <td>{{ $mahasiswa->nim }}</td>
-                                    <td>{{ $mahasiswa->instansi->nama }}</td>
+                                    @if ($mahasiswa->instansi != NULL)
+                                        <td>{{ $mahasiswa->instansi->nama }}</td>
+                                    @else
+                                        <td>-</td>
+                                    @endif
                                     @if ($mahasiswa->dosenPembimbing != NULL)
                                         <td>{{ $mahasiswa->dosenPembimbing->nama }}</td>
                                     @else

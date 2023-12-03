@@ -99,6 +99,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/bps-instansi/presensimahasiswa', [RoleBpsInstansiController::class, 'presensiMahasiswa']);
         Route::get('/bps-instansi/profil', [RoleBpsInstansiController::class, 'profil']);
         Route::get('/bps-instansi/tabelbimbingan', [RoleBpsInstansiController::class, 'tabelBimbingan']);
+
+        Route::get('/bps-instansi/password', [RoleBpsInstansiController::class, 'password']);
+        Route::put('/bps-instansi/password', [RoleBpsInstansiController::class, 'password']);
+        Route::put('/bps-instansi/ubah_password/{id}', [RoleBpsInstansiController::class, 'ubah_password'])->name('ubah_password_instansi');
+
     });
 
     # bps provinsi
@@ -107,6 +112,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/bps-provinsi/bandingmahasiswa/{provId}', [RoleBpsProvinsiController::class, 'bandingMahasiswa']);
         Route::get('/bps-provinsi/dashboard', [RoleBpsProvinsiController::class, 'dashboard']);
         Route::get('/bps-provinsi/profil', [RoleBpsProvinsiController::class, 'profil']);
+        Route::get('/bps-provinsi/password', [RoleBpsProvinsiController::class, 'password']);
+        Route::put('/bps-provinsi/password', [RoleBpsProvinsiController::class, 'password']);
+        Route::put('/bps_provinsi/ubah_password/{id}', [RoleBpsProvinsiController::class, 'ubah_password'])->name('ubah_password_prov');
+
+
 
         Route::put('/bps-provinsi/setujui-pemilihan/{id}', [RoleBpsProvinsiController::class, 'setujuiPemilihan']);
         Route::put('/bps-provinsi/do_keputusanbanding/{id}/{lokasi_banding}/{action}', [RoleBpsProvinsiController::class, 'do_keputusanbanding']);
@@ -158,6 +168,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/mahasiswa/profil', [RoleMahasiswaController::class, 'profil']);
         Route::put('/mahasiswa/profil/{id}', [RoleMahasiswaController::class, 'editProfil'])->name('editProfil');
         Route::post('/mahasiswa/lokasi-fiks/{id_user}', [RoleMahasiswaController::class, 'lokasiFiks'])->name('lokasiFiks');
+
+        Route::get('/mahasiswa/password', [RoleMahasiswaController::class, 'password']);
+        Route::put('/mahasiswa/password', [RoleMahasiswaController::class, 'password']);
+        Route::put('/mahasiswa/ubah_password/{id}', [RoleMahasiswaController::class, 'ubah_password'])->name('ubah_password_mahasiswa');
     });
 
     # pemlap
