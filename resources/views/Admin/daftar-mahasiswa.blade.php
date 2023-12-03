@@ -21,14 +21,19 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title text-lg-center">Daftar Mahasiswa</h5>
+                        @include('komponen.pesan')
 
                 <!-- TOMBOL TAMBAH EXPORT IMPORT DATA -->
                 <div class="pb-3">
                   {{-- <a href='{{ url('/admin/mahasiswas/create') }}' class="btn btn-primary">+ Tambah Data</a> --}}
-                  <a href='{{ url('/admin/export-template-akun-mahasiswa') }}' class="btn btn-primary">Template Daftar Akun Mahasiswa</a>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#importModal">
-                    Import Daftar Akun Mahasiswa
+                  <a href='{{ url('/admin/export-template-akun-mahasiswa') }}' class="btn btn-primary">Unduh Template</a>
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#importModal">
+                    + Import
                   </button>
+                  <form onsubmit="return confirm('Yakin akan menghapus semua data mahasiswa?')" class="d-inline" action="{{ url('/admin/mahasiswa/delete-all') }}" method="GET">
+                    @csrf
+                    <button type="submit" class="btn btn-danger">Hapus Semua</button>
+                  </form>
                 </div>
 
                 <!-- Modal Import -->
@@ -42,13 +47,14 @@
                       <form action="/admin/import-akun-mahasiswa" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
                           {{ csrf_field() }}
+                          <a href='{{ url('/admin/export-template-akun-mahasiswa') }}' class="btn btn-primary p-2 my-2">Unduh Template</a>
                           <div class="from-group">
                             <input type="file" name="file_import" required accept=".xlsx, .csv">
                           </div>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary">Import</button>
+                          <button type="submit" class="btn btn-success">Import</button>
                         </div>
                       </form>
                   </div>
@@ -69,7 +75,8 @@
                                     <th scope="col">Dosen Pembimbing</th>
                                     {{-- <th scope="col">Jadwal Bimbingan Magang</th>
                                     <th scope="col">Log Book</th> --}}
-                                    <th scope="col">Laporan Akhir Magang</th>
+                                    {{-- <th scope="col">Laporan Akhir Magang</th> --}}
+                                    <th scope="col">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -89,15 +96,23 @@
                                     <td><a href="#"><button type="button" class="btn btn-success w-100 my-2" style="color: white;" data-bs-toggle="modal">Harian</button></a>
                                         <a href="#"><button type="button" class="btn btn-success w-100" style="color: white;" data-bs-toggle="modal">Bulanan</button></a></td> --}}
                                     {{-- <!-- <td>{{ $mahasiswa->laporanAkhir->laporan_final }} </td> --> --}}
-                                    <td>
+                                    {{-- <td>
                                       @if ($mahasiswa->laporanAkhir && $mahasiswa->laporanAkhir->laporan_final)
                                           Sudah Dikumpulkan
                                       @else
                                           Belum Dikumpulkan
                                       @endif
-                                  </td>
-                                </tr>
-                                  @endforeach
+                                    </td> --}}
+                                    <td>
+                                        {{-- <a href='{{ url('/admin/mahasiswas/'.$mahasiswa->id.'/edit') }}' class="btn btn-warning btn-sm m-2">Edit</a> --}}
+                                        <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('/admin/mahasiswa/'.$mahasiswa->id) }}" method="post">
+                                          @csrf
+                                          @method("DELETE")
+                                          <button type="submit" class="btn btn-danger btn-sm">Del</button>
+                                        </form>
+                                    </td>
+                                  </tr>
+                                @endforeach
                                 <!-- <tr>
                                     <th scope="row">1</th>
                                     <td><a href="/admin/dashboard" class="text-dark">Andi</a></td>

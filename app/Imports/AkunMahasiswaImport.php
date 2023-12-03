@@ -2,9 +2,10 @@
 
 namespace App\Imports;
 
+use Config\Email;
 use App\Models\User;
 use App\Models\Mahasiswa;
-use Config\Email;
+use App\Models\PemilihanLokasi;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -47,6 +48,10 @@ class AkunMahasiswaImport implements ToModel, WithHeadingRow
             'email' => $row['email'],
             'jenis_kelamin' => $row['jenis_kelamin'],
             'kelas' => $row['kelas'],
+        ]);
+
+        PemilihanLokasi::create([
+            'id_mhs' => Mahasiswa::where('id_user', $user->id)->first()->id,
         ]);
     
         return $user->mahasiswa; // atau sesuai kebutuhan Anda

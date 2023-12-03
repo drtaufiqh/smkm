@@ -54,9 +54,9 @@
                         <th scope="row">{{ $i }}</th>
                         <td>{{ $pemilihan_lokasi->mahasiswa->nama }}</td>
                         <td>{{ $pemilihan_lokasi->mahasiswa->jenis_kelamin }}</td>
-                        <td>{{ $pemilihan_lokasi->pilihan1->nama }}</td>
-                        <td>{{ $pemilihan_lokasi->pilihan2->nama }}</td>
-                        <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
+                        <td>{{ optional($pemilihan_lokasi->pilihan1)->nama ?? '-' }}</td>
+                        <td>{{ optional($pemilihan_lokasi->pilihan2)->nama ?? '-' }}</td>
+                        <td>{{ ($pemilihan_lokasi->mahasiswa->alamat_1) ?? "-" }}</td>
                         @if ($pemilihan_lokasi->id_instansi_ajuan != NULL)
                           <td id="ajuan_{{ $pemilihan_lokasi->id }}">{{ $pemilihan_lokasi->instansiAjuan->nama }}</td>
                         @else
@@ -70,8 +70,8 @@
                                   @method('PUT')
                                   <button type="submit" class="btn btn-warning mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan 1</button>
                                 </form> --}}
-                                <button data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ $pemilihan_lokasi->id_pilihan_1 }}" data-nama="{{ $pemilihan_lokasi->pilihan1->nama }}" class="btn btn-warning mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan 1</button>
-                                <button data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ $pemilihan_lokasi->id_pilihan_2 }}" data-nama="{{ $pemilihan_lokasi->pilihan2->nama }}" class="btn btn-warning mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan 2</button>
+                                <button data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ ($pemilihan_lokasi->id_pilihan_1) }}" data-nama="{{ optional($pemilihan_lokasi->pilihan1)->nama }}" class="btn btn-success mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan 1</button>
+                                <button data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ ($pemilihan_lokasi->id_pilihan_2) }}" data-nama="{{ optional($pemilihan_lokasi->pilihan2)->nama }}" class="btn btn-secondary mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan 2</button>
                                 {{-- <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_2 }}" class="form-tentukan-lokasi" method="post">
                                   @csrf
                                   @method('PUT')

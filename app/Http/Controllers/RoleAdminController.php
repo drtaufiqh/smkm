@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Mahasiswa;
 use App\Models\finalisasi;
 use App\Models\LaporanAkhir;
@@ -209,6 +210,7 @@ class RoleAdminController extends Controller
         // dd($request->file('file_import'));
         $file = $request->file('file_import');
         $namaFile = $file->getClientOriginalName();
+        $namaFile = 'cek.'.pathinfo($namaFile, PATHINFO_EXTENSION);
         $file->move('AkunMahasiswa', $namaFile);
 
         Excel::import(new AkunMahasiswaImport, public_path("/AkunMahasiswa/$namaFile"));
@@ -217,5 +219,26 @@ class RoleAdminController extends Controller
     public function exportTemplateAkunMahasiswa(){
         return response()->download(public_path("/AkunMahasiswa/TemplateDaftarAkunMahasiswa.xlsx"), "Template Daftar Akun Mahasiswa.xlsx");
     }
+
+    public function deleteAkunMahasiswa($id)
+    {
+        $mhs = Mahasiswa::find($id);
+        User::where('id', $mhs->id_user)->delete();
+        PemilihanLokasi::where('id_mhs', $mhs->id)->delete();
+        Mahasiswa::where('id', $id)->delete();
+        return redirect()->to('/admin/daftar-mahasiswa')->with('success','Data berhasil dihapus!');
+    }
+
+    public function deleteAllAkunMahasiswa()
+    {
+        User::where('role', 'mhs')->delete();
+        // Mahasiswa::all()->delete();
+        foreach (Mahasiswa::all() as $mahasiswa) {
+            PemilihanLokasi::where('id_mhs', $mahasiswa->id)->delete();
+            $mahasiswa->delete();
+        }
+        return redirect()->to('/admin/daftar-mahasiswa')->with('success','Seluruh data berhasil dihapus!');
+    }
+
 }
 
