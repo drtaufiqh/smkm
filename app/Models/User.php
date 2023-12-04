@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
+
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -44,7 +46,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function info(){
+
+    
+      
+
+    public function info()
+    {
         switch ($this->role) {
             case "mhs":
                 return Mahasiswa::where('id_user', $this->id)->first();
@@ -62,6 +69,29 @@ class User extends Authenticatable
                 // Handle case when role is not recognized or handle accordingly
                 return null;
         }
+        return $this->hasOne(UserInfo::class, 'user_id');
+    }
+    
+    public function info1()
+    {
+        switch ($this->role) {
+            case "mhs":
+                return $this->hasOne(Mahasiswa::class, 'id_user');
+            case "dospem":
+                return $this->hasOne(DosenPembimbing::class, 'id_user');
+            case "pemlap":
+                return $this->hasOne(PembimbingLapangan::class, 'id_user');
+            case "instansi":
+                return $this->hasOne(Instansi::class, 'id_user')->where('is_prov', false);
+            case "prov":
+                return $this->hasOne(Instansi::class, 'id_user')->where('is_prov', true);
+            case "admin":
+                return $this->hasOne(Admin::class, 'id_user');
+            default:
+                // Handle case when role is not recognized or handle accordingly
+                return null;
+        }
+        return $this->hasOne(UserInfo::class);
     }
     
     public function showRole(){
@@ -83,4 +113,6 @@ class User extends Authenticatable
                 return null;
         }
     }
+
+    
 }

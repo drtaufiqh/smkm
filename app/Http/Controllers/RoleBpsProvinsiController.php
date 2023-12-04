@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Instansi;
+use App\Models\Instansi; // Pastikan model Instansi sudah dideklarasikan
 use App\Models\Finalisasi;
 use App\Models\Mahasiswa;
-use Illuminate\Http\Request;
 use App\Models\PemilihanLokasi;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+
 
 
 class RoleBpsProvinsiController extends Controller
@@ -37,11 +40,31 @@ class RoleBpsProvinsiController extends Controller
 
     public function dashboard()
     {
-        $mhs1 = PemilihanLokasi::all();
-        $mhs2 = PemilihanLokasi::whereNotNull('id_instansi_banding')->get();
-        $mhs3 = PemilihanLokasi::whereNotNull('id_instansi')->get();
-        $mhs4 = PemilihanLokasi::whereNull('id_instansi')->get();
+        $userId = Auth::user()->info1->id;
 
+        $mhs1 = PemilihanLokasi::whereHas('instansiAjuan.kabKota.provinsi', function ($query) use ($userId) {
+            $query->where('id', $userId);
+        })->get();
+
+        $mhs2 = PemilihanLokasi::whereNotNull('id_instansi_banding')
+            ->whereHas('instansiAjuan.kabKota.provinsi', function ($query) use ($userId) {
+                $query->where('id', $userId);
+            })
+            ->get();
+
+        $mhs3 = PemilihanLokasi::whereNotNull('id_instansi')
+            ->whereHas('instansiAjuan.kabKota.provinsi', function ($query) use ($userId) {
+                $query->where('id', $userId);
+            })
+            ->get();
+
+        $mhs4 = PemilihanLokasi::whereNull('id_instansi')
+            ->whereHas('instansiAjuan.kabKota.provinsi', function ($query) use ($userId) {
+                $query->where('id', $userId);
+            })
+            ->get();
+
+            
         $mhs1Count = $mhs1->count();
         $mhs2Count = $mhs2->count();
         $mhs3Count = $mhs3->count();
@@ -62,6 +85,7 @@ class RoleBpsProvinsiController extends Controller
             'pemilihan_lokasis' => PemilihanLokasi::all(),
         ]);
     }
+
 
     public function profil()
     {
@@ -193,4 +217,6 @@ class RoleBpsProvinsiController extends Controller
         return redirect()->to('/bps-provinsi/approvalmahasiswa')->with('success', 'Berhasil finalisasi');
     }
   
+
+    
 }

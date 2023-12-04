@@ -52,19 +52,28 @@
                   <div class="align-items-center text-center">
                     <div class="row">
                       <div class="col ms-4">
-                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success">Total Pengajuan<br><b> : {{$mhs1Count}} Mahasiswa</b></a>
+                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success d-flex flex-column align-items-center justify-content-center">
+                          Total Pengajuan<br>
+                          <b>{{$mhs1Count}} Mahasiswa</b>
+                        </a>
                       </div>
                       <div class="col me-4">
-                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success">Total Banding<br><b>: {{$mhs2Count}} Mahasiswa</b></a>
-                    </div>
-                  </div>
-                    
-                    <div class="row">
+                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success d-flex flex-column align-items-center justify-content-center">
+                          Total Banding<br>
+                          <b>{{$mhs2Count}} Mahasiswa</b>
+                        </a>
+                      </div>
                       <div class="col ms-4">
-                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success">Total Approval<br><b>: {{$mhs3Count}} Mahasiswa</b></a>
+                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success d-flex flex-column align-items-center justify-content-center">
+                          Total Approval<br>
+                          <b>{{$mhs3Count}} Mahasiswa</b>
+                        </a>
                       </div>
                       <div class="col me-4">
-                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success">Belum Approval<br><b>: {{$mhs4Count}} Mahasiswa</b></a>
+                        <a class="btn p-3 mb-2 border border-success m-2 text-white bg-success d-flex flex-column align-items-center justify-content-center">
+                          Belum Approval<br>
+                          <b>{{$mhs4Count}} Mahasiswa</b>
+                        </a>
                       </div>
                     </div>
                   </div>
