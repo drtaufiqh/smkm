@@ -274,9 +274,9 @@
         </div>
     </div>
 </div>
-<div class="text-center">
+{{-- <div class="text-center">
   <button type="button" class="btn btn-primary btn-lg">Finalisasi</button>
-</div>
+</div> --}}
 </section>
 
   </main><!-- End #main -->
