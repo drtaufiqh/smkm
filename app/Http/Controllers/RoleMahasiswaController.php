@@ -249,21 +249,26 @@ class RoleMahasiswaController extends Controller
 
     public function editProfil(Request $request, $id_user)
     {
-        // $request->validate([
-        //     'nama' => ['required'],
-        //     'nim' => ['required'],
-        //     'kelas' => 'required',
-        //     'email' => ['required', 'email'],
-        //     'no_hp' => ['required'],
-        //     'jenis_kelamin' => ['required'],
-        //     'alamat_1' => ['required'],
-        //     'id_kab_kota_alamat_1' => ['required'],
-        //     'bank' => ['required'],
-        //     'an_bank' => ['required'],
-        //     'no_rek' => ['required'],
-        // ], [
-        //     '*.required' => 'Pastikan tidak ada yang kosong.'
-        // ]);
+        $request->validate([
+            'nama' => ['required'],
+            'nim' => ['required'],
+            'kelas' => 'required',
+            'email' => ['required', 'email'],
+            'no_hp' => ['required'],
+            'jenis_kelamin' => ['required'],
+            'alamat_1' => ['required'],
+            'id_kab_kota_alamat_1' => ['required'],
+        ], [
+            'nama.required' => 'Nama tidak boleh kosong!',
+            'nim.required' => 'NIM tidak boleh kosong!',
+            'kelas.required' => 'Kelas tidak boleh kosong!',
+            'email.required' => 'Email tidak boleh kosong!',
+            'email.email' => 'Format email salah!',
+            'no_hp.required' => 'No HP tidak boleh kosong!',
+            'jenis_kelamin.required' => 'Jenis Kelamin tidak boleh kosong!',
+            'alamat_1.required' => 'Alamat Domisili Utama tidak boleh kosong!',
+            'id_kab_kota_alamat_1.required' => 'Kabupaten Domisili Utama tidak boleh kosong!',
+        ]);
         $data = [
             'foto' => $request->input('foto'),
             'nama' => $request->input('nama'),

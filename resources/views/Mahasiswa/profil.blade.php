@@ -47,6 +47,7 @@
 
               </ul>
               <div class="tab-content pt-2">
+                @include('komponen.pesan')
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
 
@@ -131,21 +132,21 @@
                     <div class="row mb-3">
                       <label for="nama" class="col-md-4 col-lg-3 col-form-label">Nama</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="nama" type="text" class="form-control" id="nama" value="{{ Auth::user()->info()->nama }}" required>
+                        <input name="nama" type="text" class="form-control" id="nama" value="{{ Auth::user()->info()->nama ?? old('nama') }}" required>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="nim" class="col-md-4 col-lg-3 col-form-label">NIM</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="nim" type="text" class="form-control" id="nim" value="{{ Auth::user()->info()->nim }}" required>
+                        <input name="nim" type="text" class="form-control" id="nim" value="{{ Auth::user()->info()->nim ?? old('nim') }}" required>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="kelas" class="col-md-4 col-lg-3 col-form-label">Kelas</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="kelas" type="text" class="form-control" id="kelas" value="{{ Auth::user()->info()->kelas }}" required>
+                        <input name="kelas" type="text" class="form-control" id="kelas" value="{{ Auth::user()->info()->kelas ?? old('kelas') }}" required>
                       </div>
                     </div>
                     
@@ -162,14 +163,14 @@
                     <div class="row mb-3">
                       <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="text" class="form-control" id="email" value="{{ Auth::user()->info()->email }}" required>
+                        <input name="email" type="text" class="form-control" id="email" value="{{ Auth::user()->info()->email ?? old('email') }}" required>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="no_hp" class="col-md-4 col-lg-3 col-form-label">No Handphone</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="no_hp" type="text" class="form-control" id="no_hp" value="{{ Auth::user()->info()->no_hp }}" required>
+                        <input name="no_hp" type="text" class="form-control" id="no_hp" value="{{ Auth::user()->info()->no_hp ?? old('no_hp') }}" required>
                       </div>
                     </div>                  
 
@@ -184,7 +185,7 @@
                               class="form-select"
                               id="provinsi-alamat-1"
                               aria-label="provinsi-alamat-1"
-                              name = "id_prov"
+                              name = "id_prov_1"
                               required
                             >
                             @if (Auth::user()->info()->kabKotaAlamat1)
@@ -227,10 +228,10 @@
                             class="form-select"
                             id="provinsi-alamat-2"
                             aria-label="provinsi-alamat-2"
-                            name = "id_prov"
+                            name = "id_prov_2"
                           >
                           @if (Auth::user()->info()->kabKotaAlamat2)
-                              <option value="{{ Auth::user()->info()->kabKotaAlamat2->id_prov }}">{{ Auth::user()->info()->kabKotaAlamat2->provinsi->nama }}</option>
+                              <option value="{{ Auth::user()->info()->kabKotaAlamat2->id_prov ?? old('id_prov_2') }}">{{ Auth::user()->info()->kabKotaAlamat2->provinsi->nama }}</option>
                           @else
                               <option value="">Provinsi</option>
                           @endif
@@ -245,7 +246,7 @@
                             name = "id_kab_kota_alamat_2"
                           >
                           @if (Auth::user()->info()->kabKotaAlamat2)
-                              <option value="{{ Auth::user()->info()->kabKotaAlamat2->id }}">{{ Auth::user()->info()->kabKotaAlamat2->nama }}</option>
+                              <option value="{{ Auth::user()->info()->kabKotaAlamat2->id ?? old('id_kab_kota_alamat_2') }}">{{ Auth::user()->info()->kabKotaAlamat2->nama }}</option>
                           @else
                               <option value="">Pilih Provinsi Dahulu</option>
                           @endif
@@ -258,21 +259,21 @@
                     <div class="row mb-3 mt-3">
                         <label for="bank" class="col-md-4 col-lg-3 col-form-label">Bank</label>
                         <div class="col-md-8 col-lg-9">
-                          <input name="bank" type="bank" class="form-control" id="bank" value="{{ Auth::user()->info()->bank }}">
+                          <input name="bank" type="bank" class="form-control" id="bank" value="{{ Auth::user()->info()->bank ?? old('bank') }}">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="an_bank" class="col-md-4 col-lg-3 col-form-label">Atas Nama Bank</label>
                         <div class="col-md-8 col-lg-9">
-                          <input name="an_bank" type="an_bank" class="form-control" id="an_bank" value="{{ Auth::user()->info()->an_bank }}">
+                          <input name="an_bank" type="an_bank" class="form-control" id="an_bank" value="{{ Auth::user()->info()->an_bank ?? old('an_bank') }}">
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <label for="no_rek" class="col-md-4 col-lg-3 col-form-label">No Rekening</label>
                         <div class="col-md-8 col-lg-9">
-                          <input name="no_rek" type="no_rek" class="form-control" id="no_rek" value="{{ Auth::user()->info()->no_rek }}">
+                          <input name="no_rek" type="no_rek" class="form-control" id="no_rek" value="{{ Auth::user()->info()->no_rek ?? old('no_rek') }}">
                         </div>
                     </div>
 
