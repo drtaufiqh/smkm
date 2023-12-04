@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Finalisasi;
 use App\Models\User;
 use App\Models\KabKota;
 use App\Models\Instansi;
@@ -573,8 +574,8 @@ class InstansiSeeder extends Seeder
             DB::table('instansis')->insert($data);
             
             if($data['is_prov'] == 1){
-                $instansi = Instansi::where('id_user', $user->id);
-                DB::table('finalisasis')->insert(['id_instansi_provinsi', $instansi->id]);
+                $instansi = Instansi::where('id_user', $user->id)->first();
+                Finalisasi::create(['id_instansi_provinsi' => $instansi->id]);
             }
         }
     }
