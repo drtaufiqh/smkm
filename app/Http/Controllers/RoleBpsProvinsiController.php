@@ -53,28 +53,73 @@ class RoleBpsProvinsiController extends Controller
 
     public function dashboard()
     {
-        $mhs1 = PemilihanLokasi::all();
-        $mhs2 = PemilihanLokasi::whereNotNull('id_instansi_banding')->get();
-        $mhs3 = PemilihanLokasi::whereNotNull('id_instansi')->get();
-        $mhs4 = PemilihanLokasi::whereNull('id_instansi')->get();
+        $instansi = Instansi::where('id_user', Auth::user()->id)->first();
+        // $pemilihan_lokasis = PemilihanLokasi::join('instansis', 'pemilihan_lokasis.id_instansi_ajuan', '=', 'instansis.id')
+        //                         ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
+        //                         ->join('provinsis', 'kab_kotas.id_prov', '=', 'provinsis.id')
+        //                         ->where('provinsis.id', $instansi->kabKota->provinsi->id);
+        // // dd($pemilihan_lokasis->get()->count());
+        //                         // ->select('pemilihan_lokasis.*')
+        //                         // ->get();
 
-        $mhs1Count = $mhs1->count();
-        $mhs2Count = $mhs2->count();
-        $mhs3Count = $mhs3->count();
-        $mhs4Count = $mhs4->count();
+        // $pengajuan = PemilihanLokasi::join('instansis', 'pemilihan_lokasis.id_instansi_ajuan', '=', 'instansis.id')
+        //                         ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
+        //                         ->join('provinsis', 'kab_kotas.id_prov', '=', 'provinsis.id')
+        //                         ->where('provinsis.id', $instansi->kabKota->provinsi->id)
+        //                         ->whereNotNull('pemilihan_lokasis.id_pilihan_1');
+        // $banding = PemilihanLokasi::join('instansis', 'pemilihan_lokasis.id_instansi_ajuan', '=', 'instansis.id')
+        //                         ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
+        //                         ->join('provinsis', 'kab_kotas.id_prov', '=', 'provinsis.id')
+        //                         ->where('provinsis.id', $instansi->kabKota->provinsi->id)
+        //                         ->whereNotNull('pemilihan_lokasis.id_instansi_banding');
+        // $approval = PemilihanLokasi::join('instansis', 'pemilihan_lokasis.id_instansi_ajuan', '=', 'instansis.id')
+        //                         ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
+        //                         ->join('provinsis', 'kab_kotas.id_prov', '=', 'provinsis.id')
+        //                         ->where('provinsis.id', $instansi->kabKota->provinsi->id)
+        //                         ->whereNotNull('pemilihan_lokasis.id_pilihan_1')->whereColumn('pemilihan_lokasis.id_instansi', '=', 'id_instansi_ajuan');
+        // $notApproval = PemilihanLokasi::join('instansis', 'pemilihan_lokasis.id_instansi_ajuan', '=', 'instansis.id')
+        //                         ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
+        //                         ->join('provinsis', 'kab_kotas.id_prov', '=', 'provinsis.id')
+        //                         ->where('provinsis.id', $instansi->kabKota->provinsi->id)
+        //                         ->whereNotNull('pemilihan_lokasis.id_pilihan_1')->whereColumn('pemilihan_lokasis.id_instansi', '!=', 'id_instansi_ajuan');
+
+        $userId = $instansi->kabKota->provinsi->id;
+        $pengajuan = PemilihanLokasi::whereHas('instansiAjuan.kabKota.provinsi', function ($query) use ($userId) {
+                                            $query->where('id', $userId);
+                                        })->whereNotNull('pemilihan_lokasis.id_pilihan_1')
+                                        ->get();
+        $banding = PemilihanLokasi::whereHas('instansiAjuan.kabKota.provinsi', function ($query) use ($userId) {
+                                            $query->where('id', $userId);
+                                        })->whereNotNull('id_instansi_banding')
+                                        ->get();
+        $approval = PemilihanLokasi::whereHas('instansiAjuan.kabKota.provinsi', function ($query) use ($userId) {
+                                            $query->where('id', $userId);
+                                        })->whereNotNull('id_pilihan_1')
+                                        ->whereColumn('id_instansi', '=', 'id_instansi_ajuan')
+                                        ->get();
+        $notApproval = PemilihanLokasi::whereHas('instansiAjuan.kabKota.provinsi', function ($query) use ($userId) {
+                                            $query->where('id', $userId);
+                                        })->whereNotNull('id_pilihan_1')
+                                        ->whereColumn('id_instansi', '!=', 'id_instansi_ajuan')
+                                        ->get();
+
+        $totalPengajuan = $pengajuan->count();
+        $totalBanding = $banding->count();
+        $totalApproval = $approval->count();
+        $belumApproval = $notApproval->count();
 
         return view('bps-provinsi.dashboard', [
             'title' => 'Dashboard | BPS Provinsi',
             'sidebar' => 'dashboard',
             'circle_sidebar' => '',
-            'mhs1' => $mhs1,
-            'mhs2' => $mhs2,
-            'mhs3' => $mhs3,
-            'mhs4' => $mhs4,
-            'mhs1Count' => $mhs1Count,
-            'mhs2Count' => $mhs2Count,
-            'mhs3Count' => $mhs3Count,
-            'mhs4Count' => $mhs4Count,
+            'pengajuan' => $pengajuan,
+            'banding' => $banding,
+            'approval' => $approval,
+            'notApproval' => $notApproval,
+            'totalPengajuan' => $totalPengajuan,
+            'totalBanding' => $totalBanding,
+            'totalApproval' => $totalApproval,
+            'belumApproval' => $belumApproval,
             'pemilihan_lokasis' => PemilihanLokasi::all(),
         ]);
     }
