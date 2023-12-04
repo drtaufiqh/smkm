@@ -16,3 +16,4 @@ class Provinsi extends Model
     // public $incrementing = false; // Tidak menggunakan incrementing
     // protected $keyType = 'string'; // Tipe data primary key
 }
+
