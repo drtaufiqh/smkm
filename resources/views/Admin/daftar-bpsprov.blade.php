@@ -64,20 +64,15 @@
                         <!-- Table with stripped rows -->
                         <div class="table-responsive">
                         <table class="table datatable text-center">
-                            <thead>
+                            <thead class="text-center">
                                 <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Nama </th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">NIM</th>
-                                    <th scope="col">Kelas</th>
-                                    <th scope="col">Lokasi Magang</th>
-                                    <th scope="col">Pembimbing Lapangan</th>
-                                    <th scope="col">Dosen Pembimbing</th>
-                                    {{-- <th scope="col">Jadwal Bimbingan Magang</th>
-                                    <th scope="col">Log Book</th> --}}
-                                    {{-- <th scope="col">Laporan Akhir Magang</th> --}}
-                                    <th scope="col">Aksi</th>
+                                    <th scope="col text-center">No</th>
+                                    <th scope="col text-center">Nama </th>
+                                    <th scope="col text-center">Email</th>
+                                    <th scope="col text-center">Alamat Lengkap</th>
+                                    <th scope="col text-center">Finalisasi Penentuan Lokasi</th>
+                                    <th scope="col text-center">Finalisasi Banding Banding</th>
+                                    <th scope="col text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -87,23 +82,10 @@
                                   <tr>
                                     <th scope="row">{{ $i }}</th>
                                     <td>{{ $bpsprov->nama }}</td>
-                                    <td>{{ $bpsprov->email }}</td>
-                                    <td>{{ $bpsprov->nim }}</td>
-                                    <td>{{ $bpsprov->kelas }}</td>
-                                    <td>{{ optional($bpsprov->instansi)->nama ?? '-' }}</td>
-                                    <td>{{ optional($bpsprov->pembimbingLapangan)->nama ?? '-' }}</td>
-                                    <td>{{ optional($bpsprov->dosenPembimbing)->nama ?? '-' }}</td>
-                                    {{-- <td><a href="#"><button type="button" class="btn btn-success my-4" style="color: white;" data-bs-toggle="modal">Lihat</button></a></td>
-                                    <td><a href="#"><button type="button" class="btn btn-success w-100 my-2" style="color: white;" data-bs-toggle="modal">Harian</button></a>
-                                        <a href="#"><button type="button" class="btn btn-success w-100" style="color: white;" data-bs-toggle="modal">Bulanan</button></a></td> --}}
-                                    {{-- <!-- <td>{{ $bpsprov->laporanAkhir->laporan_final }} </td> --> --}}
-                                    {{-- <td>
-                                      @if ($bpsprov->laporanAkhir && $bpsprov->laporanAkhir->laporan_final)
-                                          Sudah Dikumpulkan
-                                      @else
-                                          Belum Dikumpulkan
-                                      @endif
-                                    </td> --}}
+                                    <td>{{ $bpsprov->user->email }}</td>
+                                    <td>{{ $bpsprov->alamat_lengkap }}</td>
+                                    <td>{{ ($bpsprov->finalisasi->finalisasi_penentuan_lokasi_bpsprov) ?? '-' }}</td>
+                                    <td>{{ ($bpsprov->finalisasi->finalisasi_banding_lokasi_bpsprov ?? '-') }}</td>
                                     <td>
                                         <a href='{{ url('/admin/bpsprov/detail/'.$bpsprov->id) }}' class="btn btn-primary btn-sm m-2">Detail</a>
                                         <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('/admin/bpsprov/'.$bpsprov->id) }}" method="post">

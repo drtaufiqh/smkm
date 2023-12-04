@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Instansi;
 use App\Models\Mahasiswa;
-use App\Models\finalisasi;
+use App\Models\Finalisasi;
 use App\Models\LaporanAkhir;
 use Illuminate\Http\Request;
 use App\Models\PemilihanLokasi;
+use App\Exports\AkunBpsProvExport;
+use App\Imports\AkunBpsProvImport;
 use App\Exports\AkunMahasiswaExport;
 use App\Imports\AkunMahasiswaImport;
-use App\Models\Instansi;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -64,38 +66,6 @@ class RoleAdminController extends Controller
             'lokasi_wait_instansi'=>$lokasi_wait_instansi,
             'lokasi_final'=>$lokasi_final,
             'lokasi_banding'=>$lokasi_banding
-        ]);
-    }
-
-    public function daftarBpsProv()
-    {
-        return view('admin.daftar-bpsprov', [
-            'title'=> 'Daftar BPS Provinsi | Admin',
-            'sidebar'=> 'bpsprov',
-            'circle_sidebar'=> '',
-            'bpsprovs' => Instansi::orderBy('id', 'asc')->where('is_prov', 1)->get(),
-            // 'laporan_akhir' => LaporanAkhir::all()
-        ]);
-    }
-
-    public function daftarMahasiswa()
-    {
-        return view('admin.daftar-mahasiswa', [
-            'title'=> 'Daftar Mahasiswa | Admin',
-            'sidebar'=> 'mahasiswa',
-            'circle_sidebar'=> '',
-            'mahasiswas' => Mahasiswa::orderBy('id', 'desc')->get(),
-            // 'laporan_akhir' => LaporanAkhir::all()
-        ]);
-    }
-
-    public function detailMahasiswa($id_mhs)
-    {
-        return view('admin.detail-mahasiswa', [
-            'title'=> 'Detail Mahasiswa | Admin',
-            'sidebar'=> 'mahasiswa',
-            'circle_sidebar'=> '',
-            'mahasiswa' => Mahasiswa::find($id_mhs),
         ]);
     }
 
@@ -236,6 +206,28 @@ class RoleAdminController extends Controller
         
     }
 
+    // Daftar Mahasiswa
+    public function daftarMahasiswa()
+    {
+        return view('admin.daftar-mahasiswa', [
+            'title'=> 'Daftar Mahasiswa | Admin',
+            'sidebar'=> 'mahasiswa',
+            'circle_sidebar'=> '',
+            'mahasiswas' => Mahasiswa::orderBy('id', 'desc')->get(),
+            // 'laporan_akhir' => LaporanAkhir::all()
+        ]);
+    }
+
+    public function detailMahasiswa($id_mhs)
+    {
+        return view('admin.detail-mahasiswa', [
+            'title'=> 'Detail Mahasiswa | Admin',
+            'sidebar'=> 'mahasiswa',
+            'circle_sidebar'=> '',
+            'mahasiswa' => Mahasiswa::find($id_mhs),
+        ]);
+    }
+
     public function imporAkunMahasiswa(Request $request){
         // dd($request->file('file_import'));
         $file = $request->file('file_import');
@@ -274,6 +266,68 @@ class RoleAdminController extends Controller
         return redirect()->to('/admin/daftar-mahasiswa')->with('success','Seluruh data berhasil dihapus!');
     }
 
+    public function daftarBpsProv()
+    {
+        return view('admin.daftar-bpsprov', [
+            'title'=> 'Daftar BPS Provinsi | Admin',
+            'sidebar'=> 'bpsprov',
+            'circle_sidebar'=> '',
+            'bpsprovs' => Instansi::orderBy('id', 'asc')->where('is_prov', 1)->get(),
+            // 'laporan_akhir' => LaporanAkhir::all()
+        ]);
+    }
+
+    public function detailBpsProv($id_bpsprov)
+    {
+        return view('admin.detail-bpsprov', [
+            'title'=> 'Detail bpsprov | Admin',
+            'sidebar'=> 'bpsprov',
+            'circle_sidebar'=> '',
+            'bpsprov' => Instansi::find($id_bpsprov),
+        ]);
+    }
+
+    public function imporAkunBpsProv(Request $request){
+        // dd($request->file('file_import'));
+        $file = $request->file('file_import');
+        $namaFile = $file->getClientOriginalName();
+        $namaFile = 'cek.'.pathinfo($namaFile, PATHINFO_EXTENSION);
+        $file->move('AkunBpsProv', $namaFile);
+
+        Excel::import(new AkunBpsProvImport, public_path("/AkunBpsProv/$namaFile"));
+        return redirect()->to('/admin/daftar-bpsprov');
+    }
+    public function exportTemplateAkunBpsProv(){
+        return response()->download(public_path("/AkunBpsProv/TemplateDaftarAkunBpsProv.xlsx"), "Template Daftar Akun BPS Provinsi.xlsx");
+    }
+
+    public function exportAkunBpsProv(){
+        return Excel::download(new AkunBpsProvExport, 'BPS Provinsi.xlsx');
+    }
+
+    public function deleteAkunBpsProv($id)
+    {
+        $bpsprov = Instansi::find($id);
+        User::where('id', $bpsprov->id_user)->delete();
+        Finalisasi::where('id', $bpsprov->id_finalisasi_provinsi)->delete();
+        Instansi::where('id', $id)->delete();
+        return redirect()->to('/admin/daftar-bpsprov')->with('success','Data berhasil dihapus!');
+    }
+
+    public function deleteAllAkunBpsProv()
+    {
+        User::where('role', 'prov')->delete();
+        // Mahasiswa::all()->delete();
+        foreach (Instansi::all() as $instansi) {
+            if($instansi->is_prov == 1){
+                Finalisasi::where('id', $instansi->id_finalisasi_provinsi)->delete();
+                $instansi->delete();
+            }
+        }
+        return redirect()->to('/admin/daftar-bpsprov')->with('success','Seluruh data berhasil dihapus!');
+    }
+
+    // kelola password
     public function password()
     {
         return view('admin.password', [

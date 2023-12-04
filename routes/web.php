@@ -92,7 +92,7 @@ Route::middleware(['auth'])->group(function () {
         // daftar bps prov
         Route::delete('/admin/bpsprov/{id}', [RoleAdminController::class, 'deleteAkunBpsProv']);
         Route::get('/admin/bpsprov/delete-all', [RoleAdminController::class, 'deleteAllAkunBpsProv']);
-        Route::get('/admin/bpsprov/detail/{id_mhs}', [RoleAdminController::class, 'detailBpsProv']);
+        Route::get('/admin/bpsprov/detail/{id_bpsprov}', [RoleAdminController::class, 'detailBpsProv']);
 
         Route::post('/admin/import-akun-bpsprov', [RoleAdminController::class, 'imporAkunBpsProv']);
         Route::get('/admin/export-akun-bpsprov', [RoleAdminController::class, 'exportAkunBpsProv']);

@@ -556,7 +556,8 @@ class InstansiSeeder extends Seeder
             if ($data['is_prov'] == 1) {
                 $email = 'prov' . $data['kode_kabkota'] . '@bps.go.id';
                 $role = 'prov';
-                $finalisasi = new Finalisasi();
+                $finalisasi = new Finalisasi(['created_at' => now()]);
+                $finalisasi->save();
                 $data['id_finalisasi_provinsi'] = $finalisasi->id;
             } else {
                 $email = $data['kode_kabkota'] . '@bps.go.id';
