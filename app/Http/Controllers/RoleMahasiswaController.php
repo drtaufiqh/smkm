@@ -305,6 +305,9 @@ class RoleMahasiswaController extends Controller
         // }
 
         Mahasiswa::where('id',$id_user)->update($data);
-        return redirect()->to('/mahasiswa/profil');
+        if(Auth::user()->role == "admin"){
+            return redirect('/admin/mahasiswa/detail/'.$id_user)->with(['success'=>'Data berhasil diubah']);
+        }
+        return redirect()->to('/mahasiswa/profil')->with(['success'=>'Data berhasil diubah']);
     }
 }

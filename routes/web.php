@@ -93,6 +93,8 @@ Route::middleware(['auth'])->group(function () {
         Route::put('/admin/do_tolak_banding/{id}', [RoleAdminController::class, 'do_tolak_banding']);
         Route::put('/admin/do_finalisasi_banding', [RoleAdminController::class, 'do_finalisasi_banding']);
 
+        Route::put('/admin/mahasiswa/profil/{id}', [RoleMahasiswaController::class, 'editProfil']);
+
     });
 
     # bps instansi

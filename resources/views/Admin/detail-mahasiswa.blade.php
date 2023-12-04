@@ -116,7 +116,7 @@
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                   <!-- Profile Edit Form -->
-                  <form method="POST" action="{{ route('editProfil', ['id' => $mahasiswa->id]) }}" enctype="multipart/form-data">
+                  <form method="POST" action="{{ '/admin/mahasiswa/profil/'. $mahasiswa->id }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row mb-3">
