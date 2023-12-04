@@ -29,9 +29,12 @@
             <div class="card-body">
             <h5 class="card-title text-lg-center">Penentuan Lokasi oleh Admin</h5>
             @include('komponen.pesan')
-              <div class="table-responsive">
+              {{-- <div class="table-responsive">
                 <table class="table datatable text-center">
-                  <thead>
+                  <thead> --}}
+              <div class="table-responsive mb-3">
+                <table class="table table-striped">
+                    <thead class="text-center align-middle">
                     <tr>
                       <th scope="col">Nomor</th>
                       <th scope="col">Nama Mahasiswa</th>
@@ -74,14 +77,14 @@
                           {{ optional($pemilihan_lokasi->instansiAjuan)->nama ?? "-" }}
                         </td>                        
                         @if (!$finalisasiDone) 
-                            <td>
+                            <td class="text-center">
                                 {{-- <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_2 }}" class="form-tentukan-lokasi" method="post">
                                   @csrf
                                   @method('PUT')
                                   <button type="submit" class="btn btn-warning mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan 1</button>
                                 </form> --}}
-                                <button data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ ($pemilihan_lokasi->id_pilihan_1) }}" data-nama="{{ optional($pemilihan_lokasi->pilihan1)->nama }}" class="btn btn-success mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan 1</button>
-                                <button data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ ($pemilihan_lokasi->id_pilihan_2) }}" data-nama="{{ optional($pemilihan_lokasi->pilihan2)->nama }}" class="btn btn-warning mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan 2</button>
+                                <button data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ ($pemilihan_lokasi->id_pilihan_1) }}" data-nama="{{ optional($pemilihan_lokasi->pilihan1)->nama }}" class="btn btn-success mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan<span style="color: rgba(0, 0, 0, 0)">_</span>1</button>
+                                <button data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ ($pemilihan_lokasi->id_pilihan_2) }}" data-nama="{{ optional($pemilihan_lokasi->pilihan2)->nama }}" class="btn btn-warning mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan<span style="color: rgba(0, 0, 0, 0)">_</span>2</button>
                                 {{-- <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_2 }}" class="form-tentukan-lokasi" method="post">
                                   @csrf
                                   @method('PUT')
@@ -99,6 +102,7 @@
                   </tbody>
                 </table>  
               </div>
+              {{ $pemilihan_lokasis->withQueryString()->links() }}
             </div>
           </div>
         </div>
@@ -134,6 +138,8 @@
 @section('js-bang')
 <script>
   $(document).ready(function() {
+      
+      // AJAX
       $('.btn-tentukan-lokasi').click(function() {
           var idLok = $(this).data('id_lok');
           var idPil = $(this).data('id_pil');
@@ -150,6 +156,17 @@
                       // Update nilai di tabel
                       console.log(idLok);
                       console.log('ajuanElem length:', ajuanElem.length); // Cek panjang elemen yang dipilih di konsol
+                      // // Assuming you have a table with the class "datatable"
+                      // const table = $('.datatable');
+
+                      // // Assuming you want to access the <tr> with data-index="1"
+                      // const rowIndex = idLok; // Change this to the desired row index
+
+                      // // Select the specific <tr> using the attribute selector
+                      // const tr = $(`tr[data-index="${rowIndex}"]`);
+                      // const eighthTd = tr.querySelector('td:nth-child(8)');
+
+                      // eighthTd.text(nama);
                       ajuanElem.text(nama);
                       // alert(response.message);
                   } else {
@@ -477,10 +494,27 @@
       /**
        * Initiate Datatables
        */
-      const datatables = select(".datatable", true);
-      datatables.forEach((datatable) => {
-        new simpleDatatables.DataTable(datatable);
-      });
+      // const datatables = select(".datatable", true);
+      // datatables.forEach((datatable) => {
+      //   // Create a new DataTable instance
+      //   const myDatatable = new simpleDatatables.DataTable(datatable);
+
+      //   // Get the index of the column where you want to set the ID
+      //   const columnIndex = 7; // Assuming you want to set the ID in the 8th column (0-based index)
+
+      //   // Iterate through each row in the DataTable
+      //   myDatatable.rows().every(function (rowIdx, tableLoop, rowLoop) {
+      //       // Get the cell element in the specified column for the current row
+      //       const cellElement = myDatatable.cell({ row: rowIdx, column: columnIndex }).node();
+
+      //       // Set a unique ID for each cell based on the row index
+      //       const cellId = `ajuan_${rowIdx + 1}`; // +1 to make it 1-based index
+      //       cellElement.id = cellId;
+
+      //       // Continue to the next row
+      //       return true;
+      //   });
+      // });
 
       /**
        * Autoresize echart charts
