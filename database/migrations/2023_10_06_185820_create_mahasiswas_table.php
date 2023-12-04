@@ -47,6 +47,7 @@ return new class extends Migration
             $table->foreign('id_pembimbing_lapangan')->references('id')->on('pembimbing_lapangans')->onDelete('set null');
             $table->foreignId('id_instansi')->nullable();
             $table->foreign('id_instansi')->references('id')->on('instansis')->onDelete('set null');
+            $table->boolean('is_final')->nullable()->default(false);
             
             $table->timestamps();
         });

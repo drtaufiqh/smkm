@@ -32,7 +32,7 @@
               <h5 class="modal-title" id="konfirmasiModalLabel">Konfirmasi Lokasi Magang</h5>
             </div>
             <div class="modal-body">
-              <form id="konfirmasiForm" action="/mahasiswa/lokasi-fiks/{{ Auth::user()->info()->id }}" method="POST">
+              <form id="konfirmasiForm" action="/mahasiswa/lokasi-fiks" method="GET">
                 @csrf
                 <p>Apakah Anda yakin akan mengonfirmasi lokasi magang Anda?</p>
                 <!-- Anda bisa menambahkan input atau tombol tambahan di sini sesuai kebutuhan -->
@@ -70,9 +70,9 @@
                   aria-label="Provinsi"
                   disabled
                 >
-                @foreach($provinsis as $provinsi)
-                  <option value="{{ $provinsi->nama }}">{{ $provinsi->nama }}</option>
-                @endforeach
+                {{-- @foreach($provinsis as $provinsi) --}}
+                  <option value="{{ Auth::user()->info()->instansi->kabKota->provinsi->id }}">{{ Auth::user()->info()->instansi->kabKota->provinsi->nama }}</option>
+                {{-- @endforeach --}}
                 </select>
                 <label for="floatingSelect">Provinsi</label>
               </div>

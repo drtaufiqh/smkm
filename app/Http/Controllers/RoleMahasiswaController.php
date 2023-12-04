@@ -31,7 +31,10 @@ class RoleMahasiswaController extends Controller
         }
 
         $mahasiswas = Mahasiswa::all();
-        $instansis = Instansi::all();
+        $provId = $mhs->instansi->kabKota->provinsi->id;
+        $instansis = Instansi::whereHas('kabKota.provinsi', function ($query) use ($provId) {
+                        $query->where('id', $provId);
+                    })->get();
         $pemilihan_lokasis = PemilihanLokasi::all();
         return view('mahasiswa.banding-lokasi', [
             'title' => 'Lokasi Magang | Mahasiswa',
@@ -262,6 +265,7 @@ class RoleMahasiswaController extends Controller
     public function lokasiFiks(){
         $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
         $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
+        $mhs->update(['is_final' => true]);
 
         return view('mahasiswa.lokasi-fiks', [
             'title' => 'Lokasi Magang | Mahasiswa',
