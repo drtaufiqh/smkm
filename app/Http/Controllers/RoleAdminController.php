@@ -178,7 +178,7 @@ class RoleAdminController extends Controller
             }
         }
         #logic finalisasi
-        Finalisasi::create([
+        Finalisasi::all()->update([
             'finalisasi_penentuan_lokasi_admin' => 1,
             'finalisasi_banding_lokasi_admin' => 0
         ]);

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\KabKota;
+use App\Models\Instansi;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -570,6 +571,11 @@ class InstansiSeeder extends Seeder
             $data['id_user'] = $user->id;
             $data['foto'] = '/storage/assets/img//1701534412_Foto 1x1.png';
             DB::table('instansis')->insert($data);
+            
+            if($data['is_prov'] == 1){
+                $instansi = Instansi::where('id_user', $user->id);
+                DB::table('finalisasis')->insert(['id_instansi_provinsi', $instansi->id]);
+            }
         }
     }
 }
