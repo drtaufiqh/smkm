@@ -113,6 +113,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/password', [RoleAdminController::class, 'password']);
         Route::put('/admin/password', [RoleAdminController::class, 'password']);
         Route::put('/admin/ubah_password/{id}', [RoleAdminController::class, 'ubah_password'])->name('ubah_password_admin');
+
+        // dev only
+        Route::get('/admin/finalisasi-all-penentuan', [RoleAdminController::class, 'finalisasi_all_penentuan']);
     });
 
     # bps instansi

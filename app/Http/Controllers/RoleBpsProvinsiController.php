@@ -22,7 +22,7 @@ class RoleBpsProvinsiController extends Controller
         if ($userId != $provId){
             return redirect('/bps-provinsi/approvalmahasiswa/'.$userId);
         }
-        $jumlah_baris = 5;
+        $jumlah_baris = 10;
         $pemilihan_lokasis = PemilihanLokasi::select('pemilihan_lokasis.*')
         ->join('instansis','id_instansi_ajuan', '=', 'instansis.id')
         ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
@@ -40,7 +40,7 @@ class RoleBpsProvinsiController extends Controller
     {
         $instansi = Instansi::where('id_user', Auth::user()->id)->first();
         $userId = $instansi->kabKota->provinsi->id;
-        $jumlah_baris = 5;
+        $jumlah_baris = 10;
         $pemilihan_lokasis = PemilihanLokasi::select('pemilihan_lokasis.*')
         ->join('instansis','id_instansi_ajuan', '=', 'instansis.id')
         ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
@@ -62,7 +62,7 @@ class RoleBpsProvinsiController extends Controller
         if ($userId != $provId){
             return redirect('/bps-provinsi/bandingmahasiswa/'.$userId);
         }
-        $jumlah_baris = 5;
+        // $jumlah_baris = 10;
         $pemilihan_lokasis = PemilihanLokasi::select('pemilihan_lokasis.*')
         ->join('instansis','id_instansi_ajuan', '=', 'instansis.id')
         ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
@@ -85,7 +85,7 @@ class RoleBpsProvinsiController extends Controller
     {
         $instansi = Instansi::where('id_user', Auth::user()->id)->first();
         $userId = $instansi->kabKota->provinsi->id;
-        $jumlah_baris = 5;
+        // $jumlah_baris = 10;
         $pemilihan_lokasis = PemilihanLokasi::select('pemilihan_lokasis.*')
         ->join('instansis','id_instansi_ajuan', '=', 'instansis.id')
         ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')

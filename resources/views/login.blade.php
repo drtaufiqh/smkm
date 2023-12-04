@@ -97,21 +97,21 @@
               <div
                 class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center"
               >
-                <div class="d-flex justify-content-center py-4">
-                  <a
-                    href="index.html"
-                    class="logo d-flex align-items-center w-auto"
-                  >
-                    <img src="assets/img/logo.png" alt="" />
-                    <span class="d-none d-lg-block">SMKM</span>
-                  </a>
-                </div>
-                <!-- End Logo -->
 
                 <div class="card mb-3">
                   <div class="card-body">
+                    <div class="d-flex justify-content-center py-4">
+                      <a
+                        href="/login"
+                        class="logo d-flex align-items-center w-auto"
+                      >
+                        <img src="assets/img/logo.png" alt="" />
+                        <span class="d-none d-lg-block">SMKM</span>
+                      </a>
+                    </div>
+                    <!-- End Logo -->
                     <div class="pt-0 pb-2">
-                      <h5 class="card-title text-center pb-0 fs-4">Login</h5>
+                      <h5 class="card-title text-center pb-0 fs-8 pt-0">Sistem Manajemen Kegiatan Magang</h5>
                       <!-- <p class="text-center small">
                         Masukkan email dan password dengan benar
                       </p> -->

@@ -381,5 +381,11 @@ class RoleAdminController extends Controller
         $user->update($data);
         return redirect()->to('/admin/password')->with('success', 'Berhasil mengubah password');
     }
+
+    // dev only
+    public function finalisasi_all_penentuan(){
+        Finalisasi::whereNotNull('finalisasi_penentuan_lokasi_admin')->update(['finalisasi_penentuan_lokasi_bpsprov' => 1]);
+        return redirect()->to('/admin/daftar-bpsprov');
+    }
 }
 
