@@ -104,7 +104,7 @@
                                       @endif
                                     </td> --}}
                                     <td>
-                                        {{-- <a href='{{ url('/admin/mahasiswas/'.$mahasiswa->id.'/edit') }}' class="btn btn-warning btn-sm m-2">Edit</a> --}}
+                                        <a href='{{ url('/admin/mahasiswa/detail/'.$mahasiswa->id) }}' class="btn btn-primary btn-sm m-2">Detail</a>
                                         <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('/admin/mahasiswa/'.$mahasiswa->id) }}" method="post">
                                           @csrf
                                           @method("DELETE")

@@ -71,9 +71,20 @@ class RoleAdminController extends Controller
             'sidebar'=> 'mahasiswa',
             'circle_sidebar'=> '',
             'mahasiswas' => Mahasiswa::orderBy('id', 'desc')->get(),
-            'laporan_akhir' => LaporanAkhir::all()
+            // 'laporan_akhir' => LaporanAkhir::all()
         ]);
     }
+
+    public function detailMahasiswa($id_mhs)
+    {
+        return view('admin.detail-mahasiswa', [
+            'title'=> 'Detail Mahasiswa | Admin',
+            'sidebar'=> 'mahasiswa',
+            'circle_sidebar'=> '',
+            'mahasiswa' => Mahasiswa::find($id_mhs),
+        ]);
+    }
+
     public function database()
     {
         return view('admin.database', [

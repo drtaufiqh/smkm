@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('kelas',4)->nullable();
             $table->string('no_hp',20)->nullable();
             $table->string('foto',255)->nullable();
-            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->text('alamat_1')->nullable();
             $table->foreignId('id_kecamatan_alamat_1')->nullable()->constraint('kecamatans')->onDelete('set null')->onUpdate('cascade');
             // $table->foreign('id_kecamatan_alamat_1')->references('id')->on('kecamatans')->onDelete('set null');

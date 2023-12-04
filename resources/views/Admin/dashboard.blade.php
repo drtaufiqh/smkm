@@ -150,7 +150,7 @@
                             </div>
                             <a href="#">
                             <div class="text-center mt-5 text-center" style="color: white;">
-                              <a href="/admin/database">
+                              <a href="/admin/daftar-mahasiswa">
                                 <button type="button" class="btn btn-success btn-lg">Lihat Database</button>
                               </a>
                             </div>

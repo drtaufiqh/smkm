@@ -74,8 +74,10 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/admin/jurnaling_bulanans', JurnalingBulananController::class);
         Route::resource('/admin/jadwal_bimbingans', JadwalBimbinganController::class);
         Route::resource('/admin/mahasiswas', MahasiswaController::class);
+
         Route::delete('/admin/mahasiswa/{id}', [RoleAdminController::class, 'deleteAkunMahasiswa']);
         Route::get('/admin/mahasiswa/delete-all', [RoleAdminController::class, 'deleteAllAkunMahasiswa']);
+        Route::get('/admin/mahasiswa/detail/{id_mhs}', [RoleAdminController::class, 'detailMahasiswa']);
 
         Route::put('/admin/do_tentukanlokasi/{id}/{pilihan}', [RoleAdminController::class, 'do_tentukanlokasi']);
         Route::post('/admin/do_tentukanlokasi/{id}/{pilihan}', [RoleAdminController::class, 'do_tentukanlokasi']);
