@@ -54,11 +54,7 @@
                                     <td>{{ $mahasiswa->nama }}</td>
                                     <td>{{ $mahasiswa->nim }}</td>
                                     <td>{{ optional($mahasiswa->instansi)->nama ?? "-" }}</td>
-                                    @if ($mahasiswa->dosenPembimbing != NULL)
-                                        <td>{{ $mahasiswa->dosenPembimbing->nama }}</td>
-                                    @else
-                                        <td>-</td>
-                                    @endif
+                                    <td>{{ optional($mahasiswa->dosenPembimbing)->nama }}</td>
                                     @if ($mahasiswa->dosenPembimbing != NULL)
                                         <td><button type="button" class="btn btn-success" style="color: white;" data-bs-toggle="modal" data-bs-target="#myModal">Edit</button></td>
                                     @else

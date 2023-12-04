@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\KabKota;
 use App\Models\Instansi;
 use App\Models\Kecamatan;
-use App\Models\KabKota;
-use App\Models\Finalisasi;
 use App\Models\Mahasiswa;
+use App\Models\Finalisasi;
 use Illuminate\Http\Request;
 use App\Models\PemilihanLokasi;
-
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class RoleBpsProvinsiController extends Controller
 {
@@ -86,7 +88,61 @@ class RoleBpsProvinsiController extends Controller
         ]);
     }
 
-    public function setujuiPemilihan($id)
+    public function password()
+    {
+        return view('bps-provinsi.password', [
+            'title' => 'Profil | BPS Provinsi',
+            'sidebar' => '',
+            'circle_sidebar' => ''
+        ]);
+    }
+
+    // public function ubah_password(Request $request, $id_user)
+    // {
+    //     $data = [
+    //         'password' => $request->input('password_baru')
+    //     ];
+
+    //     User::where('id',$id_user)->update($data);
+    //     return redirect()->to('/bps-provinsi/password')->with('success', 'Berhasil mengubah password');
+    // }
+    
+    public function ubah_password(Request $request, $id_user)
+    {
+        $user = User::find($id_user);
+        $email = $request->input('email');
+        $password_lama = $request->input('password_lama');
+        
+        // if(bcrypt($request->input('password_lama')) != $user->password){
+        //     return redirect()->to('/mahasiswa/password')->with('failed', 'Password lama salah');
+        // }
+
+        // if (Auth::user()->getAuthPassword() != bcrypt($request->input('password_lama'))) {
+        //     // Password benar
+        // } 
+
+        if (!Auth::attempt(['email' => $email, 'password' => $password_lama])) {
+            return redirect()->to('/bps-provinsi/password')->with('failed', 'Password lama salah');
+        }
+
+        $request->validate([
+            'password_baru'=>['required'],
+            'ulangi_password_baru'=>['required','same:password_baru']
+        ], [
+            'password_baru.required' => "Masukkan Password Baru",
+            'ulangi_password_baru.required' => "Masukkan Konfirmasi Password",
+            'ulangi_password_baru.same' => "Konfirmasi Password tidak sama dengan Password baru"
+        ]);
+
+        $data = [
+            'password' => bcrypt($request->input('password_baru'))
+        ];
+
+        $user->update($data);
+        return redirect()->to('/bps-provinsi/password')->with('success', 'Berhasil mengubah password');
+    }
+
+    public function setujuiPemilihan($id, $provId)
     {
         $pemilihan_lokasi = PemilihanLokasi::where('id', $id)->first();
         $data = [
@@ -96,7 +152,9 @@ class RoleBpsProvinsiController extends Controller
         ];
         $pemilihan_lokasi->mahasiswa->update(['id_instansi' => $pemilihan_lokasi->id_instansi_ajuan]);
         $pemilihan_lokasi->update($data);
-        return redirect()->to('/bps-provinsi/approvalmahasiswa');
+        
+        
+        return redirect()->to('/bps-provinsi/approvalmahasiswa/'.$provId)->with('success', 'Lokasi mahasiswa berhasil disetujui.');
     }
 
     public function do_keputusanbanding($id, $lokasi_banding, $action)
@@ -160,10 +218,11 @@ class RoleBpsProvinsiController extends Controller
 
         
         return view('BPS-Provinsi.tolak-pemilihan', ['pemilihan_lokasis' => PemilihanLokasi::all(),'instansis' => $instansis,'pemilihan_lokasi' => $pemilihan_lokasi]);
+        // return redirect()->to('/bps-provinsi/approvalmahasiswa/'.$provId);
 
     }
 
-    public function updateApprovalMahasiswa(Request $request, $id)
+    public function updateApprovalMahasiswa(Request $request, $id, $provId)
     {
         // $pemilihan_lokasi = PemilihanLokasi::findOrFail($id);
         $pemilihan_lokasi = PemilihanLokasi::where('id', $id)->first();
@@ -184,7 +243,9 @@ class RoleBpsProvinsiController extends Controller
         $pemilihan_lokasi->update($data);
         $pemilihan_lokasi->save();
 
-        return redirect()->to('/bps-provinsi/approvalmahasiswa')->with('success', 'Data berhasil diperbarui.');
+        return redirect()->to('/bps-provinsi/approvalmahasiswa/'.$provId)->with('success', 'Lokasi mahasiswa berhasil dialihkan.');
+        // return redirect()->to('/bps-provinsi/approvalmahasiswa/'.$provId);
+
     }
 
     public function do_finalisasi_pemilihan()
@@ -213,5 +274,4 @@ class RoleBpsProvinsiController extends Controller
 
         return redirect()->to('/bps-provinsi/approvalmahasiswa')->with('success', 'Berhasil finalisasi');
     }
-  
 }
