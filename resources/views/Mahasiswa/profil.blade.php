@@ -23,7 +23,7 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="{{ (Auth::user()->info()->foto) ?? "/storage/assets/img//1701535520_BPS.jpg" }}" alt="Profile" class="rounded-circle">
+              <img src="{{ (Auth::user()->info()->foto) ?? "/assets/img/BPS.jpg" }}" alt="Profile" class="rounded-circle">
               <h2>{{ Auth::user()->info()->nama }}</h2>
             </div>
           </div>
@@ -122,7 +122,7 @@
                     <div class="row mb-3">
                         <label for="foto" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                         <div class="col-md-8 col-lg-9">
-                            <img id="fotoPreview" src="{{ (Auth::user()->info()->foto) ?? "/storage/assets/img//1701535520_BPS.jpg" }}" alt="Profile">
+                            <img id="fotoPreview" src="{{ (Auth::user()->info()->foto) ?? "/assets/img/BPS.jpg" }}" alt="Profile">
                             <div class="pt-2">
                                 <input type="file" name="foto" id="foto" class="form-control" onchange="previewImage()">
                             </div>

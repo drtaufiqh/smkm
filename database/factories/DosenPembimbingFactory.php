@@ -29,7 +29,7 @@ class DosenPembimbingFactory extends Factory
             'email' => fake()->unique()->safeEmail,
             'no_hp' => fake()->phoneNumber,
             'jenis_kelamin' => fake()->randomElement(['laki-laki', 'perempuan']),
-            'foto' => fake()->imageUrl(640, 640, 'gambar orang', true), // URL gambar acak
+            'foto' => '/assets/img/BPS.jpg', // URL gambar acak
         ];
 
     }
