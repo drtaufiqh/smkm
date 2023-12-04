@@ -17,10 +17,11 @@ class AkunBpsProvExport implements FromCollection, WithHeadings, WithStyles, Sho
     public function collection()
     {
         // Get Mahasiswa instances and select specific columns
-        $bpsprovs = Instansi::all()->map(function ($bpsprov) {
+        $bpsprovs = Instansi::where('is_prov', 1)->get()->map(function ($bpsprov) {
             return [
                 'Nama' => $bpsprov->nama,
                 'Email' => $bpsprov->user->email,
+                'Alamat' => $bpsprov->alamat_lengkap,
                 // Add other columns you want to export
             ];
         });
@@ -36,6 +37,7 @@ class AkunBpsProvExport implements FromCollection, WithHeadings, WithStyles, Sho
         return [
             'Nama',
             'Email',
+            'Alamat Lengkap'
             // Add other header columns
         ];
     }
