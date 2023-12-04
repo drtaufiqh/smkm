@@ -6,6 +6,7 @@ use Config\Email;
 use App\Models\User;
 use App\Models\Instansi;
 use App\Models\Finalisasi;
+use App\Models\KabKota;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -24,7 +25,7 @@ class AkunBpsProvImport implements ToModel, WithHeadingRow
         // Jika user tidak ditemukan, buat user baru
         if (!$user) {
             $user = User::create([
-                'role' => 'mhs',
+                'role' => 'prov',
                 'email' => $row['email'],
                 'username' => substr($row['email'], 0, 8),
                 'password' => bcrypt('password'),
@@ -33,6 +34,7 @@ class AkunBpsProvImport implements ToModel, WithHeadingRow
 
         // Update data user
         $user->update([
+            'role' => 'prov',
             'username' => substr($row['email'], 0, 8),
         ]);
 
@@ -42,12 +44,15 @@ class AkunBpsProvImport implements ToModel, WithHeadingRow
         // buat finalisasi
         $finalisasi = new Finalisasi(['created_at' => now()]);
         $finalisasi->save();
+
+        $kabkota = KabKota::where('kode', $row['kode_kabupatenkota'])->first();
     
         // Insert data Instansi yang baru
         Instansi::create([
             'id_user' => $user->id,
             'nama' => $row['nama'],
             'alamat_lengkap' => $row['alamat_lengkap'],
+            'id_kab_kota' => $kabkota->id,
             'kode_kabkota' => $row['kode_kabupatenkota'],
             'id_finalisasi_provinsi' => $finalisasi->id,
             'is_prov' => 1
