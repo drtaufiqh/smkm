@@ -63,6 +63,7 @@ class RoleMahasiswaController extends Controller
     {
         $mahasiswas = Mahasiswa::all();
         $jurnal = JurnalingHarian::whereNotNull('tanggal')->get();
+        $finalisasi = Finalisasi::isFinalisasiPenentuanBpsProvDone();
 
         $jurnalCount = $jurnal->count();
 
@@ -74,6 +75,7 @@ class RoleMahasiswaController extends Controller
             'mahasiswas' => $mahasiswas,
             'jurnal' => $jurnal,
             'jurnalCount' => $jurnalCount,
+            'finalisasi' => $finalisasi
         ]);
     }
 

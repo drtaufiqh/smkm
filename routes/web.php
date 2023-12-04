@@ -4,6 +4,7 @@ use App\Http\Controllers\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DevOnlyController;
 use App\Http\Controllers\KabKotaController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\InstansiController;
@@ -113,9 +114,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/password', [RoleAdminController::class, 'password']);
         Route::put('/admin/password', [RoleAdminController::class, 'password']);
         Route::put('/admin/ubah_password/{id}', [RoleAdminController::class, 'ubah_password'])->name('ubah_password_admin');
-
-        // dev only
-        Route::get('/admin/finalisasi-all-penentuan', [RoleAdminController::class, 'finalisasi_all_penentuan']);
     });
 
     # bps instansi
@@ -245,3 +243,7 @@ Route::middleware(['guest'])->group(function () {
 // Route::get('/admin', [RoleAdminController::class,'index']);
 
 Route::get('/logout', [SesiController::class, 'logout']);
+
+// dev only
+Route::get('/finalisasi-all-penentuan', [DevOnlyController::class, 'finalisasi_all_penentuan']);
+Route::get('/unfinalisasi-all-penentuan', [DevOnlyController::class, 'unfinalisasi_all_penentuan']);
