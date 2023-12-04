@@ -27,6 +27,7 @@ return new class extends Migration
             $table->text('alamat_lengkap');
             $table->boolean('is_prov');
             $table->string('foto')->nullable();
+            $table->foreignId('id_finalisasi_provinsi')->nullable()->constraint('finalisasis')->onDelete('cascade')->onUpdate('cascade');
             
             $table->timestamps();
         });

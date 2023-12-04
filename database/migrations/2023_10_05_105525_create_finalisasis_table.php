@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('finalisasis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_instansi_provinsi')->nullable()->constraint('instansis')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreignId('id_instansi_provinsi')->nullable()->constraint('instansis')->onDelete('cascade')->onUpdate('cascade');
             $table->string('finalisasi_penentuan_lokasi_admin')->nullable();
             $table->string('finalisasi_banding_lokasi_admin')->nullable();
             $table->string('finalisasi_penentuan_lokasi_bpsprov')->nullable();

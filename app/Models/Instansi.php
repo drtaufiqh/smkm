@@ -24,6 +24,10 @@ class Instansi extends Model
         return $this->belongsTo(KabKota::class, 'id_kab_kota');
     }
 
+    public function finalisasi(){
+        return $this->belongsTo(Finalisasi::class,'id_finalisasi_provinsi');
+    }
+
     // protected $fillable = ['id_user', 'nama', 'id_kecamatan', 'alamat_lengkap', 'is_prov', 'created_at', 'updated_at'];
     protected $guarded = [];
     protected $tables = 'instansis';

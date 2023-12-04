@@ -556,6 +556,8 @@ class InstansiSeeder extends Seeder
             if ($data['is_prov'] == 1) {
                 $email = 'prov' . $data['kode_kabkota'] . '@bps.go.id';
                 $role = 'prov';
+                $finalisasi = new Finalisasi();
+                $data['id_finalisasi_provinsi'] = $finalisasi->id;
             } else {
                 $email = $data['kode_kabkota'] . '@bps.go.id';
                 $role = 'instansi';
@@ -573,10 +575,10 @@ class InstansiSeeder extends Seeder
             $data['foto'] = '/storage/assets/img//1701534412_Foto 1x1.png';
             DB::table('instansis')->insert($data);
             
-            if($data['is_prov'] == 1){
-                $instansi = Instansi::where('id_user', $user->id)->first();
-                Finalisasi::create(['id_instansi_provinsi' => $instansi->id]);
-            }
+            // if($data['is_prov'] == 1){
+            //     $instansi = Instansi::where('id_user', $user->id)->first();
+            //     Finalisasi::create(['id_instansi_provinsi' => $instansi->id]);
+            // }
         }
     }
 }
