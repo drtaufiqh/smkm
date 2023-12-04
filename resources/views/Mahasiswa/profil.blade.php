@@ -61,6 +61,11 @@
                     <div class="col-lg-3 col-md-4 label">NIM</div>
                     <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->nim }}</div>
                   </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Kelas</div>
+                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->kelas }}</div>
+                  </div>
                   
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Jenis Kelamin</div>
@@ -79,12 +84,16 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Alamat Domisili</div>
-                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->alamat_1 ?? "-" }}</div>
+                    <div class="col-lg-4 col-md-4">{{ Auth::user()->info()->alamat_1 ?? "-" }}</div>
+                    <div class="col-lg-3 col-md-4 label">{{ Auth::user()->info()->kabKotaAlamat1->nama ?? "Kabupaten/Kota: -" }}</div>
+                    <div class="col-lg-2 col-md-4 label">{{ Auth::user()->info()->kabKotaAlamat1->provinsi->nama ?? "Provinsi: -" }}</div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Alamat Lain di Luar Domisili (Opsional)</div>
-                    <div class="col-lg-9 col-md-8">{{ Auth::user()->info()->alamat_2 ?? "-" }}</div>
+                    <div class="col-lg-4 col-md-4">{{ Auth::user()->info()->alamat_2 ?? "-" }}</div>
+                    <div class="col-lg-3 col-md-4 label">{{ Auth::user()->info()->kabKotaAlamat2->nama ?? "Kabupaten/Kota: -" }}</div>
+                    <div class="col-lg-2 col-md-4 label">{{ Auth::user()->info()->kabKotaAlamat2->provinsi->nama ?? "Provinsi: -" }}</div>
                   </div>
 
                   <div class="row">
@@ -132,6 +141,13 @@
                         <input name="nim" type="text" class="form-control" id="nim" value="{{ Auth::user()->info()->nim }}">
                       </div>
                     </div>
+
+                    <div class="row mb-3">
+                      <label for="kelas" class="col-md-4 col-lg-3 col-form-label">Kelas</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="kelas" type="text" class="form-control" id="kelas" value="{{ Auth::user()->info()->kelas }}">
+                      </div>
+                    </div>
                     
                     <div class="row mb-3">
                         <label for="jenis_kelamin" class="col-md-4 col-lg-3 col-form-label">Jenis Kelamin</label>
@@ -159,10 +175,10 @@
 
                     <div class="row mb-3 mt-3">
                         <label for="alamat_1" class="col-md-4 col-lg-3 col-form-label">Alamat Domisili</label>
-                        <div class="col-md-5 col-lg-6">
-                          <textarea name="alamat_1" type="area" class="form-control" id="alamat_1" value="{{ Auth::user()->info()->alamat_1 }}" style="height: 137px"></textarea>
+                        <div class="col-md-4 col-lg-5">
+                          <textarea name="alamat_1" type="area" class="form-control" id="alamat_1" value="" style="height: 137px">{{ Auth::user()->info()->alamat_1 }}</textarea>
                         </div>
-                        <div class="col-md-3 mt-lg-0 mt-md-0">
+                        <div class="col-md-4 mt-lg-0 mt-md-0">
                           <div class="form-floating">
                             <select
                               class="form-select"
@@ -170,10 +186,11 @@
                               aria-label="provinsi-alamat-1"
                               name = "id_prov"
                             >
-                              <option value="">Provinsi</option>
-                              @foreach($provinsis as $provinsi)
-                                <option value="{{ $provinsi->id }}">{{ $provinsi->nama }}</option>
-                              @endforeach
+                            @if (Auth::user()->info()->kabKotaAlamat1)
+                                <option value="{{ Auth::user()->info()->kabKotaAlamat1->id_prov }}">{{ Auth::user()->info()->kabKotaAlamat1->provinsi->nama }}</option>
+                            @else
+                                <option value="">Provinsi</option>
+                            @endif
                             </select>
                             <label for="provinsi-alamat-1">Provinsi</label>
                           </div>
@@ -184,7 +201,11 @@
                               aria-label="kabkota-alamat-1"
                               name = "id_kab_kota_alamat_1"
                             >
-                              <option value="">Pilih Provinsi Dahulu</option>
+                            @if (Auth::user()->info()->kabKotaAlamat1)
+                                <option value="{{ Auth::user()->info()->kabKotaAlamat1->id }}">{{ Auth::user()->info()->kabKotaAlamat1->nama }}</option>
+                            @else
+                                <option value="">Pilih Provinsi Dahulu</option>
+                            @endif
                             </select>
                             <label for="kabkota-alamat-1">Kabupaten/Kota</label>
                           </div>
@@ -195,10 +216,10 @@
                     
                     <div class="row mb-3 mt-3">
                       <label for="alamat_2" class="col-md-4 col-lg-3 col-form-label">Alamat Lain di Luar Domisili (Opsional)</label>
-                      <div class="col-md-5 col-lg-6">
-                        <textarea name="alamat_2" type="area" class="form-control" id="alamat_2" value="{{ Auth::user()->info()->alamat_2 }}" style="height: 137px"></textarea>
+                      <div class="col-md-4 col-lg-5">
+                        <textarea name="alamat_2" type="area" class="form-control" id="alamat_2" value="" style="height: 137px">{{ Auth::user()->info()->alamat_2 }}</textarea>
                       </div>
-                      <div class="col-md-3 mt-lg-0 mt-md-0">
+                      <div class="col-md-4 mt-lg-0 mt-md-0">
                         <div class="form-floating">
                           <select
                             class="form-select"
@@ -206,7 +227,11 @@
                             aria-label="provinsi-alamat-2"
                             name = "id_prov"
                           >
-                            <option value="">Provinsi</option>
+                          @if (Auth::user()->info()->kabKotaAlamat2)
+                              <option value="{{ Auth::user()->info()->kabKotaAlamat2->id_prov }}">{{ Auth::user()->info()->kabKotaAlamat2->provinsi->nama }}</option>
+                          @else
+                              <option value="">Provinsi</option>
+                          @endif
                           </select>
                           <label for="provinsi-alamat-2">Provinsi</label>
                         </div>
@@ -217,7 +242,11 @@
                             aria-label="kabkota-alamat-2"
                             name = "id_kab_kota_alamat_2"
                           >
-                            <option value="">Kabupaten/Kota</option>
+                          @if (Auth::user()->info()->kabKotaAlamat2)
+                              <option value="{{ Auth::user()->info()->kabKotaAlamat2->id }}">{{ Auth::user()->info()->kabKotaAlamat2->nama }}</option>
+                          @else
+                              <option value="">Pilih Provinsi Dahulu</option>
+                          @endif
                           </select>
                           <label for="kabkota-alamat-2">Kabupaten/Kota</label>
                         </div>
@@ -289,7 +318,7 @@
               url: '/get-provinsi',
               type: 'GET',
               success: function (response) {
-                  $.each(response, function (nama, id) {
+                  $.each(response, function (id, nama) {
                       $('#provinsi-alamat-1').append(new Option(nama, id));
                   });
               },
@@ -313,6 +342,44 @@
                       success: function (response) {
                           $.each(response, function (id, nama) {
                               $('#kabkota-alamat-1').append(new Option(nama, id));
+                          });
+                      },
+                      error: function (error) {
+                          console.error('Error fetching cities:', error);
+                      }
+                  });
+              }
+          });
+
+          // Mengisi dropdown provinsi saat halaman dimuat
+          $.ajax({
+              url: '/get-provinsi',
+              type: 'GET',
+              success: function (response) {
+                  $.each(response, function (id, nama) {
+                      $('#provinsi-alamat-2').append(new Option(nama, id));
+                  });
+              },
+              error: function (error) {
+                  console.error('Error fetching provinces:', error);
+              }
+          });
+  
+          // Menangani perubahan pada dropdown provinsi
+          $('#provinsi-alamat-2').change(function () {
+              var idProvinsi = $(this).val();
+  
+              // Mengosongkan dropdown kota
+              $('#kabkota-alamat-2').empty().append(new Option('Pilih Kabupaten/Kota', ''));
+  
+              // Mengisi dropdown kota berdasarkan provinsi yang dipilih
+              if (idProvinsi) {
+                  $.ajax({
+                      url: '/get-kota/' + idProvinsi,
+                      type: 'GET',
+                      success: function (response) {
+                          $.each(response, function (id, nama) {
+                              $('#kabkota-alamat-2').append(new Option(nama, id));
                           });
                       },
                       error: function (error) {

@@ -101,11 +101,20 @@ class DatabaseSeeder extends Seeder
         $pemlap->save();
 
         Mahasiswa::factory(10)->create();
-        $mhs = Mahasiswa::factory()->create();
-        $mhs->id_user = 2;
+        $mhs = Mahasiswa::create([
+            'nama' => 'Dutatama', 
+            'nim' => '111222333', 
+            'email' => '111222333@stis.ac.id', 
+            'kelas' => '3SD2', 
+            'id_user' => 2
+        ]);
         $mhs->save();
 
         PemilihanLokasi::factory(10)->create();
+        $pemilihan_lokasi = PemilihanLokasi::create([
+            'id_mhs' => $mhs->id
+        ]);
+        $pemilihan_lokasi->save();
         JadwalBimbingan::factory(10)->create();
         KartuKendali::factory(10)->create();
         JurnalingHarian::factory(10)->create();

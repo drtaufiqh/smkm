@@ -130,7 +130,7 @@ class RoleMahasiswaController extends Controller
     {
         $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
         $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
-        if($pemilihan_lokasi->pilihan1){
+        if(optional($pemilihan_lokasi)->pilihan1){
             return redirect()->to('/mahasiswa/submitted-pemilihan-lokasi');
         }
         return view('mahasiswa.pemilihan-lokasi', [
@@ -240,15 +240,33 @@ class RoleMahasiswaController extends Controller
 
     public function editProfil(Request $request, $id_user)
     {
+        // $request->validate([
+        //     'nama' => ['required'],
+        //     'nim' => ['required'],
+        //     'kelas' => 'required',
+        //     'email' => ['required', 'email'],
+        //     'no_hp' => ['required'],
+        //     'jenis_kelamin' => ['required'],
+        //     'alamat_1' => ['required'],
+        //     'id_kab_kota_alamat_1' => ['required'],
+        //     'bank' => ['required'],
+        //     'an_bank' => ['required'],
+        //     'no_rek' => ['required'],
+        // ], [
+        //     '*.required' => 'Pastikan tidak ada yang kosong.'
+        // ]);
         $data = [
             'foto' => $request->input('foto'),
             'nama' => $request->input('nama'),
             'nim' => $request->input('nim'),
+            'kelas' => $request->input('kelas'),
             'email' => $request->input('email'),
             'no_hp' => $request->input('no_hp'),
             'jenis_kelamin' => $request->input('jenis_kelamin'),
             'alamat_1' => $request->input('alamat_1'),
+            'id_kab_kota_alamat_1' => $request->input('id_kab_kota_alamat_1'),
             'alamat_2' => $request->input('alamat_2'),
+            'id_kab_kota_alamat_2' => $request->input('id_kab_kota_alamat_2'),
             'bank' => $request->input('bank'),
             'an_bank' => $request->input('an_bank'),
             'no_rek' => $request->input('no_rek')
