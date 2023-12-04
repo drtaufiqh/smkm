@@ -79,14 +79,19 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/admin/mahasiswa/delete-all', [RoleAdminController::class, 'deleteAllAkunMahasiswa']);
         Route::get('/admin/mahasiswa/detail/{id_mhs}', [RoleAdminController::class, 'detailMahasiswa']);
 
+        Route::post('/admin/import-akun-mahasiswa', [RoleAdminController::class, 'imporAkunMahasiswa']);
+        Route::get('/admin/export-akun-mahasiswa', [RoleAdminController::class, 'exportAkunMahasiswa']);
+        Route::get('/admin/export-template-akun-mahasiswa', [RoleAdminController::class, 'exportTemplateAkunMahasiswa']);
+
+        Route::delete('/admin/bpsprov/{id}', [RoleAdminController::class, 'deleteAkunBpsProv']);
+        Route::get('/admin/bpsprov/delete-all', [RoleAdminController::class, 'deleteAllAkunBpsProv']);
+        Route::get('/admin/bpsprov/detail/{id_mhs}', [RoleAdminController::class, 'detailBpsProv']);
+
         Route::put('/admin/do_tentukanlokasi/{id}/{pilihan}', [RoleAdminController::class, 'do_tentukanlokasi']);
         Route::post('/admin/do_tentukanlokasi/{id}/{pilihan}', [RoleAdminController::class, 'do_tentukanlokasi']);
         Route::get('/admin/do_tentukanlokasi/{id}/{pilihan}', [RoleAdminController::class, 'do_tentukanlokasi']);
         Route::get('/admin/export-mahasiswa', [MahasiswaController::class, 'mahasiswaExport']);
         Route::post('/admin/import-mahasiswa', [MahasiswaController::class, 'mahasiswaImportExcel']);
-
-        Route::post('/admin/import-akun-mahasiswa', [RoleAdminController::class, 'imporAkunMahasiswa']);
-        Route::get('/admin/export-template-akun-mahasiswa', [RoleAdminController::class, 'exportTemplateAkunMahasiswa']);
         
         Route::put('/admin/do_finalisasi_lokasi', [RoleAdminController::class, 'do_finalisasi_lokasi']);
         Route::put('/admin/do_terima_banding/{id}/{banding}', [RoleAdminController::class, 'do_terima_banding']);

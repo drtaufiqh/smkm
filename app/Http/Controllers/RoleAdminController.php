@@ -8,6 +8,7 @@ use App\Models\finalisasi;
 use App\Models\LaporanAkhir;
 use Illuminate\Http\Request;
 use App\Models\PemilihanLokasi;
+use App\Exports\AkunMahasiswaExport;
 use App\Imports\AkunMahasiswaImport;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -231,6 +232,10 @@ class RoleAdminController extends Controller
     }
     public function exportTemplateAkunMahasiswa(){
         return response()->download(public_path("/AkunMahasiswa/TemplateDaftarAkunMahasiswa.xlsx"), "Template Daftar Akun Mahasiswa.xlsx");
+    }
+
+    public function exportAkunMahasiswa(){
+        return Excel::download(new AkunMahasiswaExport, 'Mahasiswa.xlsx');
     }
 
     public function deleteAkunMahasiswa($id)

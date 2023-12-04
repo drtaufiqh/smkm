@@ -6,11 +6,11 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Daftar Mahasiswa</h1>
+      <h1>Daftar BPS Provinsi</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
-          <li class="breadcrumb-item active">Daftar Mahasiswa</li>
+          <li class="breadcrumb-item active">Daftar BPS Provinsi</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -20,21 +20,20 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-lg-center">Daftar Mahasiswa</h5>
+                        <h5 class="card-title text-lg-center">Daftar BPS Provinsi</h5>
                         @include('komponen.pesan')
 
                 <!-- TOMBOL TAMBAH EXPORT IMPORT DATA -->
                 <div class="pb-3">
-                  {{-- <a href='{{ url('/admin/mahasiswas/create') }}' class="btn btn-primary">+ Tambah Data</a> --}}
-                  <a href='{{ url('/admin/export-template-akun-mahasiswa') }}' class="btn btn-primary">Unduh Template</a>
+                  {{-- <a href='{{ url('/admin/bpsprovs/create') }}' class="btn btn-primary">+ Tambah Data</a> --}}
+                  <a href='{{ url('/admin/export-template-akun-bpsprov') }}' class="btn btn-primary">Unduh Template</a>
                   <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#importModal">
                     + Import
                   </button>
-                  <form onsubmit="return confirm('Yakin akan menghapus semua data mahasiswa?')" class="d-inline" action="{{ url('/admin/mahasiswa/delete-all') }}" method="GET">
+                  <form onsubmit="return confirm('Yakin akan menghapus semua data bpsprov?')" class="d-inline" action="{{ url('/admin/bpsprov/delete-all') }}" method="GET">
                     @csrf
                     <button type="submit" class="btn btn-danger">Hapus Semua</button>
                   </form>
-                  <a href='{{ url('/admin/export-akun-mahasiswa') }}' class="btn btn-primary">Export</a>
                 </div>
 
                 <!-- Modal Import -->
@@ -42,13 +41,13 @@
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="importModalLabel">Import Daftar Akun Mahasiswa</h1>
+                        <h1 class="modal-title fs-5" id="importModalLabel">Import Daftar Akun bpsprov</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
-                      <form action="/admin/import-akun-mahasiswa" method="post" enctype="multipart/form-data">
+                      <form action="/admin/import-akun-bpsprov" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
                           {{ csrf_field() }}
-                          <a href='{{ url('/admin/export-template-akun-mahasiswa') }}' class="btn btn-primary p-2 my-2">Unduh Template</a>
+                          <a href='{{ url('/admin/export-template-akun-bpsprov') }}' class="btn btn-primary p-2 my-2">Unduh Template</a>
                           <div class="from-group">
                             <input type="file" name="file_import" required accept=".xlsx, .csv">
                           </div>
@@ -82,31 +81,31 @@
                             </thead>
                             <tbody>
                               @php $i = 0 @endphp
-                                @foreach ($mahasiswas as $mahasiswa)
+                                @foreach ($bpsprovs as $bpsprov)
                                 @php $i = $i + 1 @endphp
                                   <tr>
                                     <th scope="row">{{ $i }}</th>
-                                    <td>{{ $mahasiswa->nama }}</td>
-                                    <td>{{ $mahasiswa->email }}</td>
-                                    <td>{{ $mahasiswa->nim }}</td>
-                                    <td>{{ $mahasiswa->kelas }}</td>
-                                    <td>{{ optional($mahasiswa->instansi)->nama ?? '-' }}</td>
-                                    <td>{{ optional($mahasiswa->pembimbingLapangan)->nama ?? '-' }}</td>
-                                    <td>{{ optional($mahasiswa->dosenPembimbing)->nama ?? '-' }}</td>
+                                    <td>{{ $bpsprov->nama }}</td>
+                                    <td>{{ $bpsprov->email }}</td>
+                                    <td>{{ $bpsprov->nim }}</td>
+                                    <td>{{ $bpsprov->kelas }}</td>
+                                    <td>{{ optional($bpsprov->instansi)->nama ?? '-' }}</td>
+                                    <td>{{ optional($bpsprov->pembimbingLapangan)->nama ?? '-' }}</td>
+                                    <td>{{ optional($bpsprov->dosenPembimbing)->nama ?? '-' }}</td>
                                     {{-- <td><a href="#"><button type="button" class="btn btn-success my-4" style="color: white;" data-bs-toggle="modal">Lihat</button></a></td>
                                     <td><a href="#"><button type="button" class="btn btn-success w-100 my-2" style="color: white;" data-bs-toggle="modal">Harian</button></a>
                                         <a href="#"><button type="button" class="btn btn-success w-100" style="color: white;" data-bs-toggle="modal">Bulanan</button></a></td> --}}
-                                    {{-- <!-- <td>{{ $mahasiswa->laporanAkhir->laporan_final }} </td> --> --}}
+                                    {{-- <!-- <td>{{ $bpsprov->laporanAkhir->laporan_final }} </td> --> --}}
                                     {{-- <td>
-                                      @if ($mahasiswa->laporanAkhir && $mahasiswa->laporanAkhir->laporan_final)
+                                      @if ($bpsprov->laporanAkhir && $bpsprov->laporanAkhir->laporan_final)
                                           Sudah Dikumpulkan
                                       @else
                                           Belum Dikumpulkan
                                       @endif
                                     </td> --}}
                                     <td>
-                                        <a href='{{ url('/admin/mahasiswa/detail/'.$mahasiswa->id) }}' class="btn btn-primary btn-sm m-2">Detail</a>
-                                        <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('/admin/mahasiswa/'.$mahasiswa->id) }}" method="post">
+                                        <a href='{{ url('/admin/bpsprov/detail/'.$bpsprov->id) }}' class="btn btn-primary btn-sm m-2">Detail</a>
+                                        <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('/admin/bpsprov/'.$bpsprov->id) }}" method="post">
                                           @csrf
                                           @method("DELETE")
                                           <button type="submit" class="btn btn-danger btn-sm">Del</button>
