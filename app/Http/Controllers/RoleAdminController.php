@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\PemilihanLokasi;
 use App\Exports\AkunMahasiswaExport;
 use App\Imports\AkunMahasiswaImport;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class RoleAdminController extends Controller
@@ -261,5 +262,58 @@ class RoleAdminController extends Controller
         return redirect()->to('/admin/daftar-mahasiswa')->with('success','Seluruh data berhasil dihapus!');
     }
 
+    public function password()
+    {
+        return view('admin.password', [
+            'title' => 'Profil | Admin',
+            'sidebar' => '',
+            'circle_sidebar' => ''
+        ]);
+    }
+
+    // public function ubah_password(Request $request, $id_user)
+    // {
+    //     $data = [
+    //         'password' => $request->input('password_baru')
+    //     ];
+
+    //     User::where('id',$id_user)->update($data);
+    //     return redirect()->to('/admin/password')->with('success', 'Berhasil mengubah password');
+    // }
+
+    public function ubah_password(Request $request, $id_user)
+    {
+        $user = User::find($id_user);
+        $email = $request->input('email');
+        $password_lama = $request->input('password_lama');
+        
+        // if(bcrypt($request->input('password_lama')) != $user->password){
+        //     return redirect()->to('/mahasiswa/password')->with('failed', 'Password lama salah');
+        // }
+
+        // if (Auth::user()->getAuthPassword() != bcrypt($request->input('password_lama'))) {
+        //     // Password benar
+        // } 
+
+        if (!Auth::attempt(['email' => $email, 'password' => $password_lama])) {
+            return redirect()->to('/admin/password')->with('failed', 'Password lama salah');
+        }
+
+        $request->validate([
+            'password_baru'=>['required'],
+            'ulangi_password_baru'=>['required','same:password_baru']
+        ], [
+            'password_baru.required' => "Masukkan Password Baru",
+            'ulangi_password_baru.required' => "Masukkan Konfirmasi Password",
+            'ulangi_password_baru.same' => "Konfirmasi Password tidak sama dengan Password baru"
+        ]);
+
+        $data = [
+            'password' => bcrypt($request->input('password_baru'))
+        ];
+
+        $user->update($data);
+        return redirect()->to('/admin/password')->with('success', 'Berhasil mengubah password');
+    }
 }
 

@@ -100,6 +100,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::put('/admin/mahasiswa/profil/{id}', [RoleMahasiswaController::class, 'editProfil']);
 
+        Route::get('/admin/password', [RoleAdminController::class, 'password']);
+        Route::put('/admin/password', [RoleAdminController::class, 'password']);
+        Route::put('/admin/ubah_password/{id}', [RoleAdminController::class, 'ubah_password'])->name('ubah_password_admin');
     });
 
     # bps instansi
@@ -128,7 +131,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/bps-provinsi/profil', [RoleBpsProvinsiController::class, 'profil']);
         Route::get('/bps-provinsi/password', [RoleBpsProvinsiController::class, 'password']);
         Route::put('/bps-provinsi/password', [RoleBpsProvinsiController::class, 'password']);
-        Route::put('/bps_provinsi/ubah_password/{id}', [RoleBpsProvinsiController::class, 'ubah_password'])->name('ubah_password_prov');
+        Route::put('/bps-provinsi/ubah_password/{id}', [RoleBpsProvinsiController::class, 'ubah_password'])->name('ubah_password_prov');
 
 
 

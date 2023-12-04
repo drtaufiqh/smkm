@@ -24,12 +24,14 @@
                     <li>
                         <hr class="dropdown-divider">
                     </li>
+                    @if (Auth::user()->showRole() != 'Admin')
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="profil">
                             <i class="bi bi-person"></i>
                             <span>Profil {{ Auth::user()->showRole() }}</span>
                         </a>
                     </li>
+                    @endif
                     <li>
                         <hr class="dropdown-divider">
                     </li>

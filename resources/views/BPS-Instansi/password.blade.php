@@ -39,7 +39,7 @@
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                   {{-- <h5 class="card-title">Akun</h5> --}}
                   @include('komponen.pesan')
-                  <form action="" method="POST" action="{{ route('ubah_password_instansi', ['id' => Auth::user()->info()->id]) }}" enctype="multipart/form-data">
+                  <form action="" method="POST" action="{{ route('ubah_password_instansi', ['id' => Auth::user()->id]) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 

@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-    @include('partials.sidebar-prov')
+    @include('partials.sidebar-admin')
 
   <main id="main" class="main">
 
@@ -9,7 +9,7 @@
       <h1>Profil {{ Auth::user()->info()->nama }}</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/bps-provinsi/dashboard">Home</a></li>
+          <li class="breadcrumb-item"><a href="/admin/dashboard">Home</a></li>
           <li class="breadcrumb-item active">Ubah Password</li>
         </ol>
       </nav>
@@ -40,7 +40,7 @@
                   {{-- <h5 class="card-title">Akun</h5> --}}
                     @include('komponen.pesan')
 
-                    <form method="POST" action="{{ route('ubah_password_prov', ['id' => Auth::user()->id]) }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('ubah_password_admin', ['id' => Auth::user()->id]) }}" enctype="multipart/form-data">
                       @csrf
                       @method('PUT')
                     <div class="row mt-2 mb-3 disabled">
