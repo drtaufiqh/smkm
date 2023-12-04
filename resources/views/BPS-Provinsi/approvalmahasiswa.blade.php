@@ -100,6 +100,7 @@
                                 </tbody>
                             </table>
                             </div>
+                          {{ $pemilihan_lokasis->withQueryString()->links() }}
                           <!-- End Table with stripped rows -->
                             @else
                                 <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
@@ -122,7 +123,7 @@
   
   @if ($finalisasiPenentuanAdminDone)
   
-    @if (!$finalisasiPenentuanBpsProvDone)
+    @if (!Auth::user()->info()->finalisasi->finalisasi_penentuan_lokasi_bpsprov)
     <div class="text-center">
       <form action='/bps-provinsi/do_finalisasi_pemilihan' method="post">
         @csrf 
