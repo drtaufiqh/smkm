@@ -166,6 +166,7 @@ Route::middleware(['auth'])->group(function () {
         // routes/web.php
         Route::get('/get-provinsi', [DropdownController::class,'getProvinsi']);
         Route::get('/get-kota/{id}', [DropdownController::class,'getKota']);
+        Route::get('/get-instansi/{id}', [DropdownController::class,'getInstansi']);
     });
 
     # pemlap

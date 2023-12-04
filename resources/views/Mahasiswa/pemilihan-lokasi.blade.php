@@ -22,108 +22,122 @@
             <!-- Floating Labels Form -->
             <form class="row g-3" action="/mahasiswa/submitted-pemilihan-lokasi/{{ Auth::user()->info()->id }}" method="POST">
               @csrf
-              <div class="col-12 mt-0">
-                <h5 class="card-title mb-0 mt-2">Domisili</h5>
-              </div>
-              <div class="col-md-12 mt-0">
-                <div class="form-floating">
-                  <select
-                    class="form-select"
-                    id="provinsi-domisili"
-                    aria-label="Provinsi"
-                  >
-                    <!-- {{-- <option selected>Sumatera Selatan</option>
-                    <option value="1">Sulawesi Tenggara</option>
-                    <option value="2">Jawa Tengah</option> --}} -->
-                    @foreach($provinsis as $provinsi)
-                      <option 
-                        value="{{ $provinsi->nama }}"
-                        {{ (optional(Auth::user()->info()->kabKotaAlamat1)->id_prov == $provinsi->id) ? 'selected' : '' }}
-                      >
-                        {{ $provinsi->nama }}
-                      </option>
-                    @endforeach
-                  </select>
-                  <label for="provinsi-domisili">Provinsi</label>
+              <div class="col-md-6">
+                <div class="col-12 mt-0">
+                  <h5 class="card-title mb-0 mt-2">Alamat Domisili Utama</h5>
+                </div>
+                <div class="col-md-12 mt-0">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="provinsi-alamat-1"
+                      placeholder="Contoh: Jalan Contoh No 1, Kelurahan Makalah, Kecamatan Paper"
+                      name="provinsi_alamat_1"
+                      value="{{ Auth::user()->info()->kabKotaAlamat1->provinsi->nama ?? '-' }}"
+                      readonly
+                    />
+                    <label for="provinsi-alamat-1">Provinsi</label>
+                  </div>
+                </div>
+                <div class="col-md-12 mt-3">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="kabkota-alamat-1"
+                      placeholder="Contoh: Jalan Contoh No 1, Kelurahan Makalah, Kecamatan Paper"
+                      name="kabkota_alamat_1"
+                      value="{{ Auth::user()->info()->kabKotaAlamat1->nama ?? '-' }}"
+                      readonly
+                    />
+                    <label for="kabkota-alamat-1">Kab/Kota</label>
+                  </div>
+                </div>
+                <div class="col-md-12 mt-3">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="alamat-1"
+                      placeholder="Contoh: Jalan Contoh No 1, Kelurahan Makalah, Kecamatan Paper"
+                      name="alamat_1"
+                      value="{{ Auth::user()->info()->alamat_1 ?? "-" }}"
+                      readonly
+                    />
+                    <label for="alamat-1">Alamat Lengkap</label>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-12 mt-3">
-                <div class="form-floating">
-                  <select
-                    class="form-select"
-                    id="kabkota-domisili"
-                    aria-label="Kab/Kota"
-                  >
-                    <!-- {{-- <option selected>Pasaman Barat</option>
-                    <option value="1">Lok-lok</option>
-                    <option value="2">Merauke</option> --}} -->
-                    @foreach($kab_kotas as $kab_kota)
-                      <option 
-                        value="{{ $kab_kota->id }}"
-                        {{ (optional(Auth::user()->info()->kabKotaAlamat1)->id == $kab_kota->id) ? 'selected' : '' }}
-                      >
-                        {{ $kab_kota->nama }}
-                      </option>
-                    @endforeach
-                  </select>
-                  <label for="kabkota-domisili">Kab/Kota</label>
+              
+              <div class="col-md-6">
+                <div class="col-12 mt-0">
+                  <h5 class="card-title mb-0 mt-2">Alamat Lain (Opsional)</h5>
+                </div>
+                <div class="col-md-12 mt-0">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="provinsi-alamat-2"
+                      placeholder="Contoh: Jalan Contoh No 1, Kelurahan Makalah, Kecamatan Paper"
+                      name="provinsi_alamat_2"
+                      value="{{ Auth::user()->info()->kabKotaAlamat2->provinsi->nama ?? '-' }}"
+                      readonly
+                    />
+                    <label for="provinsi-alamat-2">Provinsi</label>
+                  </div>
+                </div>
+                <div class="col-md-12 mt-3">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="kabkota-alamat-2"
+                      placeholder="Contoh: Jalan Contoh No 1, Kelurahan Makalah, Kecamatan Paper"
+                      name="kabkota_alamat_2"
+                      value="{{ Auth::user()->info()->kabKotaAlamat2->nama ?? '-' }}"
+                      readonly
+                    />
+                    <label for="kabkota-alamat-2">Kab/Kota</label>
+                  </div>
+                </div>
+                <div class="col-md-12 mt-3">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="alamat-2"
+                      placeholder="Contoh: Jalan Contoh No 1, Kelurahan Makalah, Kecamatan Paper"
+                      name="alamat_2"
+                      value="{{ Auth::user()->info()->alamat_2 ?? "-" }}"
+                      readonly
+                    />
+                    <label for="alamat-2">Alamat Lengkap</label>
+                  </div>
                 </div>
               </div>
-              {{-- <div class="col-md-6">
-                <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="kecamatan-domisili"
-                    placeholder="Kecamatan"
-                  />
-                  <label for="kecamatan-domisili">Kecamatan</label>
-                </div>
+
+              <div class="text-center">
+                <a href="/mahasiswa/profil" class="btn btn-secondary">Edit Alamat</a>
               </div>
-              <div class="col-md-5">
-                <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="floatingZip"
-                    placeholder="Zip"
-                  />
-                  <label for="floatingZip">Kode Pos</label>
-                </div>
-              </div> --}}
-              <div class="col-md-12 mb-0">
-                <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="alamat-domisili"
-                    placeholder="Contoh: Jalan Contoh No 1, Kelurahan Makalah, Kecamatan Paper"
-                  />
-                  <label for="alamat-domisili">Alamat Lengkap</label>
-                </div>
-              </div>
+
               <div class="col-12 mt-0">
                 <h5 class="card-title mb-0 mt-0">Pilihan 1</h5>
               </div>
-              {{-- <div class="col-lg-6 mt-0">
+              <div class="col-lg-6 mt-0">
                 <div class="form-floating">
                   <select
                     class="form-select"
                     id="provinsi-pilihan-1"
-                    aria-label="Eselon 1"
+                    aria-label="Pilihan 1"
                   >
-                  @foreach($provinsis as $provinsi)
-                    <option 
-                      value="{{ $provinsi->id }}" 
-                    >
-                      {{ $provinsi->nama }}
-                    </option>
-                  @endforeach
+                  <option value="">Provinsi Lokasi Magang Prioritas 1</option>
                   </select>
                   <label for="provinsi-pilihan-1">Provinsi</label>
                 </div>
-              </div> --}}
-              <div class="col-md-12 mt-lg-0 mt-md-0">
+              </div>
+              <div class="col-md-6 mt-lg-0 mt-md-0">
                 <div class="form-floating">
                   <select
                     class="form-select"
@@ -131,13 +145,7 @@
                     aria-label="Instansi Pilihan 1"
                     name = "id_pilihan_1"
                   >
-                    <option value="">Pilihan Lokasi Magang Prioritas 1</option>
-                  @foreach($instansis as $instansi)
-                    @if (($instansi->is_prov == 1))
-                        <option value="">{{ '===== PROVINSI ' . Str::upper($instansi->kabKota->provinsi->nama) . ' =====' }}</option>
-                    @endif
-                    <option value="{{ $instansi->id }}">{{ $instansi->nama }}</option>
-                  @endforeach
+                    <option value="">Pilihan Provinsi Dahulu</option>
                   </select>
                   <label for="instansi-pilihan-1">Instansi</label>
                 </div>
@@ -156,35 +164,27 @@
               <div class="col-12 mt-0">
                 <h5 class="card-title mb-0 mt-0">Pilihan 2</h5>
               </div>
-              {{-- <div class="col-lg-6 mt-0">
+              <div class="col-lg-6 mt-0">
                 <div class="form-floating">
                   <select
                     class="form-select"
                     id="provinsi-pilihan-2"
-                    aria-label="Eselon 1"
+                    aria-label="Pilihan 2"
                   >
-                  @foreach($provinsis as $provinsi)
-                    <option value="{{ $provinsi->nama }}">{{ $provinsi->nama }}</option>
-                  @endforeach
+                  <option value="">Provinsi Lokasi Magang Prioritas 2</option>
                   </select>
                   <label for="provinsi-pilihan-2">Provinsi</label>
                 </div>
-              </div> --}}
-              <div class="col-md-12 mt-lg-0 mt-md-0">
+              </div>
+              <div class="col-md-6 mt-lg-0 mt-md-0">
                 <div class="form-floating">
                   <select
                     class="form-select"
                     id="instansi-pilihan-2"
-                    aria-label="Eselon 1"
+                    aria-label="Instansi Pilihan 2"
                     name = "id_pilihan_2"
                   >
-                    <option value="">Pilihan Lokasi Magang Prioritas 2</option>
-                  @foreach($instansis as $instansi)
-                    @if (($instansi->is_prov == 1))
-                        <option value="">{{ '===== PROVINSI ' . Str::upper($instansi->kabKota->provinsi->nama) . ' =====' }}</option>
-                    @endif
-                    <option value="{{ $instansi->id }}">{{ $instansi->nama }}</option>
-                  @endforeach
+                    <option value="">Pilihan Provinsi Dahulu</option>
                   </select>
                   <label for="instansi-pilihan-2">Instansi</label>
                 </div>
@@ -213,4 +213,86 @@
       </section>
     </main>
     <!-- End #main -->
+@endsection
+
+@section('js-bang')
+<script>
+    $(document).ready(function () {
+        // Mengisi dropdown provinsi saat halaman dimuat
+        $.ajax({
+            url: '/get-provinsi',
+            type: 'GET',
+            success: function (response) {
+                $.each(response, function (id, nama) {
+                    $('#provinsi-pilihan-1').append(new Option(nama, id));
+                });
+            },
+            error: function (error) {
+                console.error('Error fetching provinces:', error);
+            }
+        });
+
+        // Menangani perubahan pada dropdown provinsi
+        $('#provinsi-pilihan-1').change(function () {
+            var idProvinsi = $(this).val();
+
+            // Mengosongkan dropdown instansi
+            $('#instansi-pilihan-1').empty().append(new Option('Pilih Lokasi Magang Prioritas 1', ''));
+
+            // Mengisi dropdown instansi berdasarkan provinsi yang dipilih
+            if (idProvinsi) {
+                $.ajax({
+                    url: '/get-instansi/' + idProvinsi,
+                    type: 'GET',
+                    success: function (response) {
+                        $.each(response, function (id, nama) {
+                            $('#instansi-pilihan-1').append(new Option(nama, id));
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error fetching cities:', error);
+                    }
+                });
+            }
+        });
+
+        // Mengisi dropdown provinsi saat halaman dimuat
+        $.ajax({
+            url: '/get-provinsi',
+            type: 'GET',
+            success: function (response) {
+                $.each(response, function (id, nama) {
+                    $('#provinsi-pilihan-2').append(new Option(nama, id));
+                });
+            },
+            error: function (error) {
+                console.error('Error fetching provinces:', error);
+            }
+        });
+
+        // Menangani perubahan pada dropdown provinsi
+        $('#provinsi-pilihan-2').change(function () {
+            var idProvinsi = $(this).val();
+
+            // Mengosongkan dropdown instansi
+            $('#instansi-pilihan-2').empty().append(new Option('Pilih Lokasi Magang Prioritas 2', ''));
+
+            // Mengisi dropdown instansi berdasarkan provinsi yang dipilih
+            if (idProvinsi) {
+                $.ajax({
+                    url: '/get-instansi/' + idProvinsi,
+                    type: 'GET',
+                    success: function (response) {
+                        $.each(response, function (id, nama) {
+                            $('#instansi-pilihan-2').append(new Option(nama, id));
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error fetching cities:', error);
+                    }
+                });
+            }
+        });
+    });
+</script>
 @endsection

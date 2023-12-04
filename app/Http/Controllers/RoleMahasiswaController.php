@@ -153,7 +153,7 @@ class RoleMahasiswaController extends Controller
             // 'alasan_pilihan_2' => $request->input('alasan_pilihan_2')
         ];
 
-        PemilihanLokasi::create($data);
+        PemilihanLokasi::where('id_mhs', $id_user)->update($data);
         return redirect()->to('/mahasiswa/submitted-pemilihan-lokasi');
     }
 
