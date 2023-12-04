@@ -25,6 +25,13 @@
         </a>
       </li><!-- End Mahasiswa Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link {{ ($sidebar === 'bpsprov') ? '' : 'collapsed'}}" href="/admin/daftar-bpsprov">
+          <i class="bi bi-grid"></i>
+          <span>Daftar BPS Provinsi</span>
+        </a>
+      </li><!-- End BPS Provinsi Nav -->
+
       {{-- <li class="nav-item">
         <a class="nav-link {{ ($sidebar === 'database') ? '' : 'collapsed'}}" href="/admin/database">
           <i class="bi bi-database"></i>

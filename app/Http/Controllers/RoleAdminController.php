@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\PemilihanLokasi;
 use App\Exports\AkunMahasiswaExport;
 use App\Imports\AkunMahasiswaImport;
+use App\Models\Instansi;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -63,6 +64,17 @@ class RoleAdminController extends Controller
             'lokasi_wait_instansi'=>$lokasi_wait_instansi,
             'lokasi_final'=>$lokasi_final,
             'lokasi_banding'=>$lokasi_banding
+        ]);
+    }
+
+    public function daftarBpsProv()
+    {
+        return view('admin.daftar-bpsprov', [
+            'title'=> 'Daftar BPS Provinsi | Admin',
+            'sidebar'=> 'bpsprov',
+            'circle_sidebar'=> '',
+            'bpsprovs' => Instansi::orderBy('id', 'asc')->where('is_prov', 1)->get(),
+            // 'laporan_akhir' => LaporanAkhir::all()
         ]);
     }
 

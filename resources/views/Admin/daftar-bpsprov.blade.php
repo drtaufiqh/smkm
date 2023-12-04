@@ -34,6 +34,7 @@
                     @csrf
                     <button type="submit" class="btn btn-danger">Hapus Semua</button>
                   </form>
+                  <a href='{{ url('/admin/export-akun-bpsprov') }}' class="btn btn-primary">Export</a>
                 </div>
 
                 <!-- Modal Import -->
