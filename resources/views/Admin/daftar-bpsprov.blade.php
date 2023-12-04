@@ -84,8 +84,28 @@
                                     <td>{{ $bpsprov->nama }}</td>
                                     <td>{{ $bpsprov->user->email }}</td>
                                     <td>{{ $bpsprov->alamat_lengkap }}</td>
-                                    <td>{{ ($bpsprov->finalisasi->finalisasi_penentuan_lokasi_bpsprov) ?? '-' }}</td>
-                                    <td>{{ ($bpsprov->finalisasi->finalisasi_banding_lokasi_bpsprov ?? '-') }}</td>
+                                    <td>
+                                      @if ($bpsprov->finalisasi->finalisasi_penentuan_lokasi_bpsprov)
+                                          <div class="alert alert-success">
+                                            Sudah Finalisasi
+                                          </div>
+                                      @else
+                                          <div class="alert alert-warning">
+                                            Belum Finalisasi
+                                          </div>
+                                      @endif
+                                    </td>
+                                    <td>
+                                      @if ($bpsprov->finalisasi->finalisasi_banding_lokasi_bpsprov)
+                                          <div class="alert alert-success">
+                                            Sudah Finalisasi
+                                          </div>
+                                      @else
+                                          <div class="alert alert-warning">
+                                            Belum Finalisasi
+                                          </div>
+                                      @endif
+                                    </td>
                                     <td>
                                         <a href='{{ url('/admin/bpsprov/detail/'.$bpsprov->id) }}' class="btn btn-primary btn-sm m-2">Detail</a>
                                         <form onsubmit="return confirm('Yakin akan menghapus data?')" class="d-inline" action="{{ url('/admin/bpsprov/'.$bpsprov->id) }}" method="post">
