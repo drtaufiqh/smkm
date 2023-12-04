@@ -144,7 +144,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     {{-- <script src="/assets/js/penentuanLokasi.js"></script> --}}
     
-    @if (!in_array(request()->segment(2), ['penentuanlokasi']))
+    @if (!in_array(request()->segment(2), ['penentuanlokasi', 'approvalmahasiswa']))
       <script src="/assets/js/main.js"></script>
     @endif
     @yield('js-bang')

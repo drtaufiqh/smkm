@@ -56,10 +56,11 @@
                                     <td>{{ optional($pemilihan_lokasi->instansiAjuan)->nama ?? '-' }}</td>
                                     @if (!$finalisasiPenentuanBpsProvDone)
                                         <td class="status-column">
-                                            <form action="{{ route('setujuiPemilihan', ['id' => $pemilihan_lokasi->id, 'provId' => Auth::user()->info()->kabKota->provinsi->id]) }}" method="post">
+                                            {{-- <form action="{{ route('setujuiPemilihan', ['id' => $pemilihan_lokasi->id, 'provId' => Auth::user()->info()->kabKota->provinsi->id]) }}" method="post">
                                                 @csrf
-                                                @method('PUT')
-                                                <button type="submit" class="btn btn-outline-success mb-2">Setujui</button>
+                                                @method('PUT') --}}
+                                            <form id="setujuiForm_{{ $pemilihan_lokasi->id }}" class="setujui-form" data-pemilihan-id="{{ $pemilihan_lokasi->id }}">
+                                              <button type="button" class="btn btn-outline-success mb-2 setujui-btn">Setujui</button>
                                             </form>
                                             
                                             <form action="{{ route('tolakPemilihan', ['id' => $pemilihan_lokasi->id, 'provId' => Auth::user()->info()->kabKota->provinsi->id]) }}" method="post">
@@ -84,15 +85,15 @@
                                           </td>
                                         @endif
                                     @endif
-                                    <td>{{ optional($pemilihan_lokasi->instansiPengalihan)->nama ?? '-' }}</td>
+                                    <td id="pengalihan_{{ $pemilihan_lokasi->id }}">{{ optional($pemilihan_lokasi->instansiPengalihan)->nama ?? '-' }}</td>
                                     @if ($pemilihan_lokasi->id_instansi && !$pemilihan_lokasi->instansiPengalihan)
-                                      <td>
+                                      <td id="keterangan_{{ $pemilihan_lokasi->id }}">
                                           <div class="alert alert-success text-center" role="alert">
                                           Disetujui
                                           </div>
                                       </td>
                                     @else
-                                      <td>{{ ($pemilihan_lokasi->keterangan) ?? '-' }}</td>
+                                      <td id="keterangan_{{ $pemilihan_lokasi->id }}">{{ ($pemilihan_lokasi->keterangan) ?? '-' }}</td>
                                     @endif
                                 </tr>
                                 @endforeach
@@ -140,4 +141,30 @@
 
 
   </main><!-- End #main -->
+@endsection
+
+@section('js-bang')
+<script>
+    $(document).ready(function () {
+        $('.setujui-btn').on('click', function () {
+            var pemilihanId = $(this).closest('.setujui-form').data('pemilihan-id');
+
+            $.ajax({
+                type: 'GET',
+                url: '/bps-provinsi/setujui-pemilihan/' + pemilihanId + '/' + {{ Auth::user()->info()->kabKota->provinsi->id }},
+                // data: $(this).closest('.setujui-form').serialize(),
+                success: function (response) {
+                    // Tambahkan logika atau manipulasi DOM setelah permintaan berhasil
+                    $('#pengalihan_' + pemilihanId).text('-')
+                    $('#keterangan_' + pemilihanId).html('<div class="alert alert-success text-center" role="alert">Disetujui</div>')
+                    console.log(response);
+                },
+                error: function (error) {
+                    // Tambahkan logika atau manipulasi DOM setelah permintaan gagal
+                    console.log(error);
+                }
+            });
+        });
+    });
+</script>
 @endsection

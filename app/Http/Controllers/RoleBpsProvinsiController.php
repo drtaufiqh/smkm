@@ -17,6 +17,11 @@ class RoleBpsProvinsiController extends Controller
 {
     public function approvalMahasiswa($provId)
     {
+        $instansi = Instansi::where('id_user', Auth::user()->id)->first();
+        $userId = $instansi->kabKota->provinsi->id;
+        if ($userId != $provId){
+            return redirect('/bps-provinsi/approvalmahasiswa/'.$userId);
+        }
         $pemilihan_lokasis = PemilihanLokasi::select('pemilihan_lokasis.*')
         ->join('instansis','id_instansi_ajuan', '=', 'instansis.id')
         ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
@@ -33,6 +38,11 @@ class RoleBpsProvinsiController extends Controller
 
     public function bandingMahasiswa($provId)
     {
+        $instansi = Instansi::where('id_user', Auth::user()->id)->first();
+        $userId = $instansi->kabKota->provinsi->id;
+        if ($userId != $provId){
+            return redirect('/bps-provinsi/bandingmahasiswa/'.$userId);
+        }
         $pemilihan_lokasis = PemilihanLokasi::select('pemilihan_lokasis.*')
         ->join('instansis','id_instansi_ajuan', '=', 'instansis.id')
         ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
@@ -189,7 +199,7 @@ class RoleBpsProvinsiController extends Controller
 
     public function setujuiPemilihan($id, $provId)
     {
-        $pemilihan_lokasi = PemilihanLokasi::where('id', $id)->first();
+        $pemilihan_lokasi = PemilihanLokasi::find($id);
         $data = [
             'id_instansi' => $pemilihan_lokasi->id_instansi_ajuan,
             'id_pengalihan' => null,
@@ -198,8 +208,9 @@ class RoleBpsProvinsiController extends Controller
         $pemilihan_lokasi->mahasiswa->update(['id_instansi' => $pemilihan_lokasi->id_instansi_ajuan]);
         $pemilihan_lokasi->update($data);
         
+        return response()->json(['message' => 'Lokasi mahasiswa berhasil disetujui.']);
         
-        return redirect()->to('/bps-provinsi/approvalmahasiswa/'.$provId)->with('success', 'Lokasi mahasiswa berhasil disetujui.');
+        // return redirect()->to('/bps-provinsi/approvalmahasiswa/'.$provId)->with('success', 'Lokasi mahasiswa berhasil disetujui.');
     }
 
     public function do_keputusanbanding($id, $lokasi_banding, $action)
