@@ -1,16 +1,16 @@
 @if (Session::has('success') || Session::has('failed')|| $errors->any())
-    <div class="pt-3" id="notification">
+    <div class="mx-3 my-0 pt-3" id="notification">
         @if (Session::has('success'))
-            <p class="alert alert-success">{{ Session::get('success') }}</p>
+            <p class="mx-3 my-0 p-3 alert alert-success">{{ Session::get('success') }}</p>
         @endif
 
         @if (Session::has('failed'))
-            <p class="alert alert-danger">{{ Session::get('failed') }}</p>
+            <p class="mx-3 my-0 p-3 alert alert-danger">{{ Session::get('failed') }}</p>
         @endif
 
         @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
+            <div class="mx-3 my-0 p-3 alert alert-danger">
+                <ul class="p-0 my-0 mx-3">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach

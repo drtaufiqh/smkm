@@ -131,21 +131,21 @@
                     <div class="row mb-3">
                       <label for="nama" class="col-md-4 col-lg-3 col-form-label">Nama</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="nama" type="text" class="form-control" id="nama" value="{{ Auth::user()->info()->nama }}">
+                        <input name="nama" type="text" class="form-control" id="nama" value="{{ Auth::user()->info()->nama }}" required>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="nim" class="col-md-4 col-lg-3 col-form-label">NIM</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="nim" type="text" class="form-control" id="nim" value="{{ Auth::user()->info()->nim }}">
+                        <input name="nim" type="text" class="form-control" id="nim" value="{{ Auth::user()->info()->nim }}" required>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="kelas" class="col-md-4 col-lg-3 col-form-label">Kelas</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="kelas" type="text" class="form-control" id="kelas" value="{{ Auth::user()->info()->kelas }}">
+                        <input name="kelas" type="text" class="form-control" id="kelas" value="{{ Auth::user()->info()->kelas }}" required>
                       </div>
                     </div>
                     
@@ -162,21 +162,21 @@
                     <div class="row mb-3">
                       <label for="email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="text" class="form-control" id="email" value="{{ Auth::user()->info()->email }}">
+                        <input name="email" type="text" class="form-control" id="email" value="{{ Auth::user()->info()->email }}" required>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="no_hp" class="col-md-4 col-lg-3 col-form-label">No Handphone</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="no_hp" type="text" class="form-control" id="no_hp" value="{{ Auth::user()->info()->no_hp }}">
+                        <input name="no_hp" type="text" class="form-control" id="no_hp" value="{{ Auth::user()->info()->no_hp }}" required>
                       </div>
                     </div>                  
 
                     <div class="row mb-3 mt-3">
-                        <label for="alamat_1" class="col-md-4 col-lg-3 col-form-label">Alamat Domisili</label>
+                        <label for="alamat_1" class="col-md-4 col-lg-3 col-form-label">Alamat Domisili Utama</label>
                         <div class="col-md-4 col-lg-5">
-                          <textarea name="alamat_1" type="area" class="form-control" id="alamat_1" value="" style="height: 137px">{{ Auth::user()->info()->alamat_1 }}</textarea>
+                          <textarea name="alamat_1" type="area" class="form-control" id="alamat_1" value="" style="height: 137px" required>{{ Auth::user()->info()->alamat_1 }}</textarea>
                         </div>
                         <div class="col-md-4 mt-lg-0 mt-md-0">
                           <div class="form-floating">
@@ -185,6 +185,7 @@
                               id="provinsi-alamat-1"
                               aria-label="provinsi-alamat-1"
                               name = "id_prov"
+                              required
                             >
                             @if (Auth::user()->info()->kabKotaAlamat1)
                                 <option value="{{ Auth::user()->info()->kabKotaAlamat1->id_prov }}">{{ Auth::user()->info()->kabKotaAlamat1->provinsi->nama }}</option>
@@ -200,6 +201,7 @@
                               id="kabkota-alamat-1"
                               aria-label="kabkota-alamat-1"
                               name = "id_kab_kota_alamat_1"
+                              required
                             >
                             @if (Auth::user()->info()->kabKotaAlamat1)
                                 <option value="{{ Auth::user()->info()->kabKotaAlamat1->id }}">{{ Auth::user()->info()->kabKotaAlamat1->nama }}</option>

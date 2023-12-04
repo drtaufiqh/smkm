@@ -18,13 +18,14 @@
       <!-- End Page Title -->
       <section class="section">
         <div class="card col-lg-7 col-md-12 col-sm-12 mx-auto">
+          @include('komponen.pesan')
           <div class="card-body">
             <!-- Floating Labels Form -->
             <form class="row g-3" action="/mahasiswa/submitted-pemilihan-lokasi/{{ Auth::user()->info()->id }}" method="POST">
               @csrf
               <div class="col-md-6">
                 <div class="col-12 mt-0">
-                  <h5 class="card-title mb-0 mt-2">Alamat Domisili Utama</h5>
+                  <h5 class="card-title mb-0 mt-0">Alamat Domisili Utama</h5>
                 </div>
                 <div class="col-md-12 mt-0">
                   <div class="form-floating">
@@ -36,6 +37,7 @@
                       name="provinsi_alamat_1"
                       value="{{ Auth::user()->info()->kabKotaAlamat1->provinsi->nama ?? '-' }}"
                       readonly
+                      required
                     />
                     <label for="provinsi-alamat-1">Provinsi</label>
                   </div>
@@ -50,6 +52,7 @@
                       name="kabkota_alamat_1"
                       value="{{ Auth::user()->info()->kabKotaAlamat1->nama ?? '-' }}"
                       readonly
+                      required
                     />
                     <label for="kabkota-alamat-1">Kab/Kota</label>
                   </div>
@@ -64,6 +67,7 @@
                       name="alamat_1"
                       value="{{ Auth::user()->info()->alamat_1 ?? "-" }}"
                       readonly
+                      required
                     />
                     <label for="alamat-1">Alamat Lengkap</label>
                   </div>
@@ -72,7 +76,7 @@
               
               <div class="col-md-6">
                 <div class="col-12 mt-0">
-                  <h5 class="card-title mb-0 mt-2">Alamat Lain (Opsional)</h5>
+                  <h5 class="card-title mb-0 mt-0">Alamat Lain (Opsional)</h5>
                 </div>
                 <div class="col-md-12 mt-0">
                   <div class="form-floating">
@@ -144,6 +148,7 @@
                     id="instansi-pilihan-1"
                     aria-label="Instansi Pilihan 1"
                     name = "id_pilihan_1"
+                    {{-- required --}}
                   >
                     <option value="">Pilihan Provinsi Dahulu</option>
                   </select>
@@ -183,6 +188,7 @@
                     id="instansi-pilihan-2"
                     aria-label="Instansi Pilihan 2"
                     name = "id_pilihan_2"
+                    {{-- required --}}
                   >
                     <option value="">Pilihan Provinsi Dahulu</option>
                   </select>

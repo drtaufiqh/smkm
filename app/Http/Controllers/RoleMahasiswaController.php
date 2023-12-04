@@ -145,6 +145,15 @@ class RoleMahasiswaController extends Controller
 
     public function submittedPemilihanLokasi(Request $request, $id_user)
     {
+        $request->validate([
+            'alamat_1' => ['required', 'not_regex:/-/'],
+            'id_pilihan_1' => ['required'],
+            'id_pilihan_2' => ['required']
+        ], [
+            'alamat_1.*' => 'Anda belum mengisi alamat, silakan ke edit alamat di Profil Akun.',
+            'id_pilihan_1.required' => 'Pilihan 1 tidak boleh kosong.',
+            'id_pilihan_2.required' => 'Pilihan 2 tidak boleh kosong.'
+        ]);
         $data = [
             'id_mhs' => $id_user,
             'id_pilihan_1' => $request->input('id_pilihan_1'),
