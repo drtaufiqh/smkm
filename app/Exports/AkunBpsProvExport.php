@@ -22,6 +22,7 @@ class AkunBpsProvExport implements FromCollection, WithHeadings, WithStyles, Sho
                 'Nama' => $bpsprov->nama,
                 'Email' => $bpsprov->user->email,
                 'Alamat' => $bpsprov->alamat_lengkap,
+                'Kode Kabupaten/Kota' => $bpsprov->kode_kabkota
                 // Add other columns you want to export
             ];
         });
@@ -37,7 +38,8 @@ class AkunBpsProvExport implements FromCollection, WithHeadings, WithStyles, Sho
         return [
             'Nama',
             'Email',
-            'Alamat Lengkap'
+            'Alamat Lengkap',
+            'Kode Kabupaten/Kota'
             // Add other header columns
         ];
     }

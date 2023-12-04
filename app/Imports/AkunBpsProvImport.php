@@ -4,8 +4,8 @@ namespace App\Imports;
 
 use Config\Email;
 use App\Models\User;
-use App\Models\Mahasiswa;
-use App\Models\PemilihanLokasi;
+use App\Models\Instansi;
+use App\Models\Finalisasi;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -18,42 +18,41 @@ class AkunBpsProvImport implements ToModel, WithHeadingRow
      */
     public function model(array $row)
     {
-        // // Mencari user berdasarkan email
-        // $user = User::where('email', $row['email'])->first();
+        // Mencari user berdasarkan email
+        $user = User::where('email', $row['email'])->first();
 
-        // // Jika user tidak ditemukan, buat user baru
-        // if (!$user) {
-        //     $user = User::create([
-        //         'role' => 'mhs',
-        //         'email' => $row['email'],
-        //         'username' => $row['nim'],
-        //         'password' => bcrypt($row['nim']),
-        //     ]);
-        // }
+        // Jika user tidak ditemukan, buat user baru
+        if (!$user) {
+            $user = User::create([
+                'role' => 'mhs',
+                'email' => $row['email'],
+                'username' => substr($row['email'], 0, 8),
+                'password' => bcrypt('password'),
+            ]);
+        }
 
-        // // Update data user
-        // $user->update([
-        //     'username' => $row['nim'],
-        // ]);
+        // Update data user
+        $user->update([
+            'username' => substr($row['email'], 0, 8),
+        ]);
 
-        // // Hapus record Mahasiswa yang ada sebelumnya
-        // Mahasiswa::where('id_user', $user->id)->delete();
-        // Mahasiswa::where('email', $row['email'])->delete();
+        // Hapus record Instansi yang ada sebelumnya
+        Instansi::where('id_user', $user->id)->delete();
+
+        // buat finalisasi
+        $finalisasi = new Finalisasi(['created_at' => now()]);
+        $finalisasi->save();
     
-        // // Insert data Mahasiswa yang baru
-        // Mahasiswa::create([
-        //     'id_user' => $user->id,
-        //     'nama' => $row['nama'],
-        //     'nim' => $row['nim'],
-        //     'email' => $row['email'],
-        //     'jenis_kelamin' => $row['jenis_kelamin'],
-        //     'kelas' => $row['kelas'],
-        // ]);
-
-        // PemilihanLokasi::create([
-        //     'id_mhs' => Mahasiswa::where('id_user', $user->id)->first()->id,
-        // ]);
+        // Insert data Instansi yang baru
+        Instansi::create([
+            'id_user' => $user->id,
+            'nama' => $row['nama'],
+            'alamat_lengkap' => $row['alamat_lengkap'],
+            'kode_kabkota' => $row['kode_kabupatenkota'],
+            'id_finalisasi_provinsi' => $finalisasi->id,
+            'is_prov' => 1
+        ]);
     
-        // return $user->mahasiswa; // atau sesuai kebutuhan Anda
+        return $user->instansi; // atau sesuai kebutuhan Anda
     }
 }
