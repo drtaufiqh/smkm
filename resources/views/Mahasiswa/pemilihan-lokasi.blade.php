@@ -64,12 +64,23 @@
                     <input
                       type="text"
                       class="form-control"
-                      id="alamat-1"
+                      {{-- id="alamat-1" --}}
                       placeholder="Contoh: Jalan Contoh No 1, Kelurahan Makalah, Kecamatan Paper"
                       name="alamat_1"
                       value="{{ Auth::user()->info()->alamat_1 ?? "-" }}"
                       readonly
                       disabled
+                      required
+                    />
+                    <input
+                      type="hidden"
+                      class="form-control"
+                      id="alamat-1"
+                      placeholder="Contoh: Jalan Contoh No 1, Kelurahan Makalah, Kecamatan Paper"
+                      name="alamat_1"
+                      value="{{ Auth::user()->info()->alamat_1 ?? "-" }}"
+                      readonly
+                      {{-- disabled --}}
                       required
                     />
                     <label for="alamat-1">Alamat Lengkap</label>
