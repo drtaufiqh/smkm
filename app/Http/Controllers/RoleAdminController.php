@@ -86,7 +86,7 @@ class RoleAdminController extends Controller
         $pemilihan_lokasis = PemilihanLokasi::orderBy('id', 'desc')->paginate($jumlahbaris);
         // $pemilihan_lokasis = PemilihanLokasi::all();
         return view('admin.penentuanlokasi', [
-            'title'=> 'Banding Lokasi Magang | Admin',
+            'title'=> 'Penentuan Lokasi Magang | Admin',
             'sidebar'=> 'lokasi',
             'circle_sidebar'=> 'penentuan',
             'pemilihan_lokasis' => $pemilihan_lokasis

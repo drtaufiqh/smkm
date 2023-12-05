@@ -42,7 +42,7 @@
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="importModalLabel">Import Daftar Akun bpsprov</h1>
+                        <h1 class="modal-title fs-5" id="importModalLabel">Import Daftar Akun BPS Provinsi</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                       </div>
                       <form action="/admin/import-akun-bpsprov" method="post" enctype="multipart/form-data">
@@ -71,7 +71,7 @@
                                     <th scope="col text-center">Email</th>
                                     <th scope="col text-center">Alamat Lengkap</th>
                                     <th scope="col text-center">Finalisasi Penentuan Lokasi</th>
-                                    <th scope="col text-center">Finalisasi Banding Banding</th>
+                                    <th scope="col text-center">Finalisasi Banding Lokasi</th>
                                     <th scope="col text-center">Aksi</th>
                                 </tr>
                             </thead>
@@ -90,9 +90,15 @@
                                             Sudah Finalisasi
                                           </div>
                                       @else
-                                          <div class="alert alert-warning">
-                                            Belum Finalisasi
-                                          </div>
+                                          @if (optional($bpsprov->finalisasi)->finalisasi_penentuan_lokasi_admin)
+                                              <div class="alert alert-warning">
+                                                Belum Finalisasi
+                                              </div>
+                                              @else
+                                              <div class="alert alert-secondary">
+                                                Belum Masa Penentuan
+                                              </div>
+                                          @endif
                                       @endif
                                     </td>
                                     <td>
@@ -101,9 +107,15 @@
                                             Sudah Finalisasi
                                           </div>
                                       @else
-                                          <div class="alert alert-warning">
-                                            Belum Finalisasi
-                                          </div>
+                                          @if (optional($bpsprov->finalisasi)->finalisasi_penentuan_lokasi_bpsprov)
+                                              <div class="alert alert-warning">
+                                                Belum Finalisasi
+                                              </div>
+                                              @else
+                                              <div class="alert alert-secondary">
+                                                Belum Masa Banding
+                                              </div>
+                                          @endif
                                       @endif
                                     </td>
                                     <td>

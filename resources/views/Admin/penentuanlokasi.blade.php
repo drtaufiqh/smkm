@@ -73,8 +73,20 @@
                           <strong>[{{ optional($pemilihan_lokasi->mahasiswa->kabKotaAlamat2)->nama }}-{{ optional(optional($pemilihan_lokasi->mahasiswa->kabKotaAlamat2)->provinsi)->akronim }}]</strong>
                           {{ ($pemilihan_lokasi->mahasiswa->alamat_2) }}
                         </td>
-                        <td id="ajuan_{{ $pemilihan_lokasi->id }}">
-                          {{ optional($pemilihan_lokasi->instansiAjuan)->nama ?? "-" }}
+                        <td id="ajuan_{{ $pemilihan_lokasi->id }}" class="text-center">
+                          @if (optional($pemilihan_lokasi->instansiAjuan)->nama)
+                              @if ($pemilihan_lokasi->id_instansi_ajuan == $pemilihan_lokasi->id_pilihan_1)
+                                  <div class="alert alert-success">
+                                    {{ optional($pemilihan_lokasi->instansiAjuan)->nama }}
+                                  </div>
+                              @else
+                                  <div class="alert alert-warning">
+                                    {{ optional($pemilihan_lokasi->instansiAjuan)->nama }}
+                                  </div>
+                              @endif
+                          @else
+                                -
+                          @endif
                         </td>                        
                         @if (!$finalisasiDone) 
                             <td class="text-center">
@@ -83,8 +95,8 @@
                                   @method('PUT')
                                   <button type="submit" class="btn btn-warning mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan 1</button>
                                 </form> --}}
-                                <button data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ ($pemilihan_lokasi->id_pilihan_1) }}" data-nama="{{ optional($pemilihan_lokasi->pilihan1)->nama }}" class="btn btn-success mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan<span style="color: rgba(0, 0, 0, 0)">_</span>1</button>
-                                <button data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ ($pemilihan_lokasi->id_pilihan_2) }}" data-nama="{{ optional($pemilihan_lokasi->pilihan2)->nama }}" class="btn btn-warning mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan<span style="color: rgba(0, 0, 0, 0)">_</span>2</button>
+                                <button data-pil="1" data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ ($pemilihan_lokasi->id_pilihan_1) }}" data-nama="{{ optional($pemilihan_lokasi->pilihan1)->nama }}" class="btn btn-success mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan<span style="color: rgba(0, 0, 0, 0)">_</span>1</button>
+                                <button data-pil="2" data-id_lok="{{ $pemilihan_lokasi->id }}" data-id_pil="{{ ($pemilihan_lokasi->id_pilihan_2) }}" data-nama="{{ optional($pemilihan_lokasi->pilihan2)->nama }}" class="btn btn-warning mb-2 btn-tentukan-lokasi check" style="color: white;">Pilihan<span style="color: rgba(0, 0, 0, 0)">_</span>2</button>
                                 {{-- <form action="/admin/do_tentukanlokasi/{{ $pemilihan_lokasi->id }}/{{ $pemilihan_lokasi->id_pilihan_2 }}" class="form-tentukan-lokasi" method="post">
                                   @csrf
                                   @method('PUT')
@@ -144,6 +156,7 @@
           var idLok = $(this).data('id_lok');
           var idPil = $(this).data('id_pil');
           var nama = $(this).data('nama');
+          var pil = $(this).data('pil');
           var newValue = nama;
           var ajuanElem = $('#ajuan_' + idLok + '');
   
@@ -167,7 +180,12 @@
                       // const eighthTd = tr.querySelector('td:nth-child(8)');
 
                       // eighthTd.text(nama);
-                      ajuanElem.text(nama);
+                      if (pil == 1){
+                        var tampil = '<div class="alert alert-success">' + nama + '</div>';
+                      } else {
+                        var tampil = '<div class="alert alert-warning">' + nama + '</div>';
+                      }
+                      ajuanElem.html(tampil);
                       // alert(response.message);
                   } else {
                       alert('Gagal mengubah nilai.');
