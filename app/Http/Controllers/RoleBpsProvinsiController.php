@@ -171,7 +171,7 @@ class RoleBpsProvinsiController extends Controller
         ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
         ->where('kab_kotas.id_prov', 'LIKE', $userId)->get();
 
-        $instansisCount = [];
+        $instansisAjuanCount = [];
         foreach ($instansis as $instansi) {
             $count = 0;
             foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
@@ -179,9 +179,21 @@ class RoleBpsProvinsiController extends Controller
                     $count++;
                 }
             }
-            $instansisCount["$instansi->nama"] = $count;
+            $instansisAjuanCount["$instansi->nama"] = $count;
         }
-        arsort($instansisCount);
+        arsort($instansisAjuanCount);
+
+        $instansisApprovalCount = [];
+        foreach ($instansis as $instansi) {
+            $count = 0;
+            foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
+                if ($pemilihan_lokasi->id_instansi == $instansi->id) {
+                    $count++;
+                }
+            }
+            $instansisApprovalCount["$instansi->nama"] = $count;
+        }
+        arsort($instansisApprovalCount);
 
         return view('bps-provinsi.dashboard', [
             'title' => 'Dashboard | BPS Provinsi',
@@ -197,7 +209,8 @@ class RoleBpsProvinsiController extends Controller
             'belumApproval' => $belumApproval,
             'pemilihan_lokasis' => $pemilihan_lokasis,
             'instansis' => $instansis,
-            'instansisCount' => $instansisCount,
+            'instansisAjuanCount' => $instansisAjuanCount,
+            'instansisApprovalCount' => $instansisApprovalCount,
         ]);
     }
 

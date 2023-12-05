@@ -108,7 +108,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">
@@ -125,14 +125,69 @@
                                     let data = [];
 
                                     // Iterate through the pemilihan_lokasi collection
-                                    @foreach ($instansisCount as $nama => $count)
-
+                                    @foreach ($instansisAjuanCount as $nama => $count)
                                         categories.push("{{ $nama }}");
                                         data.push({{ $count }});
                                     @endforeach
 
                                     // Use the generated categories and data in the chart
                                     new ApexCharts(document.querySelector("#barChart"), {
+                                        series: [{
+                                            data: data,
+                                        }],
+                                        chart: {
+                                            type: 'bar',
+                                            height: 350
+                                        },
+                                        plotOptions: {
+                                            bar: {
+                                                borderRadius: 7,
+                                                horizontal: true,
+                                            }
+                                        },
+                                        dataLabels: {
+                                            enabled: false
+                                        },
+                                        xaxis: {
+                                            categories: categories,
+                                        },
+                                        yaxis: {
+                                            min: 0,    // Set the minimum value for the y-axis
+                                            max: 10,   // Set the maximum value for the y-axis
+                                            tickAmount: 5,  // Set the number of ticks on the y-axis
+                                        }
+                                    }).render();
+                                });
+                            </script>
+                            <!-- End Bar Chart -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">
+                                Sebaran Approval Lokasi Mahasiswa
+                            </h5>
+
+                            <!-- Bar Chart -->
+                            <div id="barChartApproval"></div>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    // Initialize arrays for categories and data
+                                    let categories = [];
+                                    let data = [];
+
+                                    // Iterate through the pemilihan_lokasi collection
+                                    @foreach ($instansisApprovalCount as $nama => $count)
+                                        categories.push("{{ $nama }}");
+                                        data.push({{ $count }});
+                                    @endforeach
+
+                                    // Use the generated categories and data in the chart
+                                    new ApexCharts(document.querySelector("#barChartApproval"), {
                                         series: [{
                                             data: data,
                                         }],
