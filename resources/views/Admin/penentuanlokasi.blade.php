@@ -32,6 +32,29 @@
               {{-- <div class="table-responsive">
                 <table class="table datatable text-center">
                   <thead> --}}
+                    
+    
+    @if (!$finalisasiDone)
+    <div class="text-center d-grid gap-2 d-md-flex justify-content-md-end">
+      <form action='/admin/do_finalisasi_lokasi' method="post">
+        @csrf 
+        @method('PUT')
+        <button type="submit" class="btn btn-primary btn-md">Finalisasi</button>
+      </form>
+    </div>
+    @else
+    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+      <i class="bi bi-info-circle me-1"></i>
+      Telah dilakukan finalisasi pengajuan lokasi
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    @endif
+
               <div class="table-responsive mb-3">
                 <table class="table table-striped">
                     <thead class="text-center align-middle">
@@ -120,27 +143,6 @@
         </div>
       </div>
   
-
-      @if (!$finalisasiDone)
-      <div class="text-center">
-        <form action='/admin/do_finalisasi_lokasi' method="post">
-          @csrf 
-          @method('PUT')
-          <button type="submit" class="btn btn-primary btn-lg">Finalisasi</button>
-        </form>
-      </div>
-      @else
-      <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-        <i class="bi bi-info-circle me-1"></i>
-        Telah dilakukan finalisasi pengajuan lokasi
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
-      @endif
 
     </section>
 
