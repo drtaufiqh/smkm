@@ -85,7 +85,7 @@
                                     <td>{{ $bpsprov->user->email }}</td>
                                     <td>{{ $bpsprov->alamat_lengkap }}</td>
                                     <td>
-                                      @if ($bpsprov->finalisasi->finalisasi_penentuan_lokasi_bpsprov)
+                                      @if (optional($bpsprov->finalisasi)->finalisasi_penentuan_lokasi_bpsprov)
                                           <div class="alert alert-success">
                                             Sudah Finalisasi
                                           </div>
@@ -96,7 +96,7 @@
                                       @endif
                                     </td>
                                     <td>
-                                      @if ($bpsprov->finalisasi->finalisasi_banding_lokasi_bpsprov)
+                                      @if (optional($bpsprov->finalisasi)->finalisasi_banding_lokasi_bpsprov)
                                           <div class="alert alert-success">
                                             Sudah Finalisasi
                                           </div>

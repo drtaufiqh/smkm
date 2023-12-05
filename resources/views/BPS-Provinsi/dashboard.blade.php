@@ -125,20 +125,10 @@
                                     let data = [];
 
                                     // Iterate through the pemilihan_lokasi collection
-                                    @foreach ($pemilihan_lokasis as $lokasi)
-                                        //let lksCount = {{ \App\Models\Instansi::where('id', $lokasi->id_instansi)->count() }};
-                                        @php
-                                              $lks = \App\Models\Instansi::where('id', $lokasi->id_instansi)->get();
-                                              $lks1 = \App\Models\Instansi::where('id', $lokasi->id_instansi)->pluck('nama')->first();
-                                              //$lks = \App\Models\Instansi::where('id', $lokasi->id_instansi)->pluck('id')->first();
-                                              $lksCount = $lks->count();
-                                              // if ($lksCount === 0) {
-                                              //     $lksCount = 10;
-                                              // }
-                                        @endphp
+                                    @foreach ($instansisCount as $nama => $count)
 
-                                        categories.push("{{ $lks1 }}");
-                                        data.push({{ $lksCount }});
+                                        categories.push("{{ $nama }}");
+                                        data.push({{ $count }});
                                     @endforeach
 
                                     // Use the generated categories and data in the chart

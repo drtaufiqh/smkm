@@ -162,6 +162,27 @@ class RoleBpsProvinsiController extends Controller
         $totalApproval = $approval->count();
         $belumApproval = $notApproval->count();
 
+        $pemilihan_lokasis = PemilihanLokasi::select('pemilihan_lokasis.*')
+        ->join('instansis','id_instansi_ajuan', '=', 'instansis.id')
+        ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
+        ->where('kab_kotas.id_prov', 'LIKE', $userId)->get();
+
+        $instansis = Instansi::select('instansis.*')
+        ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
+        ->where('kab_kotas.id_prov', 'LIKE', $userId)->get();
+
+        $instansisCount = [];
+        foreach ($instansis as $instansi) {
+            $count = 0;
+            foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
+                if ($pemilihan_lokasi->id_instansi_ajuan == $instansi->id) {
+                    $count++;
+                }
+            }
+            $instansisCount["$instansi->nama"] = $count;
+        }
+        arsort($instansisCount);
+
         return view('bps-provinsi.dashboard', [
             'title' => 'Dashboard | BPS Provinsi',
             'sidebar' => 'dashboard',
@@ -174,7 +195,9 @@ class RoleBpsProvinsiController extends Controller
             'totalBanding' => $totalBanding,
             'totalApproval' => $totalApproval,
             'belumApproval' => $belumApproval,
-            'pemilihan_lokasis' => PemilihanLokasi::all(),
+            'pemilihan_lokasis' => $pemilihan_lokasis,
+            'instansis' => $instansis,
+            'instansisCount' => $instansisCount,
         ]);
     }
 
@@ -331,7 +354,7 @@ class RoleBpsProvinsiController extends Controller
         $request->validate([
             'id_pengalihan' =>'required'
         ], [
-            'id_pengalihan.required' => 'BPS Pengalihan wajib diisi.'
+            'id_pengalihan.required' => 'Lokasi Magang Pengalihan wajib diisi.'
         ]);
 
         $pemilihan_lokasi->id_pengalihan = $request->input('id_pengalihan');
@@ -350,8 +373,13 @@ class RoleBpsProvinsiController extends Controller
 
     public function do_finalisasi_pemilihan()
     {
-
-        $pemilihan_lokasis = PemilihanLokasi::get();
+        $instansi = Instansi::where('id_user', Auth::user()->id)->first();
+        $userId = $instansi->kabKota->provinsi->id;
+        $pemilihan_lokasis = PemilihanLokasi::select('pemilihan_lokasis.*')
+        ->join('instansis','id_instansi_ajuan', '=', 'instansis.id')
+        ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
+        ->where('kab_kotas.id_prov', 'LIKE', $userId)
+        ->get();
 
         foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
             $id_instansi = $pemilihan_lokasi->id_instansi;
@@ -369,7 +397,6 @@ class RoleBpsProvinsiController extends Controller
         //     $finalisasi->update(['finalisasi_penentuan_lokasi_bpsprov' => 1]);
         // }
 
-        $instansi = Instansi::where('id_user', Auth::user()->id)->first();
         $finalisasi = $instansi->finalisasi;
         $finalisasi->update(['finalisasi_penentuan_lokasi_bpsprov' => 1]);
 

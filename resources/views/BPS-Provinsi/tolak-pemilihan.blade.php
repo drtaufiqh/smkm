@@ -30,7 +30,7 @@
             </div>
 
             <div class="mb-3 row">
-                <label for="bps_pilihan" class="col-sm-2 col-form-label">BPS Kabupaten/Kota Pilihan</label>
+                <label for="bps_pilihan" class="col-sm-2 col-form-label">Lokasi Magang Ajuan</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="bps_pilihan" value="{{ $pemilihan_lokasi->instansiAjuan->nama }}" readonly disabled>
                 </div>
@@ -38,10 +38,10 @@
 
             
             <div class="mb-3 row">
-                <label for="id_pengalihan" class="col-sm-2 col-form-label">BPS Pengalihan</label>
+                <label for="id_pengalihan" class="col-sm-2 col-form-label">Lokasi Magang Pengalihan</label>
                 <div class="col-sm-10">
                     <select class="form-control" name='id_pengalihan' id="id_pengalihan">
-                        <option value="">Pilih BPS Pengalihan</option>
+                        <option value="">Pilih Lokasi Magang Pengalihan</option>
                         @foreach ($instansis as $instansi)
                             <option value="{{ $instansi->id }}">{{ $instansi->nama }}</option>
                         @endforeach
