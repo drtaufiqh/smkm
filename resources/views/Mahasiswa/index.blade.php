@@ -98,6 +98,7 @@
               </div>
             </div>
 
+@if ($sudah_magang)
             <div class="col-12">
               <div class="col-lg-12">
                 <!-- Form Tambah Log Book -->
@@ -328,6 +329,81 @@
               </div>
             </div>
             <!-- End Reports -->
+@endif
+
+@if (!Auth::user()->alamat_1)
+    
+      <!-- End Page Title -->
+      <section class="section">
+        <div class="card col-lg-7 col-md-12 col-sm-12 mx-auto">
+          <div class="card-body">
+              <div class="col-md-12">
+                <div class="col-12 mt-0">
+                  <h5 class="card-title mb-0 mt-0">Alamat Domisili Utama Masih Kosong</h5>
+                </div>
+                <div class="row">
+                  
+                  <div class="col-md-4 my-3">
+                    <div class="form-floating">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="provinsi-alamat-1"
+                        placeholder="Contoh: Jalan Contoh No 1, Kelurahan Makalah, Kecamatan Paper"
+                        name="provinsi_alamat_1"
+                        value="{{ Auth::user()->info()->kabKotaAlamat1->provinsi->nama ?? '-' }}"
+                        readonly
+                        required
+                        disabled
+                      />
+                      <label for="provinsi-alamat-1">Provinsi</label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 my-3">
+                    <div class="form-floating">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="kabkota-alamat-1"
+                        placeholder="Contoh: Jalan Contoh No 1, Kelurahan Makalah, Kecamatan Paper"
+                        name="kabkota_alamat_1"
+                        value="{{ Auth::user()->info()->kabKotaAlamat1->nama ?? '-' }}"
+                        readonly
+                        required
+                        disabled
+                      />
+                      <label for="kabkota-alamat-1">Kab/Kota</label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4 my-3">
+                    <div class="form-floating">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="alamat-1"
+                        placeholder="Contoh: Jalan Contoh No 1, Kelurahan Makalah, Kecamatan Paper"
+                        name="alamat_1"
+                        value="{{ Auth::user()->info()->alamat_1 ?? "-" }}"
+                        readonly
+                        required
+                        disabled
+                      />
+                      <label for="alamat-1">Alamat Lengkap</label>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              
+              <div class="text-center d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="/mahasiswa/profil" class="btn btn-secondary">Edit Profil</a>
+              </div>
+
+          </div>
+        </div>
+@endif
           </div>
           <!-- End Left side columns -->
         </div>
