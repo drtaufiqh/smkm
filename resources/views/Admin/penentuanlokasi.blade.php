@@ -39,13 +39,13 @@
       <form action='/admin/do_finalisasi_lokasi' method="post">
         @csrf 
         @method('PUT')
-        <button type="submit" class="btn btn-primary btn-md">Finalisasi</button>
+        <button type="submit" class="btn btn-primary btn-md">Teruskan</button>
       </form>
     </div>
     @else
     <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
       <i class="bi bi-info-circle me-1"></i>
-      Telah dilakukan finalisasi pengajuan lokasi
+      Pengajuan lokasi telah diteruskan ke masing-masing BPS Provinsi.
       <button
         type="button"
         class="btn-close"

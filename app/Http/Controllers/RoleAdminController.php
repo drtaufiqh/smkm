@@ -161,7 +161,7 @@ class RoleAdminController extends Controller
             $id_instansi_ajuan = $pemilihan_lokasi->id_instansi_ajuan;
             # kalo ada yang belum berarti gagal
             if ($id_instansi_ajuan == NULL){
-                return redirect()->to('/admin/penentuanlokasi')->with('failed', 'Terdapat mahasiswa yang belum diajukan');
+                return redirect()->to('/admin/penentuanlokasi')->with('failed', 'Gagal diteruskan ke BPS Provinsi. Terdapat mahasiswa yang belum diajukan.');
             }
         }
         #logic finalisasi
@@ -170,7 +170,7 @@ class RoleAdminController extends Controller
             'finalisasi_banding_lokasi_admin' => 0
         ]);
 
-        return redirect()->to('/admin/penentuanlokasi')->with('success', 'Berhasil finalisasi');
+        return redirect()->to('/admin/penentuanlokasi')->with('success', 'Berhasil diteruskan ke BPS Provinsi.');
         
     }
 
