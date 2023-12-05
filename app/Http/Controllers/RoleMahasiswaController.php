@@ -26,15 +26,15 @@ class RoleMahasiswaController extends Controller
     {
         $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
         $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
-        if($pemilihan_lokasi->id_instansi_banding){
+        if ($pemilihan_lokasi->id_instansi_banding) {
             return redirect()->to('/mahasiswa/submitted-banding-lokasi');
         }
 
         $mahasiswas = Mahasiswa::all();
         $provId = $mhs->instansi->kabKota->provinsi->id;
         $instansis = Instansi::whereHas('kabKota.provinsi', function ($query) use ($provId) {
-                        $query->where('id', $provId);
-                    })->get();
+            $query->where('id', $provId);
+        })->get();
         $pemilihan_lokasis = PemilihanLokasi::all();
         return view('mahasiswa.banding-lokasi', [
             'title' => 'Lokasi Magang | Mahasiswa',
@@ -98,7 +98,7 @@ class RoleMahasiswaController extends Controller
         $user = User::find($id_user);
         $email = $request->input('email');
         $password_lama = $request->input('password_lama');
-        
+
         // if(bcrypt($request->input('password_lama')) != $user->password){
         //     return redirect()->to('/mahasiswa/password')->with('failed', 'Password lama salah');
         // }
@@ -112,8 +112,8 @@ class RoleMahasiswaController extends Controller
         }
 
         $request->validate([
-            'password_baru'=>['required'],
-            'ulangi_password_baru'=>['required','same:password_baru']
+            'password_baru' => ['required'],
+            'ulangi_password_baru' => ['required', 'same:password_baru']
         ], [
             'password_baru.required' => "Masukkan Password Baru",
             'ulangi_password_baru.required' => "Masukkan Konfirmasi Password",
@@ -181,7 +181,7 @@ class RoleMahasiswaController extends Controller
     {
         $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
         $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
-        if(optional($pemilihan_lokasi)->pilihan1){
+        if (optional($pemilihan_lokasi)->pilihan1) {
             return redirect()->to('/mahasiswa/submitted-pemilihan-lokasi');
         }
         return view('mahasiswa.pemilihan-lokasi', [
@@ -220,7 +220,7 @@ class RoleMahasiswaController extends Controller
     public function waitingPemilihanLokasi()
     {
         $finalisasiPenentuanBpsProvDone = Finalisasi::isFinalisasiPenentuanBpsProvDone();
-        if($finalisasiPenentuanBpsProvDone){
+        if ($finalisasiPenentuanBpsProvDone) {
             return redirect()->to('/mahasiswa/banding-lokasi');
         }
 
@@ -242,14 +242,15 @@ class RoleMahasiswaController extends Controller
             'alasan_banding' => $request->input('alasan_banding')
         ];
 
-        PemilihanLokasi::where('id_mhs',$id_user)->update($data);
+        PemilihanLokasi::where('id_mhs', $id_user)->update($data);
         Mahasiswa::find($id_user)->update(['id_instansi' => null]);
         return redirect()->to('/mahasiswa/submitted-banding-lokasi');
     }
 
-    public function waitingBandingLokasi(){
+    public function waitingBandingLokasi()
+    {
         $finalisasiBandingBpsProvDone = Finalisasi::isFinalisasiBandingBpsProvDone();
-        if($finalisasiBandingBpsProvDone){
+        if ($finalisasiBandingBpsProvDone) {
             return redirect()->to('/mahasiswa/lokasi-magang');
         }
 
@@ -264,7 +265,8 @@ class RoleMahasiswaController extends Controller
         ]);
     }
 
-    public function lokasiFiks(){
+    public function lokasiFiks()
+    {
         $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
         $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
         $mhs->update(['is_final' => true]);
@@ -277,7 +279,8 @@ class RoleMahasiswaController extends Controller
         ]);
     }
 
-    public function lokasiMagang(){
+    public function lokasiMagang()
+    {
         $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
         $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
 
@@ -341,13 +344,13 @@ class RoleMahasiswaController extends Controller
         if ($request->hasFile('foto')) {
             $foto = $request->file('foto');
             $namaFoto = time() . '_' . $foto->getClientOriginalName();
-        
+
             // Menyimpan foto ke penyimpanan file (storage)
             $pathFoto = $foto->storeAs('public/assets/img/', $namaFoto);
-        
+
             // Mendapatkan path foto yang disimpan
             $pathFotoPublik = Storage::url($pathFoto);
-        
+
             // Memperbarui path foto dalam $data
             $data['foto'] = $pathFotoPublik;
         }
@@ -356,10 +359,12 @@ class RoleMahasiswaController extends Controller
         //     $data['foto'] = Auth::user()->info()->foto;
         // }
 
-        Mahasiswa::where('id',$id_user)->update($data);
-        if(Auth::user()->role == "admin"){
-            return redirect('/admin/mahasiswa/detail/'.$id_user)->with(['success'=>'Data berhasil diubah']);
+        $mhs = Mahasiswa::where('id', $id_user)->first();
+        $mhs->update($data);
+        $mhs->user->update(['email' => $data['email']]);
+        if (Auth::user()->role == "admin") {
+            return redirect('/admin/mahasiswa/detail/' . $id_user)->with(['success' => 'Data berhasil diubah']);
         }
-        return redirect()->to('/mahasiswa/profil')->with(['success'=>'Data berhasil diubah']);
+        return redirect()->to('/mahasiswa/profil')->with(['success' => 'Data berhasil diubah']);
     }
 }

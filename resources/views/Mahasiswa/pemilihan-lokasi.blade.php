@@ -37,6 +37,7 @@
                       name="provinsi_alamat_1"
                       value="{{ Auth::user()->info()->kabKotaAlamat1->provinsi->nama ?? '-' }}"
                       readonly
+                      disabled
                       required
                     />
                     <label for="provinsi-alamat-1">Provinsi</label>
@@ -52,6 +53,7 @@
                       name="kabkota_alamat_1"
                       value="{{ Auth::user()->info()->kabKotaAlamat1->nama ?? '-' }}"
                       readonly
+                      disabled
                       required
                     />
                     <label for="kabkota-alamat-1">Kab/Kota</label>
@@ -67,6 +69,7 @@
                       name="alamat_1"
                       value="{{ Auth::user()->info()->alamat_1 ?? "-" }}"
                       readonly
+                      disabled
                       required
                     />
                     <label for="alamat-1">Alamat Lengkap</label>
@@ -88,6 +91,7 @@
                       name="provinsi_alamat_2"
                       value="{{ Auth::user()->info()->kabKotaAlamat2->provinsi->nama ?? '-' }}"
                       readonly
+                      disabled
                     />
                     <label for="provinsi-alamat-2">Provinsi</label>
                   </div>
@@ -102,6 +106,7 @@
                       name="kabkota_alamat_2"
                       value="{{ Auth::user()->info()->kabKotaAlamat2->nama ?? '-' }}"
                       readonly
+                      disabled
                     />
                     <label for="kabkota-alamat-2">Kab/Kota</label>
                   </div>
@@ -116,6 +121,7 @@
                       name="alamat_2"
                       value="{{ Auth::user()->info()->alamat_2 ?? "-" }}"
                       readonly
+                      disabled
                     />
                     <label for="alamat-2">Alamat Lengkap</label>
                   </div>

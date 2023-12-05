@@ -331,15 +331,15 @@
             <!-- End Reports -->
 @endif
 
-@if (!Auth::user()->alamat_1)
+@if (Auth::user()->alamat_1 != null)
     
       <!-- End Page Title -->
       <section class="section">
-        <div class="card col-lg-7 col-md-12 col-sm-12 mx-auto">
+        <div class="card col-lg-12 col-md-12 col-sm-12 mx-auto">
           <div class="card-body">
               <div class="col-md-12">
                 <div class="col-12 mt-0">
-                  <h5 class="card-title mb-0 mt-0">Alamat Domisili Utama Masih Kosong</h5>
+                  <h5 class="card-title mb-0 mt-0">Alamat Domisili Utama</h5>
                 </div>
                 <div class="row">
                   
@@ -398,7 +398,7 @@
               </div>
               
               <div class="text-center d-grid gap-2 d-md-flex justify-content-md-end">
-                <a href="/mahasiswa/profil" class="btn btn-secondary">Edit Profil</a>
+                <a href="/mahasiswa/profil" class="btn btn-primary">Edit Profil</a>
               </div>
 
           </div>
