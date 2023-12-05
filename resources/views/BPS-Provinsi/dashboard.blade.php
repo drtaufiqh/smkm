@@ -98,6 +98,14 @@
                                 <div class="col">
                                     <a
                                         class="btn p-3 mb-2 border border-success m-2 text-white bg-success"
+                                        >Total Pengalihan<br /><b
+                                            >: {{$tolakApproval}} Mahasiswa</b
+                                        ></a
+                                    >
+                                </div>
+                                <div class="col">
+                                    <a
+                                        class="btn p-3 mb-2 border border-success m-2 text-white bg-success"
                                         >Belum Approval<br /><b
                                             >: {{$belumApproval}} Mahasiswa</b
                                         ></a

@@ -151,15 +151,21 @@ class RoleBpsProvinsiController extends Controller
                                         })->whereNotNull('id_pilihan_1')
                                         ->whereColumn('id_instansi', '=', 'id_instansi_ajuan')
                                         ->get();
-        $notApproval = PemilihanLokasi::whereHas('instansiAjuan.kabKota.provinsi', function ($query) use ($userId) {
+        $tolakApproval = PemilihanLokasi::whereHas('instansiAjuan.kabKota.provinsi', function ($query) use ($userId) {
                                             $query->where('id', $userId);
                                         })->whereNotNull('id_pilihan_1')
                                         ->whereColumn('id_instansi', '!=', 'id_instansi_ajuan')
+                                        ->get();
+        $notApproval = PemilihanLokasi::whereHas('instansiAjuan.kabKota.provinsi', function ($query) use ($userId) {
+                                            $query->where('id', $userId);
+                                        })->whereNotNull('id_pilihan_1')
+                                        ->whereNull('id_instansi')
                                         ->get();
 
         $totalPengajuan = $pengajuan->count();
         $totalBanding = $banding->count();
         $totalApproval = $approval->count();
+        $tolakApproval = $tolakApproval->count();
         $belumApproval = $notApproval->count();
 
         $pemilihan_lokasis = PemilihanLokasi::select('pemilihan_lokasis.*')
@@ -206,6 +212,7 @@ class RoleBpsProvinsiController extends Controller
             'totalPengajuan' => $totalPengajuan,
             'totalBanding' => $totalBanding,
             'totalApproval' => $totalApproval,
+            'tolakApproval' => $tolakApproval,
             'belumApproval' => $belumApproval,
             'pemilihan_lokasis' => $pemilihan_lokasis,
             'instansis' => $instansis,
