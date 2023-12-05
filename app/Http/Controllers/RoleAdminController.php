@@ -30,10 +30,10 @@ class RoleAdminController extends Controller
 
     public function dashboard()
     {
-        $mhs = Mahasiswa::whereNotNull('id_dosen_pembimbing')->get();
-        $mhs2 = Mahasiswa::whereNull('id_dosen_pembimbing')->get();
-        $mhsCount = $mhs->count();
-        $mhs2Count = $mhs2->count();
+        // $mhs = Mahasiswa::whereNotNull('id_dosen_pembimbing')->get();
+        // $mhs2 = Mahasiswa::whereNull('id_dosen_pembimbing')->get();
+        // $mhsCount = $mhs->count();
+        // $mhs2Count = $mhs2->count();
         $laporan = LaporanAkhir::whereIn('approval_akhir_kampus', [1])->get();
         $laporan2 = LaporanAkhir::whereIn('approval_akhir_kampus', [0])->get();
         $lapCount = $laporan->count();
@@ -51,10 +51,10 @@ class RoleAdminController extends Controller
             'sidebar'=> 'dashboard',
             'circle_sidebar'=> '',
             'mahasiswas' => Mahasiswa::all(),
-            'mhs'=>$mhs,
-            'mhs2'=>$mhs2,
-            'mhsCount' => $mhsCount,
-            'mhs2Count' => $mhs2Count,
+            // 'mhs'=>$mhs,
+            // 'mhs2'=>$mhs2,
+            // 'mhsCount' => $mhsCount,
+            // 'mhs2Count' => $mhs2Count,
             'laporan'=>$laporan,
             'laporan2'=>$laporan2,
             'lapCount'=>$lapCount,
