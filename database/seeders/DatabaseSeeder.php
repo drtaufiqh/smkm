@@ -85,15 +85,17 @@ class DatabaseSeeder extends Seeder
         // $instansi->id_kabkota = 1;
         // $instansi->save();
         // $instansi->kode_kabkota = $instansi->kabKota->kode;
-        $instansi->save();
-        $instansi = Instansi::factory()->create();
-        $instansi->is_prov = true;
-        $instansi->id_user = 5;
-        $instansi->nama = 'BPS Provinsi Nanggroe Aceh Darussalam';
-        $instansi->id_kab_kota = 1;
-        $instansi->save();
-        $instansi->kode_kabkota = $instansi->kabKota->kode;
-        $instansi->save();
+
+        // prov
+        // $instansi->save();
+        // $instansi = Instansi::factory()->create();
+        // $instansi->is_prov = true;
+        // $instansi->id_user = 5;
+        // $instansi->nama = 'BPS Provinsi Nanggroe Aceh Darussalam';
+        // $instansi->id_kab_kota = 1;
+        // $instansi->save();
+        // $instansi->kode_kabkota = $instansi->kabKota->kode;
+        // $instansi->save();
 
         PembimbingLapangan::factory(10)->create();
         $pemlap = PembimbingLapangan::factory()->create();
