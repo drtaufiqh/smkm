@@ -52,11 +52,11 @@ class DatabaseSeeder extends Seeder
         $user->username = 'pemlap';
         $user->email = 'pemlap@stis.ac.id';
         $user->save();
-        $user = User::factory()->create();
-        $user->role = 'prov';
-        $user->username = 'prov';
-        $user->email = 'prov@stis.ac.id';
-        $user->save();
+        // $user = User::factory()->create();
+        // $user->role = 'prov';
+        // $user->username = 'prov';
+        // $user->email = 'prov@stis.ac.id';
+        // $user->save();
         $user = User::factory()->create();
         $user->role = 'instansi';
         $user->username = 'instansi';
