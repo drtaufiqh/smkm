@@ -43,7 +43,9 @@
                     aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample"
                   >
-                    <form class="form-log-book accordion-body row g-3">
+                    @include('komponen.pesan')
+                    <form action="/mahasiswa/add-daily-lb/{{ Auth::user()->info()->id }}" method="POST" class="form-log-book accordion-body row g-3">
+                      @csrf
                       <div class="col-md-6">
                         <div class="form-floating">
                           <input
@@ -51,6 +53,7 @@
                             class="form-control"
                             id="floatingName"
                             placeholder="Pekerjaan"
+                            name="pekerjaan"
                           />
                           <label for="floatingName">Pekerjaan</label>
                         </div>
@@ -62,6 +65,7 @@
                             class="form-control"
                             id="floatingName"
                             placeholder="Volume"
+                            name="volume"
                           />
                           <label for="floatingName">Volume</label>
                         </div>
@@ -73,6 +77,7 @@
                             class="form-control"
                             id="floatingName"
                             placeholder="Satuan"
+                            name="satuan"
                           />
                           <label for="floatingName">Satuan</label>
                         </div>
@@ -84,6 +89,7 @@
                             class="form-control"
                             id="floatingName"
                             placeholder="Durasi"
+                            name="durasi"
                           />
                           <label for="floatingName">Durasi</label>
                         </div>
@@ -95,6 +101,7 @@
                             class="form-control"
                             id="floatingName"
                             placeholder="Pemberi Tugas"
+                            name="pemberi_tugas"
                           />
                           <label for="floatingName">Pemberi Tugas</label>
                         </div>
@@ -150,12 +157,17 @@
                             <div
                               class="progress-bar"
                               role="progressbar"
-                              style="width: 90%"
+                              style="width: {{ $jurnaling_harian->status_penyelesaian }}%"
                               aria-valuenow="90"
                               aria-valuemin="0"
                               aria-valuemax="100"
                             >
+                              @if ($jurnaling_harian->status_penyelesaian != 0 )
+                              {{ $jurnaling_harian->status_penyelesaian }}%
+                              @else
                               {{ $jurnaling_harian->status_penyelesaian }}
+                              @endif
+
                             </div>
                           </div>
                         </td>

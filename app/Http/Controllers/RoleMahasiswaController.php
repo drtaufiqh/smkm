@@ -157,24 +157,83 @@ class RoleMahasiswaController extends Controller
         ]);
     }
 
-    public function logBookBulanan()
+    public function logBookBulanan($id_user)
     {
         return view('mahasiswa.log-book-bulanan', [
             'title' => 'Log Book | Mahasiswa',
             'sidebar' => 'log book',
             'circle_sidebar' => 'bulanan',
-            'jurnaling_bulanans' => JurnalingBulanan::all()
+            'jurnaling_bulanans' => JurnalingBulanan::where('id_mhs', $id_user)->get()
         ]);
     }
 
-    public function logBookHarian()
+    public function logBookHarian($id_user)
     {
         return view('mahasiswa.log-book-harian', [
             'title' => 'Log Book | Mahasiswa',
             'sidebar' => 'log book',
             'circle_sidebar' => 'harian',
-            'jurnaling_harians' => JurnalingHarian::all()
+            'jurnaling_harians' => JurnalingHarian::where('id_mhs', $id_user) ->orderBy('created_at', 'desc')->get()
         ]);
+    }
+
+    public function add_daily_lb(Request $request, $id_user)
+    {
+        $request->validate([
+            'pekerjaan' => ['required'],
+            'volume' => ['required','numeric'],
+            'satuan' => ['required'],
+            'durasi'=> ['required'],
+            'pemberi_tugas' => ['required']
+        ], [
+            'pekerjaan.required' => 'Pekerjaan wajib diisi',
+            'volume.required' => 'Volume pekerjaan wajib diisi',
+            'volume.numeric' => 'Volume harus berupa angka',
+            'satuan.required' => 'Satuan wajib diisi',
+            'durasi.required' => 'Pekerjaan wajib diisi',
+            'pemberi_tugas.required' => 'Pemberi Tugas wajib diisi'
+        ]);
+        $data = [
+            'id_mhs' => $id_user,
+            'deskripsi_pekerjaan' => $request->input('pekerjaan'),
+            'kuantitas_volume' => $request->input('volume'),
+            'kuantitas_satuan' => $request->input('satuan'),
+            'durasi_waktu' => $request->input('durasi'),
+            'pemberi_tugas' => $request->input('pemberi_tugas'),
+            'tanggal' => now(),
+            // 'status_penyelesaian' => '50'
+        ];
+
+        JurnalingHarian::where('id_mhs', $id_user)->insert($data);
+        return redirect()->to('/mahasiswa/log-book-harian/'.$id_user)->with(['success' => 'Berhasil menambah log book']);
+    }
+
+    public function add_monthly_lb(Request $request, $id_user)
+    {
+        $request->validate([
+            'uraian_kegiatan' => ['required'],
+            'satuan' => ['required'],
+            'kuantitas_target' => ['required','numeric'],
+            'kuantitas_realisasi' => ['required','numeric'],
+        ], [
+            'uraian_kegiatan.required' => 'Kegiatan wajib diisi',
+            'satuan.required' => 'Satuan wajib diisi',
+            'kuantitas_target.required' => 'Target wajib diisi',
+            'kuantitas_target.numeric' => 'Target wajib berupa angka',
+            'kuantitas_realisasi.required' => 'Realisasi pekerjaan wajib diisi',
+            'kuantitas_realisasi.numeric' => 'Realisasi wajib berupa angka'
+            
+        ]);
+        $data = [
+            'id_mhs' => $id_user,
+            'uraian_kegiatan' => $request->input('uraian_kegiatan'),
+            'satuan' => $request->input('satuan'),
+            'kuantitas_target' => $request->input('kuantitas_target'),
+            'kuantitas_realisasi' => $request->input('kuantitas_realisasi'),  
+        ];
+
+        JurnalingBulanan::where('id_mhs', $id_user)->insert($data);
+        return redirect()->to('/mahasiswa/log-book-bulanan/'.$id_user)->with(['success' => 'Berhasil menambah log book']);
     }
 
     public function pemilihanLokasi()

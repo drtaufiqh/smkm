@@ -20,14 +20,14 @@
 
       <li class="nav-item">
         <a class="nav-link {{ ($sidebar === 'mahasiswa') ? '' : 'collapsed'}}" href="/admin/daftar-mahasiswa">
-          <i class="bi bi-grid"></i>
+          <i class="bi bi-people"></i>
           <span>Daftar Mahasiswa</span>
         </a>
       </li><!-- End Mahasiswa Nav -->
 
       <li class="nav-item">
         <a class="nav-link {{ ($sidebar === 'bpsprov') ? '' : 'collapsed'}}" href="/admin/daftar-bpsprov">
-          <i class="bi bi-grid"></i>
+          <i class="bi bi-building"></i>
           <span>Daftar BPS Provinsi</span>
         </a>
       </li><!-- End BPS Provinsi Nav -->
@@ -62,97 +62,97 @@
             
       <li class="nav-item">
         <a class="nav-link {{ ($sidebar === 'database') ? '' : 'collapsed'}}" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="/admin/#">
-          <i class="bi bi-geo-alt"></i><span>Database</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-database"></i><span>Database</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="tables-nav" class="nav-content {{ ($sidebar === 'database') ? '' : 'collapse'}}" data-bs-parent="#sidebar-nav">
           <li>
             <a class="{{ $circle_sidebar === 'dosen_pembimbings' ? 'active' : '' }}" href="/admin/dosen_pembimbings">
-              <i class="bi bi-circle"></i><span>dosen_pembimbings</span>
+              <i class="bi bi-circle"></i><span>Dosen Pembimbing</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'instansis' ? 'active' : '' }}" href="/admin/instansis" class="active">
-              <i class="bi bi-circle"></i><span>instansis</span>
+              <i class="bi bi-circle"></i><span>Instansis</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'jadwal_bimbingans' ? 'active' : '' }}" href="/admin/jadwal_bimbingans" class="active">
-              <i class="bi bi-circle"></i><span>jadwal_bimbingans</span>
+              <i class="bi bi-circle"></i><span>Jadwal Bimbingan</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'jurnaling_bulanans' ? 'active' : '' }}" href="/admin/jurnaling_bulanans" class="active">
-              <i class="bi bi-circle"></i><span>jurnaling_bulanans</span>
+              <i class="bi bi-circle"></i><span>Jurnaling Bulanan</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'jurnaling_harians' ? 'active' : '' }}" href="/admin/jurnaling_harians" class="active">
-              <i class="bi bi-circle"></i><span>jurnaling_harians</span>
+              <i class="bi bi-circle"></i><span>Jurnaling Harian</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'kab_kotas' ? 'active' : '' }}" href="/admin/kab_kotas" class="active">
-              <i class="bi bi-circle"></i><span>kab_kotas</span>
+              <i class="bi bi-circle"></i><span>Kab Kota</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'kartu_kendalis' ? 'active' : '' }}" href="/admin/kartu_kendalis" class="active">
-              <i class="bi bi-circle"></i><span>kartu_kendalis</span>
+              <i class="bi bi-circle"></i><span>Kartu Kendali</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'kecamatans' ? 'active' : '' }}" href="/admin/kecamatans" class="active">
-              <i class="bi bi-circle"></i><span>kecamatans</span>
+              <i class="bi bi-circle"></i><span>Kecamatan</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'laporan_akhirs' ? 'active' : '' }}" href="/admin/laporan_akhirs" class="active">
-              <i class="bi bi-circle"></i><span>laporan_akhirs</span>
+              <i class="bi bi-circle"></i><span>Laporan Akhir</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'mahasiswas' ? 'active' : '' }}" href="/admin/mahasiswas" class="active">
-              <i class="bi bi-circle"></i><span>mahasiswas</span>
+              <i class="bi bi-circle"></i><span>Mahasiswa</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'pembimbing_lapangans' ? 'active' : '' }}" href="/admin/pembimbing_lapangans" class="active">
-              <i class="bi bi-circle"></i><span>pembimbing_lapangans</span>
+              <i class="bi bi-circle"></i><span>Pembimbing Lapangan</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'pemilihan_lokasis' ? 'active' : '' }}" href="/admin/pemilihan_lokasis" class="active">
-              <i class="bi bi-circle"></i><span>pemilihan_lokasis</span>
+              <i class="bi bi-circle"></i><span>Pemilihan Lokasi</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'penilaian_bimbingans' ? 'active' : '' }}" href="/admin/penilaian_bimbingans" class="active">
-              <i class="bi bi-circle"></i><span>penilaian_bimbingans</span>
+              <i class="bi bi-circle"></i><span>Penilaian Bimbingan</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'penilaian_kinerjas' ? 'active' : '' }}" href="/admin/penilaian_kinerjas" class="active">
-              <i class="bi bi-circle"></i><span>penilaian_kinerjas</span>
+              <i class="bi bi-circle"></i><span>Penilaian Kinerja</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'penilaian_laporans' ? 'active' : '' }}" href="/admin/penilaian_laporans" class="active">
-              <i class="bi bi-circle"></i><span>penilaian_laporans</span>
+              <i class="bi bi-circle"></i><span>Penilaian Laporan</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'penilaians' ? 'active' : '' }}" href="/admin/penilaians" class="active">
-              <i class="bi bi-circle"></i><span>penilaians</span>
+              <i class="bi bi-circle"></i><span>Penilaian</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'provinsis' ? 'active' : '' }}" href="/admin/provinsis" class="active">
-              <i class="bi bi-circle"></i><span>provinsis</span>
+              <i class="bi bi-circle"></i><span>Provinsi</span>
             </a>
           </li>
           <li>
             <a class="{{ $circle_sidebar === 'users' ? 'active' : '' }}" href="/admin/users" class="active">
-              <i class="bi bi-circle"></i><span>users</span>
+              <i class="bi bi-circle"></i><span>Pengguna</span>
             </a>
           </li>
         </ul>

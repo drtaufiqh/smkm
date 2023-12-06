@@ -25,9 +25,9 @@ return new class extends Migration
             $table->string('kuantitas_satuan');
             $table->string('durasi_waktu',50);
             $table->string('pemberi_tugas',50);
-            $table->double('status_penyelesaian', 5, 2);
-            $table->boolean('status_final_mhs');
-            $table->boolean('status_final_penilai');
+            $table->double('status_penyelesaian', 5, 2)->nullable();
+            $table->boolean('status_final_mhs')->nullable();
+            $table->boolean('status_final_penilai')->nullable();
             
             $table->timestamps();
         });

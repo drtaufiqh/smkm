@@ -57,7 +57,7 @@
                       </div>
                       <div class="ps-3">
                         <p class="mb-0">Lokasi Magang</p>
-                        <span class="text-muted small">{{ ($finalisasi) ? (optional(Auth::user()->info()->instansi)->nama) ?? '-' : '-' }}</span>
+                          <span class="text-muted small">{{ ($finalisasi) ? (optional(Auth::user()->info()->instansi)->nama) ?? '-' : '-' }}</span>
                         <!-- <button class="btn btn-primary btn-sm">Tentukan</button> -->
                       </div>
                     </div>
@@ -331,7 +331,7 @@
             <!-- End Reports -->
 @endif
 
-@if (Auth::user()->alamat_1 != null)
+@if (Auth::user()->alamat_1 == null)
     
       <!-- End Page Title -->
       <section class="section">
