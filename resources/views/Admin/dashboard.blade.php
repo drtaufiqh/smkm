@@ -21,15 +21,8 @@
   
                 <div class="col-lg-12">
                     <div class="card">
-                      <div class="card-body">
                         <h1 class="card-title text-center">Lokasi Magang Mahasiswa</h1>
-                    
-                              <!-- Bar Chart -->
-                              {{-- <div id="grafikLokasi"></div> --}}
-                
-                      </div>
                     </div>
-                  </div>
                               {{-- <script>
                                 document.addEventListener("DOMContentLoaded", () => {
                                   new ApexCharts(document.querySelector("#grafikLokasi"), {
@@ -148,11 +141,11 @@
                             </div>
                         </div>
    --}}
-              
+                      <div class="row">
                         <div class="col-lg-4 ">
-                            <div class="card">
+                            <div class="card border">
                               <div class="card-body">
-                                <h5 class="card-title text-center">Status Pemilihan Lokasi Magang oleh Mahasiswa</h5>
+                                <h5 class="card-title text-center">Pemilihan Lokasi Magang oleh Mahasiswa</h5>
                   
                                 <!-- Pie Chart -->
                                 <canvas id="pieChartPemilihan" style="max-height: 200px;"></canvas>
@@ -176,7 +169,8 @@
                                             // 'rgb(255, 193, 7)', //kuning
                                           ],
                                           hoverOffset: 4
-                                        }]
+                                        }],
+                                        
                                       }
                                     });
                                   });
@@ -186,7 +180,7 @@
                               </div>
                             </div>
                             {{-- <a href="#">
-                            <div class="text-center mt-5 text-center" style="color: white;">
+                            <div clsass="text-center mt-5 text-center" style="color: white;">
                               <a href="/admin/daftar-mahasiswa">
                                 <button type="button" class="btn btn-success btn-lg">Lihat Database</button>
                               </a>
@@ -197,7 +191,7 @@
                         <div class="col-lg-4 ">
                             <div class="card">
                               <div class="card-body">
-                                <h5 class="card-title text-center">Status Pengajuan Magang Mahasiswa oleh Admin</h5>
+                                <h5 class="card-title text-center">Pengajuan Magang Mahasiswa oleh Admin</h5>
                   
                                 <!-- Pie Chart -->
                                 <canvas id="pieChartPengajuan" style="max-height: 200px;"></canvas>
@@ -242,7 +236,7 @@
                         <div class="col-lg-4 ">
                             <div class="card">
                               <div class="card-body">
-                                <h5 class="card-title text-center">Status Penentuan Magang Mahasiswa oleh BPS Provinsi</h5>
+                                <h5 class="card-title text-center">Penentuan Magang Mahasiswa oleh BPS Provinsi</h5>
                   
                                 <!-- Pie Chart -->
                                 <canvas id="pieChartPenentuan" style="max-height: 200px;"></canvas>
@@ -326,18 +320,22 @@
                             </div>
                             </a>
                           </div> --}}
+                      </div>
+                    </div>
+                    
 
-      <div class="col-12">
+
+      {{-- <div class="col-12">
         <div class="card">
-          <div class="card-body">
+          <div class="card-body"> --}}
             <div class="text-center text-center" style="color: white;">
               <a href="/admin/penentuanlokasi">
                 <button type="button" class="btn btn-success btn-lg">Tentukan Lokasi</button>
               </a>
             </div>
-          </div>
+          {{-- </div>
         </div>
-      </div>
+      </div> --}}
                   
       </section>
 

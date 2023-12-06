@@ -118,7 +118,7 @@
               <div class="card-body m-0 p-0">
                 <div class="d-flex border border-dark" style="height: 600px">
                   <iframe
-                    src="/assets/doc/Persetujuan Orang Tua.pdf"
+                    src="/assets/doc/Laporan Magang.pdf"
                     style="
                       width: 100%;
                       height: 100%;

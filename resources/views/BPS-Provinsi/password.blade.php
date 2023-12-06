@@ -17,6 +17,16 @@
 
     <section class="section profile">
       <div class="row">
+        <div class="col-xl-4">
+
+          <div class="card h-100">
+            <div class="card-body d-flex justify-content-center align-items-center ">
+
+              <img src="/assets/img/pw.png" alt="Profile" class=" w-100">
+            </div>
+          </div>
+
+        </div>
         <div class="col-xl-8">
 
           <div class="card">

@@ -44,7 +44,7 @@
                     data-bs-parent="#accordionExample"
                   >
                     @include('komponen.pesan')
-                    <form action="/mahasiswa/add-monthly-lb/{{ Auth::user()->info()->id }}" method="POST" class="form-log-book accordion-body row g-3">
+                    <form action="/mahasiswa/add-monthly-lb/{{ Auth::user()->info()->id }}" method="POST" class="form-log-book accordion-body row g-3 pt-3">
                       @csrf
                     <div class="col-md-6">
                         <div class="form-floating">
@@ -107,10 +107,10 @@
                         </div>
                       </div>
                       <div class="text-end">
-                        <button type="submit" class="btn btn-primary m-2">
+                        <button type="submit" class="btn btn-success m-2">
                           Tambah
                         </button>
-                        <button type="reset" class="btn btn-secondary">
+                        <button type="reset" class="btn btn-danger">
                           Reset
                         </button>
                       </div>
