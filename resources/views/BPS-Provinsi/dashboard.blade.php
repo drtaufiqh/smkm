@@ -39,17 +39,66 @@
                             <a
                                 href="/bps-provinsi/approvalmahasiswa/{{ Auth::user()->info()->kabKota->provinsi->id }}"
                                 class="btn btn-primary btn-lg my-1"
-                                >Approval Mahasiswa</a
+                                >Penentuan Lokasi Magang</a
                             >
                             <a
                                 href="/bps-provinsi/bandingmahasiswa/{{ Auth::user()->info()->kabKota->provinsi->id }}"
                                 class="btn btn-primary btn-lg my-1"
-                                >Banding Mahasiswa</a
+                                >Banding Lokasi Magang</a
                             >
                         </div>
                     </div>
                 </div>
 
+{{-- pie chart --}}
+
+<div class="col-lg-4 ">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center">Status Penentuan Lokasi Magang</h5>
+
+        <!-- Pie Chart -->
+        <canvas id="pieChartPemilihan" style="max-height: 200px;"></canvas>
+        
+        <script>
+          document.addEventListener("DOMContentLoaded", () => {
+            new Chart(document.querySelector('#pieChartPemilihan'), {
+              type: 'pie',
+              data: {
+                labels: [
+                  'Disetujui',
+                  'Dialihkan',
+                  'Belum Ditentukan'
+                ],
+                datasets: [{
+                  label: 'Mahasiswa',
+                  data: [{{ $totalApproval }}, {{ $tolakApproval }}, {{ $belumApproval }}],
+                  backgroundColor: [
+                    'rgb(40, 167, 69)', //hijau
+                    'rgb(220, 53, 69)', //merah
+                    'rgb(0, 123, 255)', //biru
+                    // 'rgb(255, 193, 7)', //kuning
+                  ],
+                  hoverOffset: 4
+                }]
+              }
+            });
+          });
+        </script>
+        <!-- End Pie CHart -->
+
+      </div>
+    </div>
+    {{-- <a href="#">
+    <div class="text-center mt-5 text-center" style="color: white;">
+      <a href="/admin/daftar-mahasiswa">
+        <button type="button" class="btn btn-success btn-lg">Lihat Database</button>
+      </a>
+    </div>
+    </a> --}}
+  </div>
+  
+{{-- pie chat end --}}
                 <div class="col-xxl-4 col-md-6">
                     <div class="card info-card revenue-card">
                         <div class="card-body">
@@ -87,7 +136,7 @@
                                     >
                                 </div>
 
-                                <div class="col">
+                                {{-- <div class="col">
                                     <a
                                         class="btn p-3 mb-2 border border-success m-2 text-white bg-success"
                                         >Total Approval<br /><b
@@ -110,7 +159,7 @@
                                             >: {{$belumApproval}} Mahasiswa</b
                                         ></a
                                     >
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -176,7 +225,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title text-center">
-                                Sebaran Approval Lokasi Mahasiswa
+                                Sebaran Penentuan Lokasi Mahasiswa
                             </h5>
 
                             <!-- Bar Chart -->

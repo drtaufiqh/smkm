@@ -19,12 +19,12 @@
         <ul id="tables-nav" class="nav-content  {{ ($sidebar === 'lokasi') ? '' : 'collapse'}}" data-bs-parent="#sidebar-nav">
           <li>
             <a href="/bps-provinsi/approvalmahasiswa/{{ Auth::user()->info()->kabKota->provinsi->id }}" class="{{ $circle_sidebar === 'approval' ? 'active' : '' }}" >
-              <i class="bi bi-circle"></i><span>Approval Lokasi Mahasiswa</span>
+              <i class="bi bi-circle"></i><span>Penentuan Lokasi Magang</span>
             </a>
           </li>
           <li>
             <a href="/bps-provinsi/bandingmahasiswa/{{ Auth::user()->info()->kabKota->provinsi->id }}" class="{{ $circle_sidebar === 'banding' ? 'active' : '' }}" >
-              <i class="bi bi-circle"></i><span>Banding Lokasi Mahasiswa</span>
+              <i class="bi bi-circle"></i><span>Banding Lokasi Magang</span>
             </a>
           </li>
         </ul>
