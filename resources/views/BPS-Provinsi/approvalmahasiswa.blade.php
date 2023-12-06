@@ -29,6 +29,25 @@
                       <div class="card-body">
                           <h5 class="card-title text-lg-center">Pengajuan di Provinsi {{ Auth::user()->info()->kabKota->provinsi->nama }}</h5>
                           @include('komponen.pesan')
+
+                          @if ($finalisasiPenentuanAdminDone)
+  
+                          @if (!Auth::user()->info()->finalisasi->finalisasi_penentuan_lokasi_bpsprov)
+                          <div class="text-center d-grid gap-2 d-md-flex justify-content-md-end">
+                            <form action='/bps-provinsi/do_finalisasi_pemilihan' method="post">
+                              @csrf 
+                              @method('PUT') <!-- Tambahkan ini untuk menentukan metode PUT -->
+                              <button type="submit" class="btn btn-primary btn-md">Finalisasi</button>
+                            </form>
+                          </div>
+                          @else
+                          <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                            Telah dilakukan finalisasi pemilihan lokasi
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+                          @endif
+                        @endif
+
                             @if ($finalisasiPenentuanAdminDone)
                             <!-- Table with stripped rows -->
                             <div class="table-responsive">
@@ -121,23 +140,6 @@
       </div>
   </div>
   
-  @if ($finalisasiPenentuanAdminDone)
-  
-    @if (!Auth::user()->info()->finalisasi->finalisasi_penentuan_lokasi_bpsprov)
-    <div class="text-center">
-      <form action='/bps-provinsi/do_finalisasi_pemilihan' method="post">
-        @csrf 
-        @method('PUT') <!-- Tambahkan ini untuk menentukan metode PUT -->
-        <button type="submit" class="btn btn-primary btn-lg">Finalisasi</button>
-      </form>
-    </div>
-    @else
-    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-      Telah dilakukan finalisasi pemilihan lokasi
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    @endif
-  @endif
 </section>
 
 
