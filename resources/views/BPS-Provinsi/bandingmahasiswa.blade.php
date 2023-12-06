@@ -2,7 +2,7 @@
 
 @php
   $finalisasiBandingAdminDone = \App\Models\Finalisasi::isFinalisasiBandingAdminDone();
-  $finalisasiBandingBpsProvDone = \App\Models\Finalisasi::isFinalisasiBandingBpsProvDone();
+  $finalisasiBandingBpsProvDone = Auth::user()->info()->finalisasi->finalisasi_banding_lokasi_bpsprov;
 @endphp
 
 @section('container')
