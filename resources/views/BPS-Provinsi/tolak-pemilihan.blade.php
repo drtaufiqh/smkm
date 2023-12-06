@@ -1,6 +1,14 @@
-@extends('layout.template')
+@extends('layouts.main')
 
-@section('konten')
+@section('container')
+@php
+    $sidebar = "lokasi";
+    $circle_sidebar = 'approval';
+@endphp
+@include('partials.sidebar-prov')
+
+<main id="main" class="main">
+    <section>
     <form action="{{ route('approvalmahasiswa.update', ['id' => $pemilihan_lokasi->id, 'provId' => Auth::user()->info()->kabKota->provinsi->id]) }}" method='post' enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -67,4 +75,6 @@
             </div>
         </div>
     </form>
+</section>
+</main>
 @endsection
