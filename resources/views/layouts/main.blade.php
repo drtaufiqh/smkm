@@ -100,7 +100,9 @@
   
     {{-- <div class="container mt-4"> --}}
         @include('partials.header')
-        @yield('container')
+        <div style="min-height: 82vh">
+          @yield('container')
+        </div>
     {{-- </div> --}}
     
 
