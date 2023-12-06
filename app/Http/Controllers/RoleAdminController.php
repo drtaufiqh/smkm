@@ -202,7 +202,7 @@ class RoleAdminController extends Controller
         foreach ($finalisasis as $finalisasi) {
             $finalisasi->update(['finalisasi_banding_lokasi_admin' => 1]);
         }
-        return redirect()->to('/admin/bandinglokasi')->with('success', 'Berhasil finalisasi');
+        return redirect()->to('/admin/bandinglokasi')->with('success', 'Berhasil diteruskan ke BPS Provinsi.');
         
     }
 

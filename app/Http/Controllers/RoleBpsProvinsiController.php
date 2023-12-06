@@ -322,7 +322,13 @@ class RoleBpsProvinsiController extends Controller
 
     public function do_finalisasi_banding()
     {
-        $pemilihan_lokasis = PemilihanLokasi::get();
+        $instansi = Instansi::where('id_user', Auth::user()->id)->first();
+        $userId = $instansi->kabKota->provinsi->id;
+        $pemilihan_lokasis = PemilihanLokasi::select('pemilihan_lokasis.*')
+        ->join('instansis','id_instansi_ajuan', '=', 'instansis.id')
+        ->join('kab_kotas', 'instansis.id_kab_kota', '=', 'kab_kotas.id')
+        ->where('kab_kotas.id_prov', 'LIKE', $userId)
+        ->get();
 
         foreach ($pemilihan_lokasis as $pemilihan_lokasi) {
             $id_instansi = $pemilihan_lokasi->mahasiswa->id_instansi;
@@ -334,11 +340,14 @@ class RoleBpsProvinsiController extends Controller
             }
         }
 
-        $finalisasis = Finalisasi::get();
-        foreach ($finalisasis as $finalisasi) {
+        // $finalisasis = Finalisasi::get();
+        // foreach ($finalisasis as $finalisasi) {
 
-            $finalisasi->update(['finalisasi_banding_lokasi_bpsprov' => 1]);
-        }
+        //     $finalisasi->update(['finalisasi_banding_lokasi_bpsprov' => 1]);
+        // }
+        
+        $finalisasi = $instansi->finalisasi;
+        $finalisasi->update(['finalisasi_banding_lokasi_bpsprov' => 1]);
         return redirect()->to('/bps-provinsi/bandingmahasiswa')->with('success', 'Berhasil Finalisasi');
     }
 

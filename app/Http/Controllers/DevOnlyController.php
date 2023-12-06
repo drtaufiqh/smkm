@@ -17,4 +17,14 @@ class DevOnlyController extends Controller
         Finalisasi::whereNotNull('finalisasi_penentuan_lokasi_admin')->update(['finalisasi_penentuan_lokasi_bpsprov' => null]);
         return redirect()->to('/');
     }
+
+    public function finalisasi_all_banding(){
+        Finalisasi::whereNotNull('finalisasi_penentuan_lokasi_admin')->update(['finalisasi_banding_lokasi_bpsprov' => 1]);
+        return redirect()->to('/');
+    }
+    
+    public function unfinalisasi_all_banding(){
+        Finalisasi::whereNotNull('finalisasi_penentuan_lokasi_admin')->update(['finalisasi_banding_lokasi_bpsprov' => null]);
+        return redirect()->to('/');
+    }
 }

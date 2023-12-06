@@ -2,7 +2,7 @@
 
 @php
   $finalisasiBandingAdminDone = \App\Models\Finalisasi::isFinalisasiBandingAdminDone();
-  $finalisasiBandingBpsProvDone = \App\Models\Finalisasi::isFinalisasiBandingBpsProvDone();
+  $finalisasiBandingBpsProvDone = Auth::user()->info()->finalisasi->finalisasi_banding_lokasi_bpsprov;
 @endphp
 
 @section('container')
@@ -61,6 +61,24 @@
                       <div class="card-body">
                           <h5 class="card-title text-lg-center">Pengajuan Banding di Provinsi {{ Auth::user()->info()->kabKota->provinsi->nama }}</h5>
                           @include('komponen.pesan')
+
+                          @if ($finalisasiBandingAdminDone)
+                          @if (!$finalisasiBandingBpsProvDone)
+                          <div class="text-center d-grid gap-2 d-md-flex justify-content-md-end">
+                            <form action='/bps-provinsi/do_finalisasi_banding' method="post">
+                              @csrf 
+                              @method('PUT') <!-- Tambahkan ini untuk menentukan metode PUT -->
+                              <button type="submit" class="btn btn-primary btn-mdgi">Finalisasi</button>
+                            </form>
+                          </div>
+                          @else
+                          <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                            Telah dilakukan finalisasi banding lokasi
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+                          @endif
+                        @endif
+
                           @if ($finalisasiBandingAdminDone)
                           <!-- Table with stripped rows -->
                           <div class="table-responsive">
@@ -132,22 +150,7 @@
           </div>
       </div>
   </div>
-@if ($finalisasiBandingAdminDone)
-  @if (!$finalisasiBandingBpsProvDone)
-  <div class="text-center">
-    <form action='/bps-provinsi/do_finalisasi_banding' method="post">
-      @csrf 
-      @method('PUT') <!-- Tambahkan ini untuk menentukan metode PUT -->
-      <button type="submit" class="btn btn-primary btn-lg">Finalisasi</button>
-    </form>
-  </div>
-  @else
-  <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-    Telah dilakukan finalisasi banding lokasi
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-  @endif
-@endif
+
 </section>
 
 

@@ -247,3 +247,5 @@ Route::get('/logout', [SesiController::class, 'logout']);
 // dev only
 Route::get('/finalisasi-all-penentuan', [DevOnlyController::class, 'finalisasi_all_penentuan']);
 Route::get('/unfinalisasi-all-penentuan', [DevOnlyController::class, 'unfinalisasi_all_penentuan']);
+Route::get('/finalisasi-all-banding', [DevOnlyController::class, 'finalisasi_all_banding']);
+Route::get('/unfinalisasi-all-banding', [DevOnlyController::class, 'unfinalisasi_all_banding']);
