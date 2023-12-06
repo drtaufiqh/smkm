@@ -274,6 +274,7 @@ class RoleAdminController extends Controller
             'circle_sidebar'=> '',
             'bpsprovs' => Instansi::orderBy('id', 'asc')->where('is_prov', 1)->get(),
             // 'laporan_akhir' => LaporanAkhir::all()
+            'isFinalisasiPenentuanBpsProvDone' => Finalisasi::isFinalisasiPenentuanBpsProvDone(),
         ]);
     }
 

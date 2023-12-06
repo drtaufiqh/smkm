@@ -107,7 +107,7 @@
                                             Sudah Finalisasi
                                           </div>
                                       @else
-                                          @if (optional($bpsprov->finalisasi)->finalisasi_penentuan_lokasi_bpsprov)
+                                          @if ($isFinalisasiPenentuanBpsProvDone)
                                               <div class="alert alert-warning">
                                                 Belum Finalisasi
                                               </div>
