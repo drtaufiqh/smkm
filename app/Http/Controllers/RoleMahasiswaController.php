@@ -283,8 +283,11 @@ class RoleMahasiswaController extends Controller
     {
         $mhs = Mahasiswa::where('id_user', Auth::user()->id)->first();
         $pemilihan_lokasi = PemilihanLokasi::where('id_mhs', $mhs->id)->first();
+        if($mhs->is_final){
+            return redirect()->to("/mahasiswa/lokasi-fiks");
+        }
 
-        return view('mahasiswa.lokasi-magang', [
+        return view('mahasiswa.lokasi-magang-konfirm', [
             'title' => 'Lokasi Magang | Mahasiswa',
             'sidebar' => 'lokasi',
             'circle_sidebar' => '',
