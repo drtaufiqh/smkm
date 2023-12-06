@@ -26,6 +26,32 @@
                     <div class="card-body">
                         <h5 class="card-title text-lg-center">Banding Lokasi oleh Admin</h5>
                         @include('komponen.pesan')
+
+
+                        @if ($finalisasiPenentuanBpsProvDone)
+                        @if (!$finalisasiBandingAdminDone)
+                        <div class="text-center d-grid gap-2 d-md-flex justify-content-md-end">
+                          <form action='/admin/do_finalisasi_banding' method="post">
+                            @csrf 
+                            @method('PUT') <!-- Tambahkan ini untuk menentukan metode PUT -->
+                            <button type="submit" class="btn btn-primary btn-md">Teruskan</button>
+                          </form>
+                        </div>
+                        @else
+                        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
+                      
+                          <i class="bi bi-info-circle me-1"></i>
+                          Banding lokasi telah diteruskan ke BPS Provinsi.
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        @endif
+                      @endif
+
                         @if ($finalisasiPenentuanBpsProvDone)
                         <!-- Table with stripped rows -->
                         <div class="table-responsive">
@@ -144,29 +170,6 @@
         </div>
     </div>
 </div>
-@if ($finalisasiPenentuanBpsProvDone)
-  @if (!$finalisasiBandingAdminDone)
-  <div class="text-center">
-    <form action='/admin/do_finalisasi_banding' method="post">
-      @csrf 
-      @method('PUT') <!-- Tambahkan ini untuk menentukan metode PUT -->
-      <button type="submit" class="btn btn-primary btn-lg">Finalisasi</button>
-    </form>
-  </div>
-  @else
-  <div class="alert alert-warning alert-dismissible fade show text-center" role="alert">
-
-    <i class="bi bi-info-circle me-1"></i>
-    Telah dilakukan finalisasi banding lokasi
-    <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="alert"
-      aria-label="Close"
-    ></button>
-  </div>
-  @endif
-@endif
 </section>
 
   </main><!-- End #main -->
