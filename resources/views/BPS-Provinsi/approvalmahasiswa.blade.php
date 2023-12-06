@@ -73,7 +73,7 @@
                                     <td>{{ $pemilihan_lokasi->mahasiswa->nim }}</td>
                                     <td>{{ $pemilihan_lokasi->mahasiswa->alamat_1 }}</td>
                                     <td>{{ optional($pemilihan_lokasi->instansiAjuan)->nama ?? '-' }}</td>
-                                    @if (!$finalisasiPenentuanBpsProvDone)
+                                    @if (!(Auth::user()->info()->finalisasi->finalisasi_penentuan_lokasi_bpsprov))
                                         <td class="status-column">
                                             {{-- <form action="{{ route('setujuiPemilihan', ['id' => $pemilihan_lokasi->id, 'provId' => Auth::user()->info()->kabKota->provinsi->id]) }}" method="post">
                                                 @csrf
