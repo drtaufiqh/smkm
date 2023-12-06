@@ -87,7 +87,7 @@
                                   <tr>
                                     <th scope="row">{{ $i }}</th>
                                     <td>{{ $mahasiswa->nama }}</td>
-                                    <td>{{ $mahasiswa->email }}</td>
+                                    <td>{{ $mahasiswa->user->email }}</td>
                                     <td>{{ $mahasiswa->nim }}</td>
                                     <td>{{ $mahasiswa->kelas }}</td>
                                     <td>{{ optional($mahasiswa->instansi)->nama ?? '-' }}</td>

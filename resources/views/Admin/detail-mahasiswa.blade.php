@@ -75,7 +75,7 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">{{ $mahasiswa->email ?? "-" }}</div>
+                    <div class="col-lg-9 col-md-8">{{ $mahasiswa->user->email ?? "-" }}</div>
                   </div>
 
                   <div class="row">
