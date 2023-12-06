@@ -1,10 +1,6 @@
 @extends('layouts.main')
 
 @section('container')
-@php
-    $sidebar = "lokasi";
-    $circle_sidebar = 'approval';
-@endphp
 @include('partials.sidebar-prov')
 
 <main id="main" class="main">

@@ -360,7 +360,7 @@ class RoleBpsProvinsiController extends Controller
         ->get();
 
         
-        return view('BPS-Provinsi.tolak-pemilihan', ['pemilihan_lokasis' => PemilihanLokasi::all(),'instansis' => $instansis,'pemilihan_lokasi' => $pemilihan_lokasi]);
+        return view('BPS-Provinsi.tolak-pemilihan', ['pemilihan_lokasis' => PemilihanLokasi::all(),'instansis' => $instansis,'pemilihan_lokasi' => $pemilihan_lokasi, 'sidebar' => 'lokasi', 'circle_sidebar' => 'approval']);
         // return redirect()->to('/bps-provinsi/approvalmahasiswa/'.$provId);
 
     }
