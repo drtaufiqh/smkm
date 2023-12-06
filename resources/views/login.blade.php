@@ -1,43 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-
-    <title>Login</title>
-</head>
-<body>
-    <div class="container py-5">
-        <div class="w-50 center border rounded px-3 py-3 mx-auto">
-        <h1>Login</h1>
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <form action="" method="POST">
-            @csrf
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" value="{{ old('email') }}" name="email" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control">
-            </div>
-            <div class="mb-3 d-grid">
-                <button name="submit" type="submit" class="btn btn-primary">Login</button>
-            </div>
-        </form>
-    </div> 
-    </div>
-</body>
-</html> --}}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -86,7 +46,7 @@
   ======================================================== -->
   </head>
 
-  <body>
+  <body >
     <main>
       <div class="container">
         <section
@@ -105,7 +65,7 @@
                         href="/login"
                         class="logo d-flex align-items-center w-auto"
                       >
-                        <img src="assets/img/logo.png" alt="" />
+                        <img src="/assets/img/logo-smkm.png" alt="" />
                         <span class="d-none d-lg-block">SMKM</span>
                       </a>
                     </div>

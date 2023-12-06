@@ -189,8 +189,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/mahasiswa/index', [RoleMahasiswaController::class, 'index']);
         Route::get('/mahasiswa/jadwal-bimbingan', [RoleMahasiswaController::class, 'jadwalBimbingan']);
         Route::get('/mahasiswa/laporan-akhir', [RoleMahasiswaController::class, 'laporanAkhir']);
-        Route::get('/mahasiswa/log-book-bulanan', [RoleMahasiswaController::class, 'logBookBulanan']);
-        Route::get('/mahasiswa/log-book-harian', [RoleMahasiswaController::class, 'logBookHarian']);
+        Route::get('/mahasiswa/log-book-bulanan/{id_user}', [RoleMahasiswaController::class, 'logBookBulanan']);
+        Route::get('/mahasiswa/log-book-harian/{id_user}', [RoleMahasiswaController::class, 'logBookHarian']);
         Route::get('/mahasiswa/pemilihan-lokasi', [RoleMahasiswaController::class, 'pemilihanLokasi']);
         Route::post('/mahasiswa/submitted-pemilihan-lokasi/{id_user}', [RoleMahasiswaController::class, 'submittedPemilihanLokasi'])->name('submitted-pemilihan-lokasi');
         Route::get('/mahasiswa/submitted-pemilihan-lokasi', [RoleMahasiswaController::class, 'waitingPemilihanLokasi']);
@@ -200,6 +200,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/mahasiswa/profil', [RoleMahasiswaController::class, 'profil']);
         Route::put('/mahasiswa/profil/{id}', [RoleMahasiswaController::class, 'editProfil'])->name('editProfil');
         Route::get('/mahasiswa/lokasi-fiks', [RoleMahasiswaController::class, 'lokasiFiks'])->name('lokasiFiks');
+        Route::post('/mahasiswa/add-daily-lb/{id_user}', [RoleMahasiswaController::class, 'add_daily_lb']);
+        Route::post('/mahasiswa/add-monthly-lb/{id_user}', [RoleMahasiswaController::class, 'add_monthly_lb']);
+
 
         Route::get('/mahasiswa/password', [RoleMahasiswaController::class, 'password']);
         Route::put('/mahasiswa/password', [RoleMahasiswaController::class, 'password']);

@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="/assets/img/favicon.png" rel="icon">
-  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/assets/img/smkm.png" rel="icon">
+  <link href="/assets/img/smkm.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -26,8 +26,7 @@
   <link href="/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="/assets/css/style.css" rel="stylesheet">
+ 
 
   <!-- =======================================================
   * Template Name: NiceAdmin
@@ -65,9 +64,12 @@
     <link rel="stylesheet" href="/assets/vendor/libs/quill/editor.css" />
     <link rel="stylesheet" href="/assets/vendor/libs/formvalidation/dist/css/formValidation.min.css" />
 
+     <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
+
     <!-- Page CSS -->
 
-    <link rel="stylesheet" href="/assets/vendor/css/app-calendar.css" />
+    {{-- <link rel="stylesheet" href="/assets/vendor/css/app-calendar.css" /> --}}
 
 
     <!-- Helpers -->
@@ -103,16 +105,16 @@
     
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
+  <footer id="footer" class="footer mb-0" style="background: white; border-top: 0.8px solid lightblue; border-bottom: 0.8px solid lightblue">
     <div class="copyright">
-      &copy; Copyright <strong><span>Dutatama, Andika, Fauzan, Khesya, Ajeng, Sabilla, Brigitta</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Kelompok 2 RPL 3SD2</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
       <!-- You can delete the links only if you purchased the pro version. -->
       <!-- Licensing information: https://bootstrapmade.com/license/ -->
       <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://instagram.com/">Kelompok 2 RPL 3SD2</a>
+      Designed by <a href="https://bootstrapmade.com/">Kelompok 2 RPL 3SD2</a>
     </div>
   </footer><!-- End Footer -->
 

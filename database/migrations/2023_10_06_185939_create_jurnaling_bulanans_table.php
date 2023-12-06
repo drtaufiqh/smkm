@@ -19,16 +19,16 @@ return new class extends Migration
             // $table->foreign('id_mhs')->references('id')->on('mahasiswas')->onDelete('cascade');
             $table->foreignId('id_penilai')->nullable()->constraint('pembimbing_lapangans')->onDelete('set null');
             // $table->foreign('id_penilai')->references('id')->on('pembimbing_lapangans')->onDelete('set null');
-            $table->integer('periode');
+            $table->integer('periode')->nullable();
             $table->text('uraian_kegiatan');
             $table->string('satuan',50);
             $table->integer('kuantitas_target');
             $table->integer('kuantitas_realisasi');
-            $table->double('tingkat_kuantitas', 5, 2);
-            $table->double('tingkat_kualitas', 5, 2);
+            $table->double('tingkat_kuantitas', 5, 2)->nullable();
+            $table->double('tingkat_kualitas', 5, 2)->nullable();
             $table->text('keterangan')->nullable();
-            $table->boolean('status_final_mhs');
-            $table->boolean('status_final_penilai');
+            $table->boolean('status_final_mhs')->nullable();
+            $table->boolean('status_final_penilai')->nullable();
             
             $table->timestamps();
         });

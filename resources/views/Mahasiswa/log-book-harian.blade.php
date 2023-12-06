@@ -43,14 +43,17 @@
                     aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample"
                   >
-                    <form class="form-log-book accordion-body row g-3">
+                    @include('komponen.pesan')
+                    <form action="/mahasiswa/add-daily-lb/{{ Auth::user()->info()->id }}" method="POST" class="form-log-book accordion-body row g-3 pt-3">
+                      @csrf
                       <div class="col-md-6">
                         <div class="form-floating">
                           <input
                             type="text"
                             class="form-control"
                             id="floatingName"
-                            placeholder="Pekerjaan"
+                            placeholder="Contoh: Membuat infografis SUTAS"
+                            name="pekerjaan"
                           />
                           <label for="floatingName">Pekerjaan</label>
                         </div>
@@ -61,7 +64,8 @@
                             type="text"
                             class="form-control"
                             id="floatingName"
-                            placeholder="Volume"
+                            placeholder="Contoh: 1"
+                            name="volume"
                           />
                           <label for="floatingName">Volume</label>
                         </div>
@@ -72,7 +76,8 @@
                             type="text"
                             class="form-control"
                             id="floatingName"
-                            placeholder="Satuan"
+                            placeholder="Contoh: Lembar"
+                            name="satuan"
                           />
                           <label for="floatingName">Satuan</label>
                         </div>
@@ -83,7 +88,8 @@
                             type="text"
                             class="form-control"
                             id="floatingName"
-                            placeholder="Durasi"
+                            placeholder="Contoh: 3 Jam"
+                            name="durasi"
                           />
                           <label for="floatingName">Durasi</label>
                         </div>
@@ -94,16 +100,17 @@
                             type="text"
                             class="form-control"
                             id="floatingName"
-                            placeholder="Pemberi Tugas"
+                            placeholder="Contoh: Bu Siti"
+                            name="pemberi_tugas"
                           />
                           <label for="floatingName">Pemberi Tugas</label>
                         </div>
                       </div>
                       <div class="text-end">
-                        <button type="submit" class="btn btn-primary m-2">
+                        <button type="submit" class="btn btn-success m-2">
                           Tambah
                         </button>
-                        <button type="reset" class="btn btn-secondary">
+                        <button type="reset" class="btn btn-danger">
                           Reset
                         </button>
                       </div>
@@ -150,12 +157,17 @@
                             <div
                               class="progress-bar"
                               role="progressbar"
-                              style="width: 90%"
+                              style="width: {{ $jurnaling_harian->status_penyelesaian }}%"
                               aria-valuenow="90"
                               aria-valuemin="0"
                               aria-valuemax="100"
                             >
+                              @if ($jurnaling_harian->status_penyelesaian != 0 )
+                              {{ $jurnaling_harian->status_penyelesaian }}%
+                              @else
                               {{ $jurnaling_harian->status_penyelesaian }}
+                              @endif
+
                             </div>
                           </div>
                         </td>

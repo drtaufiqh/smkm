@@ -140,7 +140,7 @@
               </div>
 
               <div class="text-center">
-                <a href="/mahasiswa/profil" class="btn btn-secondary">Edit Alamat</a>
+                <a href="/mahasiswa/profil" class="btn btn-primary">Edit Alamat</a>
               </div>
 
               <div class="col-12 mt-0">
@@ -225,8 +225,8 @@
               </div> --}}
 
               <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
+                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="reset" class="btn btn-danger">Reset</button>
               </div>
             </form>
 

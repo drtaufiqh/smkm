@@ -21,7 +21,7 @@
             <p>Pilihan 2: {{ $pemilihan_lokasi->pilihan2->nama }}</p>
         </div>
         <div class="waiting-image" style="text-align: center;">
-            <img src="{{ url('/assets/img/submitted.jpeg') }}" alt="Gambar Menunggu" style="display: block; margin: 0 auto; width: 600px;">
+            <img src="{{ url('/assets/img/submitted.png') }}" alt="Gambar Menunggu" style="display: block; margin: 0 auto; width: 600px;">
         </div>                
     </main>
     <!-- End #main -->

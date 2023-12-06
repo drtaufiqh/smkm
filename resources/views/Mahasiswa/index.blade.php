@@ -42,7 +42,7 @@
                       <div
                         class="card-icon profile rounded-circle d-flex align-items-center justify-content-center"
                       >
-                        <i class="bi bi-people"></i>
+                        <i class="bi bi-person"></i>
                       </div>
                       <div class="ps-3">
                         <p class="mb-0">{{ Auth::user()->info()->nama }}</p>
@@ -57,7 +57,7 @@
                       </div>
                       <div class="ps-3">
                         <p class="mb-0">Lokasi Magang</p>
-                        <span class="text-muted small">{{ ($finalisasi) ? (optional(Auth::user()->info()->instansi)->nama) ?? '-' : '-' }}</span>
+                          <span class="text-muted small">{{ ($finalisasi) ? (optional(Auth::user()->info()->instansi)->nama) ?? '-' : '-' }}</span>
                         <!-- <button class="btn btn-primary btn-sm">Tentukan</button> -->
                       </div>
                     </div>
@@ -73,9 +73,9 @@
 
                     <div class="d-flex align-items-center">
                       <div
-                        class="card-icon profile rounded-circle d-flex align-items-center justify-content-center"
+                        class="card-icon pembimbing rounded-circle d-flex align-items-center justify-content-center"
                       >
-                        <i class="bi bi-people"></i>
+                        <i class="bi bi-person-video3"></i>
                       </div>
                       <div class="ps-3">
                         <p class="mb-0">Dosen pembimbing</p>
@@ -84,9 +84,9 @@
                     </div>
                     <div class="d-flex align-items-center mt-2">
                       <div
-                        class="card-icon office rounded-circle d-flex align-items-center justify-content-center"
+                        class="card-icon pembimbing rounded-circle d-flex align-items-center justify-content-center"
                       >
-                        <i class="bi bi-building"></i>
+                        <i class="bi bi-people"></i>
                       </div>
                       <div class="ps-3">
                         <p class="mb-0">Pembimbing lapangan</p>
@@ -331,7 +331,7 @@
             <!-- End Reports -->
 @endif
 
-@if (Auth::user()->alamat_1 != null)
+@if (Auth::user()->alamat_1 == null)
     
       <!-- End Page Title -->
       <section class="section">

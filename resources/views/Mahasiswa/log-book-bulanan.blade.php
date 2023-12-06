@@ -43,14 +43,17 @@
                     aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample"
                   >
-                    <form class="form-log-book accordion-body row g-3">
-                      <div class="col-md-6">
+                    @include('komponen.pesan')
+                    <form action="/mahasiswa/add-monthly-lb/{{ Auth::user()->info()->id }}" method="POST" class="form-log-book accordion-body row g-3 pt-3">
+                      @csrf
+                    <div class="col-md-6">
                         <div class="form-floating">
                           <input
                             type="text"
                             class="form-control"
                             id="floatingKegiatan"
-                            placeholder="Kegiatan"
+                            placeholder="Contoh: Input kuesioner SUSENAS"
+                            name="uraian_kegiatan"
                           />
                           <label for="floatingKegiatan">Kegiatan</label>
                         </div>
@@ -61,7 +64,8 @@
                             type="text"
                             class="form-control"
                             id="floatingSatuan"
-                            placeholder="Satuan"
+                            placeholder="Contoh: Lembar"
+                            name="satuan"
                           />
                           <label for="floatingSatuan">Satuan</label>
                         </div>
@@ -72,7 +76,8 @@
                             type="text"
                             class="form-control"
                             id="floatingTarget"
-                            placeholder="Target"
+                            placeholder="Contoh: 100"
+                            name="kuantitas_target"
                           />
                           <label for="floatingTarget">Target</label>
                         </div>
@@ -83,7 +88,8 @@
                             type="text"
                             class="form-control"
                             id="floatingRealisasi"
-                            placeholder="Realisasi"
+                            placeholder="Contoh: 100"
+                            name="kuantitas_realisasi"
                           />
                           <label for="floatingName">Realisasi</label>
                         </div>
@@ -94,16 +100,17 @@
                             type="text"
                             class="form-control"
                             id="floatingKeterangan"
-                            placeholder="Keterangan"
+                            placeholder="Contoh: Kuesioner robek 1"
+                            name="keterangan"
                           />
                           <label for="floatingKeterangan">Keterangan</label>
                         </div>
                       </div>
                       <div class="text-end">
-                        <button type="submit" class="btn btn-primary m-2">
+                        <button type="submit" class="btn btn-success m-2">
                           Tambah
                         </button>
-                        <button type="reset" class="btn btn-secondary">
+                        <button type="reset" class="btn btn-danger">
                           Reset
                         </button>
                       </div>
@@ -156,18 +163,18 @@
                         <td>{{ $jurnaling_bulanan->satuan }}</td>
                         <td>{{ $jurnaling_bulanan->kuantitas_target }}</td>
                         <td>{{ $jurnaling_bulanan->kuantitas_realisasi }}</td>
-                        <td>{{ $jurnaling_bulanan->kuantitas_realisasi }}%</td>
+                        <td>{{ $jurnaling_bulanan->kuantitas_realisasi/$jurnaling_bulanan->kuantitas_target*100  }}%</td>
                         <td>
                           <div class="progress">
                             <div
                               class="progress-bar"
                               role="progressbar"
-                              style="width: 90%"
-                              aria-valuenow="90"
+                              style="width: {{ $jurnaling_bulanan->tingkat_kualitas }}%"
+                              aria-valuenow="{{ $jurnaling_bulanan->tingkat_kualitas }}%"
                               aria-valuemin="0"
                               aria-valuemax="100"
                             >
-                            {{ $jurnaling_bulanan->tingkat_kualitas }}%
+                            {{ $jurnaling_bulanan->tingkat_kualitas }}
                             </div>
                           </div>
                         </td>

@@ -55,13 +55,13 @@
     </div>
     @endif
 
-              <div class="table-responsive mb-3">
+              <div class="table-responsive mb-3 text-sm">
                 <table class="table table-striped">
                     <thead class="text-center align-middle">
                     <tr>
-                      <th scope="col">Nomor</th>
-                      <th scope="col">Nama Mahasiswa</th>
-                      <th scope="col">Kelas</th>
+                      <th scope="col">No</th>
+                      <th scope="col">Nama</th>
+                      {{-- <th scope="col">Kelas</th> --}}
                       <th scope="col">Pilihan 1</th>
                       <th scope="col">Pilihan 2</th>
                       <th scope="col">Alamat Domisili Utama</th> 
@@ -80,7 +80,7 @@
                       <tr>
                         <th scope="row">{{ $i }}</th>
                         <td>{{ $pemilihan_lokasi->mahasiswa->nama }}</td>
-                        <td>{{ $pemilihan_lokasi->mahasiswa->kelas }}</td>
+                        {{-- <td>{{ $pemilihan_lokasi->mahasiswa->kelas }}</td> --}}
                         <td>
                           <strong>[{{ optional(optional($pemilihan_lokasi->pilihan1)->kabKota)->nama }}-{{ optional(optional(optional($pemilihan_lokasi->pilihan1)->kabKota)->provinsi)->akronim }}]</strong>
                           {{ optional($pemilihan_lokasi->pilihan1)->nama }}</td>

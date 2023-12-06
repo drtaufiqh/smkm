@@ -33,12 +33,12 @@
               data-bs-parent="#sidebar-nav"
             >
               <li>
-                <a class="{{ $circle_sidebar === 'harian' ? 'active' : '' }}" href="/mahasiswa/log-book-harian">
+                <a class="{{ $circle_sidebar === 'harian' ? 'active' : '' }}" href="/mahasiswa/log-book-harian/{{ Auth::user()->info()->id }}">
                   <i class="bi bi-circle"></i><span>Harian</span>
                 </a>
               </li>
               <li>
-                <a  class="{{ $circle_sidebar === 'bulanan' ? 'active' : '' }}" href="/mahasiswa/log-book-bulanan">
+                <a  class="{{ $circle_sidebar === 'bulanan' ? 'active' : '' }}" href="/mahasiswa/log-book-bulanan/{{ Auth::user()->info()->id }}">
                   <i class="bi bi-circle"></i><span>Bulanan</span>
                 </a>
               </li>
